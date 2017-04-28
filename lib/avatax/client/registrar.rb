@@ -12,7 +12,7 @@ module AvaTax
       # This API only allows the currently authenticated user to change their password; it cannot be used to apply to a
       # different user than the one authenticating the current API call.
       # 
-     * @param PasswordChangeModel $model An object containing your current password and the new password.
+      # @param PasswordChangeModel $model An object containing your current password and the new password.
       # @return string
       def changePassword($model)
         path = '/api/v2/passwords';
@@ -28,7 +28,7 @@ module AvaTax
       # Create a single new account object. 
       # When creating an account object you may attach subscriptions and users as part of the 'Create' call.
       # 
-     * @param AccountModel $model The account you wish to create.
+      # @param AccountModel $model The account you wish to create.
       # @return AccountModel
       def createAccount($model)
         path = '/api/v2/accounts';
@@ -45,7 +45,8 @@ module AvaTax
       # A 'subscription' indicates a licensed subscription to a named Avalara service.
       # To request or remove subscriptions, please contact Avalara sales or your customer account manager.
       # 
-     * @param SubscriptionModel[] $model The subscription you wish to create.
+      # @param int $accountId The ID of the account that owns this subscription.
+      # @param SubscriptionModel[] $model The subscription you wish to create.
       # @return SubscriptionModel[]
       def createSubscriptions($accountId, $model)
         path = '/api/v2/accounts/#{accountId}/subscriptions';
@@ -61,7 +62,8 @@ module AvaTax
       # Create one or more new user objects attached to this account.
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # 
-     * @param UserModel[] $model The user or array of users you wish to create.
+      # @param int $accountId The unique ID number of the account where these users will be created.
+      # @param UserModel[] $model The user or array of users you wish to create.
       # @return UserModel[]
       def createUsers($accountId, $model)
         path = '/api/v2/accounts/#{accountId}/users';
@@ -77,6 +79,7 @@ module AvaTax
       # Delete an account.
       # Deleting an account will delete all companies and all account level users attached to this account.
       # 
+      # @param int $id The ID of the account you wish to delete.
       # @return ErrorDetail[]
       def deleteAccount($id)
         path = '/api/v2/accounts/#{id}';
@@ -91,6 +94,8 @@ module AvaTax
       # 
       # Mark the existing account identified by this URL as deleted.
       # 
+      # @param int $accountId The ID of the account that owns this subscription.
+      # @param int $id The ID of the subscription you wish to delete.
       # @return ErrorDetail[]
       def deleteSubscription($accountId, $id)
         path = '/api/v2/accounts/#{accountId}/subscriptions/#{id}';
@@ -105,6 +110,8 @@ module AvaTax
       # 
       # Mark the user object identified by this URL as deleted.
       # 
+      # @param int $id The ID of the user you wish to delete.
+      # @param int $accountId The accountID of the user you wish to delete.
       # @return ErrorDetail[]
       def deleteUser($id, $accountId)
         path = '/api/v2/accounts/#{accountId}/users/#{id}';
@@ -148,7 +155,8 @@ module AvaTax
       # This API is only available for Avalara Registrar Admins, and can be used to reset the password of any
       # user based on internal Avalara business processes.
       # 
-     * @param SetPasswordModel $model The new password for this user
+      # @param int $userId The unique ID of the user whose password will be changed
+      # @param SetPasswordModel $model The new password for this user
       # @return string
       def resetPassword($userId, $model)
         path = '/api/v2/passwords/#{userId}/reset';
@@ -163,7 +171,8 @@ module AvaTax
       # 
       # Replace an existing account object with an updated account object.
       # 
-     * @param AccountModel $model The account object you wish to update.
+      # @param int $id The ID of the account you wish to update.
+      # @param AccountModel $model The account object you wish to update.
       # @return AccountModel
       def updateAccount($id, $model)
         path = '/api/v2/accounts/#{id}';
@@ -182,7 +191,9 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param SubscriptionModel $model The subscription you wish to update.
+      # @param int $accountId The ID of the account that this subscription belongs to.
+      # @param int $id The ID of the subscription you wish to update
+      # @param SubscriptionModel $model The subscription you wish to update.
       # @return SubscriptionModel
       def updateSubscription($accountId, $id, $model)
         path = '/api/v2/accounts/#{accountId}/subscriptions/#{id}';

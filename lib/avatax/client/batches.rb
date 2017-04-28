@@ -11,7 +11,8 @@ module AvaTax
       # You may fetch a batch to check on its status and retrieve the results of the batch operation.
       # Each batch object may have one or more file objects attached.
       # 
-     * @param BatchModel[] $model The batch you wish to create.
+      # @param int $companyId The ID of the company that owns this batch.
+      # @param BatchModel[] $model The batch you wish to create.
       # @return BatchModel[]
       def createBatches($companyId, $model)
         path = '/api/v2/companies/#{companyId}/batches';
@@ -23,6 +24,8 @@ module AvaTax
       # 
       # Mark the existing batch object at this URL as deleted.
       # 
+      # @param int $companyId The ID of the company that owns this batch.
+      # @param int $id The ID of the batch you wish to delete.
       # @return ErrorDetail[]
       def deleteBatch($companyId, $id)
         path = '/api/v2/companies/#{companyId}/batches/#{id}';
@@ -34,6 +37,9 @@ module AvaTax
       # 
       # Download a single batch file identified by this URL.
       # 
+      # @param int $companyId The ID of the company that owns this batch
+      # @param int $batchId The ID of the batch object
+      # @param int $id The primary key of this batch file object
       # @return FileResult
       def downloadBatch($companyId, $batchId, $id)
         path = '/api/v2/companies/#{companyId}/batches/#{batchId}/files/#{id}/attachment';
@@ -48,6 +54,8 @@ module AvaTax
       # When you create a batch, it is added to the AvaTax Batch Queue and will be processed in the order it was received.
       # You may fetch a batch to check on its status and retrieve the results of the batch operation.
       # 
+      # @param int $companyId The ID of the company that owns this batch
+      # @param int $id The primary key of this batch
       # @return BatchModel
       def getBatch($companyId, $id)
         path = '/api/v2/companies/#{companyId}/batches/#{id}';
@@ -64,6 +72,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $companyId The ID of the company that owns these batches
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.

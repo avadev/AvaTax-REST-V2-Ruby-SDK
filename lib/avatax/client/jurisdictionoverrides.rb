@@ -12,7 +12,8 @@ module AvaTax
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
       # 
-     * @param JurisdictionOverrideModel[] $model The jurisdiction override objects to create
+      # @param int $accountId The ID of the account that owns this override
+      # @param JurisdictionOverrideModel[] $model The jurisdiction override objects to create
       # @return JurisdictionOverrideModel[]
       def createJurisdictionOverrides($accountId, $model)
         path = '/api/v2/accounts/#{accountId}/jurisdictionoverrides';
@@ -24,6 +25,8 @@ module AvaTax
       # 
       # Marks the item object at this URL as deleted.
       # 
+      # @param int $accountId The ID of the account that owns this override
+      # @param int $id The ID of the override you wish to delete
       # @return ErrorDetail[]
       def deleteJurisdictionOverride($accountId, $id)
         path = '/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}';
@@ -40,6 +43,8 @@ module AvaTax
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
       # 
+      # @param int $accountId The ID of the account that owns this override
+      # @param int $id The primary key of this override
       # @return JurisdictionOverrideModel
       def getJurisdictionOverride($accountId, $id)
         path = '/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}';
@@ -59,6 +64,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $accountId The ID of the account that owns this override
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -99,7 +105,9 @@ module AvaTax
       # 
       # Replace the existing jurisdictionoverride object at this URL with an updated object.
       # 
-     * @param JurisdictionOverrideModel $model The jurisdictionoverride object you wish to update.
+      # @param int $accountId The ID of the account that this jurisdictionoverride belongs to.
+      # @param int $id The ID of the jurisdictionoverride you wish to update
+      # @param JurisdictionOverrideModel $model The jurisdictionoverride object you wish to update.
       # @return JurisdictionOverrideModel
       def updateJurisdictionOverride($accountId, $id, $model)
         path = '/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}';

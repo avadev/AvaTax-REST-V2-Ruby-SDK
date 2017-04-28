@@ -12,6 +12,8 @@ module AvaTax
       # The result of this API is the file you requested in the format you requested using the 'responseType' field.
       # This API builds the file on demand, and is limited to a maximum of 7500 items.
       # 
+      # @param int $companyId The ID number of the company that owns this location.
+      # @param int $id The ID number of the location to retrieve point-of-sale data.
       # @param string $date The date for which point-of-sale data would be calculated (today by default)
       # @param string $format The format of the file (JSON by default) (See PointOfSaleFileType::* for a list of allowable values)
       # @param string $partnerId If specified, requests a custom partner-formatted version of the file. (See PointOfSalePartnerId::* for a list of allowable values)
@@ -27,7 +29,8 @@ module AvaTax
       # 
       # Create one or more new location objects attached to this company.
       # 
-     * @param LocationModel[] $model The location you wish to create.
+      # @param int $companyId The ID of the company that owns this location.
+      # @param LocationModel[] $model The location you wish to create.
       # @return LocationModel[]
       def createLocations($companyId, $model)
         path = '/api/v2/companies/#{companyId}/locations';
@@ -39,6 +42,8 @@ module AvaTax
       # 
       # Mark the location object at this URL as deleted.
       # 
+      # @param int $companyId The ID of the company that owns this location.
+      # @param int $id The ID of the location you wish to delete.
       # @return ErrorDetail[]
       def deleteLocation($companyId, $id)
         path = '/api/v2/companies/#{companyId}/locations/#{id}';
@@ -54,6 +59,8 @@ module AvaTax
       # These locations may require additional custom configuration or tax registration with these authorities.
       # For more information on metadata requirements, see the '/api/v2/definitions/locationquestions' API.
       # 
+      # @param int $companyId The ID of the company that owns this location
+      # @param int $id The primary key of this location
       # @return LocationModel
       def getLocation($companyId, $id)
         path = '/api/v2/companies/#{companyId}/locations/#{id}';
@@ -72,6 +79,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $companyId The ID of the company that owns these locations
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -113,7 +121,9 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param LocationModel $model The location you wish to update.
+      # @param int $companyId The ID of the company that this location belongs to.
+      # @param int $id The ID of the location you wish to update
+      # @param LocationModel $model The location you wish to update.
       # @return LocationModel
       def updateLocation($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/locations/#{id}';
@@ -127,6 +137,8 @@ module AvaTax
       # This API call is intended to compare this location against the currently known taxing authority rules and regulations,
       # and provide information about what additional work is required to completely setup this location.
       # 
+      # @param int $companyId The ID of the company that owns this location
+      # @param int $id The primary key of this location
       # @return LocationValidationModel
       def validateLocation($companyId, $id)
         path = '/api/v2/companies/#{companyId}/locations/#{id}/validate';

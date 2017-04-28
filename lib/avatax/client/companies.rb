@@ -17,7 +17,7 @@ module AvaTax
       # This API only provides a limited subset of functionality compared to the 'Create Company' API call. 
       # If you need additional features or options not present in this 'Quick Setup' API call, please use the full 'Create Company' call instead.
       # 
-     * @param CompanyInitializationModel $model Information about the company you wish to create.
+      # @param CompanyInitializationModel $model Information about the company you wish to create.
       # @return CompanyModel
       def companyInitialize($model)
         path = '/api/v2/companies/initialize';
@@ -31,7 +31,7 @@ module AvaTax
       # A 'company' represents a single corporation or individual that is registered to handle transactional taxes.
       # You may attach nested data objects such as contacts, locations, and nexus with this CREATE call, and those objects will be created with the company.
       # 
-     * @param CompanyModel[] $model Either a single company object or an array of companies to create
+      # @param CompanyModel[] $model Either a single company object or an array of companies to create
       # @return CompanyModel[]
       def createCompanies($model)
         path = '/api/v2/companies';
@@ -52,7 +52,8 @@ module AvaTax
       # This API records that an ambedded HTML funding setup widget was activated.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # 
-     * @param FundingInitiateModel $model The funding initialization request
+      # @param int $id The unique identifier of the company
+      # @param FundingInitiateModel $model The funding initialization request
       # @return FundingStatusModel
       def createFundingRequest($id, $model)
         path = '/api/v2/companies/#{id}/funding/setup';
@@ -64,6 +65,7 @@ module AvaTax
       # 
       # Deleting a company will delete all child companies, and all users attached to this company.
       # 
+      # @param int $id The ID of the company you wish to delete.
       # @return ErrorDetail[]
       def deleteCompany($id)
         path = '/api/v2/companies/#{id}';
@@ -86,10 +88,34 @@ module AvaTax
       #  * TaxRules
       #  * UPC
       # 
+      # @param int $id The ID of the company to retrieve.
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @return CompanyModel
       def getCompany($id, $include)
         path = '/api/v2/companies/#{id}';
+        get (path)
+      end
+
+
+      # Get configuration settings for this company
+      # 
+      # Retrieve a list of all configuration settings tied to this company.
+      # 
+      # Configuration settings provide you with the ability to control features of your account and of your
+      # tax software. The category names `AvaCertServiceConfig` is reserved for
+      # Avalara internal software configuration values; to store your own account-level settings, please
+      # create a new category name that begins with `X-`, for example, `X-MyCustomCategory`.
+      # 
+      # Company settings are permanent settings that cannot be deleted. You can set the value of a
+      # company setting to null if desired.
+      # 
+      # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
+      # processing, and should only be changed with care.
+      # 
+      # @param int $id 
+      # @return CompanyConfigurationModel[]
+      def getCompanyConfiguration($id)
+        path = '/api/v2/companies/#{id}/configuration';
         get (path)
       end
 
@@ -101,6 +127,7 @@ module AvaTax
       # Returns a list of funding setup requests and their current status.
       # Each object in the result is a request that was made to setup or adjust funding configuration for this company.
       # 
+      # @param int $id The unique identifier of the company
       # @return FundingStatusModel[]
       def listFundingRequestsByCompany($id)
         path = '/api/v2/companies/#{id}/funding';
@@ -137,6 +164,30 @@ module AvaTax
       end
 
 
+      # Change configuration settings for this account
+      # 
+      # Update configuration settings tied to this account.
+      # 
+      # Configuration settings provide you with the ability to control features of your account and of your
+      # tax software. The category names `AvaCertServiceConfig` is reserved for
+      # Avalara internal software configuration values; to store your own account-level settings, please
+      # create a new category name that begins with `X-`, for example, `X-MyCustomCategory`.
+      # 
+      # Company settings are permanent settings that cannot be deleted. You can set the value of a
+      # company setting to null if desired.
+      # 
+      # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
+      # processing, and should only be changed with care.
+      # 
+      # @param int $id 
+      # @param CompanyConfigurationModel[] $model 
+      # @return CompanyConfigurationModel[]
+      def setCompanyConfiguration($id, $model)
+        path = '/api/v2/companies/#{id}/configuration';
+        post (path)
+      end
+
+
       # Update a single company
       # 
       # Replace the existing company object at this URL with an updated object.
@@ -144,7 +195,8 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param CompanyModel $model The company object you wish to update.
+      # @param int $id The ID of the company you wish to update.
+      # @param CompanyModel $model The company object you wish to update.
       # @return CompanyModel
       def updateCompany($id, $model)
         path = '/api/v2/companies/#{id}';

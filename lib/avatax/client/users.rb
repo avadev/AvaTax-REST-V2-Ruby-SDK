@@ -8,6 +8,8 @@ module AvaTax
       # Get the user object identified by this URL.
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # 
+      # @param int $id The ID of the user to retrieve.
+      # @param int $accountId The accountID of the user you wish to get.
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @return UserModel
       def getUser($id, $accountId, $include)
@@ -34,6 +36,8 @@ module AvaTax
       #  
       # For a full list of defined permissions, please use '/api/v2/definitions/permissions' .
       # 
+      # @param int $id The ID of the user to retrieve.
+      # @param int $accountId The accountID of the user you wish to get.
       # @return UserEntitlementModel
       def getUserEntitlements($id, $accountId)
         path = '/api/v2/accounts/#{accountId}/users/#{id}/entitlements';
@@ -49,6 +53,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $accountId The accountID of the user you wish to list.
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -88,7 +93,9 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param UserModel $model The user object you wish to update.
+      # @param int $id The ID of the user you wish to update.
+      # @param int $accountId The accountID of the user you wish to update.
+      # @param UserModel $model The user object you wish to update.
       # @return UserModel
       def updateUser($id, $accountId, $model)
         path = '/api/v2/accounts/#{accountId}/users/#{id}';

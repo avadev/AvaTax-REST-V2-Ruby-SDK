@@ -18,7 +18,7 @@ module AvaTax
       # * Includes a limited time free trial of AvaTaxPro; after that date, the free TaxRates API will continue to work.
       # * Each free trial account must have its own valid email address.
       # 
-     * @param FreeTrialRequestModel $model Required information to provision a free trial account.
+      # @param FreeTrialRequestModel $model Required information to provision a free trial account.
       # @return NewAccountModel
       def requestFreeTrial($model)
         path = '/api/v2/accounts/freetrials/request';

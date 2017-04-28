@@ -3,17 +3,53 @@ module AvaTax
     module Transactions 
 
 
+      # Add lines to an existing unlocked transaction
+      # 
+      # Add lines to an existing unlocked transaction.
+      # 
+      # The `AddLines` API allows you to add additional transaction lines to existing transaction, so that customer will
+      # be able to append multiple calls together and form an extremely large transaction. If customer does not specify line number
+      # in the lines to be added, a new random Guid string will be generated for line number. If customer are not satisfied with
+      # the line number for the transaction lines, they can turn on the renumber switch to have REST v2 automatically renumber all 
+      # transaction lines for them, in this case, the line number becomes: "1", "2", "3", ...
+      # 
+      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      # sales, purchases, inventory transfer, and returns (also called refunds).
+      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      #  
+      # If you don't specify '$include' parameter, it will include both details and addresses.
+      # 
+      # @param string $include A comma separated list of child objects to return underneath the primary object.
+      # @param AddTransactionLineModel $model information about the transaction and lines to be added
+      # @return TransactionModel
+      def addLines($include, $model)
+        path = '/api/v2/companies/transactions/lines/add';
+        post (path)
+      end
+
+
       # Correct a previously created transaction
       # 
       # Replaces the current transaction uniquely identified by this URL with a new transaction.
+      # 
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
-      # When you adjust a committed transaction, the original transaction will be updated with the status code 'Adjusted', and
-      # both revisions will be available for retrieval based on their code and ID numbers.
-      # Only transactions in 'Committed' status are reported by Avalara Managed Returns.
-      # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are no longer available for adjustments.
       # 
-     * @param AdjustTransactionModel $model The adjustment you wish to make
+      # When you adjust a committed transaction, the original transaction will be updated with the status code `Adjusted`, and
+      # both revisions will be available for retrieval based on their code and ID numbers.
+      # Only transactions in `Committed` status are reported by Avalara Managed Returns.
+      # 
+      # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered `locked` and are 
+      # no longer available for adjustments.
+      # 
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to adjust
+      # @param AdjustTransactionModel $model The adjustment you wish to make
       # @return TransactionModel
       def adjustTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/adjust';
@@ -39,6 +75,8 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
+      # @param string $companyCode The code identifying the company that owns this transaction
+      # @param string $transactionCode The code identifying the transaction
       # @return AuditTransactionModel
       def auditTransaction($companyCode, $transactionCode)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/audit';
@@ -64,6 +102,9 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
+      # @param string $companyCode The code identifying the company that owns this transaction
+      # @param string $transactionCode The code identifying the transaction
+      # @param string $documentType The document type of the original transaction (See DocumentType::* for a list of allowable values)
       # @return AuditTransactionModel
       def auditTransactionWithType($companyCode, $transactionCode, $documentType)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/types/#{documentType}/audit';
@@ -81,7 +122,7 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
-     * @param BulkLockTransactionModel $model bulk lock request
+      # @param BulkLockTransactionModel $model bulk lock request
       # @return BulkLockTransactionResult
       def bulkLockTransaction($model)
         path = '/api/v2/transactions/lock';
@@ -96,7 +137,9 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
-     * @param ChangeTransactionCodeModel $model The code change request you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to change
+      # @param ChangeTransactionCodeModel $model The code change request you wish to execute
       # @return TransactionModel
       def changeTransactionCode($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/changecode';
@@ -112,7 +155,9 @@ module AvaTax
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # Any changes made to a committed transaction will generate a transaction history.
       # 
-     * @param CommitTransactionModel $model The commit request you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to commit
+      # @param CommitTransactionModel $model The commit request you wish to execute
       # @return TransactionModel
       def commitTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/commit';
@@ -122,11 +167,13 @@ module AvaTax
 
       # Create a new transaction
       # 
-      # Records a new transaction in AvaTax.
+      # Records a new transaction or adjust an existing in AvaTax.
       # 
-      # The `CreateTransaction` endpoint uses the configuration values specified by your company to identify the correct tax rules
-      # and rates to apply to all line items in this transaction, and reports the total tax calculated by AvaTax based on your
-      # company's configuration and the data provided in this API call.
+      # The `CreateOrAdjustTransaction` endpoint is used to create a new transaction if the input transaction does not exist
+      # or if there exists a transaction identified by code, the original transaction will be adjusted by using the meta data 
+      # in the input transaction
+      # 
+      # If you don't specify type in the provided data, a new transaction with type of SalesOrder will be recorded by default.
       # 
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
@@ -140,10 +187,67 @@ module AvaTax
       # If you don't specify '$include' parameter, it will include both details and addresses.
       # 
       # @param string $include A comma separated list of child objects to return underneath the primary object.
-     * @param CreateTransactionModel $model The transaction you wish to create
+      # @param CreateOrAdjustTransactionModel $model The transaction you wish to create
+      # @return TransactionModel
+      def createOrAdjustTransaction($include, $model)
+        path = '/api/v2/transactions/createoradjust';
+        post (path)
+      end
+
+
+      # Create a new transaction
+      # 
+      # Records a new transaction in AvaTax.
+      # 
+      # The `CreateTransaction` endpoint uses the configuration values specified by your company to identify the correct tax rules
+      # and rates to apply to all line items in this transaction, and reports the total tax calculated by AvaTax based on your
+      # company's configuration and the data provided in this API call.
+      # 
+      # If you don't specify type in the provided data, a new transaction with type of SalesOrder will be recorded by default.
+      # 
+      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      # sales, purchases, inventory transfer, and returns (also called refunds).
+      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      #  
+      # If you don't specify '$include' parameter, it will include both details and addresses.
+      # 
+      # @param string $include A comma separated list of child objects to return underneath the primary object.
+      # @param CreateTransactionModel $model The transaction you wish to create
       # @return TransactionModel
       def createTransaction($include, $model)
         path = '/api/v2/transactions/create';
+        post (path)
+      end
+
+
+      # Remove lines from an existing unlocked transaction
+      # 
+      # Remove lines to an existing unlocked transaction.
+      # 
+      # The `DeleteLines` API allows you to remove transaction lines from existing unlocked transaction, so that customer will
+      # be able to delete transaction lines and adjust original transaction the way they like
+      # 
+      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      # sales, purchases, inventory transfer, and returns (also called refunds).
+      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      #  
+      # If you don't specify '$include' parameter, it will include both details and addresses.
+      # 
+      # @param string $include A comma separated list of child objects to return underneath the primary object.
+      # @param RemoveTransactionLineModel $model information about the transaction and lines to be removed
+      # @return TransactionModel
+      def deleteLines($include, $model)
+        path = '/api/v2/companies/transactions/lines/delete';
         post (path)
       end
 
@@ -160,6 +264,8 @@ module AvaTax
       # * Summary (implies details)
       # * Addresses
       # 
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to retrieve
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @return TransactionModel
       def getTransactionByCode($companyCode, $transactionCode, $include)
@@ -180,6 +286,9 @@ module AvaTax
       # * Summary (implies details)
       # * Addresses
       # 
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to retrieve
+      # @param string $documentType The transaction type to retrieve (See DocumentType::* for a list of allowable values)
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @return TransactionModel
       def getTransactionByCodeAndType($companyCode, $transactionCode, $documentType, $include)
@@ -202,6 +311,7 @@ module AvaTax
       # * Summary (implies details)
       # * Addresses
       # 
+      # @param int $id The unique ID number of the transaction to retrieve
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @return TransactionModel
       def getTransactionById($id, $include)
@@ -226,6 +336,7 @@ module AvaTax
       # * Summary (implies details)
       # * Addresses
       # 
+      # @param string $companyCode The company code of the company that recorded this transaction
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -250,7 +361,9 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
-     * @param LockTransactionModel $model The lock request you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to lock
+      # @param LockTransactionModel $model The lock request you wish to execute
       # @return TransactionModel
       def lockTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/lock';
@@ -277,8 +390,10 @@ module AvaTax
       #  
       # If you don't specify '$include' parameter, it will include both details and addresses.
       # 
+      # @param string $companyCode The code of the company that made the original sale
+      # @param string $transactionCode The transaction code of the original sale
       # @param string $include A comma separated list of child objects to return underneath the primary object.
-     * @param RefundTransactionModel $model Information about the refund to create
+      # @param RefundTransactionModel $model Information about the refund to create
       # @return TransactionModel
       def refundTransaction($companyCode, $transactionCode, $include, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/refund';
@@ -290,7 +405,9 @@ module AvaTax
       # 
       # Performs the same functions as /verify, /changecode, and /commit. You may specify one or many actions in each call to this endpoint.
       # 
-     * @param SettleTransactionModel $model The settle request containing the actions you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to settle
+      # @param SettleTransactionModel $model The settle request containing the actions you wish to execute
       # @return TransactionModel
       def settleTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/settle';
@@ -305,7 +422,9 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # 
-     * @param VerifyTransactionModel $model The settle request you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to settle
+      # @param VerifyTransactionModel $model The settle request you wish to execute
       # @return TransactionModel
       def verifyTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/verify';
@@ -321,7 +440,9 @@ module AvaTax
       # When you void a transaction, that transaction's status is recorded as 'DocVoided'.
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are no longer available to be voided.
       # 
-     * @param VoidTransactionModel $model The void request you wish to execute
+      # @param string $companyCode The company code of the company that recorded this transaction
+      # @param string $transactionCode The transaction code to void
+      # @param VoidTransactionModel $model The void request you wish to execute
       # @return TransactionModel
       def voidTransaction($companyCode, $transactionCode, $model)
         path = '/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/void';

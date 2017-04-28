@@ -18,6 +18,7 @@ module AvaTax
       # Use the 'methodReturn.javaScript' return value to insert this widget into your HTML page.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # 
+      # @param int $id The unique ID number of this funding request
       # @return FundingStatusModel
       def activateFundingRequest($id)
         path = '/api/v2/fundingrequests/#{id}/widget';
@@ -38,6 +39,7 @@ module AvaTax
       # This API checks the status on an existing funding request.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # 
+      # @param int $id The unique ID number of this funding request
       # @return FundingStatusModel
       def fundingRequestStatus($id)
         path = '/api/v2/fundingrequests/#{id}';

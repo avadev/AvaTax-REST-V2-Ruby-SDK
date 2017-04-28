@@ -10,7 +10,9 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
-     * @param NoticeCommentModel[] $model The notice comments you wish to create.
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param int $id The ID of the tax notice we are adding the comment for.
+      # @param NoticeCommentModel[] $model The notice comments you wish to create.
       # @return NoticeCommentModel[]
       def createNoticeComment($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/comments';
@@ -26,7 +28,9 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
-     * @param NoticeFinanceModel[] $model The notice finance details you wish to create.
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param int $id The ID of the notice added to the finance details.
+      # @param NoticeFinanceModel[] $model The notice finance details you wish to create.
       # @return NoticeFinanceModel[]
       def createNoticeFinanceDetails($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/financedetails';
@@ -41,7 +45,9 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
-     * @param NoticeResponsibilityDetailModel[] $model The notice responsibilities you wish to create.
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param int $id The ID of the tax notice we are adding the responsibility for.
+      # @param NoticeResponsibilityDetailModel[] $model The notice responsibilities you wish to create.
       # @return NoticeResponsibilityDetailModel[]
       def createNoticeResponsibilities($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/responsibilities';
@@ -56,7 +62,9 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
-     * @param NoticeRootCauseDetailModel[] $model The notice root causes you wish to create.
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param int $id The ID of the tax notice we are adding the responsibility for.
+      # @param NoticeRootCauseDetailModel[] $model The notice root causes you wish to create.
       # @return NoticeRootCauseDetailModel[]
       def createNoticeRootCauses($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/rootcauses';
@@ -71,7 +79,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
-     * @param NoticeModel[] $model The notice object you wish to create.
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param NoticeModel[] $model The notice object you wish to create.
       # @return NoticeModel[]
       def createNotices($companyId, $model)
         path = '/api/v2/companies/#{companyId}/notices';
@@ -86,6 +95,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $companyId The ID of the company that owns this notice.
+      # @param int $id The ID of the notice you wish to delete.
       # @return ErrorDetail[]
       def deleteNotice($companyId, $id)
         path = '/api/v2/companies/#{companyId}/notices/#{id}';
@@ -98,6 +109,8 @@ module AvaTax
       # This API is available by invitation only.
       # Get the file attachment identified by this URL.
       # 
+      # @param int $companyId The ID of the company for this attachment.
+      # @param int $id The ResourceFileId of the attachment to download.
       # @return FileResult
       def downloadNoticeAttachment($companyId, $id)
         path = '/api/v2/companies/#{companyId}/notices/files/#{id}/attachment';
@@ -112,6 +125,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $companyId The ID of the company for this notice.
+      # @param int $id The ID of this notice.
       # @return NoticeModel
       def getNotice($companyId, $id)
         path = '/api/v2/companies/#{companyId}/notices/#{id}';
@@ -126,6 +141,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $id The ID of the notice.
+      # @param int $companyId The ID of the company that owns these notices.
       # @return FetchResult
       def getNoticeComments($id, $companyId)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/comments';
@@ -141,6 +158,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $id The ID of the company that owns these notices.
+      # @param int $companyId The ID of the company that owns these notices.
       # @return FetchResult
       def getNoticeFinanceDetails($id, $companyId)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/financedetails';
@@ -155,6 +174,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $id The ID of the notice.
+      # @param int $companyId The ID of the company that owns these notices.
       # @return FetchResult
       def getNoticeResponsibilities($id, $companyId)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/responsibilities';
@@ -169,6 +190,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # 
+      # @param int $id The ID of the notice.
+      # @param int $companyId The ID of the company that owns these notices.
       # @return FetchResult
       def getNoticeRootCauses($id, $companyId)
         path = '/api/v2/companies/#{companyId}/notices/#{id}/rootcauses';
@@ -186,6 +209,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $companyId The ID of the company that owns these notices.
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -229,7 +253,9 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param NoticeModel $model The notice object you wish to update.
+      # @param int $companyId The ID of the company that this notice belongs to.
+      # @param int $id The ID of the notice you wish to update.
+      # @param NoticeModel $model The notice object you wish to update.
       # @return NoticeModel
       def updateNotice($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/notices/#{id}';
@@ -242,7 +268,8 @@ module AvaTax
       # This API is available by invitation only.
       # Get the file attachment identified by this URL.
       # 
-     * @param ResourceFileUploadRequestModel $model The ResourceFileId of the attachment to download.
+      # @param int $companyId The ID of the company for this attachment.
+      # @param ResourceFileUploadRequestModel $model The ResourceFileId of the attachment to download.
       # @return FileResult
       def uploadAttachment($companyId, $model)
         path = '/api/v2/companies/#{companyId}/notices/files/attachment';

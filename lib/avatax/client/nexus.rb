@@ -14,7 +14,8 @@ module AvaTax
       # '/api/v2/definitions/nexus' endpoint.
       # You may only define nexus matching the official list of declared nexus.
       # 
-     * @param NexusModel[] $model The nexus you wish to create.
+      # @param int $companyId The ID of the company that owns this nexus.
+      # @param NexusModel[] $model The nexus you wish to create.
       # @return NexusModel[]
       def createNexus($companyId, $model)
         path = '/api/v2/companies/#{companyId}/nexus';
@@ -26,6 +27,8 @@ module AvaTax
       # 
       # Marks the existing nexus object at this URL as deleted.
       # 
+      # @param int $companyId The ID of the company that owns this nexus.
+      # @param int $id The ID of the nexus you wish to delete.
       # @return ErrorDetail[]
       def deleteNexus($companyId, $id)
         path = '/api/v2/companies/#{companyId}/nexus/#{id}';
@@ -41,6 +44,8 @@ module AvaTax
       # When defining companies in AvaTax, you must declare nexus for your company in order to correctly calculate tax
       # in all jurisdictions affected by your transactions.
       # 
+      # @param int $companyId The ID of the company that owns this nexus object
+      # @param int $id The primary key of this nexus
       # @return NexusModel
       def getNexus($companyId, $id)
         path = '/api/v2/companies/#{companyId}/nexus/#{id}';
@@ -62,6 +67,8 @@ module AvaTax
       # a tax form, you may want to know whether you have declared nexus in all the jurisdictions related to that tax 
       # form in order to better understand how the form will be filled out.
       # 
+      # @param int $companyId The ID of the company that owns this nexus object
+      # @param string $formCode The form code that we are looking up the nexus for
       # @return NexusByTaxFormModel
       def getNexusByFormCode($companyId, $formCode)
         path = '/api/v2/companies/#{companyId}/nexus/byform/#{formCode}';
@@ -80,6 +87,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $companyId The ID of the company that owns these nexus objects
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param string $include A comma separated list of child objects to return underneath the primary object.
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -128,7 +136,9 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-     * @param NexusModel $model The nexus object you wish to update.
+      # @param int $companyId The ID of the company that this nexus belongs to.
+      # @param int $id The ID of the nexus you wish to update
+      # @param NexusModel $model The nexus object you wish to update.
       # @return NexusModel
       def updateNexus($companyId, $id, $model)
         path = '/api/v2/companies/#{companyId}/nexus/#{id}';

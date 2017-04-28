@@ -38,7 +38,7 @@ module AvaTax
       # This is the same API as the GET /api/v2/addresses/resolve endpoint.
       # Both verbs are supported to provide for flexible implementation.
       # 
-     * @param AddressValidationInfo $model The address to resolve
+      # @param AddressValidationInfo $model The address to resolve
       # @return AddressResolutionModel
       def resolveAddressPost($model)
         path = '/api/v2/addresses/resolve';

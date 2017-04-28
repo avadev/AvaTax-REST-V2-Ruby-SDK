@@ -9,6 +9,8 @@ module AvaTax
       # A 'subscription' indicates a licensed subscription to a named Avalara service.
       # To request or remove subscriptions, please contact Avalara sales or your customer account manager.
       # 
+      # @param int $accountId The ID of the account that owns this subscription
+      # @param int $id The primary key of this subscription
       # @return SubscriptionModel
       def getSubscription($accountId, $id)
         path = '/api/v2/accounts/#{accountId}/subscriptions/#{id}';
@@ -25,6 +27,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
+      # @param int $accountId The ID of the account that owns these subscriptions
       # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param int $skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.

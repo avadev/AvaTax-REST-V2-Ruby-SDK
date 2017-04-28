@@ -8,6 +8,8 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country and region.
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country and region.
       # 
+      # @param string $country The two-character ISO-3166 code for the country.
+      # @param string $region The two or three character region code for the region.
       # @return FetchResult
       def apiV2DefinitionsNexusByCountryByRegionGet($country, $region)
         path = '/api/v2/definitions/nexus/#{country}/#{region}';
@@ -20,6 +22,7 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country.
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country.
       # 
+      # @param string $country 
       # @return FetchResult
       def apiV2DefinitionsNexusByCountryGet($country)
         path = '/api/v2/definitions/nexus/#{country}';
@@ -44,9 +47,22 @@ module AvaTax
       # This API is intended to be useful to identify whether the user should be allowed
       # to automatically verify their login and password.
       # 
+      # @param string $form The name of the form you would like to verify. This can be the tax form code or the legacy return name
       # @return FetchResult
       def getLoginVerifierByForm($form)
         path = '/api/v2/definitions/filingcalendars/loginverifiers/#{form}';
+        get (path)
+      end
+
+
+      # Retrieve the full list of the AvaFile Forms available
+      # 
+      # Returns the full list of Avalara-supported AvaFile Forms
+      # This API is intended to be useful to identify all the different AvaFile Forms
+      # 
+      # @return FetchResult
+      def listAvaFileForms()
+        path = '/api/v2/definitions/avafileforms';
         get (path)
       end
 
@@ -189,9 +205,22 @@ module AvaTax
       # a tax form, you may want to know whether you have declared nexus in all the jurisdictions related to that tax 
       # form in order to better understand how the form will be filled out.
       # 
+      # @param string $formCode The form code that we are looking up the nexus for
       # @return NexusByTaxFormModel
       def listNexusByFormCode($formCode)
         path = '/api/v2/definitions/nexus/byform/#{formCode}';
+        get (path)
+      end
+
+
+      # Retrieve the full list of nexus tax type groups
+      # 
+      # Returns the full list of Avalara-supported nexus tax type groups
+      # This API is intended to be useful to identify all the different tax sub-types.
+      # 
+      # @return FetchResult
+      def listNexusTaxTypeGroups()
+        path = '/api/v2/definitions/nexustaxtypegroups';
         get (path)
       end
 
@@ -334,6 +363,7 @@ module AvaTax
       # Returns the full list of Avalara-supported rate type file types
       # This API is intended to be useful to identify all the different rate types.
       # 
+      # @param string $country 
       # @return FetchResult
       def listRateTypesByCountry($country)
         path = '/api/v2/definitions/countries/#{country}/ratetypes';
@@ -360,6 +390,7 @@ module AvaTax
       # This API is intended to be useful when presenting a dropdown box in your website to allow customers to select a region 
       # within the country for a shipping addresses.
       # 
+      # @param string $country 
       # @return FetchResult
       def listRegionsByCountry($country)
         path = '/api/v2/definitions/countries/#{country}/regions';
@@ -468,6 +499,30 @@ module AvaTax
       # @return TaxCodeTypesModel
       def listTaxCodeTypes()
         path = '/api/v2/definitions/taxcodetypes';
+        get (path)
+      end
+
+
+      # Retrieve the full list of tax sub types
+      # 
+      # Returns the full list of Avalara-supported tax sub-types
+      # This API is intended to be useful to identify all the different tax sub-types.
+      # 
+      # @return FetchResult
+      def listTaxSubTypes()
+        path = '/api/v2/definitions/taxsubtypes';
+        get (path)
+      end
+
+
+      # Retrieve the full list of tax type groups
+      # 
+      # Returns the full list of Avalara-supported tax type groups
+      # This API is intended to be useful to identify all the different tax type groups.
+      # 
+      # @return FetchResult
+      def listTaxTypeGroups()
+        path = '/api/v2/definitions/taxtypegroups';
         get (path)
       end
 

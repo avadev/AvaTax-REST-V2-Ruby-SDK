@@ -11,7 +11,7 @@ module AvaTax
       # The result of this API is the file you requested in the format you requested using the 'responseType' field.
       # This API builds the file on demand, and is limited to files with no more than 7500 scenarios.
       # 
-     * @param PointOfSaleDataRequestModel $model Parameters about the desired file format and report format, specifying which company, locations and TaxCodes to include.
+      # @param PointOfSaleDataRequestModel $model Parameters about the desired file format and report format, specifying which company, locations and TaxCodes to include.
       # @return FileResult
       def buildPointOfSaleDataFile($model)
         path = '/api/v2/pointofsaledata/build';
