@@ -15,6 +15,7 @@ module AvaTax
       :password,
       :connection_options,
       :logger,
+      :proxy,
     ].freeze
 
     DEFAULT_APP_NAME = nil
@@ -26,6 +27,7 @@ module AvaTax
     DEFAULT_PASSWORD = nil
     DEFAULT_CONNECTION_OPTIONS = {}
     DEFAULT_LOGGER = false
+    DEFAULT_PROXY = nil
 
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -55,6 +57,7 @@ module AvaTax
       self.password = DEFAULT_PASSWORD
       self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self.logger = DEFAULT_LOGGER
+      self.proxy = DEFAULT_PROXY
     end
 
   end
