@@ -7,12 +7,13 @@ module AvaTax
       # 
       # Creates one or more new item objects attached to this company.
       # 
-      # @param int $companyId The ID of the company that owns this item.
-      # @param ItemModel[] $model The item you wish to create.
+      # @param int companyId The ID of the company that owns this item.
+      # @param ItemModel[] model The item you wish to create.
       # @return ItemModel[]
-      def createItems($companyId, $model)
-        path = '/api/v2/companies/#{companyId}/items';
-        post (path)
+      def create_items(companyId, model)
+        path = "/api/v2/companies/#{companyId}/items"
+        
+        post(path, model)
       end
 
 
@@ -20,12 +21,13 @@ module AvaTax
       # 
       # Marks the item object at this URL as deleted.
       # 
-      # @param int $companyId The ID of the company that owns this item.
-      # @param int $id The ID of the item you wish to delete.
+      # @param int companyId The ID of the company that owns this item.
+      # @param int id The ID of the item you wish to delete.
       # @return ErrorDetail[]
-      def deleteItem($companyId, $id)
-        path = '/api/v2/companies/#{companyId}/items/#{id}';
-        delete (path)
+      def delete_item(companyId, id)
+        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        
+        delete(path)
       end
 
 
@@ -34,12 +36,13 @@ module AvaTax
       # Get the item object identified by this URL.
       # An 'Item' represents a product or service that your company offers for sale.
       # 
-      # @param int $companyId The ID of the company that owns this item object
-      # @param int $id The primary key of this item
+      # @param int companyId The ID of the company that owns this item object
+      # @param int id The primary key of this item
       # @return ItemModel
-      def getItem($companyId, $id)
-        path = '/api/v2/companies/#{companyId}/items/#{id}';
-        get (path)
+      def get_item(companyId, id)
+        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        
+        get(path)
       end
 
 
@@ -52,16 +55,17 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
-      # @param int $companyId The ID of the company that defined these items
-      # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
-      # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int $skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string $orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param int companyId The ID of the company that defined these items
+      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param string include A comma separated list of child objects to return underneath the primary object.
+      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return FetchResult
-      def listItemsByCompany($companyId, $filter, $include, $top, $skip, $orderBy)
-        path = '/api/v2/companies/#{companyId}/items';
-        get (path)
+      def list_items_by_company(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/items"
+        
+        get(path, options)
       end
 
 
@@ -73,15 +77,16 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
-      # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
-      # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int $skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string $orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param string include A comma separated list of child objects to return underneath the primary object.
+      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return FetchResult
-      def queryItems($filter, $include, $top, $skip, $orderBy)
-        path = '/api/v2/items';
-        get (path)
+      def query_items(options={})
+        path = "/api/v2/items"
+        
+        get(path, options)
       end
 
 
@@ -91,13 +96,14 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-      # @param int $companyId The ID of the company that this item belongs to.
-      # @param int $id The ID of the item you wish to update
-      # @param ItemModel $model The item object you wish to update.
+      # @param int companyId The ID of the company that this item belongs to.
+      # @param int id The ID of the item you wish to update
+      # @param ItemModel model The item object you wish to update.
       # @return ItemModel
-      def updateItem($companyId, $id, $model)
-        path = '/api/v2/companies/#{companyId}/items/#{id}';
-        put (path)
+      def update_item(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        
+        put(path, model)
       end
 
     end

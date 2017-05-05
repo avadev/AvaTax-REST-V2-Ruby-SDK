@@ -9,12 +9,13 @@ module AvaTax
       # To reset your account, you must specify the ID of the account you wish to reset and confirm the action.
       # Resetting a license key cannot be undone. Any previous license keys will immediately cease to work when a new key is created.
       # 
-      # @param int $id The ID of the account you wish to update.
-      # @param ResetLicenseKeyModel $model A request confirming that you wish to reset the license key of this account.
+      # @param int id The ID of the account you wish to update.
+      # @param ResetLicenseKeyModel model A request confirming that you wish to reset the license key of this account.
       # @return LicenseKeyModel
-      def accountResetLicenseKey($id, $model)
-        path = '/api/v2/accounts/#{id}/resetlicensekey';
-        post (path)
+      def account_reset_license_key(id, model)
+        path = "/api/v2/accounts/#{id}/resetlicensekey"
+        
+        post(path, model)
       end
 
 
@@ -26,12 +27,13 @@ module AvaTax
       # * Subscriptions
       # * Users
       # 
-      # @param int $id The ID of the account to retrieve
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
+      # @param int id The ID of the account to retrieve
+      # @param string include A comma separated list of child objects to return underneath the primary object.
       # @return AccountModel
-      def getAccount($id, $include)
-        path = '/api/v2/accounts/#{id}';
-        get (path)
+      def get_account(id, options={})
+        path = "/api/v2/accounts/#{id}"
+        
+        get(path, options)
       end
 
 
@@ -50,11 +52,12 @@ module AvaTax
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
       # 
-      # @param int $id 
+      # @param int id 
       # @return AccountConfigurationModel[]
-      def getAccountConfiguration($id)
-        path = '/api/v2/accounts/#{id}/configuration';
-        get (path)
+      def get_account_configuration(id)
+        path = "/api/v2/accounts/#{id}/configuration"
+        
+        get(path)
       end
 
 
@@ -73,12 +76,13 @@ module AvaTax
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
       # 
-      # @param int $id 
-      # @param AccountConfigurationModel[] $model 
+      # @param int id 
+      # @param AccountConfigurationModel[] model 
       # @return AccountConfigurationModel[]
-      def setAccountConfiguration($id, $model)
-        path = '/api/v2/accounts/#{id}/configuration';
-        post (path)
+      def set_account_configuration(id, model)
+        path = "/api/v2/accounts/#{id}/configuration"
+        
+        post(path, model)
       end
 
     end

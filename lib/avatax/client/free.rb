@@ -18,11 +18,12 @@ module AvaTax
       # * Includes a limited time free trial of AvaTaxPro; after that date, the free TaxRates API will continue to work.
       # * Each free trial account must have its own valid email address.
       # 
-      # @param FreeTrialRequestModel $model Required information to provision a free trial account.
+      # @param FreeTrialRequestModel model Required information to provision a free trial account.
       # @return NewAccountModel
-      def requestFreeTrial($model)
-        path = '/api/v2/accounts/freetrials/request';
-        post (path)
+      def request_free_trial(model)
+        path = "/api/v2/accounts/freetrials/request"
+        
+        post(path, model)
       end
 
 
@@ -50,17 +51,18 @@ module AvaTax
       # Please see [Estimating Tax with REST v2](http://developer.avalara.com/blog/2016/11/04/estimating-tax-with-rest-v2/)
       # for information on how to upgrade to the full AvaTax CreateTransaction API.
       # 
-      # @param string $line1 The street address of the location.
-      # @param string $line2 The street address of the location.
-      # @param string $line3 The street address of the location.
-      # @param string $city The city name of the location.
-      # @param string $region The state or region of the location
-      # @param string $postalCode The postal code of the location.
-      # @param string $country The two letter ISO-3166 country code.
+      # @param string line1 The street address of the location.
+      # @param string line2 The street address of the location.
+      # @param string line3 The street address of the location.
+      # @param string city The city name of the location.
+      # @param string region The state or region of the location
+      # @param string postalCode The postal code of the location.
+      # @param string country The two letter ISO-3166 country code.
       # @return TaxRateModel
-      def taxRatesByAddress($line1, $line2, $line3, $city, $region, $postalCode, $country)
-        path = '/api/v2/taxrates/byaddress';
-        get (path)
+      def tax_rates_by_address(options={})
+        path = "/api/v2/taxrates/byaddress"
+        
+        get(path, options)
       end
 
 
@@ -88,12 +90,13 @@ module AvaTax
       # Please see [Estimating Tax with REST v2](http://developer.avalara.com/blog/2016/11/04/estimating-tax-with-rest-v2/)
       # for information on how to upgrade to the full AvaTax CreateTransaction API.
       # 
-      # @param string $country The two letter ISO-3166 country code.
-      # @param string $postalCode The postal code of the location.
+      # @param string country The two letter ISO-3166 country code.
+      # @param string postalCode The postal code of the location.
       # @return TaxRateModel
-      def taxRatesByPostalCode($country, $postalCode)
-        path = '/api/v2/taxrates/bypostalcode';
-        get (path)
+      def tax_rates_by_postal_code(options={})
+        path = "/api/v2/taxrates/bypostalcode"
+        
+        get(path, options)
       end
 
     end

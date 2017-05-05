@@ -10,11 +10,12 @@ module AvaTax
       # The customer will receive information from Avalara about how to configure billing for their account.
       # You should call this API when a customer has requested to begin using Avalara services.
       # 
-      # @param NewAccountRequestModel $model Information about the account you wish to create and the selected product offerings.
+      # @param NewAccountRequestModel model Information about the account you wish to create and the selected product offerings.
       # @return NewAccountModel
-      def requestNewAccount($model)
-        path = '/api/v2/accounts/request';
-        post (path)
+      def request_new_account(model)
+        path = "/api/v2/accounts/request"
+        
+        post(path, model)
       end
 
     end

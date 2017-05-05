@@ -8,12 +8,13 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country and region.
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country and region.
       # 
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param string $region The two or three character region code for the region.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param string region The two or three character region code for the region.
       # @return FetchResult
-      def apiV2DefinitionsNexusByCountryByRegionGet($country, $region)
-        path = '/api/v2/definitions/nexus/#{country}/#{region}';
-        get (path)
+      def api_v2_definitions_nexus_by_country_by_region_get(country, region)
+        path = "/api/v2/definitions/nexus/#{country}/#{region}"
+        
+        get(path)
       end
 
 
@@ -22,11 +23,12 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country.
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country.
       # 
-      # @param string $country 
+      # @param string country 
       # @return FetchResult
-      def apiV2DefinitionsNexusByCountryGet($country)
-        path = '/api/v2/definitions/nexus/#{country}';
-        get (path)
+      def api_v2_definitions_nexus_by_country_get(country)
+        path = "/api/v2/definitions/nexus/#{country}"
+        
+        get(path)
       end
 
 
@@ -36,9 +38,10 @@ module AvaTax
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus.
       # 
       # @return FetchResult
-      def apiV2DefinitionsNexusGet()
-        path = '/api/v2/definitions/nexus';
-        get (path)
+      def api_v2_definitions_nexus_get()
+        path = "/api/v2/definitions/nexus"
+        
+        get(path)
       end
 
 
@@ -47,11 +50,12 @@ module AvaTax
       # This API is intended to be useful to identify whether the user should be allowed
       # to automatically verify their login and password.
       # 
-      # @param string $form The name of the form you would like to verify. This can be the tax form code or the legacy return name
+      # @param string form The name of the form you would like to verify. This can be the tax form code or the legacy return name
       # @return FetchResult
-      def getLoginVerifierByForm($form)
-        path = '/api/v2/definitions/filingcalendars/loginverifiers/#{form}';
-        get (path)
+      def get_login_verifier_by_form(form)
+        path = "/api/v2/definitions/filingcalendars/loginverifiers/#{form}"
+        
+        get(path)
       end
 
 
@@ -61,9 +65,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different AvaFile Forms
       # 
       # @return FetchResult
-      def listAvaFileForms()
-        path = '/api/v2/definitions/avafileforms';
-        get (path)
+      def list_ava_file_forms()
+        path = "/api/v2/definitions/avafileforms"
+        
+        get(path)
       end
 
 
@@ -74,9 +79,10 @@ module AvaTax
       # a shipping address.
       # 
       # @return FetchResult
-      def listCountries()
-        path = '/api/v2/definitions/countries';
-        get (path)
+      def list_countries()
+        path = "/api/v2/definitions/countries"
+        
+        get(path)
       end
 
 
@@ -89,9 +95,10 @@ module AvaTax
       # all transactions that are exempt.
       # 
       # @return FetchResult
-      def listEntityUseCodes()
-        path = '/api/v2/definitions/entityusecodes';
-        get (path)
+      def list_entity_use_codes()
+        path = "/api/v2/definitions/entityusecodes"
+        
+        get(path)
       end
 
 
@@ -101,9 +108,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different filing frequencies that can be used in notices.
       # 
       # @return FetchResult
-      def listFilingFrequencies()
-        path = '/api/v2/definitions/filingfrequencies';
-        get (path)
+      def list_filing_frequencies()
+        path = "/api/v2/definitions/filingfrequencies"
+        
+        get(path)
       end
 
 
@@ -117,17 +125,18 @@ module AvaTax
       #  
       # The results of this API call can be passed to the `CreateJurisdictionOverride` API call.
       # 
-      # @param string $line1 The first address line portion of this address.
-      # @param string $line2 The second address line portion of this address.
-      # @param string $line3 The third address line portion of this address.
-      # @param string $city The city portion of this address.
-      # @param string $region The region, state, or province code portion of this address.
-      # @param string $postalCode The postal code or zip code portion of this address.
-      # @param string $country The two-character ISO-3166 code of the country portion of this address.
+      # @param string line1 The first address line portion of this address.
+      # @param string line2 The second address line portion of this address.
+      # @param string line3 The third address line portion of this address.
+      # @param string city The city portion of this address.
+      # @param string region The region, state, or province code portion of this address.
+      # @param string postalCode The postal code or zip code portion of this address.
+      # @param string country The two-character ISO-3166 code of the country portion of this address.
       # @return FetchResult
-      def listJurisdictionsByAddress($line1, $line2, $line3, $city, $region, $postalCode, $country)
-        path = '/api/v2/definitions/jurisdictionsnearaddress';
-        get (path)
+      def list_jurisdictions_by_address(options={})
+        path = "/api/v2/definitions/jurisdictionsnearaddress"
+        
+        get(path, options)
       end
 
 
@@ -140,19 +149,20 @@ module AvaTax
       # You can call this API call for any address and obtain information about what questions must be answered in order to properly
       # file tax in that location.
       # 
-      # @param string $line1 The first line of this location's address.
-      # @param string $line2 The second line of this location's address.
-      # @param string $line3 The third line of this location's address.
-      # @param string $city The city part of this location's address.
-      # @param string $region The region, state, or province part of this location's address.
-      # @param string $postalCode The postal code of this location's address.
-      # @param string $country The country part of this location's address.
-      # @param float $latitude Optionally identify the location via latitude/longitude instead of via address.
-      # @param float $longitude Optionally identify the location via latitude/longitude instead of via address.
+      # @param string line1 The first line of this location's address.
+      # @param string line2 The second line of this location's address.
+      # @param string line3 The third line of this location's address.
+      # @param string city The city part of this location's address.
+      # @param string region The region, state, or province part of this location's address.
+      # @param string postalCode The postal code of this location's address.
+      # @param string country The country part of this location's address.
+      # @param float latitude Optionally identify the location via latitude/longitude instead of via address.
+      # @param float longitude Optionally identify the location via latitude/longitude instead of via address.
       # @return FetchResult
-      def listLocationQuestionsByAddress($line1, $line2, $line3, $city, $region, $postalCode, $country, $latitude, $longitude)
-        path = '/api/v2/definitions/locationquestions';
-        get (path)
+      def list_location_questions_by_address(options={})
+        path = "/api/v2/definitions/locationquestions"
+        
+        get(path, options)
       end
 
 
@@ -163,9 +173,10 @@ module AvaTax
       # to automatically verify their login and password.
       # 
       # @return FetchResult
-      def listLoginVerifiers()
-        path = '/api/v2/definitions/filingcalendars/loginverifiers';
-        get (path)
+      def list_login_verifiers()
+        path = "/api/v2/definitions/filingcalendars/loginverifiers"
+        
+        get(path)
       end
 
 
@@ -177,17 +188,18 @@ module AvaTax
       # where the company does business.
       # The results of this API call can be passed to the 'Create Nexus' API call to declare nexus for this address.
       # 
-      # @param string $line1 The first address line portion of this address.
-      # @param string $line2 The first address line portion of this address.
-      # @param string $line3 The first address line portion of this address.
-      # @param string $city The city portion of this address.
-      # @param string $region The region, state, or province code portion of this address.
-      # @param string $postalCode The postal code or zip code portion of this address.
-      # @param string $country The two-character ISO-3166 code of the country portion of this address.
+      # @param string line1 The first address line portion of this address.
+      # @param string line2 The first address line portion of this address.
+      # @param string line3 The first address line portion of this address.
+      # @param string city The city portion of this address.
+      # @param string region The region, state, or province code portion of this address.
+      # @param string postalCode The postal code or zip code portion of this address.
+      # @param string country The two-character ISO-3166 code of the country portion of this address.
       # @return FetchResult
-      def listNexusByAddress($line1, $line2, $line3, $city, $region, $postalCode, $country)
-        path = '/api/v2/definitions/nexus/byaddress';
-        get (path)
+      def list_nexus_by_address(options={})
+        path = "/api/v2/definitions/nexus/byaddress"
+        
+        get(path, options)
       end
 
 
@@ -205,11 +217,12 @@ module AvaTax
       # a tax form, you may want to know whether you have declared nexus in all the jurisdictions related to that tax 
       # form in order to better understand how the form will be filled out.
       # 
-      # @param string $formCode The form code that we are looking up the nexus for
+      # @param string formCode The form code that we are looking up the nexus for
       # @return NexusByTaxFormModel
-      def listNexusByFormCode($formCode)
-        path = '/api/v2/definitions/nexus/byform/#{formCode}';
-        get (path)
+      def list_nexus_by_form_code(formCode)
+        path = "/api/v2/definitions/nexus/byform/#{formCode}"
+        
+        get(path)
       end
 
 
@@ -219,9 +232,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax sub-types.
       # 
       # @return FetchResult
-      def listNexusTaxTypeGroups()
-        path = '/api/v2/definitions/nexustaxtypegroups';
-        get (path)
+      def list_nexus_tax_type_groups()
+        path = "/api/v2/definitions/nexustaxtypegroups"
+        
+        get(path)
       end
 
 
@@ -231,9 +245,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different notice customer funding options that can be used in notices.
       # 
       # @return FetchResult
-      def listNoticeCustomerFundingOptions()
-        path = '/api/v2/definitions/noticecustomerfundingoptions';
-        get (path)
+      def list_notice_customer_funding_options()
+        path = "/api/v2/definitions/noticecustomerfundingoptions"
+        
+        get(path)
       end
 
 
@@ -243,9 +258,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different notice customer types.
       # 
       # @return FetchResult
-      def listNoticeCustomerTypes()
-        path = '/api/v2/definitions/noticecustomertypes';
-        get (path)
+      def list_notice_customer_types()
+        path = "/api/v2/definitions/noticecustomertypes"
+        
+        get(path)
       end
 
 
@@ -255,9 +271,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different notice filing types that can be used in notices.
       # 
       # @return FetchResult
-      def listNoticeFilingtypes()
-        path = '/api/v2/definitions/noticefilingtypes';
-        get (path)
+      def list_notice_filingtypes()
+        path = "/api/v2/definitions/noticefilingtypes"
+        
+        get(path)
       end
 
 
@@ -267,9 +284,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different notice priorities that can be used in notices.
       # 
       # @return FetchResult
-      def listNoticePriorities()
-        path = '/api/v2/definitions/noticepriorities';
-        get (path)
+      def list_notice_priorities()
+        path = "/api/v2/definitions/noticepriorities"
+        
+        get(path)
       end
 
 
@@ -279,9 +297,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax notice reasons.
       # 
       # @return FetchResult
-      def listNoticeReasons()
-        path = '/api/v2/definitions/noticereasons';
-        get (path)
+      def list_notice_reasons()
+        path = "/api/v2/definitions/noticereasons"
+        
+        get(path)
       end
 
 
@@ -291,9 +310,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax notice responsibilities.
       # 
       # @return FetchResult
-      def listNoticeResponsibilities()
-        path = '/api/v2/definitions/noticeresponsibilities';
-        get (path)
+      def list_notice_responsibilities()
+        path = "/api/v2/definitions/noticeresponsibilities"
+        
+        get(path)
       end
 
 
@@ -303,9 +323,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax notice root causes.
       # 
       # @return FetchResult
-      def listNoticeRootCauses()
-        path = '/api/v2/definitions/noticerootcauses';
-        get (path)
+      def list_notice_root_causes()
+        path = "/api/v2/definitions/noticerootcauses"
+        
+        get(path)
       end
 
 
@@ -315,9 +336,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax notice statuses.
       # 
       # @return FetchResult
-      def listNoticeStatuses()
-        path = '/api/v2/definitions/noticestatuses';
-        get (path)
+      def list_notice_statuses()
+        path = "/api/v2/definitions/noticestatuses"
+        
+        get(path)
       end
 
 
@@ -327,9 +349,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different notice types that can be used in notices.
       # 
       # @return FetchResult
-      def listNoticeTypes()
-        path = '/api/v2/definitions/noticetypes';
-        get (path)
+      def list_notice_types()
+        path = "/api/v2/definitions/noticetypes"
+        
+        get(path)
       end
 
 
@@ -340,9 +363,10 @@ module AvaTax
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # 
       # @return FetchResult
-      def listParameters()
-        path = '/api/v2/definitions/parameters';
-        get (path)
+      def list_parameters()
+        path = "/api/v2/definitions/parameters"
+        
+        get(path)
       end
 
 
@@ -352,9 +376,10 @@ module AvaTax
       # This API is intended to be useful to identify the capabilities of a particular user logon.
       # 
       # @return FetchResult
-      def listPermissions()
-        path = '/api/v2/definitions/permissions';
-        get (path)
+      def list_permissions()
+        path = "/api/v2/definitions/permissions"
+        
+        get(path)
       end
 
 
@@ -363,11 +388,12 @@ module AvaTax
       # Returns the full list of Avalara-supported rate type file types
       # This API is intended to be useful to identify all the different rate types.
       # 
-      # @param string $country 
+      # @param string country 
       # @return FetchResult
-      def listRateTypesByCountry($country)
-        path = '/api/v2/definitions/countries/#{country}/ratetypes';
-        get (path)
+      def list_rate_types_by_country(country)
+        path = "/api/v2/definitions/countries/#{country}/ratetypes"
+        
+        get(path)
       end
 
 
@@ -378,9 +404,10 @@ module AvaTax
       # within the country for a shipping addresses.
       # 
       # @return FetchResult
-      def listRegions()
-        path = '/api/v2/definitions/regions';
-        get (path)
+      def list_regions()
+        path = "/api/v2/definitions/regions"
+        
+        get(path)
       end
 
 
@@ -390,11 +417,12 @@ module AvaTax
       # This API is intended to be useful when presenting a dropdown box in your website to allow customers to select a region 
       # within the country for a shipping addresses.
       # 
-      # @param string $country 
+      # @param string country 
       # @return FetchResult
-      def listRegionsByCountry($country)
-        path = '/api/v2/definitions/countries/#{country}/regions';
-        get (path)
+      def list_regions_by_country(country)
+        path = "/api/v2/definitions/countries/#{country}/regions"
+        
+        get(path)
       end
 
 
@@ -404,9 +432,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different resource file types.
       # 
       # @return FetchResult
-      def listResourceFileTypes()
-        path = '/api/v2/definitions/resourcefiletypes';
-        get (path)
+      def list_resource_file_types()
+        path = "/api/v2/definitions/resourcefiletypes"
+        
+        get(path)
       end
 
 
@@ -417,9 +446,10 @@ module AvaTax
       # Some security roles are restricted for Avalara internal use.
       # 
       # @return FetchResult
-      def listSecurityRoles()
-        path = '/api/v2/definitions/securityroles';
-        get (path)
+      def list_security_roles()
+        path = "/api/v2/definitions/securityroles"
+        
+        get(path)
       end
 
 
@@ -431,9 +461,10 @@ module AvaTax
       # You cannot change your subscriptions directly through the API.
       # 
       # @return FetchResult
-      def listSubscriptionTypes()
-        path = '/api/v2/definitions/subscriptiontypes';
-        get (path)
+      def list_subscription_types()
+        path = "/api/v2/definitions/subscriptiontypes"
+        
+        get(path)
       end
 
 
@@ -443,9 +474,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different authorities that receive tax.
       # 
       # @return FetchResult
-      def listTaxAuthorities()
-        path = '/api/v2/definitions/taxauthorities';
-        get (path)
+      def list_tax_authorities()
+        path = "/api/v2/definitions/taxauthorities"
+        
+        get(path)
       end
 
 
@@ -457,9 +489,10 @@ module AvaTax
       # based on the customer's AvaTax data.
       # 
       # @return FetchResult
-      def listTaxAuthorityForms()
-        path = '/api/v2/definitions/taxauthorityforms';
-        get (path)
+      def list_tax_authority_forms()
+        path = "/api/v2/definitions/taxauthorityforms"
+        
+        get(path)
       end
 
 
@@ -469,9 +502,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different authority types.
       # 
       # @return FetchResult
-      def listTaxAuthorityTypes()
-        path = '/api/v2/definitions/taxauthoritytypes';
-        get (path)
+      def list_tax_authority_types()
+        path = "/api/v2/definitions/taxauthoritytypes"
+        
+        get(path)
       end
 
 
@@ -484,9 +518,10 @@ module AvaTax
       # taxability rules for this product in all supported jurisdictions.
       # 
       # @return FetchResult
-      def listTaxCodes()
-        path = '/api/v2/definitions/taxcodes';
-        get (path)
+      def list_tax_codes()
+        path = "/api/v2/definitions/taxcodes"
+        
+        get(path)
       end
 
 
@@ -497,9 +532,10 @@ module AvaTax
       # This API is intended to be useful for broadly searching for tax codes by tax code type.
       # 
       # @return TaxCodeTypesModel
-      def listTaxCodeTypes()
-        path = '/api/v2/definitions/taxcodetypes';
-        get (path)
+      def list_tax_code_types()
+        path = "/api/v2/definitions/taxcodetypes"
+        
+        get(path)
       end
 
 
@@ -509,9 +545,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax sub-types.
       # 
       # @return FetchResult
-      def listTaxSubTypes()
-        path = '/api/v2/definitions/taxsubtypes';
-        get (path)
+      def list_tax_sub_types()
+        path = "/api/v2/definitions/taxsubtypes"
+        
+        get(path)
       end
 
 
@@ -521,9 +558,10 @@ module AvaTax
       # This API is intended to be useful to identify all the different tax type groups.
       # 
       # @return FetchResult
-      def listTaxTypeGroups()
-        path = '/api/v2/definitions/taxtypegroups';
-        get (path)
+      def list_tax_type_groups()
+        path = "/api/v2/definitions/taxtypegroups"
+        
+        get(path)
       end
 
     end

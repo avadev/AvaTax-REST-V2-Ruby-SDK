@@ -9,11 +9,12 @@ module AvaTax
       # This API call is intended to allow you to identify whether you have the necessary account configuration to access certain
       # features of AvaTax, and would be useful in debugging access privilege problems.
       # 
-      # @param string $serviceTypeId The service to check (See ServiceTypeId::* for a list of allowable values)
+      # @param string serviceTypeId The service to check (See ServiceTypeId::* for a list of allowable values)
       # @return SubscriptionModel
-      def getMySubscription($serviceTypeId)
-        path = '/api/v2/utilities/subscriptions/#{serviceTypeId}';
-        get (path)
+      def get_my_subscription(serviceTypeId)
+        path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
+        
+        get(path)
       end
 
 
@@ -24,9 +25,10 @@ module AvaTax
       # within AvaTax.
       # 
       # @return FetchResult
-      def listMySubscriptions()
-        path = '/api/v2/utilities/subscriptions';
-        get (path)
+      def list_my_subscriptions()
+        path = "/api/v2/utilities/subscriptions"
+        
+        get(path)
       end
 
 
@@ -40,8 +42,9 @@ module AvaTax
       # 
       # @return PingResultModel
       def ping()
-        path = '/api/v2/utilities/ping';
-        get (path)
+        path = "/api/v2/utilities/ping"
+        
+        get(path)
       end
 
     end

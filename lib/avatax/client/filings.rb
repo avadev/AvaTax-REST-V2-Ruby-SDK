@@ -13,14 +13,15 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to approve.
-      # @param int $month The month of the filing period to approve.
-      # @param ApproveFilingsModel $model The approve request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to approve.
+      # @param int month The month of the filing period to approve.
+      # @param ApproveFilingsModel model The approve request you wish to execute.
       # @return FilingModel[]
-      def approveFilings($companyId, $year, $month, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/approve';
-        post (path)
+      def approve_filings(companyId, year, month, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/approve"
+        
+        post(path, model)
       end
 
 
@@ -34,15 +35,16 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to approve.
-      # @param int $month The month of the filing period to approve.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param ApproveFilingsModel $model The approve request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to approve.
+      # @param int month The month of the filing period to approve.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param ApproveFilingsModel model The approve request you wish to execute.
       # @return FilingModel[]
-      def approveFilingsCountry($companyId, $year, $month, $country, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/approve';
-        post (path)
+      def approve_filings_country(companyId, year, month, country, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/approve"
+        
+        post(path, model)
       end
 
 
@@ -56,16 +58,17 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to approve.
-      # @param int $month The month of the filing period to approve.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param string $region The two or three character region code for the region.
-      # @param ApproveFilingsModel $model The approve request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to approve.
+      # @param int month The month of the filing period to approve.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param string region The two or three character region code for the region.
+      # @param ApproveFilingsModel model The approve request you wish to execute.
       # @return FilingModel[]
-      def approveFilingsCountryRegion($companyId, $year, $month, $country, $region, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/approve';
-        post (path)
+      def approve_filings_country_region(companyId, year, month, country, region, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/approve"
+        
+        post(path, model)
       end
 
 
@@ -78,17 +81,18 @@ module AvaTax
       # This API creates a new adjustment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being adjusted.
-      # @param int $year The year of the filing's filing period being adjusted.
-      # @param int $month The month of the filing's filing period being adjusted.
-      # @param string $country The two-character ISO-3166 code for the country of the filing being adjusted.
-      # @param string $region The two or three character region code for the region.
-      # @param string $formCode The unique code of the form being adjusted.
-      # @param FilingAdjustmentModel[] $model A list of Adjustments to be created for the specified filing.
+      # @param int companyId The ID of the company that owns the filing being adjusted.
+      # @param int year The year of the filing's filing period being adjusted.
+      # @param int month The month of the filing's filing period being adjusted.
+      # @param string country The two-character ISO-3166 code for the country of the filing being adjusted.
+      # @param string region The two or three character region code for the region.
+      # @param string formCode The unique code of the form being adjusted.
+      # @param FilingAdjustmentModel[] model A list of Adjustments to be created for the specified filing.
       # @return FilingAdjustmentModel[]
-      def createReturnAdjustment($companyId, $year, $month, $country, $region, $formCode, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/adjust';
-        post (path)
+      def create_return_adjustment(companyId, year, month, country, region, formCode, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/adjust"
+        
+        post(path, model)
       end
 
 
@@ -100,17 +104,18 @@ module AvaTax
       # This API creates a new augmentation for an existing tax filing.
       # This API can only be used when the filing has not been approved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being changed.
-      # @param int $year The month of the filing's filing period being changed.
-      # @param int $month The month of the filing's filing period being changed.
-      # @param string $country The two-character ISO-3166 code for the country of the filing being changed.
-      # @param string $region The two or three character region code for the region of the filing being changed.
-      # @param string $formCode The unique code of the form being changed.
-      # @param FilingAugmentationModel[] $model A list of augmentations to be created for the specified filing.
+      # @param int companyId The ID of the company that owns the filing being changed.
+      # @param int year The month of the filing's filing period being changed.
+      # @param int month The month of the filing's filing period being changed.
+      # @param string country The two-character ISO-3166 code for the country of the filing being changed.
+      # @param string region The two or three character region code for the region of the filing being changed.
+      # @param string formCode The unique code of the form being changed.
+      # @param FilingAugmentationModel[] model A list of augmentations to be created for the specified filing.
       # @return FilingAugmentationModel[]
-      def createReturnAugmentation($companyId, $year, $month, $country, $region, $formCode, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/augment';
-        post (path)
+      def create_return_augmentation(companyId, year, month, country, region, formCode, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/augment"
+        
+        post(path, model)
       end
 
 
@@ -123,12 +128,13 @@ module AvaTax
       # This API deletes an adjustment for an existing tax filing.
       # This API can only be used when the filing has been unapproved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being adjusted.
-      # @param int $id The ID of the adjustment being deleted.
+      # @param int companyId The ID of the company that owns the filing being adjusted.
+      # @param int id The ID of the adjustment being deleted.
       # @return ErrorDetail[]
-      def deleteReturnAdjustment($companyId, $id)
-        path = '/api/v2/companies/#{companyId}/filings/adjust/#{id}';
-        delete (path)
+      def delete_return_adjustment(companyId, id)
+        path = "/api/v2/companies/#{companyId}/filings/adjust/#{id}"
+        
+        delete(path)
       end
 
 
@@ -140,12 +146,13 @@ module AvaTax
       # This API deletes an augmentation for an existing tax filing.
       # This API can only be used when the filing has been unapproved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being changed.
-      # @param int $id The ID of the augmentation being added.
+      # @param int companyId The ID of the company that owns the filing being changed.
+      # @param int id The ID of the augmentation being added.
       # @return ErrorDetail[]
-      def deleteReturnAugmentation($companyId, $id)
-        path = '/api/v2/companies/#{companyId}/filings/augment/#{id}';
-        delete (path)
+      def delete_return_augmentation(companyId, id)
+        path = "/api/v2/companies/#{companyId}/filings/augment/#{id}"
+        
+        delete(path)
       end
 
 
@@ -153,12 +160,13 @@ module AvaTax
       # 
       # This API is available by invitation only.
       # 
-      # @param int $worksheetId The unique id of the worksheet.
-      # @param int $companyId The unique ID of the company that owns the worksheet.
+      # @param int worksheetId The unique id of the worksheet.
+      # @param int companyId The unique ID of the company that owns the worksheet.
       # @return FilingsCheckupModel
-      def filingsCheckupReport($worksheetId, $companyId)
-        path = '/api/v2/companies/#{companyId}/filings/#{worksheetId}/checkup';
-        get (path)
+      def filings_checkup_report(worksheetId, companyId)
+        path = "/api/v2/companies/#{companyId}/filings/#{worksheetId}/checkup"
+        
+        get(path)
       end
 
 
@@ -166,13 +174,14 @@ module AvaTax
       # 
       # This API is available by invitation only.
       # 
-      # @param int $companyId The unique ID of the company that owns the worksheets object.
-      # @param int $year The year of the filing period.
-      # @param int $month The month of the filing period.
+      # @param int companyId The unique ID of the company that owns the worksheets object.
+      # @param int year The year of the filing period.
+      # @param int month The month of the filing period.
       # @return FilingsCheckupModel
-      def filingsCheckupReports($companyId, $year, $month)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/checkup';
-        get (path)
+      def filings_checkup_reports(companyId, year, month)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/checkup"
+        
+        get(path)
       end
 
 
@@ -180,13 +189,14 @@ module AvaTax
       # 
       # This API is available by invitation only.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $filingId The unique id of the worksheet return.
-      # @param int $fileId The unique id of the document you are downloading
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int filingId The unique id of the worksheet return.
+      # @param int fileId The unique id of the document you are downloading
       # @return FileResult
-      def getFilingAttachment($companyId, $filingId, $fileId)
-        path = '/api/v2/companies/#{companyId}/filings/#{filingId}/attachment';
-        get (path)
+      def get_filing_attachment(companyId, filingId, options={})
+        path = "/api/v2/companies/#{companyId}/filings/#{filingId}/attachment"
+        
+        get(path, options)
       end
 
 
@@ -196,13 +206,14 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
       # @return FileResult
-      def getFilingAttachments($companyId, $year, $month)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/attachments';
-        get (path)
+      def get_filing_attachments(companyId, year, month)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/attachments"
+        
+        get(path)
       end
 
 
@@ -212,13 +223,14 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
       # @return FileResult
-      def getFilingAttachmentsTraceFile($companyId, $year, $month)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/attachments/tracefile';
-        get (path)
+      def get_filing_attachments_trace_file(companyId, year, month)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/attachments/tracefile"
+        
+        get(path)
       end
 
 
@@ -228,13 +240,14 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
       # @return FetchResult
-      def getFilings($companyId, $year, $month)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}';
-        get (path)
+      def get_filings(companyId, year, month)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}"
+        
+        get(path)
       end
 
 
@@ -244,14 +257,15 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
-      # @param string $country The two-character ISO-3166 code for the country.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
+      # @param string country The two-character ISO-3166 code for the country.
       # @return FetchResult
-      def getFilingsByCountry($companyId, $year, $month, $country)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}';
-        get (path)
+      def get_filings_by_country(companyId, year, month, country)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}"
+        
+        get(path)
       end
 
 
@@ -261,15 +275,16 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param string $region The two or three character region code for the region.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param string region The two or three character region code for the region.
       # @return FetchResult
-      def getFilingsByCountryRegion($companyId, $year, $month, $country, $region)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}';
-        get (path)
+      def get_filings_by_country_region(companyId, year, month, country, region)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}"
+        
+        get(path)
       end
 
 
@@ -279,16 +294,17 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing, 
       # based on filing frequency of filing.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period.
-      # @param int $month The two digit month of the filing period.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param string $region The two or three character region code for the region.
-      # @param string $formCode The unique code of the form.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period.
+      # @param int month The two digit month of the filing period.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param string region The two or three character region code for the region.
+      # @param string formCode The unique code of the form.
       # @return FetchResult
-      def getFilingsByReturnName($companyId, $year, $month, $country, $region, $formCode)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}';
-        get (path)
+      def get_filings_by_return_name(companyId, year, month, country, region, formCode)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}"
+        
+        get(path)
       end
 
 
@@ -301,14 +317,15 @@ module AvaTax
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to be rebuilt.
-      # @param int $month The month of the filing period to be rebuilt.
-      # @param RebuildFilingsModel $model The rebuild request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to be rebuilt.
+      # @param int month The month of the filing period to be rebuilt.
+      # @param RebuildFilingsModel model The rebuild request you wish to execute.
       # @return FetchResult
-      def rebuildFilings($companyId, $year, $month, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/rebuild';
-        post (path)
+      def rebuild_filings(companyId, year, month, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/rebuild"
+        
+        post(path, model)
       end
 
 
@@ -321,15 +338,16 @@ module AvaTax
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to be rebuilt.
-      # @param int $month The month of the filing period to be rebuilt.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param RebuildFilingsModel $model The rebuild request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to be rebuilt.
+      # @param int month The month of the filing period to be rebuilt.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param RebuildFilingsModel model The rebuild request you wish to execute.
       # @return FetchResult
-      def rebuildFilingsByCountry($companyId, $year, $month, $country, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/rebuild';
-        post (path)
+      def rebuild_filings_by_country(companyId, year, month, country, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/rebuild"
+        
+        post(path, model)
       end
 
 
@@ -342,16 +360,17 @@ module AvaTax
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
       # 
-      # @param int $companyId The ID of the company that owns the filings.
-      # @param int $year The year of the filing period to be rebuilt.
-      # @param int $month The month of the filing period to be rebuilt.
-      # @param string $country The two-character ISO-3166 code for the country.
-      # @param string $region The two or three character region code for the region.
-      # @param RebuildFilingsModel $model The rebuild request you wish to execute.
+      # @param int companyId The ID of the company that owns the filings.
+      # @param int year The year of the filing period to be rebuilt.
+      # @param int month The month of the filing period to be rebuilt.
+      # @param string country The two-character ISO-3166 code for the country.
+      # @param string region The two or three character region code for the region.
+      # @param RebuildFilingsModel model The rebuild request you wish to execute.
       # @return FetchResult
-      def rebuildFilingsByCountryRegion($companyId, $year, $month, $country, $region, $model)
-        path = '/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/rebuild';
-        post (path)
+      def rebuild_filings_by_country_region(companyId, year, month, country, region, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/rebuild"
+        
+        post(path, model)
       end
 
 
@@ -364,13 +383,14 @@ module AvaTax
       # This API modifies an adjustment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being adjusted.
-      # @param int $id The ID of the adjustment being edited.
-      # @param FilingAdjustmentModel $model The updated Adjustment.
+      # @param int companyId The ID of the company that owns the filing being adjusted.
+      # @param int id The ID of the adjustment being edited.
+      # @param FilingAdjustmentModel model The updated Adjustment.
       # @return FilingAdjustmentModel
-      def updateReturnAdjustment($companyId, $id, $model)
-        path = '/api/v2/companies/#{companyId}/filings/adjust/#{id}';
-        put (path)
+      def update_return_adjustment(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/filings/adjust/#{id}"
+        
+        put(path, model)
       end
 
 
@@ -382,13 +402,14 @@ module AvaTax
       # This API modifies an augmentation for an existing tax filing.
       # This API can only be used when the filing has not been approved.
       # 
-      # @param int $companyId The ID of the company that owns the filing being changed.
-      # @param int $id The ID of the augmentation being edited.
-      # @param FilingAugmentationModel $model The updated Augmentation.
+      # @param int companyId The ID of the company that owns the filing being changed.
+      # @param int id The ID of the augmentation being edited.
+      # @param FilingAugmentationModel model The updated Augmentation.
       # @return FilingModel
-      def updateReturnAugmentation($companyId, $id, $model)
-        path = '/api/v2/companies/#{companyId}/filings/augment/#{id}';
-        put (path)
+      def update_return_augmentation(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/filings/augment/#{id}"
+        
+        put(path, model)
       end
 
     end

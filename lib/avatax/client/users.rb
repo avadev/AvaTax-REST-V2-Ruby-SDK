@@ -8,13 +8,14 @@ module AvaTax
       # Get the user object identified by this URL.
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # 
-      # @param int $id The ID of the user to retrieve.
-      # @param int $accountId The accountID of the user you wish to get.
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
+      # @param int id The ID of the user to retrieve.
+      # @param int accountId The accountID of the user you wish to get.
+      # @param string include A comma separated list of child objects to return underneath the primary object.
       # @return UserModel
-      def getUser($id, $accountId, $include)
-        path = '/api/v2/accounts/#{accountId}/users/#{id}';
-        get (path)
+      def get_user(id, accountId, options={})
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        
+        get(path, options)
       end
 
 
@@ -36,12 +37,13 @@ module AvaTax
       #  
       # For a full list of defined permissions, please use '/api/v2/definitions/permissions' .
       # 
-      # @param int $id The ID of the user to retrieve.
-      # @param int $accountId The accountID of the user you wish to get.
+      # @param int id The ID of the user to retrieve.
+      # @param int accountId The accountID of the user you wish to get.
       # @return UserEntitlementModel
-      def getUserEntitlements($id, $accountId)
-        path = '/api/v2/accounts/#{accountId}/users/#{id}/entitlements';
-        get (path)
+      def get_user_entitlements(id, accountId)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
+        
+        get(path)
       end
 
 
@@ -53,16 +55,17 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
-      # @param int $accountId The accountID of the user you wish to list.
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
-      # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int $skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string $orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param int accountId The accountID of the user you wish to list.
+      # @param string include A comma separated list of child objects to return underneath the primary object.
+      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return FetchResult
-      def listUsersByAccount($accountId, $include, $filter, $top, $skip, $orderBy)
-        path = '/api/v2/accounts/#{accountId}/users';
-        get (path)
+      def list_users_by_account(accountId, options={})
+        path = "/api/v2/accounts/#{accountId}/users"
+        
+        get(path, options)
       end
 
 
@@ -74,15 +77,16 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # 
-      # @param string $include A comma separated list of child objects to return underneath the primary object.
-      # @param string $filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param int $top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int $skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string $orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param string include A comma separated list of child objects to return underneath the primary object.
+      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return FetchResult
-      def queryUsers($include, $filter, $top, $skip, $orderBy)
-        path = '/api/v2/users';
-        get (path)
+      def query_users(options={})
+        path = "/api/v2/users"
+        
+        get(path, options)
       end
 
 
@@ -93,13 +97,14 @@ module AvaTax
       # All data from the existing object will be replaced with data in the object you PUT. 
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
       # 
-      # @param int $id The ID of the user you wish to update.
-      # @param int $accountId The accountID of the user you wish to update.
-      # @param UserModel $model The user object you wish to update.
+      # @param int id The ID of the user you wish to update.
+      # @param int accountId The accountID of the user you wish to update.
+      # @param UserModel model The user object you wish to update.
       # @return UserModel
-      def updateUser($id, $accountId, $model)
-        path = '/api/v2/accounts/#{accountId}/users/#{id}';
-        put (path)
+      def update_user(id, accountId, model)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        
+        put(path, model)
       end
 
     end
