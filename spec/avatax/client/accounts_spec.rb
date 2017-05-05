@@ -12,12 +12,12 @@ describe AvaTax::Client do
     end
 
     it "should get the correct resource" do
-      @client.accounts()
+      @client.query_accounts()
       expect(a_get("/api/v2/accounts")).to have_been_made
     end
 
     it "should return an array of accounts" do
-      accounts = @client.accounts
+      accounts = @client.query_accounts
       expect(accounts).to be_a Object
       expect(accounts['value'].first['id']).to equal 200000251
       expect(accounts.value.first.id).to equal 200000251

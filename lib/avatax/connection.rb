@@ -9,6 +9,7 @@ module AvaTax
       options = {
         :headers => {'Accept' => "application/json; charset=utf-8", 'User-Agent' => user_agent},
         :url => endpoint,
+        :proxy => proxy,
       }.merge(connection_options)
 
       c = Faraday::Connection.new(options)
