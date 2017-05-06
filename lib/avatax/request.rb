@@ -3,16 +3,16 @@ require 'hashie'
 module AvaTax
   module Request
 
-    def get(path, options)
-      request(:get, path, options={})
+    def get(path, options={})
+      request(:get, path, options)
     end
 
-    def post(path, options)
-      request(:post, path, options={})
+    def post(path, options={})
+      request(:post, path, options)
     end
 
-    def put(path, options)
-      request(:put, path, options={})
+    def put(path, options={})
+      request(:put, path, options)
     end
 
     def delete(path, options={})
@@ -26,6 +26,7 @@ module AvaTax
           request.url(URI.encode(path), options)
         when :post, :put
           request.path = URI.encode(path)
+          puts "BODY", options
           request.body = options unless options.empty?
         end
       end

@@ -18,20 +18,14 @@ module AvaTax
 
       # Retrieve an account
       #
-      # @param include [Array] an array of child objects to return underneath the primary object.
-      # The include array can contain
+      # @param options
       #
       # * Subscriptions
       # * Users 
       # @return [Hashie::Mash] The requested accounts.
       # @example Returns a list of accounts
-      #   AvaTax.query_accounts({ $filter: 'id in (111444, 222555)' })
-      def get_account(id, include=[])
-        if !include.empty?
-          options = {
-            '$include': include.join(','),
-          }
-        end
+      #   AvaTax.get_account()
+      def get_account(id, options={})
         get("/api/v2/accounts/#{id}", options || {})
       end
 
