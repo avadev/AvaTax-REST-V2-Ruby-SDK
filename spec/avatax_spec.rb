@@ -13,12 +13,12 @@ describe AvaTax do
      end
 
      it "should get the correct resource" do
-       AvaTax.accounts()
+       AvaTax.query_accounts()
        expect(a_get("/api/v2/accounts")).to have_been_made
      end
 
      it "should return the same results as a client" do
-       expect(AvaTax.accounts()).to eq AvaTax::Client.new().accounts()
+       expect(AvaTax.query_accounts()).to eq AvaTax::Client.new().query_accounts()
      end
 
    end
