@@ -1,6 +1,9 @@
 require File.expand_path('../spec_helper', __FILE__)
 
 describe AvaTax do
+  puts "Got env?"
+  puts "?", $SANDBOX_USERNAME
+
   after do
     AvaTax.reset
   end
