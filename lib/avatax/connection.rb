@@ -13,9 +13,13 @@ module AvaTax
       }.merge(connection_options)
 
       c = Faraday::Connection.new(options)
-      c.use Faraday::Response::ParseJson
-      c.response :logger if logger
+      if logger
+        c.response :logger do |logger|
+          logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
+        end
+      end
       c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Response::ParseJson
       c.basic_auth(username, password)
 
       c

@@ -9,9 +9,6 @@ AvaTax.configure do |config|
   config.password = credentials['password']
 end
 
-@client = AvaTax::Client.new()
+@client = AvaTax::Client.new(:logger => true)
 
-account = @client.create_account({name: 'Ruby SDK Test Account'})
-puts account.to_json
-
-puts @client.delete_account(account.id).to_json
+puts @client.query_companies
