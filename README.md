@@ -2,7 +2,6 @@ The AvaTax Ruby Gem
 ====================
 A Ruby wrapper for the AvaTax REST V2 APIs
 
-
 Installation
 ------------
 	gem install avatax (coming soon)
@@ -52,6 +51,10 @@ Submitting a Pull Request
 6. Add specs for your feature or bug fix.
 7. Commit and push your changes.
 8. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
+
+Build Status
+------------
+[![Build Status](https://travis-ci.org/avadev/AvaTax-REST-V2-Ruby-SDK.svg?branch=master)](https://travis-ci.org/avadev/AvaTax-REST-V2-Ruby-SDK)
 
 Copyright
 ---------
