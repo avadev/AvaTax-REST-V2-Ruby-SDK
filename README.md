@@ -1,5 +1,3 @@
-# AvaTax-REST-V2-Ruby-SDK
-
 The AvaTax Ruby Gem
 ====================
 A Ruby wrapper for the AvaTax REST V2 APIs
@@ -7,7 +5,7 @@ A Ruby wrapper for the AvaTax REST V2 APIs
 
 Installation
 ------------
-	gem install avatax
+	gem install avatax (coming soon)
 
 AvaTax REST and Search APIs
 ------------------------------
