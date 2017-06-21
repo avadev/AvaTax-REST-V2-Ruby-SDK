@@ -10,6 +10,7 @@ AvaTax REST and Search APIs
 ------------------------------
 Our [developer site](https://developer.avalara.com/) documents all the AvaTax REST and other APIs. Subscribe to the [RSS feed](developer.avalara.com/feed.xml) to stay up to date on the lates news and announcements.
 
+[API docs](http://www.rubydoc.info/github/avadev/AvaTax-REST-V2-Ruby-SDK/)
 
 Blog
 ----------------------------
