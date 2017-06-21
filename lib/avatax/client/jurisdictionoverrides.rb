@@ -4,119 +4,107 @@ module AvaTax
 
 
       # Create one or more overrides
-      # 
+      #
       # Creates one or more jurisdiction override objects for this account.
-      # 
+      #
       # A Jurisdiction Override is a configuration setting that allows you to select the taxing
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
-      # 
-      # @param int accountId The ID of the account that owns this override
-      # @param JurisdictionOverrideModel[] model The jurisdiction override objects to create
-      # @return JurisdictionOverrideModel[]
+      # @param accountId [Integer] The ID of the account that owns this override
+      # @param model [object[]] The jurisdiction override objects to create
+      # @return [object[]]
       def create_jurisdiction_overrides(accountId, model)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        
         post(path, model)
       end
 
 
       # Delete a single override
-      # 
+      #
       # Marks the item object at this URL as deleted.
-      # 
-      # @param int accountId The ID of the account that owns this override
-      # @param int id The ID of the override you wish to delete
-      # @return ErrorDetail[]
+      # @param accountId [Integer] The ID of the account that owns this override
+      # @param id [Integer] The ID of the override you wish to delete
+      # @return [object[]]
       def delete_jurisdiction_override(accountId, id)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        
         delete(path)
       end
 
 
       # Retrieve a single override
-      # 
+      #
       # Get the item object identified by this URL.
-      # 
+      #
       # A Jurisdiction Override is a configuration setting that allows you to select the taxing
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
-      # 
-      # @param int accountId The ID of the account that owns this override
-      # @param int id The primary key of this override
-      # @return JurisdictionOverrideModel
+      # @param accountId [Integer] The ID of the account that owns this override
+      # @param id [Integer] The primary key of this override
+      # @return [Object]
       def get_jurisdiction_override(accountId, id)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        
         get(path)
       end
 
 
       # Retrieve overrides for this account
-      # 
+      #
       # List all jurisdiction override objects defined for this account.
-      # 
+      #
       # A Jurisdiction Override is a configuration setting that allows you to select the taxing
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
-      # 
+      #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
-      # 
-      # @param int accountId The ID of the account that owns this override
-      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param string include A comma separated list of child objects to return underneath the primary object.
-      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return FetchResult
+      # @param accountId [Integer] The ID of the account that owns this override
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
       def list_jurisdiction_overrides_by_account(accountId, options={})
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        
         get(path, options)
       end
 
 
       # Retrieve all overrides
-      # 
+      #
       # Get multiple jurisdiction override objects across all companies.
-      # 
+      #
       # A Jurisdiction Override is a configuration setting that allows you to select the taxing
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
-      # 
+      #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
-      # 
-      # @param string filter A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param string include A comma separated list of child objects to return underneath the primary object.
-      # @param int top If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param int skip If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param string orderBy A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return FetchResult
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
       def query_jurisdiction_overrides(options={})
         path = "/api/v2/jurisdictionoverrides"
-        
         get(path, options)
       end
 
 
       # Update a single jurisdictionoverride
-      # 
+      #
       # Replace the existing jurisdictionoverride object at this URL with an updated object.
-      # 
-      # @param int accountId The ID of the account that this jurisdictionoverride belongs to.
-      # @param int id The ID of the jurisdictionoverride you wish to update
-      # @param JurisdictionOverrideModel model The jurisdictionoverride object you wish to update.
-      # @return JurisdictionOverrideModel
+      # @param accountId [Integer] The ID of the account that this jurisdictionoverride belongs to.
+      # @param id [Integer] The ID of the jurisdictionoverride you wish to update
+      # @param model [Object] The jurisdictionoverride object you wish to update.
+      # @return [Object]
       def update_jurisdiction_override(accountId, id, model)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        
         put(path, model)
       end
 
