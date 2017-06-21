@@ -4,7 +4,7 @@ A Ruby wrapper for the AvaTax REST V2 APIs
 
 Installation
 ------------
-	gem install avatax (coming soon)
+	gem install avatax
 
 AvaTax REST and Search APIs
 ------------------------------
