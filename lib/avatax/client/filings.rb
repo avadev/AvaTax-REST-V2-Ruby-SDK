@@ -276,8 +276,8 @@ module AvaTax
       end
 
 
-      # Retrieve a list of filings for the specified company in the year and month of a given filing period.  
-This gets the basic information from the filings and doesn't include anything extra.
+      # Retrieve a list of filings for the specified company in the year and month of a given filing period.
+      # This gets the basic information from the filings and doesn't include anything extra.
       #
       # 
       # @param companyId [Integer] The ID of the company that owns these batches
