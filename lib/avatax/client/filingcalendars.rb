@@ -148,6 +148,8 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param returnCountry [String] A comma separated list of countries
+      # @param returnRegion [String] A comma separated list of regions
       # @return [FetchResult]
       def list_filing_calendars(companyId, options={})
         path = "/api/v2/companies/#{companyId}/filingcalendars"
@@ -206,6 +208,8 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param returnCountry [String] 
+      # @param returnRegion [String] 
       # @return [FetchResult]
       def query_filing_calendars(options={})
         path = "/api/v2/filingcalendars"

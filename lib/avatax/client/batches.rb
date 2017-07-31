@@ -6,10 +6,9 @@ module AvaTax
       # Create a new batch
       #
       # Create one or more new batch objects attached to this company.
-      # A batch object is a large collection of API calls stored in a compact file.
-      # When you create a batch, it is added to the AvaTax Batch Queue and will be processed in the order it was received.
+      # When you create a batch, it is added to the AvaTaxBatch.Batch table and will be processed in the order it was received.
       # You may fetch a batch to check on its status and retrieve the results of the batch operation.
-      # Each batch object may have one or more file objects attached.
+      # Each batch object may have one or more file objects (currently only one file is supported).
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [object[]] The batch you wish to create.
       # @return [object[]]
@@ -21,7 +20,7 @@ module AvaTax
 
       # Delete a single batch
       #
-      # Mark the existing batch object at this URL as deleted.
+      # 
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param id [Integer] The ID of the batch you wish to delete.
       # @return [object[]]

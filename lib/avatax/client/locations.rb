@@ -34,12 +34,17 @@ module AvaTax
       # Many taxing authorities require that you define a list of all locations where your company does business.
       # These locations may require additional custom configuration or tax registration with these authorities.
       # For more information on metadata requirements, see the '/api/v2/definitions/locationquestions' API.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * LocationSettings
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
+      # @param include [String] A comma separated list of child objects to return underneath the primary object.
       # @return [Object]
-      def get_location(companyId, id)
+      def get_location(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        get(path)
+        get(path, options)
       end
 
 
@@ -53,6 +58,9 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * LocationSettings
       # @param companyId [Integer] The ID of the company that owns these locations
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of child objects to return underneath the primary object.
@@ -76,6 +84,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * LocationSettings
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of child objects to return underneath the primary object.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.

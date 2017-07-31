@@ -109,6 +109,28 @@ module AvaTax
       end
 
 
+      # Add an payment to a given filing.
+      #
+      # This API is available by invitation only.
+      # An "Payment" is usually an increase or decrease to customer funding to Avalara,
+      # such as early filer discount amounts that are refunded to the customer, or efile fees from websites.
+      # Sometimes may be a manual change in tax liability similar to an augmentation.
+      # This API creates a new payment for an existing tax filing.
+      # This API can only be used when the filing has not yet been approved.
+      # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
+      # @param year [Integer] The year of the filing's filing period being adjusted.
+      # @param month [Integer] The month of the filing's filing period being adjusted.
+      # @param country [String] The two-character ISO-3166 code for the country of the filing being adjusted.
+      # @param region [String] The two or three character region code for the region.
+      # @param formCode [String] The unique code of the form being adjusted.
+      # @param model [object[]] A list of Payments to be created for the specified filing.
+      # @return [object[]]
+      def create_return_payment(companyId, year, month, country, region, formCode, model)
+        path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/payment"
+        post(path, model)
+      end
+
+
       # Delete an adjustment for a given filing.
       #
       # This API is available by invitation only.
@@ -138,6 +160,23 @@ module AvaTax
       # @return [object[]]
       def delete_return_augmentation(companyId, id)
         path = "/api/v2/companies/#{companyId}/filings/augment/#{id}"
+        delete(path)
+      end
+
+
+      # Delete an payment for a given filing.
+      #
+      # This API is available by invitation only.
+      # An "Payment" is usually an increase or decrease to customer funding to Avalara,
+      # such as early filer discount amounts that are refunded to the customer, or efile fees from websites.
+      # Sometimes may be a manual change in tax liability similar to an augmentation.
+      # This API deletes an payment for an existing tax filing.
+      # This API can only be used when the filing has been unapproved.
+      # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
+      # @param id [Integer] The ID of the payment being deleted.
+      # @return [object[]]
+      def delete_return_payment(companyId, id)
+        path = "/api/v2/companies/#{companyId}/filings/payment/#{id}"
         delete(path)
       end
 
@@ -206,6 +245,20 @@ module AvaTax
       # @return [Object]
       def get_filing_attachments_trace_file(companyId, year, month)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/attachments/tracefile"
+        get(path)
+      end
+
+
+      # Retrieve a filing for the specified company and id.
+      #
+      # This API is available by invitation only.
+      # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
+      # based on filing frequency of filing.
+      # @param companyId [Integer] The ID of the company that owns the filings.
+      # @param id [Integer] The id of the filing return your retrieving
+      # @return [FetchResult]
+      def get_filing_return(companyId, id)
+        path = "/api/v2/companies/#{companyId}/filings/returns/#{id}"
         get(path)
       end
 
@@ -385,6 +438,24 @@ module AvaTax
       # @return [Object]
       def update_return_augmentation(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/filings/augment/#{id}"
+        put(path, model)
+      end
+
+
+      # Edit an payment for a given filing.
+      #
+      # This API is available by invitation only.
+      # An "Payment" is usually an increase or decrease to customer funding to Avalara,
+      # such as early filer discount amounts that are refunded to the customer, or efile fees from websites.
+      # Sometimes may be a manual change in tax liability similar to an augmentation.
+      # This API modifies an payment for an existing tax filing.
+      # This API can only be used when the filing has not yet been approved.
+      # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
+      # @param id [Integer] The ID of the payment being edited.
+      # @param model [Object] The updated Payment.
+      # @return [Object]
+      def update_return_payment(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/filings/payment/#{id}"
         put(path, model)
       end
 

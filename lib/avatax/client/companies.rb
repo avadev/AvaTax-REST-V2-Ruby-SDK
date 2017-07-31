@@ -117,6 +117,16 @@ module AvaTax
       end
 
 
+      # 
+      #
+      # 
+      # @return [FetchResult]
+      def get_company()
+        path = "/api/v2/companies/mrs"
+        get(path)
+      end
+
+
       # Get configuration settings for this company
       #
       # Retrieve a list of all configuration settings tied to this company.
