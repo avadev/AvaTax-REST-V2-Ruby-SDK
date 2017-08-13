@@ -24,7 +24,6 @@ module AvaTax
           logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
         end
       end
-      c.use Faraday::Request::UrlEncoded
       c.use Faraday::Response::ParseJson
       c.basic_auth(username, password)
 
