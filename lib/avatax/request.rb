@@ -27,7 +27,6 @@ module AvaTax
         when :post, :put
           request.path = URI.encode(path)
           request.headers['Content-Type'] = 'application/json'
-          puts "BODY", options.to_json
           request.body = options.to_json unless options.empty?
         end
       end
