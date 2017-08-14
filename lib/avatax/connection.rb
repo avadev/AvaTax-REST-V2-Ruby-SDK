@@ -18,16 +18,18 @@ module AvaTax
         :proxy => proxy,
       }.merge(connection_options)
 
-      c = Faraday::Connection.new(options)
-      if logger
-        c.response :logger do |logger|
-          logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
-        end
-      end
-      c.use Faraday::Response::ParseJson
-      c.basic_auth(username, password)
+      Faraday.new(options) do |faraday|
+        faraday.use Faraday::Response::ParseJson
+        faraday.basic_auth(username, password)
 
-      c
+        if logger
+          faraday.response :logger do |logger|
+            logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
+          end
+        end
+
+        faraday.adapter Faraday.default_adapter
+      end
     end
   end
 end
