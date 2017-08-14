@@ -1,4 +1,4 @@
-require 'faraday_middleware'
+require 'faraday_middleware/parse_oj'
 
 module AvaTax
 
@@ -19,7 +19,11 @@ module AvaTax
       }.merge(connection_options)
 
       Faraday.new(options) do |faraday|
-        faraday.use Faraday::Response::ParseJson
+        Oj.default_options = {
+          bigdecimal_load: :bigdecimal
+        }
+
+        faraday.response :oj, content_type: /\bjson$/
         faraday.basic_auth(username, password)
 
         if logger
