@@ -6,8 +6,14 @@ module AvaTax
     private
 
     def connection
+      client_id = "#{app_name};#{app_version};RubySdk;#{AvaTax::VERSION.dup};#{machine_name}"
       options = {
-        :headers => {'Accept' => "application/json; charset=utf-8", 'User-Agent' => user_agent},
+        :headers =>
+          {
+           'Accept' => "application/json; charset=utf-8",
+           'User-Agent' => user_agent,
+           'X-Avalara-Client' => client_id
+          },
         :url => endpoint,
         :proxy => proxy,
       }.merge(connection_options)
