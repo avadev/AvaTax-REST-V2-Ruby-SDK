@@ -9,7 +9,7 @@ module AvaTax
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Optional fetch commands.
       # @return [Object]
       def get_user(id, accountId, options={})
         path = "/api/v2/accounts/#{accountId}/users/#{id}"
@@ -51,7 +51,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param accountId [Integer] The accountID of the user you wish to list.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -70,7 +70,7 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.

@@ -12,8 +12,8 @@ module AvaTax
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
       # @param accountId [Integer] The ID of the account that owns this override
-      # @param model [object[]] The jurisdiction override objects to create
-      # @return [object[]]
+      # @param model [JurisdictionOverrideModel[]] The jurisdiction override objects to create
+      # @return [JurisdictionOverrideModel[]]
       def create_jurisdiction_overrides(accountId, model)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
         post(path, model)
@@ -25,7 +25,7 @@ module AvaTax
       # Marks the item object at this URL as deleted.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param id [Integer] The ID of the override you wish to delete
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_jurisdiction_override(accountId, id)
         path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
         delete(path)
@@ -62,7 +62,7 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -85,7 +85,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.

@@ -34,11 +34,62 @@ module AvaTax
       end
 
 
+      # List certificate attributes used by a company
+      #
+      # List the certificate attributes defined by a company.
+      #
+      # A certificate may have multiple attributes that control its behavior. You may apply or remove attributes to a
+      # certificate at any time.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_certificate_attributes(options={})
+        path = "/api/v2/definitions/certificateattributes"
+        get(path, options)
+      end
+
+
+      # List certificate attributes used by a company
+      #
+      # List the certificate exempt reasons defined by a company.
+      #
+      # An exemption reason defines why a certificate allows a customer to be exempt
+      # for purposes of tax calculation.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_certificate_exempt_reasons(options={})
+        path = "/api/v2/definitions/certificateexemptreasons"
+        get(path, options)
+      end
+
+
+      # List certificate exposure zones used by a company
+      #
+      # List the certificate exposure zones defined by a company.
+      #
+      # An exposure zone is a location where a certificate can be valid. Exposure zones may indicate a taxing
+      # authority or other legal entity to which a certificate may apply.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_certificate_exposure_zones(options={})
+        path = "/api/v2/definitions/certificateexposurezones"
+        get(path, options)
+      end
+
+
       # Retrieve the full list of communications transactiontypes
       #
       # Returns full list of communications transaction types which
       # are accepted in communication tax calculation requests.
-      # @param id [Integer] 
+      # @param id [Integer] The transaction type ID to examine
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -92,6 +143,24 @@ module AvaTax
       # @return [FetchResult]
       def list_countries(options={})
         path = "/api/v2/definitions/countries"
+        get(path, options)
+      end
+
+
+      # List certificate exposure zones used by a company
+      #
+      # List available cover letters that can be used when sending invitation to use CertExpress to upload certificates.
+      #
+      # The CoverLetter model represents a message sent along with an invitation to use CertExpress to
+      # upload certificates. An invitation allows customers to use CertExpress to upload their exemption
+      # certificates directly; this cover letter explains why the invitation was sent.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_cover_letters(options={})
+        path = "/api/v2/definitions/coverletters"
         get(path, options)
       end
 
@@ -500,7 +569,7 @@ module AvaTax
       #
       # Returns the full list of Avalara-supported rate type file types
       # This API is intended to be useful to identify all the different rate types.
-      # @param country [String] 
+      # @param country [String] The country to examine for rate types
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.

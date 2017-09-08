@@ -53,8 +53,8 @@ module AvaTax
       # Create one or more new company objects.
       # A 'company' represents a single corporation or individual that is registered to handle transactional taxes.
       # You may attach nested data objects such as contacts, locations, and nexus with this CREATE call, and those objects will be created with the company.
-      # @param model [object[]] Either a single company object or an array of companies to create
-      # @return [object[]]
+      # @param model [CompanyModel[]] Either a single company object or an array of companies to create
+      # @return [CompanyModel[]]
       def create_companies(model)
         path = "/api/v2/companies"
         post(path, model)
@@ -86,7 +86,7 @@ module AvaTax
       #
       # Deleting a company will delete all child companies, and all users attached to this company.
       # @param id [Integer] The ID of the company you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_company(id)
         path = "/api/v2/companies/#{id}"
         delete(path)
@@ -107,23 +107,12 @@ module AvaTax
       #  * TaxCodes
       #  * TaxRules
       #  * UPC
-      #  * ECMS
       # @param id [Integer] The ID of the company to retrieve.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] OPTIONAL: A comma separated list of special fetch options.       * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
       # @return [Object]
       def get_company(id, options={})
         path = "/api/v2/companies/#{id}"
         get(path, options)
-      end
-
-
-      # 
-      #
-      # 
-      # @return [FetchResult]
-      def get_company()
-        path = "/api/v2/companies/mrs"
-        get(path)
       end
 
 
@@ -142,7 +131,7 @@ module AvaTax
       # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
       # processing, and should only be changed with care.
       # @param id [Integer] 
-      # @return [object[]]
+      # @return [CompanyConfigurationModel[]]
       def get_company_configuration(id)
         path = "/api/v2/companies/#{id}/configuration"
         get(path)
@@ -179,9 +168,21 @@ module AvaTax
       # Returns a list of funding setup requests and their current status.
       # Each object in the result is a request that was made to setup or adjust funding configuration for this company.
       # @param id [Integer] The unique identifier of the company
-      # @return [object[]]
+      # @return [FundingStatusModel[]]
       def list_funding_requests_by_company(id)
         path = "/api/v2/companies/#{id}/funding"
+        get(path)
+      end
+
+
+      # Retrieve a list of MRS Companies with account
+      #
+      # This API is available by invitation only.
+      #
+      # Get a list of companies with an active MRS service.
+      # @return [FetchResult]
+      def list_mrs_companies()
+        path = "/api/v2/companies/mrs"
         get(path)
       end
 
@@ -202,8 +203,7 @@ module AvaTax
       # * TaxCodes
       # * TaxRules
       # * UPC
-      # * ECMS
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of objects to fetch underneath this company. Any object with a URL path underneath this company can be fetched by specifying its name.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -230,8 +230,8 @@ module AvaTax
       # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
       # processing, and should only be changed with care.
       # @param id [Integer] 
-      # @param model [object[]] 
-      # @return [object[]]
+      # @param model [CompanyConfigurationModel[]] 
+      # @return [CompanyConfigurationModel[]]
       def set_company_configuration(id, model)
         path = "/api/v2/companies/#{id}/configuration"
         post(path, model)

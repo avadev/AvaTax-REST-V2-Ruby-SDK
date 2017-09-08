@@ -27,7 +27,7 @@ module AvaTax
       # If you have not read or accepted the terms and conditions, this API call will return the
       # unchanged account model.
       # @param id [Integer] The ID of the account to activate
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Elements to include when fetching the account
       # @param model [Object] The activation request
       # @return [Object]
       def activate_account(id, model, options={})
@@ -44,7 +44,7 @@ module AvaTax
       # * Subscriptions
       # * Users
       # @param id [Integer] The ID of the account to retrieve
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of special fetch options
       # @return [Object]
       def get_account(id, options={})
         path = "/api/v2/accounts/#{id}"
@@ -67,7 +67,7 @@ module AvaTax
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
       # @param id [Integer] 
-      # @return [object[]]
+      # @return [AccountConfigurationModel[]]
       def get_account_configuration(id)
         path = "/api/v2/accounts/#{id}/configuration"
         get(path)
@@ -89,8 +89,8 @@ module AvaTax
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
       # @param id [Integer] 
-      # @param model [object[]] 
-      # @return [object[]]
+      # @param model [AccountConfigurationModel[]] 
+      # @return [AccountConfigurationModel[]]
       def set_account_configuration(id, model)
         path = "/api/v2/accounts/#{id}/configuration"
         post(path, model)

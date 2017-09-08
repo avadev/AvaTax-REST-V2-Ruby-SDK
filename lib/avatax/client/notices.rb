@@ -11,8 +11,8 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the comment for.
-      # @param model [object[]] The notice comments you wish to create.
-      # @return [object[]]
+      # @param model [NoticeCommentModel[]] The notice comments you wish to create.
+      # @return [NoticeCommentModel[]]
       def create_notice_comment(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/notices/#{id}/comments"
         post(path, model)
@@ -28,8 +28,8 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice added to the finance details.
-      # @param model [object[]] The notice finance details you wish to create.
-      # @return [object[]]
+      # @param model [NoticeFinanceModel[]] The notice finance details you wish to create.
+      # @return [NoticeFinanceModel[]]
       def create_notice_finance_details(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails"
         post(path, model)
@@ -44,8 +44,8 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the responsibility for.
-      # @param model [object[]] The notice responsibilities you wish to create.
-      # @return [object[]]
+      # @param model [NoticeResponsibilityDetailModel[]] The notice responsibilities you wish to create.
+      # @return [NoticeResponsibilityDetailModel[]]
       def create_notice_responsibilities(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/notices/#{id}/responsibilities"
         post(path, model)
@@ -60,8 +60,8 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the responsibility for.
-      # @param model [object[]] The notice root causes you wish to create.
-      # @return [object[]]
+      # @param model [NoticeRootCauseDetailModel[]] The notice root causes you wish to create.
+      # @return [NoticeRootCauseDetailModel[]]
       def create_notice_root_causes(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/notices/#{id}/rootcauses"
         post(path, model)
@@ -75,8 +75,8 @@ module AvaTax
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
-      # @param model [object[]] The notice object you wish to create.
-      # @return [object[]]
+      # @param model [NoticeModel[]] The notice object you wish to create.
+      # @return [NoticeModel[]]
       def create_notices(companyId, model)
         path = "/api/v2/companies/#{companyId}/notices"
         post(path, model)
@@ -91,7 +91,7 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_notice(companyId, id)
         path = "/api/v2/companies/#{companyId}/notices/#{id}"
         delete(path)
@@ -107,7 +107,7 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param noticeId [Integer] The ID of the notice you wish to delete.
       # @param id [Integer] The ID of the responsibility you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_responsibilities(companyId, noticeId, id)
         path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/responsibilities/#{id}"
         delete(path)
@@ -123,7 +123,7 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param noticeId [Integer] The ID of the notice you wish to delete.
       # @param id [Integer] The ID of the root cause you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_root_causes(companyId, noticeId, id)
         path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/rootcauses/#{id}"
         delete(path)
@@ -230,7 +230,7 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param companyId [Integer] The ID of the company that owns these notices.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -251,7 +251,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
