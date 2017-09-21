@@ -7,28 +7,30 @@ module AvaTax
       #
       # Add lines to an existing unlocked transaction.
       #
-      # The `AddLines` API allows you to add additional transaction lines to existing transaction, so that customer will
-      # be able to append multiple calls together and form an extremely large transaction. If customer does not specify line number
-      # in the lines to be added, a new random Guid string will be generated for line number. If customer are not satisfied with
-      # the line number for the transaction lines, they can turn on the renumber switch to have REST v2 automatically renumber all
-      # transaction lines for them, in this case, the line number becomes: "1", "2", "3", ...
+      #  The `AddLines` API allows you to add additional transaction lines to existing transaction, so that customer will
+      #  be able to append multiple calls together and form an extremely large transaction. If customer does not specify line number
+      #  in the lines to be added, a new random Guid string will be generated for line number. If customer are not satisfied with
+      #  the line number for the transaction lines, they can turn on the renumber switch to have REST v2 automatically renumber all
+      #  transaction lines for them, in this case, the line number becomes: "1", "2", "3", ...
       #
-      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
-      # sales, purchases, inventory transfer, and returns (also called refunds).
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      #  sales, purchases, inventory transfer, and returns (also called refunds).
+      #  You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
-      # * Lines
-      # * Details (implies lines)
-      # * Summary (implies details)
-      # * Addresses
+      #  * Lines
+      #  * Details (implies lines)
+      #  * Summary (implies details)
+      #  * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       #
-      # If you don't specify '$include' parameter, it will include both details and addresses.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      #  If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be added
       # @return [Object]
-      def add_lines(model)
+      def add_lines(model, options={})
         path = "/api/v2/companies/transactions/lines/add"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -176,14 +178,16 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       #
-      # If you don't specify '$include' parameter, it will include both details and addresses.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create
       # @return [Object]
-      def create_or_adjust_transaction(model)
+      def create_or_adjust_transaction(model, options={})
         path = "/api/v2/transactions/createoradjust"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -205,14 +209,16 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       #
-      # If you don't specify '$include' parameter, it will include both details and addresses.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create
       # @return [Object]
-      def create_transaction(model)
+      def create_transaction(model, options={})
         path = "/api/v2/transactions/create"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -220,25 +226,27 @@ module AvaTax
       #
       # Remove lines to an existing unlocked transaction.
       #
-      # The `DeleteLines` API allows you to remove transaction lines from existing unlocked transaction, so that customer will
-      # be able to delete transaction lines and adjust original transaction the way they like
+      #  The `DeleteLines` API allows you to remove transaction lines from existing unlocked transaction, so that customer will
+      #  be able to delete transaction lines and adjust original transaction the way they like
       #
-      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
-      # sales, purchases, inventory transfer, and returns (also called refunds).
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      #  sales, purchases, inventory transfer, and returns (also called refunds).
+      #  You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
-      # * Lines
-      # * Details (implies lines)
-      # * Summary (implies details)
-      # * Addresses
+      #  * Lines
+      #  * Details (implies lines)
+      #  * Summary (implies details)
+      #  * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       #
-      # If you don't specify '$include' parameter, it will include both details and addresses.
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      #  If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be removed
       # @return [Object]
-      def delete_lines(model)
+      def delete_lines(model, options={})
         path = "/api/v2/companies/transactions/lines/delete"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -253,9 +261,11 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_code(companyCode, transactionCode, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}"
@@ -274,10 +284,12 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_code_and_type(companyCode, transactionCode, documentType, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/types/#{documentType}"
@@ -298,8 +310,10 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       # @param id [Integer] The unique ID number of the transaction to retrieve
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_id(id, options={})
         path = "/api/v2/transactions/#{id}"
@@ -322,8 +336,10 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       # @param companyCode [String] The company code of the company that recorded this transaction
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Specifies objects to include in this fetch call
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -372,16 +388,18 @@ module AvaTax
       # * Details (implies lines)
       # * Summary (implies details)
       # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
       #
-      # If you don't specify '$include' parameter, it will include both details and addresses.
+      # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       # @param companyCode [String] The code of the company that made the original sale
       # @param transactionCode [String] The transaction code of the original sale
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] Information about the refund to create
       # @return [Object]
-      def refund_transaction(companyCode, transactionCode, model)
+      def refund_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/refund"
-        post(path, model)
+        post(path, model, options)
       end
 
 

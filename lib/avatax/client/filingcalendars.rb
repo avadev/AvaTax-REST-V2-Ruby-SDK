@@ -40,7 +40,7 @@ module AvaTax
       # are reviewed and validated by Avalara Compliance before being implemented.
       # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param id [Integer] The unique ID number of the filing calendar to cancel
-      # @param model [object[]] The cancellation request for this filing calendar
+      # @param model [FilingRequestModel[]] The cancellation request for this filing calendar
       # @return [Object]
       def cancel_filing_requests(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/filingcalendars/#{id}/cancel/request"
@@ -54,7 +54,7 @@ module AvaTax
       # A "filing request" represents a request to change an existing filing calendar. Filing requests
       # are reviewed and validated by Avalara Compliance before being implemented.
       # @param companyId [Integer] The unique ID of the company that will add the new filing calendar
-      # @param model [object[]] Information about the proposed new filing calendar
+      # @param model [FilingRequestModel[]] Information about the proposed new filing calendar
       # @return [Object]
       def create_filing_requests(companyId, model)
         path = "/api/v2/companies/#{companyId}/filingcalendars/add/request"
@@ -67,7 +67,7 @@ module AvaTax
       # This API is available by invitation only.
       # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param formCode [String] The unique code of the form
-      # @return [object[]]
+      # @return [CycleAddOptionModel[]]
       def cycle_safe_add(companyId, options={})
         path = "/api/v2/companies/#{companyId}/filingcalendars/add/options"
         get(path, options)
@@ -79,7 +79,7 @@ module AvaTax
       # This API is available by invitation only.
       # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param id [Integer] The unique ID of the filing calendar object
-      # @param model [object[]] A list of filing calendar edits to be made
+      # @param model [FilingCalendarEditModel[]] A list of filing calendar edits to be made
       # @return [Object]
       def cycle_safe_edit(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/filingcalendars/#{id}/edit/options"
@@ -107,7 +107,7 @@ module AvaTax
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
       # @param companyId [Integer] The ID of the company that owns this filing calendar.
       # @param id [Integer] The ID of the filing calendar you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_filing_calendar(companyId, id)
         path = "/api/v2/companies/#{companyId}/filingcalendars/#{id}"
         delete(path)
@@ -208,8 +208,8 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @param returnCountry [String] 
-      # @param returnRegion [String] 
+      # @param returnCountry [String] If specified, fetches only filing calendars that apply to tax filings in this specific country. Uses ISO 3166 country codes.
+      # @param returnRegion [String] If specified, fetches only filing calendars that apply to tax filings in this specific region. Uses ISO 3166 region codes.
       # @return [FetchResult]
       def query_filing_calendars(options={})
         path = "/api/v2/filingcalendars"
@@ -247,7 +247,7 @@ module AvaTax
       # to modify the value of a filing calendar using this API.
       # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param id [Integer] The unique ID number of the filing calendar to edit
-      # @param model [object[]] A list of filing calendar edits to be made
+      # @param model [FilingRequestModel[]] A list of filing calendar edits to be made
       # @return [Object]
       def request_filing_calendar_update(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/filingcalendars/#{id}/edit/request"

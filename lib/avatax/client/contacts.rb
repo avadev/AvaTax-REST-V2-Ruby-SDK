@@ -9,8 +9,8 @@ module AvaTax
       # A 'contact' is a person associated with a company who is designated to handle certain responsibilities of
       # a tax collecting and filing entity.
       # @param companyId [Integer] The ID of the company that owns this contact.
-      # @param model [object[]] The contacts you wish to create.
-      # @return [object[]]
+      # @param model [ContactModel[]] The contacts you wish to create.
+      # @return [ContactModel[]]
       def create_contacts(companyId, model)
         path = "/api/v2/companies/#{companyId}/contacts"
         post(path, model)
@@ -22,7 +22,7 @@ module AvaTax
       # Mark the existing contact object at this URL as deleted.
       # @param companyId [Integer] The ID of the company that owns this contact.
       # @param id [Integer] The ID of the contact you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_contact(companyId, id)
         path = "/api/v2/companies/#{companyId}/contacts/#{id}"
         delete(path)
@@ -51,7 +51,7 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param companyId [Integer] The ID of the company that owns these contacts
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -71,7 +71,7 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.

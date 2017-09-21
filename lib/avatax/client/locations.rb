@@ -7,8 +7,8 @@ module AvaTax
       #
       # Create one or more new location objects attached to this company.
       # @param companyId [Integer] The ID of the company that owns this location.
-      # @param model [object[]] The location you wish to create.
-      # @return [object[]]
+      # @param model [LocationModel[]] The location you wish to create.
+      # @return [LocationModel[]]
       def create_locations(companyId, model)
         path = "/api/v2/companies/#{companyId}/locations"
         post(path, model)
@@ -20,7 +20,7 @@ module AvaTax
       # Mark the location object at this URL as deleted.
       # @param companyId [Integer] The ID of the company that owns this location.
       # @param id [Integer] The ID of the location you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_location(companyId, id)
         path = "/api/v2/companies/#{companyId}/locations/#{id}"
         delete(path)
@@ -40,7 +40,7 @@ module AvaTax
       # * LocationSettings
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @return [Object]
       def get_location(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/locations/#{id}"
@@ -63,7 +63,7 @@ module AvaTax
       # * LocationSettings
       # @param companyId [Integer] The ID of the company that owns these locations
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -89,7 +89,7 @@ module AvaTax
       #
       # * LocationSettings
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.

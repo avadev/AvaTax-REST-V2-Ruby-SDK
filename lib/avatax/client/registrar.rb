@@ -43,8 +43,8 @@ module AvaTax
       # A 'subscription' indicates a licensed subscription to a named Avalara service.
       # To request or remove subscriptions, please contact Avalara sales or your customer account manager.
       # @param accountId [Integer] The ID of the account that owns this subscription.
-      # @param model [object[]] The subscription you wish to create.
-      # @return [object[]]
+      # @param model [SubscriptionModel[]] The subscription you wish to create.
+      # @return [SubscriptionModel[]]
       def create_subscriptions(accountId, model)
         path = "/api/v2/accounts/#{accountId}/subscriptions"
         post(path, model)
@@ -59,8 +59,8 @@ module AvaTax
       # Create one or more new user objects attached to this account.
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # @param accountId [Integer] The unique ID number of the account where these users will be created.
-      # @param model [object[]] The user or array of users you wish to create.
-      # @return [object[]]
+      # @param model [UserModel[]] The user or array of users you wish to create.
+      # @return [UserModel[]]
       def create_users(accountId, model)
         path = "/api/v2/accounts/#{accountId}/users"
         post(path, model)
@@ -75,7 +75,7 @@ module AvaTax
       # Delete an account.
       # Deleting an account will delete all companies and all account level users attached to this account.
       # @param id [Integer] The ID of the account you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_account(id)
         path = "/api/v2/accounts/#{id}"
         delete(path)
@@ -90,7 +90,7 @@ module AvaTax
       # Mark the existing account identified by this URL as deleted.
       # @param accountId [Integer] The ID of the account that owns this subscription.
       # @param id [Integer] The ID of the subscription you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_subscription(accountId, id)
         path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
         delete(path)
@@ -105,7 +105,7 @@ module AvaTax
       # Mark the user object identified by this URL as deleted.
       # @param id [Integer] The ID of the user you wish to delete.
       # @param accountId [Integer] The accountID of the user you wish to delete.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_user(id, accountId)
         path = "/api/v2/accounts/#{accountId}/users/#{id}"
         delete(path)
@@ -126,7 +126,7 @@ module AvaTax
       # * Users
       #
       # For more information about filtering in REST, please see the documentation at http://developer.avalara.com/avatax/filtering-in-rest/ .
-      # @param include [String] A comma separated list of child objects to return underneath the primary object.
+      # @param include [String] A comma separated list of objects to fetch underneath this account. Any object with a URL path underneath this account can be fetched by specifying its name.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.

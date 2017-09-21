@@ -16,7 +16,7 @@ module AvaTax
       # @param year [Integer] The year of the filing period to approve.
       # @param month [Integer] The month of the filing period to approve.
       # @param model [Object] The approve request you wish to execute.
-      # @return [object[]]
+      # @return [FilingModel[]]
       def approve_filings(companyId, year, month, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/approve"
         post(path, model)
@@ -37,7 +37,7 @@ module AvaTax
       # @param month [Integer] The month of the filing period to approve.
       # @param country [String] The two-character ISO-3166 code for the country.
       # @param model [Object] The approve request you wish to execute.
-      # @return [object[]]
+      # @return [FilingModel[]]
       def approve_filings_country(companyId, year, month, country, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/approve"
         post(path, model)
@@ -59,7 +59,7 @@ module AvaTax
       # @param country [String] The two-character ISO-3166 code for the country.
       # @param region [String] The two or three character region code for the region.
       # @param model [Object] The approve request you wish to execute.
-      # @return [object[]]
+      # @return [FilingModel[]]
       def approve_filings_country_region(companyId, year, month, country, region, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/approve"
         post(path, model)
@@ -80,8 +80,8 @@ module AvaTax
       # @param country [String] The two-character ISO-3166 code for the country of the filing being adjusted.
       # @param region [String] The two or three character region code for the region.
       # @param formCode [String] The unique code of the form being adjusted.
-      # @param model [object[]] A list of Adjustments to be created for the specified filing.
-      # @return [object[]]
+      # @param model [FilingAdjustmentModel[]] A list of Adjustments to be created for the specified filing.
+      # @return [FilingAdjustmentModel[]]
       def create_return_adjustment(companyId, year, month, country, region, formCode, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/adjust"
         post(path, model)
@@ -101,8 +101,8 @@ module AvaTax
       # @param country [String] The two-character ISO-3166 code for the country of the filing being changed.
       # @param region [String] The two or three character region code for the region of the filing being changed.
       # @param formCode [String] The unique code of the form being changed.
-      # @param model [object[]] A list of augmentations to be created for the specified filing.
-      # @return [object[]]
+      # @param model [FilingAugmentationModel[]] A list of augmentations to be created for the specified filing.
+      # @return [FilingAugmentationModel[]]
       def create_return_augmentation(companyId, year, month, country, region, formCode, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/augment"
         post(path, model)
@@ -123,8 +123,8 @@ module AvaTax
       # @param country [String] The two-character ISO-3166 code for the country of the filing being adjusted.
       # @param region [String] The two or three character region code for the region.
       # @param formCode [String] The unique code of the form being adjusted.
-      # @param model [object[]] A list of Payments to be created for the specified filing.
-      # @return [object[]]
+      # @param model [FilingPaymentModel[]] A list of Payments to be created for the specified filing.
+      # @return [FilingPaymentModel[]]
       def create_return_payment(companyId, year, month, country, region, formCode, model)
         path = "/api/v2/companies/#{companyId}/filings/#{year}/#{month}/#{country}/#{region}/#{formCode}/payment"
         post(path, model)
@@ -141,7 +141,7 @@ module AvaTax
       # This API can only be used when the filing has been unapproved.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the adjustment being deleted.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_return_adjustment(companyId, id)
         path = "/api/v2/companies/#{companyId}/filings/adjust/#{id}"
         delete(path)
@@ -157,7 +157,7 @@ module AvaTax
       # This API can only be used when the filing has been unapproved.
       # @param companyId [Integer] The ID of the company that owns the filing being changed.
       # @param id [Integer] The ID of the augmentation being added.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_return_augmentation(companyId, id)
         path = "/api/v2/companies/#{companyId}/filings/augment/#{id}"
         delete(path)
@@ -174,7 +174,7 @@ module AvaTax
       # This API can only be used when the filing has been unapproved.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the payment being deleted.
-      # @return [object[]]
+      # @return [ErrorDetail[]]
       def delete_return_payment(companyId, id)
         path = "/api/v2/companies/#{companyId}/filings/payment/#{id}"
         delete(path)
