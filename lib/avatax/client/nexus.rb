@@ -13,6 +13,7 @@ module AvaTax
       # Note that not all fields within a nexus can be updated; Avalara publishes a list of all defined nexus at the
       # '/api/v2/definitions/nexus' endpoint.
       # You may only define nexus matching the official list of declared nexus.
+      # Please allow 1 minute before start using the created Nexus in your transactions.
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
@@ -25,6 +26,7 @@ module AvaTax
       # Delete a single nexus
       #
       # Marks the existing nexus object at this URL as deleted.
+      # Please allow 1 minute to stop collecting tax in your transaction on the deleted Nexus.
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param id [Integer] The ID of the nexus you wish to delete.
       # @return [ErrorDetail[]]
@@ -129,6 +131,7 @@ module AvaTax
       # You may only define nexus matching the official list of declared nexus.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      # Please allow 1 minute to start seeing your updated Nexus taking effect on your transactions.
       # @param companyId [Integer] The ID of the company that this nexus belongs to.
       # @param id [Integer] The ID of the nexus you wish to update
       # @param model [Object] The nexus object you wish to update.

@@ -388,7 +388,7 @@ module AvaTax
 
       # Rebuild a set of filings for the specified company in the given filing period, country and region.
       #
-      # This API is available by invitation only.
+      # This API is available by invitation only.audit.CheckAuthorizationReturns(null, companyId);
       # Rebuilding a return means re-creating or updating the amounts to be filed for a filing.
       # Rebuilding has to be done whenever a customer adds transactions to a filing.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,

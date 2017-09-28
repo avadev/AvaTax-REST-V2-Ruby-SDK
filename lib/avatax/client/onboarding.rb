@@ -18,7 +18,7 @@ module AvaTax
       # terms and conditions. If they do so, they can receive a license key as part of this API and their
       # API will be created in `Active` status. If the customer has not yet read and accepted these terms and
       # conditions, the account will be created in `New` status and they can receive a license key by logging
-      # onto AvaTax and reviewing terms and conditions online.
+      # onto the AvaTax website and reviewing terms and conditions online.
       # @param model [Object] Information about the account you wish to create and the selected product offerings.
       # @return [Object]
       def request_new_account(model)

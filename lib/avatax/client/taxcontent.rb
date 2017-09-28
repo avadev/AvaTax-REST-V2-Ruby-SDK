@@ -16,6 +16,8 @@ module AvaTax
       #
       # This API builds the file on demand, and is limited to files with no more than 7500 scenarios. To build a tax content
       # file for a single location at a time, please use `BuildTaxContentFileForLocation`.
+      #
+      # NOTE: This API does not work for Tennessee tax holiday scenarios.
       # @param model [Object] Parameters about the desired file format and report format, specifying which company, locations and TaxCodes to include.
       # @return [Object]
       def build_tax_content_file(model)
@@ -37,6 +39,8 @@ module AvaTax
       #
       # This API builds the file on demand, and is limited to files with no more than 7500 scenarios. To build a tax content
       # file for a multiple locations in a single file, please use `BuildTaxContentFile`.
+      #
+      # NOTE: This API does not work for Tennessee tax holiday scenarios.
       # @param companyId [Integer] The ID number of the company that owns this location.
       # @param id [Integer] The ID number of the location to retrieve point-of-sale data.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default)
