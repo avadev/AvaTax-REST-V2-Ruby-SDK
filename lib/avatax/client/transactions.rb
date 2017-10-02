@@ -216,9 +216,9 @@ module AvaTax
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create
       # @return [Object]
-      def create_transaction(model, options={})
+      def create_transaction(model)
         path = "/api/v2/transactions/create"
-        post(path, model, options)
+        post(path, model)
       end
 
 
