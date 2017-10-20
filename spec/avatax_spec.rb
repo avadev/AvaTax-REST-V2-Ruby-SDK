@@ -1,27 +1,7 @@
 require File.expand_path('../spec_helper', __FILE__)
+credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
 
 describe AvaTax do
-  after do
-    AvaTax.reset
-  end
-
-  context "when delegating to a client" do
-
-     before do
-       stub_get("/api/v2/accounts").
-         to_return(:body => fixture("accounts.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-     end
-
-     it "should get the correct resource" do
-       AvaTax.query_accounts()
-       expect(a_get("/api/v2/accounts")).to have_been_made
-     end
-
-     it "should return the same results as a client" do
-       expect(AvaTax.query_accounts()).to eq AvaTax::Client.new().query_accounts()
-     end
-
-   end
 
   describe ".client" do
     it "should be a AvaTax::Client" do
@@ -31,7 +11,7 @@ describe AvaTax do
 
   describe ".endpoint" do
     it "should return the default endpoint" do
-      expect(AvaTax.endpoint).to eq AvaTax::Configuration::DEFAULT_ENDPOINT
+      expect(AvaTax.endpoint).to eq credentials['endpoint']
     end
   end
 

@@ -1,47 +1,27 @@
 require File.expand_path('../../lib/avatax', __FILE__)
 require 'rspec'
-require 'webmock/rspec'
+require 'yaml'
+
+
+AvaTax.configure do |config|
+  begin
+    credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
+    config.endpoint = credentials['endpoint']
+    config.username = credentials['username']
+    config.password = credentials['password']
+  rescue
+    config.endpoint = 'https://sandbox-rest.avatax.com'
+    config.username = ENV['SANDBOX_USERNAME']
+    config.password = ENV['SANDBOX_PASSWORD']
+  end
+end
+
+client = AvaTax::Client.new()
+companies = client.query_companies
 
 RSpec.configure do |config|
-  config.include WebMock::API
-end
-
-def a_delete(path)
-  a_request(:delete, AvaTax.endpoint + path)
-end
-
-def a_get(path)
-  a_request(:get, AvaTax.endpoint + path)
-end
-
-def a_post(path)
-  a_request(:post, AvaTax.endpoint + path)
-end
-
-def a_put(path)
-  a_request(:put, AvaTax.endpoint + path)
-end
-
-def stub_delete(path)
-  stub_request(:delete, AvaTax.endpoint + path)
-end
-
-def stub_get(path)
-  stub_request(:get, AvaTax.endpoint + path)
-end
-
-def stub_post(path)
-  stub_request(:post, AvaTax.endpoint + path)
-end
-
-def stub_put(path)
-  stub_request(:put, AvaTax.endpoint + path)
-end
-
-def fixture_path
-  File.expand_path("../fixtures", __FILE__)
-end
-
-def fixture(file)
-  File.new(fixture_path + '/' + file)
+  config.before {
+    @client = client
+    @company_code = companies["value"][1]["companyCode"]
+  }
 end
