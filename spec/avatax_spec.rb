@@ -1,5 +1,13 @@
 require File.expand_path('../spec_helper', __FILE__)
-credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
+begin
+  credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
+rescue
+  credentials = {
+    "endpoint" => 'https://sandbox-rest.avatax.com',
+    "username" => ENV['SANDBOX_USERNAME'],
+    "password" => ENV['SANDBOX_PASSWORD'],
+  }
+end
 
 describe AvaTax do
 
