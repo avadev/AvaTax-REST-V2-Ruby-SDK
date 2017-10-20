@@ -10,6 +10,7 @@
 /test/version_tmp/
 /tmp/
 /example/credentials.yaml
+/spec/credentials.yaml
 
 # Used by dotenv library to load environment variables.
 # .env
