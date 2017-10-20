@@ -48,6 +48,19 @@ module AvaTax
       end
 
 
+      # Create a filing calendar
+      #
+      # This API is available by invitation only and only available for users with Compliance access
+      # A "filing request" represents information that compliance uses to file a return
+      # @param companyId [Integer] The unique ID of the company that will add the new filing calendar
+      # @param model [FilingCalendarModel[]] Filing calendars that will be added
+      # @return [Object]
+      def create_filing_calendars(companyId, model)
+        path = "/api/v2/companies/#{companyId}/filingcalendars"
+        post(path, model)
+      end
+
+
       # Create a new filing request to create a filing calendar
       #
       # This API is available by invitation only.
@@ -255,11 +268,9 @@ module AvaTax
       end
 
 
-      # Edit existing Filing Calendar's Notes
+      # Edit existing Filing Calendar
       #
       # This API is available by invitation only.
-      # This API only allows updating of internal notes and company filing instructions.
-      # All other updates must go through a filing request at this time.
       # @param companyId [Integer] The unique ID of the company that owns the filing request object
       # @param id [Integer] The unique ID of the filing calendar object
       # @param model [Object] The filing calendar model you are wishing to update with.

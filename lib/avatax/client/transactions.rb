@@ -61,7 +61,7 @@ module AvaTax
       #
       # Retrieve audit information about a transaction stored in AvaTax.
       #
-      # The 'AuditTransaction' endpoint retrieves audit information related to a specific transaction. This audit
+      # The `AuditTransaction` API retrieves audit information related to a specific transaction. This audit
       # information includes the following:
       #
       # * The `CompanyId` of the company that created the transaction
@@ -87,7 +87,7 @@ module AvaTax
       #
       # Retrieve audit information about a transaction stored in AvaTax.
       #
-      # The 'AuditTransaction' endpoint retrieves audit information related to a specific transaction. This audit
+      # The `AuditTransaction` API retrieves audit information related to a specific transaction. This audit
       # information includes the following:
       #
       # * The `CompanyId` of the company that created the transaction
@@ -160,15 +160,22 @@ module AvaTax
       end
 
 
-      # Create a new transaction
+      # Create or adjust a transaction
       #
-      # Records a new transaction or adjust an existing in AvaTax.
+      # Records a new transaction or adjust an existing transaction in AvaTax.
       #
-      # The `CreateOrAdjustTransaction` endpoint is used to create a new transaction if the input transaction does not exist
-      # or if there exists a transaction identified by code, the original transaction will be adjusted by using the meta data
-      # in the input transaction
+      # The `CreateOrAdjustTransaction` endpoint is used to create a new transaction or update an existing one. This API
+      # can help you create an idempotent service that creates transactions
+      # If there exists a transaction identified by code, the original transaction will be adjusted by using the meta data
+      # in the input transaction.
       #
-      # If you don't specify type in the provided data, a new transaction with type of SalesOrder will be recorded by default.
+      # The `CreateOrAdjustTransaction` API cannot modify any transaction that has been reported to a tax authority using
+      # the Avalara Managed Returns Service or any other tax filing service. If you call this API to attempt to modify
+      # a transaction that has been reported on a tax filing, you will receive the error `CannotModifyLockedTransaction`.
+      #
+      # To generate a refund for a transaction, use the `RefundTransaction` API.
+      #
+      # If you don't specify the field `type` in your request, you will get an estimate of type `SalesOrder`, which will not be recorded in the database.
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
@@ -180,10 +187,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      # * ForceTimeout - Simulates a timeout. This adds a 30 second delay and error to your API call. This can be used to test your code to ensure it can respond correctly in the case of a dropped connection.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       # @param include [String] Specifies objects to include in the response after transaction is created
-      # @param model [Object] The transaction you wish to create
+      # @param model [Object] The transaction you wish to create or adjust
       # @return [Object]
       def create_or_adjust_transaction(model, options={})
         path = "/api/v2/transactions/createoradjust"
@@ -199,7 +207,13 @@ module AvaTax
       # and rates to apply to all line items in this transaction, and reports the total tax calculated by AvaTax based on your
       # company's configuration and the data provided in this API call.
       #
-      # If you don't specify type in the provided data, a new transaction with type of SalesOrder will be recorded by default.
+      # The `CreateTransaction` API will report an error if a committed transaction already exists with the same `code`. To
+      # avoid this error, use the `CreateOrAdjustTransaction` API - it will create the transaction if it does not exist, or
+      # update it if it does exist.
+      #
+      # To generate a refund for a transaction, use the `RefundTransaction` API.
+      #
+      # If you don't specify the field `type` in your request, you will get an estimate of type `SalesOrder`, which will not be recorded in the database.
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
@@ -211,6 +225,7 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      # * ForceTimeout - Simulates a timeout. This adds a 30 second delay and error to your API call. This can be used to test your code to ensure it can respond correctly in the case of a dropped connection.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -252,10 +267,14 @@ module AvaTax
 
       # Retrieve a single transaction by code
       #
-      # Get the current transaction identified by this URL.
+      # Get the current `SalesInvoice` transaction identified by this URL.
+      #
+      # To fetch other kinds of transactions, use `GetTransactionByCodeAndType`.
+      #
       # If this transaction was adjusted, the return value of this API will be the current transaction with this code, and previous revisions of
-      # the transaction will be attached to the 'history' data field.
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      # the transaction will be attached to the `history` data field.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)
@@ -276,9 +295,11 @@ module AvaTax
       # Retrieve a single transaction by code
       #
       # Get the current transaction identified by this URL.
+      #
       # If this transaction was adjusted, the return value of this API will be the current transaction with this code, and previous revisions of
-      # the transaction will be attached to the 'history' data field.
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      # the transaction will be attached to the `history` data field.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)
@@ -380,8 +401,21 @@ module AvaTax
       # for a previously created `SalesInvoice` transaction. You can choose to create a full or partial refund, and
       # specify individual line items from the original sale for refund.
       #
-      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
-      # sales, purchases, inventory transfer, and returns (also called refunds).
+      # The `RefundTransaction` API ensures that the tax amount you refund to the customer exactly matches the tax that
+      # was calculated during the original transaction, regardless of any changes to your company's configuration, rules,
+      # nexus, or any other setting.
+      #
+      # This API is intended to be a shortcut to allow you to quickly and accurately generate a refund for the following
+      # common refund scenarios:
+      #
+      # * A full refund of a previous sale
+      # * Refunding the tax that was charged on a previous sale, when the customer provides an exemption certificate after the purchase
+      # * Refunding one or more items (lines) from a previous sale
+      # * Granting a customer a percentage refund of a previous sale
+      #
+      # For more complex scenarios than the ones above, please use `CreateTransaction` with document type `ReturnInvoice` to
+      # create a custom refund transaction.
+      #
       # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines

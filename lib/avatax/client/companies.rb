@@ -40,6 +40,7 @@ module AvaTax
       #
       # This API only provides a limited subset of functionality compared to the 'Create Company' API call.
       # If you need additional features or options not present in this 'Quick Setup' API call, please use the full 'Create Company' call instead.
+      # Please allow 1 minute before making transactions using the company.
       # @param model [Object] Information about the company you wish to create.
       # @return [Object]
       def company_initialize(model)
