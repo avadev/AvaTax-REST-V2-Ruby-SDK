@@ -53,6 +53,31 @@ module AvaTax
         get(path, options)
       end
 
+
+      # Download a file listing tax rates by postal code
+      #
+      # Download a CSV file containing all five digit postal codes in the United States and their sales
+      # and use tax rates for tangible personal property.
+      #
+      # This rates file is intended to be used as a default for tax calculation when your software cannot
+      # call the `CreateTransaction` API call. When using this file, your software will be unable to
+      # handle complex tax rules such as:
+      #
+      # * Zip+9 - This tax file does not contain
+      # * Different product types - This tax file contains tangible personal property tax rates only.
+      # * Mixed sourcing - This tax file cannot be used to resolve origin-based taxes.
+      # * Threshold-based taxes - This tax file does not contain information about thresholds.
+      #
+      # If you use this file to provide default tax rates, please ensure that your software calls `CreateTransaction`
+      # to reconcile the actual transaction and determine the difference between the estimated general tax
+      # rate and the final transaction tax.
+      # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
+      # @return [Object]
+      def download_tax_rates_by_zip_code(date)
+        path = "/api/v2/taxratesbyzipcode/download/#{date}"
+        get(path)
+      end
+
     end
   end
 end

@@ -15,7 +15,7 @@ module AvaTax
       #
       #  A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       #  sales, purchases, inventory transfer, and returns (also called refunds).
-      #  You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       #  * Lines
       #  * Details (implies lines)
@@ -129,8 +129,13 @@ module AvaTax
 
       # Change a transaction's code
       #
-      # Renames a transaction uniquely identified by this URL by changing its code to a new code.
-      # After this API call succeeds, the transaction will have a new URL matching its new code.
+      # Renames a transaction uniquely identified by this URL by changing its `code` value.
+      #
+      # This API is available as long as the transaction is in `saved` or `posted` status. When a transaction
+      # is `committed`, it can be modified by using the [AdjustTransaction](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/AdjustTransaction/) method.
+      #
+      # After this API call succeeds, the transaction will have a new URL matching its new `code`.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # @param companyCode [String] The company code of the company that recorded this transaction
@@ -179,7 +184,7 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)
@@ -203,8 +208,11 @@ module AvaTax
       #
       # Records a new transaction in AvaTax.
       #
-      # The `CreateTransaction` endpoint uses the configuration values specified by your company to identify the correct tax rules
-      # and rates to apply to all line items in this transaction, and reports the total tax calculated by AvaTax based on your
+      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # The `CreateTransaction` endpoint uses the tax profile of your company to identify the correct tax rules
+      # and rates to apply to all line items in this transaction. The end result will be the total tax calculated by AvaTax based on your
       # company's configuration and the data provided in this API call.
       #
       # The `CreateTransaction` API will report an error if a committed transaction already exists with the same `code`. To
@@ -213,11 +221,15 @@ module AvaTax
       #
       # To generate a refund for a transaction, use the `RefundTransaction` API.
       #
-      # If you don't specify the field `type` in your request, you will get an estimate of type `SalesOrder`, which will not be recorded in the database.
+      # The field `type` identifies the kind of transaction - for example, a sale, purchase, or refund. If you do not specify
+      # a `type` value, you will receive an estimate of type `SalesOrder`, which will not be recorded.
       #
-      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
-      # sales, purchases, inventory transfer, and returns (also called refunds).
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      # The origin and destination locations for a transaction must be identified by either address or geocode. For address-based transactions, please
+      # provide addresses in the fields `line`, `city`, `region`, `country` and `postalCode`. For geocode-based transactions, please provide the geocode
+      # information in the fields `latitude` and `longitude`. If either `latitude` or `longitude` or both are null, the transaction will be calculated
+      # using the best available address location information.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)
@@ -246,7 +258,7 @@ module AvaTax
       #
       #  A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       #  sales, purchases, inventory transfer, and returns (also called refunds).
-      #  You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #  You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       #  * Lines
       #  * Details (implies lines)
@@ -271,8 +283,7 @@ module AvaTax
       #
       # To fetch other kinds of transactions, use `GetTransactionByCodeAndType`.
       #
-      # If this transaction was adjusted, the return value of this API will be the current transaction with this code, and previous revisions of
-      # the transaction will be attached to the `history` data field.
+      # If this transaction was adjusted, the return value of this API will be the current transaction with this code.
       #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
@@ -296,8 +307,7 @@ module AvaTax
       #
       # Get the current transaction identified by this URL.
       #
-      # If this transaction was adjusted, the return value of this API will be the current transaction with this code, and previous revisions of
-      # the transaction will be attached to the `history` data field.
+      # If this transaction was adjusted, the return value of this API will be the current transaction with this code.
       #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
@@ -321,11 +331,14 @@ module AvaTax
       # Retrieve a single transaction by ID
       #
       # Get the unique transaction identified by this URL.
+      #
       # This endpoint retrieves the exact transaction identified by this ID number even if that transaction was later adjusted
-      # by using the 'Adjust Transaction' endpoint.
+      # by using the `AdjustTransaction` endpoint.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)
@@ -345,12 +358,18 @@ module AvaTax
       # Retrieve all transactions
       #
       # List all transactions attached to this company.
+      #
       # This endpoint is limited to returning 1,000 transactions at a time maximum.
+      #
+      # When listing transactions, you must specify a `date` range filter. If you do not specify a `$filter` that includes a `date` field
+      # criteria, the query will default to looking at only those transactions with `date` in the past 30 days.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
@@ -416,7 +435,7 @@ module AvaTax
       # For more complex scenarios than the ones above, please use `CreateTransaction` with document type `ReturnInvoice` to
       # create a custom refund transaction.
       #
-      # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Lines
       # * Details (implies lines)

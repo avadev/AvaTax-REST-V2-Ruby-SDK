@@ -94,6 +94,20 @@ module AvaTax
       end
 
 
+      # Check the funding configuration of a company
+      #
+      # This API is available by invitation only.
+      # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
+      # Returns the funding configuration of the requested company.
+      # .
+      # @param companyId [Integer] The unique identifier of the company
+      # @return [Object]
+      def funding_configuration_by_company(companyId)
+        path = "/api/v2/companies/#{companyId}/funding/configuration"
+        get(path)
+      end
+
+
       # Retrieve a single company
       #
       # Get the company object identified by this URL.
@@ -162,12 +176,12 @@ module AvaTax
       end
 
 
-      # Check managed returns funding configuration for a company
+      # Check managed returns funding status for a company
       #
       # This API is available by invitation only.
       # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # Returns a list of funding setup requests and their current status.
-      # Each object in the result is a request that was made to setup or adjust funding configuration for this company.
+      # Each object in the result is a request that was made to setup or adjust funding status for this company.
       # @param id [Integer] The unique identifier of the company
       # @return [FundingStatusModel[]]
       def list_funding_requests_by_company(id)

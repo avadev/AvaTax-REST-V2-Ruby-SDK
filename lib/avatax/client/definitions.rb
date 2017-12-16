@@ -289,6 +289,7 @@ module AvaTax
       # Retrieve the full list of Avalara-supported nexus for all countries and regions.
       #
       # Returns the full list of all Avalara-supported nexus for all countries and regions.
+      #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
@@ -312,9 +313,9 @@ module AvaTax
       # @param line2 [String] The first address line portion of this address.
       # @param line3 [String] The first address line portion of this address.
       # @param city [String] The city portion of this address.
-      # @param region [String] The region, state, or province code portion of this address.
+      # @param region [String] Name or ISO 3166 code identifying the region portion of the address.      This field supports many different region identifiers:   * Two and three character ISO 3166 region codes   * Fully spelled out names of the region in ISO supported languages   * Common alternative spellings for many regions      For a full list of all supported codes and names, please see the Definitions API `ListRegions`.
       # @param postalCode [String] The postal code or zip code portion of this address.
-      # @param country [String] The two-character ISO-3166 code of the country portion of this address.
+      # @param country [String] Name or ISO 3166 code identifying the country portion of this address.      This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries      For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -329,6 +330,7 @@ module AvaTax
       # Retrieve the full list of Avalara-supported nexus for a country.
       #
       # Returns all Avalara-supported nexus for the specified country.
+      #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country.
       # @param country [String] The country in which you want to fetch the system nexus
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
@@ -345,6 +347,7 @@ module AvaTax
       # Retrieve the full list of Avalara-supported nexus for a country and region.
       #
       # Returns all Avalara-supported nexus for the specified country and region.
+      #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country and region.
       # @param country [String] The two-character ISO-3166 code for the country.
       # @param region [String] The two or three character region code for the region.

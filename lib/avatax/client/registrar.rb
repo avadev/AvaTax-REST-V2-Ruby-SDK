@@ -51,22 +51,6 @@ module AvaTax
       end
 
 
-      # Create new users
-      #
-      # # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Create one or more new user objects attached to this account.
-      # A user represents one person with access privileges to make API calls and work with a specific account.
-      # @param accountId [Integer] The unique ID number of the account where these users will be created.
-      # @param model [UserModel[]] The user or array of users you wish to create.
-      # @return [UserModel[]]
-      def create_users(accountId, model)
-        path = "/api/v2/accounts/#{accountId}/users"
-        post(path, model)
-      end
-
-
       # Delete a single account
       #
       # # For Registrar Use Only
