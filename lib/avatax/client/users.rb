@@ -3,6 +3,26 @@ module AvaTax
     module Users 
 
 
+      # Create new users
+      #
+      # Create one or more new user objects attached to this account.
+      #
+      # A user represents one person with access privileges to make API calls and work with a specific account.
+      #
+      # Users who are account administrators or company users are permitted to create user records to invite
+      # additional team members to work with AvaTax.
+      #
+      # A newly created user will receive an email inviting them to create their password. This means that you
+      # must provide a valid email address for all user accounts created.
+      # @param accountId [Integer] The unique ID number of the account where these users will be created.
+      # @param model [UserModel[]] The user or array of users you wish to create.
+      # @return [UserModel[]]
+      def create_users(accountId, model)
+        path = "/api/v2/accounts/#{accountId}/users"
+        post(path, model)
+      end
+
+
       # Retrieve a single user
       #
       # Get the user object identified by this URL.

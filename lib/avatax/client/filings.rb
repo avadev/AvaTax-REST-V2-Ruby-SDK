@@ -210,11 +210,11 @@ module AvaTax
       #
       # This API is available by invitation only.
       # @param companyId [Integer] The ID of the company that owns the filings.
-      # @param filingId [Integer] The unique id of the worksheet return.
+      # @param filingReturnId [Integer] The unique id of the worksheet return.
       # @param fileId [Integer] The unique id of the document you are downloading
       # @return [Object]
-      def get_filing_attachment(companyId, filingId, options={})
-        path = "/api/v2/companies/#{companyId}/filings/#{filingId}/attachment"
+      def get_filing_attachment(companyId, filingReturnId, options={})
+        path = "/api/v2/companies/#{companyId}/filings/#{filingReturnId}/attachment"
         get(path, options)
       end
 
@@ -340,6 +340,7 @@ module AvaTax
       # @param status [String] The status of the return(s) you are trying to retrieve (See FilingStatusId::* for a list of allowable values)
       # @param country [String] The country of the return(s) you are trying to retrieve
       # @param region [String] The region of the return(s) you are trying to retrieve
+      # @param filingCalendarId [Integer] The filing calendar id of the return you are trying to retrieve
       # @return [FetchResult]
       def get_filings_returns(companyId, options={})
         path = "/api/v2/companies/#{companyId}/filings/returns"

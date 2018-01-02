@@ -56,9 +56,9 @@ module AvaTax
       # @param line2 [String] The street address of the location.
       # @param line3 [String] The street address of the location.
       # @param city [String] The city name of the location.
-      # @param region [String] The state or region of the location
+      # @param region [String] Name or ISO 3166 code identifying the region within the country.    This field supports many different region identifiers:   * Two and three character ISO 3166 region codes   * Fully spelled out names of the region in ISO supported languages   * Common alternative spellings for many regions    For a full list of all supported codes and names, please see the Definitions API `ListRegions`.
       # @param postalCode [String] The postal code of the location.
-      # @param country [String] The two letter ISO-3166 country code.
+      # @param country [String] Name or ISO 3166 code identifying the country.    This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries    For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
       # @return [Object]
       def tax_rates_by_address(options={})
         path = "/api/v2/taxrates/byaddress"
@@ -66,9 +66,11 @@ module AvaTax
       end
 
 
-      # FREE API - Sales tax rates for a specified country and postal code
+      # FREE API - Sales tax rates for a specified country and postal code. This API is only available for US postal codes.
       #
       # # Free-To-Use
+      #
+      # This API is only available for a US postal codes.
       #
       # The TaxRates API is a free-to-use, no cost option for estimating sales tax rates.
       # Any customer can request a free AvaTax account and make use of the TaxRates API.
@@ -93,7 +95,7 @@ module AvaTax
       #
       # Please see [Estimating Tax with REST v2](http://developer.avalara.com/blog/2016/11/04/estimating-tax-with-rest-v2/)
       # for information on how to upgrade to the full AvaTax CreateTransaction API.
-      # @param country [String] The two letter ISO-3166 country code.
+      # @param country [String] Name or ISO 3166 code identifying the country.    This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries    For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
       # @param postalCode [String] The postal code of the location.
       # @return [Object]
       def tax_rates_by_postal_code(options={})
