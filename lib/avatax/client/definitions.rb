@@ -3,6 +3,27 @@ module AvaTax
     module Definitions 
 
 
+      # Lists all parents of an HS Code.
+      #
+      # Retrieves the specified HS code and all of its parents, reflecting all sections, chapters, headings, and subheadings
+      #
+      # a list of HS Codes that are the parents and information branches of the HS Code for the given
+      # destination country, if lower detail is available.
+      #
+      # This API will include information branches if applicable. These do not have HS Codes and cannot be referenced,
+      # but can contain information relevant to deciding the correct HS Code.
+      #
+      # This API is intended to be useful to review the descriptive hierarchy of an HS Code, which can be particularly helpful
+      # when HS Codes can have multiple levels of generic descriptions.
+      # @param country [String] The name or code of the destination country.
+      # @param hsCode [String] The partial or full HS Code for which you would like to view all of the parents.
+      # @return [FetchResult]
+      def get_cross_border_code(country, hsCode)
+        path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}/hierarchy"
+        get(path)
+      end
+
+
       # Test whether a form supports online login verification
       #
       # This API is intended to be useful to identify whether the user should be allowed
@@ -20,6 +41,10 @@ module AvaTax
 
 
       # Retrieve the full list of the AvaFile Forms available
+      #
+      # This API is deprecated.
+      #
+      # Please use the ListTaxForms API.
       #
       # Returns the full list of Avalara-supported AvaFile Forms
       # This API is intended to be useful to identify all the different AvaFile Forms
@@ -40,6 +65,9 @@ module AvaTax
       #
       # A certificate may have multiple attributes that control its behavior. You may apply or remove attributes to a
       # certificate at any time.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -57,6 +85,9 @@ module AvaTax
       #
       # An exemption reason defines why a certificate allows a customer to be exempt
       # for purposes of tax calculation.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -74,6 +105,9 @@ module AvaTax
       #
       # An exposure zone is a location where a certificate can be valid. Exposure zones may indicate a taxing
       # authority or other legal entity to which a certificate may apply.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -154,6 +188,9 @@ module AvaTax
       # The CoverLetter model represents a message sent along with an invitation to use CertExpress to
       # upload certificates. An invitation allows customers to use CertExpress to upload their exemption
       # certificates directly; this cover letter explains why the invitation was sent.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -162,6 +199,40 @@ module AvaTax
       def list_cover_letters(options={})
         path = "/api/v2/definitions/coverletters"
         get(path, options)
+      end
+
+
+      # Lists the next level of HS Codes given a destination country and HS Code prefix.
+      #
+      # Retrieves a list of HS Codes that are the children of the prefix for the given destination country, if
+      # additional children are available.
+      #
+      # HS Code is interchangeable with "tariff code" and definitions are generally unique to a destination country.
+      # An HS Code describes an item and its eligibility/rate for tariffs. HS Codes are organized by
+      # Section/Chapter/Heading/Subheading/Classification.
+      #
+      # This API is intended to be useful to identify the correct HS Code to use for your item.
+      # @param country [String] The name or code of the destination country.
+      # @param hsCode [String] The Section or partial HS Code for which you would like to view the next level of HS Code detail, if more detail is available.
+      # @return [FetchResult]
+      def list_cross_border_codes(country, hsCode)
+        path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}"
+        get(path)
+      end
+
+
+      # List top level HS Code Sections.
+      #
+      # Returns the full list of top level HS Code Sections. Sections are the broadest level of detail for
+      # classifying tariff codes and the items to which they apply. HS Codes are organized
+      # by Section/Chapter/Heading/Subheading/Classification.
+      #
+      # This API is intended to be useful to identify the top level Sections for
+      # further LandedCost HS Code lookups.
+      # @return [FetchResult]
+      def list_cross_border_sections()
+        path = "/api/v2/definitions/crossborder/sections"
+        get(path)
       end
 
 
@@ -568,6 +639,20 @@ module AvaTax
       end
 
 
+      # Retrieve the full list of Avalara-supported postal codes.
+      #
+      # Retrieves the list of Avalara-supported postal codes.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_postal_codes(options={})
+        path = "/api/v2/definitions/postalcodes"
+        get(path, options)
+      end
+
+
       # Retrieve the full list of rate types for each country
       #
       # Returns the full list of Avalara-supported rate type file types
@@ -746,6 +831,21 @@ module AvaTax
       end
 
 
+      # Retrieve the full list of the Tax Forms available
+      #
+      # Returns the full list of Avalara-supported Tax Forms
+      # This API is intended to be useful to identify all the different Tax Forms
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_tax_forms(options={})
+        path = "/api/v2/definitions/taxforms"
+        get(path, options)
+      end
+
+
       # Retrieve the full list of tax sub types
       #
       # Returns the full list of Avalara-supported tax sub-types
@@ -772,6 +872,22 @@ module AvaTax
       # @return [FetchResult]
       def list_tax_type_groups(options={})
         path = "/api/v2/definitions/taxtypegroups"
+        get(path, options)
+      end
+
+
+      # List all defined units of measurement
+      #
+      # List all units of measurement systems defined by Avalara.
+      #
+      # A unit of measurement system is a method of measuring a quantity, such as distance, mass, or others.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_unit_of_measurement(options={})
+        path = "/api/v2/definitions/unitofmeasurements"
         get(path, options)
       end
 

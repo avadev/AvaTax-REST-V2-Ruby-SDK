@@ -19,6 +19,9 @@ module AvaTax
       # * A list of exposure zones indicating where the certificate is valid
       # * A link to the customer that is allowed to use this certificate
       # * Your tax transaction must contain the correct customer code
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The ID number of the company recording this certificate
       # @param model [CertificateModel[]] Certificates to be created
       # @return [CertificateModel[]]
@@ -38,6 +41,9 @@ module AvaTax
       # log onto the administrative website for the product you purchased.
       #
       # Revoked certificates can no longer be used.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @return [Object]
@@ -58,6 +64,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param page [Integer] If you choose `$type`=`Jpeg`, you must specify which page number to retrieve.
@@ -83,6 +92,9 @@ module AvaTax
       # * Customers - Retrieves the list of customers linked to the certificate.
       # * PoNumbers - Retrieves all PO numbers tied to the certificate.
       # * Attributes - Retrieves all attributes applied to the certificate.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * Customers - Retrieves the list of customers linked to the certificate.   * PoNumbers - Retrieves all PO numbers tied to the certificate.   * Attributes - Retrieves all attributes applied to the certificate.
@@ -104,6 +116,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to link to this certificate.
@@ -126,6 +141,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers needed be added to the Certificate for exemption
@@ -147,6 +165,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @return [FetchResult]
@@ -167,6 +188,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.    No options are currently available when fetching customers.
@@ -191,6 +215,9 @@ module AvaTax
       # * Customers - Retrieves the list of customers linked to the certificate.
       # * PoNumbers - Retrieves all PO numbers tied to the certificate.
       # * Attributes - Retrieves all attributes applied to the certificate.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The ID number of the company to search
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * Customers - Retrieves the list of customers linked to the certificate.   * PoNumbers - Retrieves all PO numbers tied to the certificate.   * Attributes - Retrieves all attributes applied to the certificate.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
@@ -215,6 +242,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to unlink from this certificate.
@@ -238,6 +268,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers to unlink from this certificate
@@ -256,6 +289,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The new certificate object that will replace the existing one
@@ -277,6 +313,9 @@ module AvaTax
       # can contain information about a customer's eligibility for exemption from sales or use taxes based on
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param file [Object] The exemption certificate file you wanted to upload. Accepted formats are: PDF, JPEG, TIFF, PNG.

@@ -108,6 +108,21 @@ module AvaTax
       end
 
 
+      # Check the funding configuration of a company
+      #
+      # This API is available by invitation only.
+      # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
+      # Returns the funding configuration of the requested company.
+      # .
+      # @param companyId [Integer] The unique identifier of the company
+      # @param currency [String] The currency of the funding. USD and CAD are the only valid currencies
+      # @return [FundingConfigurationModel[]]
+      def funding_configurations_by_company_and_currency(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/funding/configurations"
+        get(path, options)
+      end
+
+
       # Retrieve a single company
       #
       # Get the company object identified by this URL.

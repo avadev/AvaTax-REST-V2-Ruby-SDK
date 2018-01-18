@@ -12,6 +12,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to the CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param model [CustomerModel[]] The list of customer objects to be created
       # @return [CustomerModel[]]
@@ -30,6 +33,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @return [Object]
@@ -52,6 +58,9 @@ module AvaTax
       # You can use the `$include` parameter to fetch the following additional objects for expansion:
       #
       # * Certificates - Fetch a list of certificates linked to this customer.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] Specify optional additional objects to include in this fetch request
@@ -71,6 +80,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
@@ -90,6 +102,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * Customers - Retrieves the list of customers linked to the certificate.   * PoNumbers - Retrieves all PO numbers tied to the certificate.   * Attributes - Retrieves all attributes applied to the certificate.
@@ -116,6 +131,9 @@ module AvaTax
       # If a customer does not have a certificate on file and they wish to provide one, you should send the customer
       # a CertExpress invitation link so that the customer can upload proof of their exemption certificate. Please
       # see the `CreateCertExpressInvitation` API to create an invitation link for this customer.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param country [String] Search for certificates matching this country. Uses the ISO 3166 two character country code.
@@ -140,6 +158,9 @@ module AvaTax
       # You can use the `$include` parameter to fetch the following additional objects for expansion:
       #
       # * Certificates - Fetch a list of certificates linked to this customer.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param include [String] OPTIONAL - You can specify the value `certificates` to fetch information about certificates linked to the customer.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
@@ -162,6 +183,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
@@ -181,6 +205,9 @@ module AvaTax
       # record in your `CreateTransaction` API call. AvaTax will search for this `customerCode` value and
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
+      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The new customer model that will replace the existing record at this URL
