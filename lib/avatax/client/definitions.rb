@@ -66,8 +66,8 @@ module AvaTax
       # A certificate may have multiple attributes that control its behavior. You may apply or remove attributes to a
       # certificate at any time.
       #
-      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
-      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
+      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
+      # (as your account gets provisioned). Thank you for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -86,8 +86,8 @@ module AvaTax
       # An exemption reason defines why a certificate allows a customer to be exempt
       # for purposes of tax calculation.
       #
-      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
-      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
+      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
+      # (as your account gets provisioned). Thank you for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -106,8 +106,8 @@ module AvaTax
       # An exposure zone is a location where a certificate can be valid. Exposure zones may indicate a taxing
       # authority or other legal entity to which a certificate may apply.
       #
-      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
-      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
+      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
+      # (as your account gets provisioned). Thank you for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -189,8 +189,8 @@ module AvaTax
       # upload certificates. An invitation allows customers to use CertExpress to upload their exemption
       # certificates directly; this cover letter explains why the invitation was sent.
       #
-      # Please note that if this is your first call to CertCapture endpoints, you may experience upto 3 minute delay because your
-      # account needs to be provisioned at CertCapture side. Sorry for the inconvenience and thanks for your patience.
+      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
+      # (as your account gets provisioned). Thank you for your patience.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
