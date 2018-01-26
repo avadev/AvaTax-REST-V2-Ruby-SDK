@@ -19,9 +19,11 @@ module AvaTax
       }.merge(connection_options)
 
       Faraday.new(options) do |faraday|
-        Oj.default_options = {
-          bigdecimal_load: :bigdecimal
-        }
+        if Gem::Version.new(RUBY_VERSION) > Gem::Version.new('2.2.2')
+          Oj.default_options = {
+            bigdecimal_load: :bigdecimal
+          }
+        end
 
         faraday.response :oj, content_type: /\bjson$/
         faraday.basic_auth(username, password)
