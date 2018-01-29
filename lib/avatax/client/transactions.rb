@@ -136,32 +136,41 @@ module AvaTax
       #
       # After this API call succeeds, the transaction will have a new URL matching its new `code`.
       #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to change
+      # @param documentType [String] (Optional): The document type of the transaction to change document code. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
       # @param model [Object] The code change request you wish to execute
       # @return [Object]
-      def change_transaction_code(companyCode, transactionCode, model)
+      def change_transaction_code(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/changecode"
-        post(path, model)
+        post(path, model, options)
       end
 
 
       # Commit a transaction for reporting
       #
-      # Marks a transaction by changing its status to 'Committed'.
+      # Marks a transaction by changing its status to `Committed`.
+      #
       # Transactions that are committed are available to be reported to a tax authority by Avalara Managed Returns.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
       # Any changes made to a committed transaction will generate a transaction history.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to commit
+      # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
       # @param model [Object] The commit request you wish to execute
       # @return [Object]
-      def commit_transaction(companyCode, transactionCode, model)
+      def commit_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/commit"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -400,15 +409,18 @@ module AvaTax
       #
       # This API is only available to customers in Sandbox with AvaTaxPro subscription. On production servers, this API is available by invitation only.
       #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to lock
+      # @param documentType [String] (Optional): The document type of the transaction to lock. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
       # @param model [Object] The lock request you wish to execute
       # @return [Object]
-      def lock_transaction(companyCode, transactionCode, model)
+      def lock_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/lock"
-        post(path, model)
+        post(path, model, options)
       end
 
 
@@ -448,6 +460,7 @@ module AvaTax
       # @param companyCode [String] The code of the company that made the original sale
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
+      # @param documentType [String] (Optional): The document type of the transaction to refund. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})
@@ -458,47 +471,68 @@ module AvaTax
 
       # Perform multiple actions on a transaction
       #
-      # Performs the same functions as /verify, /changecode, and /commit. You may specify one or many actions in each call to this endpoint.
+      # Performs one or more actions against the current transaction uniquely identified by this URL.
+      #
+      # The `SettleTransaction` API call can perform the work of `ChangeCode`, `VerifyTransaction`, and `CommitTransaction`.
+      #
+      # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
+      # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
+      # This API is available for users who want to execute more than one action at a time.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
-      # @param model [Object] The settle request containing the actions you wish to execute
+      # @param documentType [String] (Optional): The document type of the transaction to settle. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
-      def settle_transaction(companyCode, transactionCode, model)
+      def settle_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/settle"
-        post(path, model)
+        post(path, model, options)
       end
 
 
       # Verify a transaction
       #
       # Verifies that the transaction uniquely identified by this URL matches certain expected values.
+      #
       # If the transaction does not match these expected values, this API will return an error code indicating which value did not match.
+      #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
-      # @param model [Object] The settle request you wish to execute
+      # @param documentType [String] (Optional): The document type of the transaction to verify. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
-      def verify_transaction(companyCode, transactionCode, model)
+      def verify_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/verify"
-        post(path, model)
+        post(path, model, options)
       end
 
 
       # Void a transaction
       #
       # Voids the current transaction uniquely identified by this URL.
+      #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
-      # When you void a transaction, that transaction's status is recorded as 'DocVoided'.
+      #
+      # When you void a transaction, that transaction's status is recorded as `DocVoided`.
+      #
+      # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
+      #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are no longer available to be voided.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to void
+      # @param documentType [String] (Optional): The document type of the transaction to void. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
       # @param model [Object] The void request you wish to execute
       # @return [Object]
-      def void_transaction(companyCode, transactionCode, model)
+      def void_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/void"
-        post(path, model)
+        post(path, model, options)
       end
 
     end
