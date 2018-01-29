@@ -1,7 +1,7 @@
 require File.expand_path('../spec_helper', __FILE__)
-begin
+if File.exist?(File.expand_path('../credentials.yaml', __FILE__))
   credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
-rescue
+else
   credentials = {
     "endpoint" => 'https://sandbox-rest.avatax.com',
     "username" => ENV['SANDBOX_USERNAME'],

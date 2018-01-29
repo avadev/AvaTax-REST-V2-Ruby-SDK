@@ -4,12 +4,12 @@ require 'yaml'
 
 
 AvaTax.configure do |config|
-  begin
+  if File.exist?(File.expand_path('../credentials.yaml', __FILE__))
     credentials = YAML.load_file(File.expand_path('../credentials.yaml', __FILE__))
     config.endpoint = credentials['endpoint']
     config.username = credentials['username']
     config.password = credentials['password']
-  rescue
+  else
     config.endpoint = 'https://sandbox-rest.avatax.com'
     config.username = ENV['SANDBOX_USERNAME']
     config.password = ENV['SANDBOX_PASSWORD']
