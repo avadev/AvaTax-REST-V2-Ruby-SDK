@@ -49,11 +49,12 @@ module AvaTax
       # no longer available for adjustments.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to adjust
+      # @param documentType [String] (Optional): The document type of the transaction to adjust. (See DocumentType::* for a list of allowable values)
       # @param model [Object] The adjustment you wish to make
       # @return [Object]
-      def adjust_transaction(companyCode, transactionCode, model)
+      def adjust_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/adjust"
-        post(path, model)
+        post(path, model, options)
       end
 
 

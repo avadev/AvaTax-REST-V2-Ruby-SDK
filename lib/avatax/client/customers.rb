@@ -13,8 +13,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param model [CustomerModel[]] The list of customer objects to be created
       # @return [CustomerModel[]]
@@ -34,8 +36,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @return [Object]
@@ -59,8 +63,10 @@ module AvaTax
       #
       # * Certificates - Fetch a list of certificates linked to this customer.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] Specify optional additional objects to include in this fetch request
@@ -81,8 +87,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
@@ -103,8 +111,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * Customers - Retrieves the list of customers linked to the certificate.   * PoNumbers - Retrieves all PO numbers tied to the certificate.   * Attributes - Retrieves all attributes applied to the certificate.
@@ -132,8 +142,10 @@ module AvaTax
       # a CertExpress invitation link so that the customer can upload proof of their exemption certificate. Please
       # see the `CreateCertExpressInvitation` API to create an invitation link for this customer.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param country [String] Search for certificates matching this country. Uses the ISO 3166 two character country code.
@@ -159,8 +171,10 @@ module AvaTax
       #
       # * Certificates - Fetch a list of certificates linked to this customer.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param include [String] OPTIONAL - You can specify the value `certificates` to fetch information about certificates linked to the customer.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
@@ -184,8 +198,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
@@ -206,8 +222,10 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
+      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
+      # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The new customer model that will replace the existing record at this URL

@@ -66,8 +66,8 @@ module AvaTax
       # A certificate may have multiple attributes that control its behavior. You may apply or remove attributes to a
       # certificate at any time.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
+      # check and provision account.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -86,8 +86,8 @@ module AvaTax
       # An exemption reason defines why a certificate allows a customer to be exempt
       # for purposes of tax calculation.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
+      # check and provision account.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -106,8 +106,8 @@ module AvaTax
       # An exposure zone is a location where a certificate can be valid. Exposure zones may indicate a taxing
       # authority or other legal entity to which a certificate may apply.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
+      # check and provision account.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -189,8 +189,8 @@ module AvaTax
       # upload certificates. An invitation allows customers to use CertExpress to upload their exemption
       # certificates directly; this cover letter explains why the invitation was sent.
       #
-      # You may experience up to a three minute delay on your very first call to the exemption related endpoints
-      # (as your account gets provisioned). Thank you for your patience.
+      # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
+      # check and provision account.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
@@ -233,6 +233,23 @@ module AvaTax
       def list_cross_border_sections()
         path = "/api/v2/definitions/crossborder/sections"
         get(path)
+      end
+
+
+      # List all ISO 4217 currencies supported by AvaTax.
+      #
+      # Lists all ISO 4217 currencies supported by AvaTax.
+      #
+      # This API produces a list of currency codes that can be used when calling AvaTax. The values from this API can be used to fill out the
+      # `currencyCode` field in a `CreateTransactionModel`.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_currencies(options={})
+        path = "/api/v2/definitions/currencies"
+        get(path, options)
       end
 
 
@@ -649,6 +666,28 @@ module AvaTax
       # @return [FetchResult]
       def list_postal_codes(options={})
         path = "/api/v2/definitions/postalcodes"
+        get(path, options)
+      end
+
+
+      # List all customs duty programs recognized by AvaTax
+      #
+      # List all preferred customs duty programs recognized by AvaTax.
+      #
+      # A customs duty program is an optional program you can use to obtain favorable treatment from customs and duty agents.
+      # An example of a preferred program is NAFTA, which provides preferential rates for products being shipped from neighboring
+      # countries.
+      #
+      # To select a preferred program for calculating customs and duty rates, call this API to find the appropriate code for your
+      # preferred program. Next, set the parameter `AvaTax.LC.PreferredProgram` in your `CreateTransaction` call to the code of
+      # the program.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_preferred_programs(options={})
+        path = "/api/v2/definitions/preferredprograms"
         get(path, options)
       end
 

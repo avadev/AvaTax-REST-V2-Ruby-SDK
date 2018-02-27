@@ -63,7 +63,7 @@ module AvaTax
       # call the `CreateTransaction` API call. When using this file, your software will be unable to
       # handle complex tax rules such as:
       #
-      # * Zip+9 - This tax file does not contain
+      # * Zip+4 - This tax file contains five digit zip codes only.
       # * Different product types - This tax file contains tangible personal property tax rates only.
       # * Mixed sourcing - This tax file cannot be used to resolve origin-based taxes.
       # * Threshold-based taxes - This tax file does not contain information about thresholds.
@@ -71,6 +71,8 @@ module AvaTax
       # If you use this file to provide default tax rates, please ensure that your software calls `CreateTransaction`
       # to reconcile the actual transaction and determine the difference between the estimated general tax
       # rate and the final transaction tax.
+      #
+      # For more detailed tax content, please use the `BuildTaxContentFile` API which allows usage of exact items and exact locations.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
       # @return [Object]
       def download_tax_rates_by_zip_code(date)
