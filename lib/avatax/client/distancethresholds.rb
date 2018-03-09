@@ -73,7 +73,7 @@ module AvaTax
 
       # Retrieve all DistanceThreshold objects
       #
-      # Lists all DistanceThreshold objects that belong to this company.
+      # Lists all DistanceThreshold objects that belong to this account.
       #
       # A company-distance-threshold model indicates the distance between a company
       # and the taxing borders of various countries. Distance thresholds are necessary
