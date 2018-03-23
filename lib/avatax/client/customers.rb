@@ -62,6 +62,7 @@ module AvaTax
       # You can use the `$include` parameter to fetch the following additional objects for expansion:
       #
       # * Certificates - Fetch a list of certificates linked to this customer.
+      # * CustomFields - Fetch a list of custom fields associated to this customer.
       #
       # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
       # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
