@@ -63,10 +63,27 @@ module AvaTax
       end
 
 
+      # Get information about a username.
+      #
+      # You may call this API prior to creating a user, to check if a particular username is available for use. Using this API, you can
+      # present a friendly experience prior to attempting to create a new user object.
+      #
+      # Please ensure that the query string is url encoded if you wish to check information for a user that contains url-sensitive characters.
+      # @param username [String] The username to search.
+      # @return [Object]
+      def get_username(options={})
+        path = "/api/v2/usernames"
+        get(path, options)
+      end
+
+
       # Retrieve users for this account
       #
       # List all user objects attached to this account.
       # A user represents one person with access privileges to make API calls and work with a specific account.
+      #
+      # When an API is called using a legacy AvaTax License Key, the API log entry is recorded as being performed by a special user attached to that license key.
+      # By default, this API will not return a listing of license key users. Users with registrar-level security may call this API to list license key users.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
@@ -86,7 +103,12 @@ module AvaTax
       # Retrieve all users
       #
       # Get multiple user objects across all accounts.
-      # A user represents one person with access privileges to make API calls and work with a specific account.
+      #
+      # A user represents one person or set of credentials with access privileges to make API calls and work with a specific account. A user can be authenticated
+      # via either username / password authentication, an OpenID / OAuth Bearer Token, or a legacy AvaTax License Key.
+      #
+      # When an API is called using a legacy AvaTax License Key, the API log entry is recorded as being performed by a special user attached to that license key.
+      # By default, this API will not return a listing of license key users. Users with registrar-level security may call this API to list license key users.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.

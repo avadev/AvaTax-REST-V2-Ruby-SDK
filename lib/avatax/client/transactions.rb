@@ -289,9 +289,13 @@ module AvaTax
 
       # Retrieve a single transaction by code
       #
-      # Get the current `SalesInvoice` transaction identified by this URL.
+      # Get the current transaction identified by this company code, transaction code, and document type.
       #
-      # To fetch other kinds of transactions, use `GetTransactionByCodeAndType`.
+      # A transaction is uniquely identified by `companyCode`, `code` (often called Transaction Code), and `documentType`.
+      #
+      # For compatibility purposes, when this API finds multiple transactions with the same transaction code, and if you have not specified
+      # the `type` parameter to this API, it will default to selecting the `SalesInvoices` transaction. To change this behavior, use the
+      # optional `documentType` parameter to specify the specific document type you wish to find.
       #
       # If this transaction was adjusted, the return value of this API will be the current transaction with this code.
       #
@@ -305,6 +309,7 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
+      # @param documentType [String] (Optional): The document type of the transaction to retrieve (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_code(companyCode, transactionCode, options={})
@@ -315,18 +320,7 @@ module AvaTax
 
       # Retrieve a single transaction by code
       #
-      # Get the current transaction identified by this URL.
-      #
-      # If this transaction was adjusted, the return value of this API will be the current transaction with this code.
-      #
-      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
-      #
-      # * Lines
-      # * Details (implies lines)
-      # * Summary (implies details)
-      # * Addresses
-      # * SummaryOnly (omit lines and details - reduces API response size)
-      # * LinesOnly (omit details - reduces API response size)
+      # DEPRECATED: Please use the `GetTransactionByCode` API instead.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
@@ -462,6 +456,7 @@ module AvaTax
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param documentType [String] (Optional): The document type of the transaction to refund. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param useTaxDateOverride [object] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})

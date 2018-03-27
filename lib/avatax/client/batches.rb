@@ -6,9 +6,19 @@ module AvaTax
       # Create a new batch
       #
       # Create one or more new batch objects attached to this company.
-      # When you create a batch, it is added to the AvaTaxBatch.Batch table and will be processed in the order it was received.
-      # You may fetch a batch to check on its status and retrieve the results of the batch operation.
+      #
       # Each batch object may have one or more file objects (currently only one file is supported).
+      #
+      # When a batch is created, it is added to the AvaTax Batch Queue and will be
+      # processed as quickly as possible in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # Because the batch system processes with a degree of concurrency, and
+      # because of batch sizes in the queue vary, AvaTax API is unable to accurately
+      # predict when a batch will complete. If high performance processing is
+      # required, please use the
+      # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [BatchModel[]] The batch you wish to create.
       # @return [BatchModel[]]
@@ -22,7 +32,7 @@ module AvaTax
       #
       # 
       # @param companyId [Integer] The ID of the company that owns this batch.
-      # @param id [Integer] The ID of the batch you wish to delete.
+      # @param id [Integer] The ID of the batch to delete.
       # @return [ErrorDetail[]]
       def delete_batch(companyId, id)
         path = "/api/v2/companies/#{companyId}/batches/#{id}"
@@ -45,10 +55,21 @@ module AvaTax
 
       # Retrieve a single batch
       #
-      # Get the batch object identified by this URL.
-      # A batch object is a large collection of API calls stored in a compact file.
-      # When you create a batch, it is added to the AvaTax Batch Queue and will be processed in the order it was received.
-      # You may fetch a batch to check on its status and retrieve the results of the batch operation.
+      # Get the batch object identified by this URL. A batch object is a large
+      # collection of API calls stored in a compact file.
+      #
+      # Use this endpoint to retrieve the results or check the status of a batch.
+      #
+      # When a batch is created, it is added to the AvaTax Batch Queue and will be
+      # processed as quickly as possible in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # Because the batch system processes with a degree of concurrency, and
+      # because of batch sizes in the queue vary, AvaTax API is unable to accurately
+      # predict when a batch will complete. If high performance processing is
+      # required, please use the
+      # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       # @param companyId [Integer] The ID of the company that owns this batch
       # @param id [Integer] The primary key of this batch
       # @return [Object]
@@ -61,11 +82,26 @@ module AvaTax
       # Retrieve all batches for this company
       #
       # List all batch objects attached to the specified company.
+      #
       # A batch object is a large collection of API calls stored in a compact file.
-      # When you create a batch, it is added to the AvaTax Batch Queue and will be processed in the order it was received.
-      # You may fetch a batch to check on its status and retrieve the results of the batch operation.
-      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter;
+      # full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # Use [GetBatch](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Batches/GetBatch/)
+      # to retrieve the results, or check the status, of an individual batch.
+      #
+      # When a batch is created, it is added to the AvaTax Batch Queue and will be
+      # processed as quickly as possible in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # Because the batch system processes with a degree of concurrency, and
+      # because of batch sizes in the queue vary, AvaTax API is unable to accurately
+      # predict when a batch will complete. If high performance processing is
+      # required, please use the
+      # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       # @param companyId [Integer] The ID of the company that owns these batches
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -82,12 +118,23 @@ module AvaTax
       # Retrieve all batches
       #
       # Get multiple batch objects across all companies.
-      # A batch object is a large collection of API calls stored in a compact file.
-      # When you create a batch, it is added to the AvaTax Batch Queue and will be processed in the order it was received.
-      # You may fetch a batch to check on its status and retrieve the results of the batch operation.
       #
-      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      # A batch object is a large collection of API calls stored in a compact file.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter;
+      # full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # When a batch is created, it is added to the AvaTax Batch Queue and will be
+      # processed as quickly as possible in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # Because the batch system processes with a degree of concurrency, and
+      # because of batch sizes in the queue vary, AvaTax API is unable to accurately
+      # predict when a batch will complete. If high performance processing is
+      # required, please use the
+      # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.

@@ -214,10 +214,14 @@ module AvaTax
       # This API is intended to be useful to identify the correct HS Code to use for your item.
       # @param country [String] The name or code of the destination country.
       # @param hsCode [String] The Section or partial HS Code for which you would like to view the next level of HS Code detail, if more detail is available.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_cross_border_codes(country, hsCode)
+      def list_cross_border_codes(country, hsCode, options={})
         path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}"
-        get(path)
+        get(path, options)
       end
 
 
