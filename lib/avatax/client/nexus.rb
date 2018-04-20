@@ -13,12 +13,39 @@ module AvaTax
       # Note that not all fields within a nexus can be updated; Avalara publishes a list of all defined nexus at the
       # '/api/v2/definitions/nexus' endpoint.
       # You may only define nexus matching the official list of declared nexus.
-      # Please allow 1 minute before start using the created Nexus in your transactions.
+      # Please allow 1 minute before using the created nexus in your transactions.
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
       def create_nexus(companyId, model)
         path = "/api/v2/companies/#{companyId}/nexus"
+        post(path, model)
+      end
+
+
+      # Creates nexus for a list of addresses.
+      #
+      # This call is intended to simplify adding all applicable nexus to a company, for an address or addresses. Calling this
+      # API declares nexus for this company, for the list of addresses provided,
+      # for the date range provided. You may also use this API to extend effective date on an already-declared nexus.
+      #
+      # The concept of 'Nexus' indicates a place where your company has sufficient physical presence and is obligated
+      # to collect and remit transaction-based taxes.
+      #
+      # When defining companies in AvaTax, you must declare nexus for your company in order to correctly calculate tax
+      # in all jurisdictions affected by your transactions.
+      #
+      # Note that not all fields within a nexus can be updated; Avalara publishes a list of all defined nexus at the
+      # '/api/v2/definitions/nexus' endpoint.
+      #
+      # You may only define nexus matching the official list of declared nexus.
+      #
+      # Please allow 1 minute before using the created nexus in your transactions.
+      # @param companyId [Integer] The ID of the company that will own this nexus.
+      # @param model [DeclareNexusByAddressModel[]] The nexus you wish to create.
+      # @return [NexusByAddressModel[]]
+      def declare_nexus_by_address(companyId, model)
+        path = "/api/v2/companies/#{companyId}/nexus/byaddress"
         post(path, model)
       end
 
@@ -131,7 +158,7 @@ module AvaTax
       # You may only define nexus matching the official list of declared nexus.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
-      # Please allow 1 minute to start seeing your updated Nexus taking effect on your transactions.
+      # Please allow 1 minute for your updated Nexus to take effect on your transactions.
       # @param companyId [Integer] The ID of the company that this nexus belongs to.
       # @param id [Integer] The ID of the nexus you wish to update
       # @param model [Object] The nexus object you wish to update.

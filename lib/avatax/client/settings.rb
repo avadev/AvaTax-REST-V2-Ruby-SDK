@@ -6,12 +6,15 @@ module AvaTax
       # Create a new setting
       #
       # Create one or more new setting objects attached to this company.
-      # A 'setting' is a piece of user-defined data that can be attached to a company, and it provides you the ability to store information
-      # not defined or managed by Avalara.
-      # You may create, update, and delete your own settings objects as required, and there is no mandatory data format for the 'name' and
-      # 'value' data fields.
-      # To ensure correct operation of other programs or connectors, please create a new GUID for your application and use that value for
-      # the 'set' data field.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
       # @param companyId [Integer] The ID of the company that owns this setting.
       # @param model [SettingModel[]] The setting you wish to create.
       # @return [SettingModel[]]
@@ -24,6 +27,15 @@ module AvaTax
       # Delete a single setting
       #
       # Mark the setting object at this URL as deleted.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
       # @param companyId [Integer] The ID of the company that owns this setting.
       # @param id [Integer] The ID of the setting you wish to delete.
       # @return [ErrorDetail[]]
@@ -36,12 +48,15 @@ module AvaTax
       # Retrieve a single setting
       #
       # Get a single setting object by its unique ID.
-      # A 'setting' is a piece of user-defined data that can be attached to a company, and it provides you the ability to store information
-      # not defined or managed by Avalara.
-      # You may create, update, and delete your own settings objects as required, and there is no mandatory data format for the 'name' and
-      # 'value' data fields.
-      # To ensure correct operation of other programs or connectors, please create a new GUID for your application and use that value for
-      # the 'set' data field.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
       # @param companyId [Integer] The ID of the company that owns this setting
       # @param id [Integer] The primary key of this setting
       # @return [Object]
@@ -54,12 +69,15 @@ module AvaTax
       # Retrieve all settings for this company
       #
       # List all setting objects attached to this company.
-      # A 'setting' is a piece of user-defined data that can be attached to a company, and it provides you the ability to store information
-      # not defined or managed by Avalara.
-      # You may create, update, and delete your own settings objects as required, and there is no mandatory data format for the 'name' and
-      # 'value' data fields.
-      # To ensure correct operation of other programs or connectors, please create a new GUID for your application and use that value for
-      # the 'set' data field.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
@@ -79,12 +97,15 @@ module AvaTax
       # Retrieve all settings
       #
       # Get multiple setting objects across all companies.
-      # A 'setting' is a piece of user-defined data that can be attached to a company, and it provides you the ability to store information
-      # not defined or managed by Avalara.
-      # You may create, update, and delete your own settings objects as required, and there is no mandatory data format for the 'name' and
-      # 'value' data fields.
-      # To ensure correct operation of other programs or connectors, please create a new GUID for your application and use that value for
-      # the 'set' data field.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
@@ -103,14 +124,19 @@ module AvaTax
       # Update a single setting
       #
       # Replace the existing setting object at this URL with an updated object.
-      # A 'setting' is a piece of user-defined data that can be attached to a company, and it provides you the ability to store information
-      # not defined or managed by Avalara.
-      # You may create, update, and delete your own settings objects as required, and there is no mandatory data format for the 'name' and
-      # 'value' data fields.
-      # To ensure correct operation of other programs or connectors, please create a new GUID for your application and use that value for
-      # the 'set' data field.
-      # All data from the existing object will be replaced with data in the object you PUT.
-      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # The company settings system is a metadata system that you can use to store extra information
+      # about a company. Your integration or connector could use this data storage to keep track of
+      # preference information, reminders, or any other storage that would need to persist even if
+      # the customer uninstalls your application.
+      #
+      # A setting can refer to any type of data you need to remember about this company object.
+      # When creating this object, you may define your own `set`, `name`, and `value` parameters.
+      # To define your own values, please choose a `set` name that begins with `X-` to indicate an extension.
+      #
+      # All data from the existing object will be replaced with data in the object you `PUT`.
+      #
+      # To set a field's value to `null`, you may either set its value to `null` or omit that field from the object when calling update.
       # @param companyId [Integer] The ID of the company that this setting belongs to.
       # @param id [Integer] The ID of the setting you wish to update
       # @param model [Object] The setting you wish to update.
