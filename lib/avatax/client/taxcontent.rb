@@ -46,7 +46,7 @@ module AvaTax
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default)
       # @param format [String] The format of the file (JSON by default) (See PointOfSaleFileType::* for a list of allowable values)
       # @param partnerId [String] If specified, requests a custom partner-formatted version of the file. (See PointOfSalePartnerId::* for a list of allowable values)
-      # @param includeJurisCodes [object] When true, the file will include jurisdiction codes in the result.
+      # @param includeJurisCodes [Boolean] When true, the file will include jurisdiction codes in the result.
       # @return [Object]
       def build_tax_content_file_for_location(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
@@ -74,10 +74,11 @@ module AvaTax
       #
       # For more detailed tax content, please use the `BuildTaxContentFile` API which allows usage of exact items and exact locations.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
+      # @param region [String] If the region is provided, this API is going to generate the tax rate per zipcode for only the region specified.
       # @return [Object]
-      def download_tax_rates_by_zip_code(date)
+      def download_tax_rates_by_zip_code(date, options={})
         path = "/api/v2/taxratesbyzipcode/download/#{date}"
-        get(path)
+        get(path, options)
       end
 
     end

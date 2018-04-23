@@ -13,6 +13,9 @@ module AvaTax
       # identify any certificates linked to this `customer` object. If any certificate applies to the transaction,
       # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
       #
+      # A nested object such as CustomFields could be specified and created along with the customer object. To fetch the
+      # nested object, please call 'GetCustomer' API with appropriate $include parameters.
+      #
       # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
       # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
       # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document

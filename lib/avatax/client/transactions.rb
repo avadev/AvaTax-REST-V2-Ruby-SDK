@@ -456,7 +456,7 @@ module AvaTax
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param documentType [String] (Optional): The document type of the transaction to refund. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
-      # @param useTaxDateOverride [object] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
+      # @param useTaxDateOverride [Boolean] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})
@@ -485,6 +485,22 @@ module AvaTax
       def settle_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/settle"
         post(path, model, options)
+      end
+
+
+      # Uncommit a transaction for reporting
+      #
+      # Adjusts a transaction by changing it to an uncommitted status.
+      #
+      # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered `locked` and are
+      # no longer available to be uncommitted.
+      # @param companyCode [String] The company code of the company that recorded this transaction
+      # @param transactionCode [String] The transaction code to commit
+      # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @return [Object]
+      def uncommit_transaction(companyCode, transactionCode, options={})
+        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/uncommit"
+        post(path, options)
       end
 
 

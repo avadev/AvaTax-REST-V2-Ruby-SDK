@@ -82,7 +82,7 @@ module AvaTax
       # The `ExportDocumentLine` report produces information about invoice lines recorded within your account.
       # @param companyId [Integer] The unique ID number of the company to report on.
       # @param model [Object] Options that may be configured to customize the report.
-      # @return [Object]
+      # @return [ReportModel[]]
       def initiate_export_document_line_report(companyId, model)
         path = "/api/v2/companies/#{companyId}/reports/exportdocumentline/initiate"
         post(path, model)

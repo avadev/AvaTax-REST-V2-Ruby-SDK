@@ -7,7 +7,7 @@ module AvaTax
       #
       # Call this API to obtain a free AvaTax sandbox account.
       #
-      # This API is free to use. No authentication credentials are required to call this API.
+      # This API is free to use. No authentication credentials are required to call this API. You must read and accept Avalara's terms and conditions.
       # The account will grant a full trial version of AvaTax (e.g. AvaTaxPro) for a limited period of time.
       # After this introductory period, you may continue to use the free TaxRates API.
       #

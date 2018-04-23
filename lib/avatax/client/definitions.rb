@@ -79,7 +79,7 @@ module AvaTax
       end
 
 
-      # List certificate attributes used by a company
+      # List the certificate exempt reasons defined by a company
       #
       # List the certificate exempt reasons defined by a company.
       #
@@ -119,10 +119,9 @@ module AvaTax
       end
 
 
-      # Retrieve the full list of communications transactiontypes
+      # Retrieve the full list of communications service types
       #
-      # Returns full list of communications transaction types which
-      # are accepted in communication tax calculation requests.
+      # Returns full list of service types for a given transaction type ID.
       # @param id [Integer] The transaction type ID to examine
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
