@@ -1,4 +1,5 @@
 require 'hashie'
+require 'faraday'
 require 'json'
 
 module AvaTax
@@ -32,8 +33,11 @@ module AvaTax
         end
       end
 
-      #::Hashie::Mash.new response.body
-      response.body
+      if self.faraday_response
+        response
+      else
+        #::Hashie::Mash.new response.body
+        response.body
     end
 
   end
