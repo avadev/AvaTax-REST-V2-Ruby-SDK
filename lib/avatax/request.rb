@@ -33,12 +33,11 @@ module AvaTax
         end
       end
 
-      if self.faraday_response
+      if faraday_response
         response
       else
-        #::Hashie::Mash.new response.body
         response.body
+      end
     end
-
   end
 end
