@@ -4,6 +4,8 @@ module AvaTax
 
   module Connection
     private
+    AUTHORIZATION_FILTER_REGEX = /(Authorization\:\ \"Basic\ )(\w+)\=/
+    REMOVED_LABEL = '\1[REMOVED]'
 
     def connection
       client_id = "#{app_name};#{app_version};RubySdk;#{AvaTax::VERSION.dup};#{machine_name}"
@@ -30,7 +32,13 @@ module AvaTax
 
         if logger
           faraday.response :logger do |logger|
-            logger.filter(/(Authorization\:\ \"Basic\ )(\w+)\=/, '\1[REMOVED]')
+            logger.filter(AUTHORIZATION_FILTER_REGEX, REMOVED_LABEL)
+          end
+        end
+
+        if custom_logger
+          faraday.response :logger, custom_logger, custom_logger_options do |logger|
+            logger.filter(AUTHORIZATION_FILTER_REGEX, REMOVED_LABEL)
           end
         end
 

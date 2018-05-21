@@ -15,6 +15,8 @@ module AvaTax
       :password,
       :connection_options,
       :logger,
+      :custom_logger,
+      :custom_logger_options,
       :proxy,
       :faraday_response
     ].freeze
@@ -28,6 +30,8 @@ module AvaTax
     DEFAULT_PASSWORD = nil
     DEFAULT_CONNECTION_OPTIONS = {}
     DEFAULT_LOGGER = false
+    DEFAULT_CUSTOM_LOGGER = nil
+    DEFAULT_CUSTOM_LOGGER_OPTIONS = {}
     DEFAULT_PROXY = nil
     DEFAULT_FARADAY_RESPONSE = false
 
@@ -59,6 +63,8 @@ module AvaTax
       self.password = DEFAULT_PASSWORD
       self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self.logger = DEFAULT_LOGGER
+      self.custom_logger = DEFAULT_CUSTOM_LOGGER
+      self.custom_logger_options = DEFAULT_CUSTOM_LOGGER_OPTIONS
       self.proxy = DEFAULT_PROXY
       self.faraday_response = DEFAULT_FARADAY_RESPONSE
     end
