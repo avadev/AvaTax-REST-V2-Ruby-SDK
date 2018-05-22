@@ -16,7 +16,8 @@ module AvaTax
       :connection_options,
       :logger,
       :proxy,
-      :faraday_response
+      :faraday_response,
+      :response_big_decimal_conversion
     ].freeze
 
     DEFAULT_APP_NAME = nil
@@ -30,6 +31,7 @@ module AvaTax
     DEFAULT_LOGGER = false
     DEFAULT_PROXY = nil
     DEFAULT_FARADAY_RESPONSE = false
+    DEFAULT_RESPONSE_BIG_DECIMAL_CONVERSION = true
 
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -61,6 +63,7 @@ module AvaTax
       self.logger = DEFAULT_LOGGER
       self.proxy = DEFAULT_PROXY
       self.faraday_response = DEFAULT_FARADAY_RESPONSE
+      self.response_big_decimal_conversion = DEFAULT_RESPONSE_BIG_DECIMAL_CONVERSION
     end
 
   end

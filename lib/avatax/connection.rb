@@ -19,7 +19,7 @@ module AvaTax
       }.merge(connection_options)
 
       Faraday.new(options) do |faraday|
-        if Gem::Version.new(RUBY_VERSION) > Gem::Version.new('2.2.2')
+        if Gem::Version.new(RUBY_VERSION) > Gem::Version.new('2.2.2') and response_big_decimal_conversion
           Oj.default_options = {
             bigdecimal_load: :bigdecimal
           }
