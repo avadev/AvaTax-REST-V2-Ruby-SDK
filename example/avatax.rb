@@ -18,11 +18,11 @@ end
 
 @client = AvaTax::Client.new(:logger => true)
 
-#puts @client.query_companies
+# puts @client.query_companies
 
 createTransactionModel = {
   type: 'SalesInvoice',
-  companyCode: 'DEFAULT',
+  companyCode: '12670',
   date: '2017-06-05',
   customerCode: 'ABC',
   "addresses": {
@@ -44,4 +44,4 @@ createTransactionModel = {
   lines: [{amount: 100}]
 }
 transaction = @client.create_transaction(createTransactionModel)
-puts transaction
+puts JSON.pretty_generate(transaction)
