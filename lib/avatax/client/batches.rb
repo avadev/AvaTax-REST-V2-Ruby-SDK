@@ -30,7 +30,16 @@ module AvaTax
 
       # Delete a single batch
       #
-      # 
+      # Marks the batch identified by this URL as deleted.
+      #
+      # If you attempt to delete a batch that is being processed, you will receive an error message.
+      # Deleting a batch does not delete any transactions that were created by importing the batch.
+      #
+      # Because the batch system processes with a degree of concurrency, and
+      # because of batch sizes in the queue vary, AvaTax API is unable to accurately
+      # predict when a batch will complete. If high performance processing is
+      # required, please use the
+      # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param id [Integer] The ID of the batch to delete.
       # @return [ErrorDetail[]]
