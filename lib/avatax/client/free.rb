@@ -5,18 +5,16 @@ module AvaTax
 
       # FREE API - Request a free trial of AvaTax
       #
-      # Call this API to obtain a free AvaTax sandbox account.
+      # Call this API to obtain a free AvaTax account.
       #
-      # This API is free to use. No authentication credentials are required to call this API. You must read and accept Avalara's terms and conditions.
-      # The account will grant a full trial version of AvaTax (e.g. AvaTaxPro) for a limited period of time.
-      # After this introductory period, you may continue to use the free TaxRates API.
+      # This API is free to use. No authentication credentials are required to call this API. You must read and
+      # accept [Avalara's terms and conditions](https://www1.avalara.com/us/en/legal/terms.html) for the account to be
+      # created.
       #
-      # Limitations on free trial accounts:
+      # If all conditions are met, this API will grant a free trial version of AvaTax. For a list of functionality
+      # available in the free trial and its limitations, please see the [AvaTax Developer Website Free Trial page](https://developer.avalara.com/avatax/signup/).
       #
-      # * Only one free trial per company.
-      # * The free trial account does not expire.
-      # * Includes a limited time free trial of AvaTaxPro; after that date, the free TaxRates API will continue to work.
-      # * Each free trial account must have its own valid email address.
+      # After your free trial concludes, you will still be able to use the [Free AvaTax API Suite](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Free/).
       # @param model [Object] Required information to provision a free trial account.
       # @return [Object]
       def request_free_trial(model)

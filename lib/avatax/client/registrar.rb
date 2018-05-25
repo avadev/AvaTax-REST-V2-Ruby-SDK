@@ -27,7 +27,7 @@ module AvaTax
       # Create a single new account object.
       # When creating an account object you may attach subscriptions and users as part of the 'Create' call.
       # @param model [Object] The account you wish to create.
-      # @return [Object]
+      # @return [AccountModel[]]
       def create_account(model)
         path = "/api/v2/accounts"
         post(path, model)
