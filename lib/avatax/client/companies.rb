@@ -271,9 +271,14 @@ module AvaTax
       # Update a single company
       #
       # Replace the existing company object at this URL with an updated object.
-      # A 'company' represents a single corporation or individual that is registered to handle transactional taxes.
+      #
+      # A `CompanyModel` represents a single corporation or individual that is registered to handle transactional taxes.
       # All data from the existing object will be replaced with data in the object you PUT.
-      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # When calling `UpdateCompany`, you are permitted to update the company itself. Updates to the nested objects
+      # such as contacts, locations, or settings are not permitted. To update the nested objects
+      #
+      # To set a field's value to `null`, you may either set its value to `null` or omit that field from the object you PUT.
       # @param id [Integer] The ID of the company you wish to update.
       # @param model [Object] The company object you wish to update.
       # @return [Object]

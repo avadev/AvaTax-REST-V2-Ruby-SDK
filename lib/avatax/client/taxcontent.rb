@@ -72,6 +72,23 @@ module AvaTax
       # to reconcile the actual transaction and determine the difference between the estimated general tax
       # rate and the final transaction tax.
       #
+      # The file provided by this API is in CSV format with the following columns:
+      #
+      # * ZIP_CODE - The five digit zip code for this record.
+      # * STATE_ABBREV - A valid two character US state abbreviation for this record. Zip codes may span multiple states.
+      # * COUNTY_NAME - A valid county name for this record. Zip codes may span multiple counties.
+      # * CITY_NAME - A valid city name for this record. Zip codes may span multiple cities.
+      # * STATE_SALES_TAX - The state component of the sales tax rate.
+      # * STATE_USE_TAX - The state component of the use tax rate.
+      # * COUNTY_SALES_TAX - The county component of the sales tax rate.
+      # * COUNTY_USE_TAX - The county component of the use tax rate.
+      # * CITY_SALES_TAX - The city component of the sales tax rate.
+      # * CITY_USE_TAX - The city component of the use tax rate.
+      # * TOTAL_SALES_TAX - The total tax rate for sales tax for this postal code. This value may not equal the sum of the state/county/city due to special tax jurisdiction rules.
+      # * TOTAL_USE_TAX - The total tax rate for use tax for this postal code. This value may not equal the sum of the state/county/city due to special tax jurisdiction rules.
+      # * TAX_SHIPPING_ALONE - This column contains 'Y' if shipping is taxable.
+      # * TAX_SHIPPING_AND_HANDLING_TOGETHER - This column contains 'Y' if shipping and handling are taxable when sent together.
+      #
       # For more detailed tax content, please use the `BuildTaxContentFile` API which allows usage of exact items and exact locations.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
       # @param region [String] If the region is provided, this API is going to generate the tax rate per zipcode for only the region specified.

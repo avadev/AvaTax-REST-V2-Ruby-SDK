@@ -76,6 +76,34 @@ module AvaTax
       end
 
 
+      # Disable an advanced rule so that it cannot be run.
+      #
+      # This API is available by invite only and implementation support is required.
+      # Please contact your Customer Account Manager if you are interested in using
+      # Advanced Rules in your AvaTax integration. ///
+      # @param accountId [Integer] 
+      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # @return [Object]
+      def disable_advanced_rule_script(accountId, scriptType)
+        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/disable"
+        post(path)
+      end
+
+
+      # Enable an approved advanced rule so that it can be run.
+      #
+      # This API is available by invite only and implementation support is required.
+      # Please contact your Customer Account Manager if you are interested in using
+      # Advanced Rules in your AvaTax integration.
+      # @param accountId [Integer] 
+      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # @return [Object]
+      def enable_advanced_rule_script(accountId, scriptType)
+        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/enable"
+        post(path)
+      end
+
+
       # Get an account's advanced rule script.
       #
       # This API is available by invite only and implementation support is required.

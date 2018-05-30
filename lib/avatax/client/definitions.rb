@@ -648,10 +648,8 @@ module AvaTax
       #
       # Returns the full list of Avalara-supported permission types.
       # This API is intended to be useful to identify the capabilities of a particular user logon.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_permissions(options={})
         path = "/api/v2/definitions/permissions"
@@ -862,10 +860,8 @@ module AvaTax
       # Returns the full list of recognized tax code types.
       # A 'Tax Code Type' represents a broad category of tax codes, and is less detailed than a single TaxCode.
       # This API is intended to be useful for broadly searching for tax codes by tax code type.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [Object]
       def list_tax_code_types(options={})
         path = "/api/v2/definitions/taxcodetypes"

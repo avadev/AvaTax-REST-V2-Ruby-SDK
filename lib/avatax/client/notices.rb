@@ -3,6 +3,22 @@ module AvaTax
     module Notices 
 
 
+      # Delete a single notice.
+      #
+      # This API is available by invitation only.
+      # 'Notice comments' are updates by the notice team on the work to be done and that has been done so far on a notice.
+      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
+      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
+      # @param companyId [Integer] The ID of the company that owns this notice.
+      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
+      # @param commentDetailsId [Integer] The ID of the comment you wish to delete.
+      # @return [ErrorDetail[]]
+      def comment_details_delete(companyId, id, commentDetailsId)
+        path = "/api/v2/companies/#{companyId}/notices/#{id}/commentdetails/#{commentdetailsid}"
+        delete(path)
+      end
+
+
       # Create a new notice comment.
       #
       # This API is available by invitation only.
@@ -140,6 +156,23 @@ module AvaTax
       def download_notice_attachment(companyId, id)
         path = "/api/v2/companies/#{companyId}/notices/files/#{id}/attachment"
         get(path)
+      end
+
+
+      # Delete a single notice.
+      #
+      # This API is available by invitation only.
+      # 'Notice finance details' is the categorical breakdown of the total charge levied by the tax authority on our customer,
+      # as broken down in our "notice log" found in Workflow. Main examples of the categories are 'Tax Due', 'Interest', 'Penalty', 'Total Abated'.
+      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
+      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
+      # @param companyId [Integer] The ID of the company that owns this notice.
+      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
+      # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
+      # @return [ErrorDetail[]]
+      def financedetailsdelete(companyId, id, financeDetailsId)
+        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails/#{financedetailsid}"
+        delete(path)
       end
 
 
