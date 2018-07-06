@@ -86,6 +86,32 @@ module AvaTax
       end
 
 
+      # Retrieve all accounts
+      #
+      # List all account objects that can be seen by the current user.
+      #
+      # This API lists all accounts you are allowed to see. In general, most users will only be able to see their own account.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Subscriptions
+      # * Users
+      #
+      # For more information about filtering in REST, please see the documentation at http://developer.avalara.com/avatax/filtering-in-rest/ .
+      # @param include [String] A comma separated list of objects to fetch underneath this account. Any object with a URL path underneath this account can be fetched by specifying its name.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def query_accounts(options={})
+        path = "/api/v2/accounts"
+        get(path, options)
+      end
+
+
       # Change configuration settings for this account
       #
       # Update configuration settings tied to this account.
