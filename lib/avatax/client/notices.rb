@@ -3,22 +3,6 @@ module AvaTax
     module Notices 
 
 
-      # Delete a single notice.
-      #
-      # This API is available by invitation only.
-      # 'Notice comments' are updates by the notice team on the work to be done and that has been done so far on a notice.
-      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
-      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
-      # @param companyId [Integer] The ID of the company that owns this notice.
-      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
-      # @param commentDetailsId [Integer] The ID of the comment you wish to delete.
-      # @return [ErrorDetail[]]
-      def comment_details_delete(companyId, id, commentDetailsId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/commentdetails/#{commentdetailsid}"
-        delete(path)
-      end
-
-
       # Create a new notice comment.
       #
       # This API is available by invitation only.
@@ -102,6 +86,39 @@ module AvaTax
       # Delete a single notice.
       #
       # This API is available by invitation only.
+      # 'Notice comments' are updates by the notice team on the work to be done and that has been done so far on a notice.
+      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
+      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
+      # @param companyId [Integer] The ID of the company that owns this notice.
+      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
+      # @param commentDetailsId [Integer] The ID of the comment you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_comment_details(companyId, id, commentDetailsId)
+        path = "/api/v2/companies/#{companyId}/notices/#{id}/commentdetails/#{commentdetailsid}"
+        delete(path)
+      end
+
+
+      # Delete a single notice.
+      #
+      # This API is available by invitation only.
+      # 'Notice finance details' is the categorical breakdown of the total charge levied by the tax authority on our customer,
+      # as broken down in our "notice log" found in Workflow. Main examples of the categories are 'Tax Due', 'Interest', 'Penalty', 'Total Abated'.
+      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
+      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
+      # @param companyId [Integer] The ID of the company that owns this notice.
+      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
+      # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_finance_details(companyId, id, financeDetailsId)
+        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails/#{financedetailsid}"
+        delete(path)
+      end
+
+
+      # Delete a single notice.
+      #
+      # This API is available by invitation only.
       # Mark the existing notice object at this URL as deleted.
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
@@ -156,23 +173,6 @@ module AvaTax
       def download_notice_attachment(companyId, id)
         path = "/api/v2/companies/#{companyId}/notices/files/#{id}/attachment"
         get(path)
-      end
-
-
-      # Delete a single notice.
-      #
-      # This API is available by invitation only.
-      # 'Notice finance details' is the categorical breakdown of the total charge levied by the tax authority on our customer,
-      # as broken down in our "notice log" found in Workflow. Main examples of the categories are 'Tax Due', 'Interest', 'Penalty', 'Total Abated'.
-      # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
-      # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
-      # @param companyId [Integer] The ID of the company that owns this notice.
-      # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
-      # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
-      # @return [ErrorDetail[]]
-      def financedetailsdelete(companyId, id, financeDetailsId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails/#{financedetailsid}"
-        delete(path)
       end
 
 
@@ -295,6 +295,22 @@ module AvaTax
       end
 
 
+      # Update a single notice finance detail.
+      #
+      # This API is available by invitation only.
+      # All data from the existing object will be replaced with data in the object you PUT.
+      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      # @param companyId [Integer] The ID of the company that this notice finance detail belongs to.
+      # @param noticeid [Integer] The ID of the notice finance detail you wish to update.
+      # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
+      # @param model [Object] The notice finance detail object you wish to update.
+      # @return [Object]
+      def update_finance_details(companyId, noticeid, financeDetailsId, model)
+        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/financedetails/#{financedetailsid}"
+        put(path, model)
+      end
+
+
       # Update a single notice.
       #
       # This API is available by invitation only.
@@ -309,6 +325,22 @@ module AvaTax
       # @return [Object]
       def update_notice(companyId, id, model)
         path = "/api/v2/companies/#{companyId}/notices/#{id}"
+        put(path, model)
+      end
+
+
+      # Update a single notice comment.
+      #
+      # This API is available by invitation only.
+      # All data from the existing object will be replaced with data in the object you PUT.
+      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      # @param companyId [Integer] The ID of the company that this notice comment belongs to.
+      # @param noticeid [Integer] The ID of the notice you wish to update.
+      # @param commentDetailsId [Integer] The ID of the comment you wish to update.
+      # @param model [Object] The notice comment object you wish to update.
+      # @return [Object]
+      def update_notice_comments(companyId, noticeid, commentDetailsId, model)
+        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/commentdetails/#{commentdetailsid}"
         put(path, model)
       end
 

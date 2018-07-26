@@ -34,6 +34,26 @@ module AvaTax
       end
 
 
+      # Create new notifications.
+      #
+      # This API is available by invitation only.
+      #
+      # Create a single notification.
+      #
+      # A notification is a message from Avalara that may have relevance to your business. You may want
+      # to regularly review notifications and then dismiss them when you are certain that you have addressed
+      # any relevant concerns raised by this notification.
+      #
+      # An example of a notification would be a message about new software, or a change to AvaTax that may
+      # affect you, or a potential issue with your company's tax profile.
+      # @param model [NotificationModel[]] The notifications you wish to create.
+      # @return [NotificationModel[]]
+      def create_notifications(model)
+        path = "/api/v2/notifications"
+        post(path, model)
+      end
+
+
       # Create a new subscription
       #
       # # For Registrar Use Only
@@ -62,6 +82,26 @@ module AvaTax
       # @return [ErrorDetail[]]
       def delete_account(id)
         path = "/api/v2/accounts/#{id}"
+        delete(path)
+      end
+
+
+      # Delete a single notification.
+      #
+      # This API is available by invitation only.
+      #
+      # Delete the existing notification identified by this URL.
+      #
+      # A notification is a message from Avalara that may have relevance to your business. You may want
+      # to regularly review notifications and then dismiss them when you are certain that you have addressed
+      # any relevant concerns raised by this notification.
+      #
+      # An example of a notification would be a message about new software, or a change to AvaTax that may
+      # affect you, or a potential issue with your company's tax profile.
+      # @param id [Integer] The id of the notification you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_notification(id)
+        path = "/api/v2/notifications/#{id}"
         delete(path)
       end
 
@@ -96,32 +136,6 @@ module AvaTax
       end
 
 
-      # Retrieve all accounts
-      #
-      # # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Get multiple account objects.
-      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
-      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
-      #
-      # * Subscriptions
-      # * Users
-      #
-      # For more information about filtering in REST, please see the documentation at http://developer.avalara.com/avatax/filtering-in-rest/ .
-      # @param include [String] A comma separated list of objects to fetch underneath this account. Any object with a URL path underneath this account can be fetched by specifying its name.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def query_accounts(options={})
-        path = "/api/v2/accounts"
-        get(path, options)
-      end
-
-
       # Reset a user's password programmatically
       #
       # # For Registrar Use Only
@@ -150,6 +164,27 @@ module AvaTax
       # @return [Object]
       def update_account(id, model)
         path = "/api/v2/accounts/#{id}"
+        put(path, model)
+      end
+
+
+      # Update a single notification.
+      #
+      # This API is available by invitation only.
+      #
+      # Replaces the notification identified by this URL with a new notification.
+      #
+      # A notification is a message from Avalara that may have relevance to your business. You may want
+      # to regularly review notifications and then dismiss them when you are certain that you have addressed
+      # any relevant concerns raised by this notification.
+      #
+      # An example of a notification would be a message about new software, or a change to AvaTax that may
+      # affect you, or a potential issue with your company's tax profile.
+      # @param id [Integer] The id of the notification you wish to update.
+      # @param model [Object] The notification object you wish to update.
+      # @return [Object]
+      def update_notification(id, model)
+        path = "/api/v2/notifications/#{id}"
         put(path, model)
       end
 

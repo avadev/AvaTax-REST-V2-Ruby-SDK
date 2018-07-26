@@ -7,8 +7,12 @@ module AvaTax
       #
       # Builds a tax content file containing information useful for a retail point-of-sale solution.
       #
-      # This file contains tax rates and rules for items and locations that can be used
-      # to correctly calculate tax in the event a point-of-sale device is not able to reach AvaTax.
+      # A TaxContent file contains a matrix of the taxes that would be charged when you sell any of your
+      # Items at any of your Locations. To create items, use `CreateItems()`. To create locations, use
+      # `CreateLocations()`. The file is built by looking up the tax profile for your location and your
+      # item and calculating taxes for each in turn. To include a custom `TaxCode` in this tax content
+      # file, first create the custom tax code using `CreateTaxCodes()` to create the custom tax code,
+      # then use `CreateItems()` to create an item that uses the custom tax code.
       #
       # This data file can be customized for specific partner devices and usage conditions.
       #
@@ -30,8 +34,12 @@ module AvaTax
       #
       # Builds a tax content file containing information useful for a retail point-of-sale solution.
       #
-      # This file contains tax rates and rules for all items for a single location. Data from this API
-      # can be used to correctly calculate tax in the event a point-of-sale device is not able to reach AvaTax.
+      # A TaxContent file contains a matrix of the taxes that would be charged when you sell any of your
+      # Items at any of your Locations. To create items, use `CreateItems()`. To create locations, use
+      # `CreateLocations()`. The file is built by looking up the tax profile for your location and your
+      # item and calculating taxes for each in turn. To include a custom `TaxCode` in this tax content
+      # file, first create the custom tax code using `CreateTaxCodes()` to create the custom tax code,
+      # then use `CreateItems()` to create an item that uses the custom tax code.
       #
       # This data file can be customized for specific partner devices and usage conditions.
       #

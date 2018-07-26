@@ -26,6 +26,19 @@ module AvaTax
         post(path, model)
       end
 
+
+      # Request a new entitilement to an existing customer
+      #
+      # This API is for use by partner onboarding services customers only. This will allow the partners to allow
+      # the add new entitlement to an existing customer
+      # @param id [Integer] The avatax account id of the customer
+      # @param offer [String] The offer to be added to an already existing customer
+      # @return [Object]
+      def request_new_entitlement(id, offer)
+        path = "/api/v2/accounts/#{id}/entitlements/#{offer}"
+        post(path)
+      end
+
     end
   end
 end
