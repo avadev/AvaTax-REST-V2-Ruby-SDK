@@ -105,6 +105,19 @@ module AvaTax
       end
 
 
+      # ToDo
+      #
+      # 
+      # @param companyId [Integer] 
+      # @param code [String] 
+      # @param model [Object] 
+      # @return [Object]
+      def link_ship_to_customers_to_bill_customer(companyId, code, model)
+        path = "/api/v2/companies/#{companyId}/customers/billto/#{code}/shipto/link"
+        post(path, model)
+      end
+
+
       # List certificates linked to a customer
       #
       # List all certificates linked to a customer.

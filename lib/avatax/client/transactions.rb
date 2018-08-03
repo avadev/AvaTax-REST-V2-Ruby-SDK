@@ -456,7 +456,7 @@ module AvaTax
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param documentType [String] (Optional): The document type of the transaction to refund. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
-      # @param useTaxDateOverride [Boolean] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
+      # @param useTaxDateOverride [object] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})
