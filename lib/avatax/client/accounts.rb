@@ -48,6 +48,31 @@ module AvaTax
       end
 
 
+      # Retrieve audit history for an account.
+      #
+      # Retrieve audit history for an account.
+      #
+      # Audit history provides you with the data necessary to report and investigate calls made from your account.
+      #
+      # When specifying a start and end datetime, please include a valid timezone indicator, such as the "Z" present in the examples for the start and end query parameters.
+      # You can learn more about valid time zone designators at https://en.wikipedia.org/wiki/ISO_8601#Time_zone_designators.
+      #
+      # For performance reasons, there are are limits to the request size. Currently, the per-call limits are a one hour duration, 50 MB of data, and 30 records at a time.
+      #
+      # Due to the volume of traffic from the system, audit history is not guaranteed to be immediately available. In some cases, this could even take an hour or more.
+      # If you receive no results where results are expected, this is likely an indication that the data is not yet available.
+      # @param id [Integer] The ID of the account you wish to audit.
+      # @param start [DateTime] The start datetime of audit history you with to retrieve, e.g. "2018-06-08T17:00:00Z". Defaults to the past 15 minutes.
+      # @param end [DateTime] The end datetime of audit history you with to retrieve, e.g. "2018-06-08T17:15:00Z. Defaults to the current time. Maximum of an hour after the start time.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @return [FetchResult]
+      def audit_account(id, options={})
+        path = "/api/v2/accounts/#{id}/audit"
+        get(path, options)
+      end
+
+
       # Retrieve a single account
       #
       # Get the account object identified by this URL.
