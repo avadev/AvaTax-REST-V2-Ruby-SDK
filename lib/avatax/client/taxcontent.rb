@@ -7,6 +7,12 @@ module AvaTax
       #
       # Builds a tax content file containing information useful for a retail point-of-sale solution.
       #
+      # Since tax rates may change based on decisions made by a variety of tax authorities, we recommend
+      # that users of this tax content API download new data every day. Many tax authorities may finalize
+      # decisions on tax changes at unexpected times and may make changes in response to legal issues or
+      # governmental priorities. Any tax content downloaded for future time periods is subject to change
+      # if tax rates or tax laws change.
+      #
       # A TaxContent file contains a matrix of the taxes that would be charged when you sell any of your
       # Items at any of your Locations. To create items, use `CreateItems()`. To create locations, use
       # `CreateLocations()`. The file is built by looking up the tax profile for your location and your
@@ -34,6 +40,12 @@ module AvaTax
       #
       # Builds a tax content file containing information useful for a retail point-of-sale solution.
       #
+      # Since tax rates may change based on decisions made by a variety of tax authorities, we recommend
+      # that users of this tax content API download new data every day. Many tax authorities may finalize
+      # decisions on tax changes at unexpected times and may make changes in response to legal issues or
+      # governmental priorities. Any tax content downloaded for future time periods is subject to change
+      # if tax rates or tax laws change.
+      #
       # A TaxContent file contains a matrix of the taxes that would be charged when you sell any of your
       # Items at any of your Locations. To create items, use `CreateItems()`. To create locations, use
       # `CreateLocations()`. The file is built by looking up the tax profile for your location and your
@@ -54,7 +66,7 @@ module AvaTax
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default)
       # @param format [String] The format of the file (JSON by default) (See PointOfSaleFileType::* for a list of allowable values)
       # @param partnerId [String] If specified, requests a custom partner-formatted version of the file. (See PointOfSalePartnerId::* for a list of allowable values)
-      # @param includeJurisCodes [object] When true, the file will include jurisdiction codes in the result.
+      # @param includeJurisCodes [Boolean] When true, the file will include jurisdiction codes in the result.
       # @return [Object]
       def build_tax_content_file_for_location(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
@@ -66,6 +78,12 @@ module AvaTax
       #
       # Download a CSV file containing all five digit postal codes in the United States and their sales
       # and use tax rates for tangible personal property.
+      #
+      # Since tax rates may change based on decisions made by a variety of tax authorities, we recommend
+      # that users of this tax content API download new data every day. Many tax authorities may finalize
+      # decisions on tax changes at unexpected times and may make changes in response to legal issues or
+      # governmental priorities. Any tax content downloaded for future time periods is subject to change
+      # if tax rates or tax laws change.
       #
       # This rates file is intended to be used as a default for tax calculation when your software cannot
       # call the `CreateTransaction` API call. When using this file, your software will be unable to

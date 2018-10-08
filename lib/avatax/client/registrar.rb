@@ -3,22 +3,6 @@ module AvaTax
     module Registrar 
 
 
-      # Change Password
-      #
-      # # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Allows a user to change their password via the API.
-      # This API only allows the currently authenticated user to change their password; it cannot be used to apply to a
-      # different user than the one authenticating the current API call.
-      # @param model [Object] An object containing your current password and the new password.
-      # @return [String]
-      def change_password(model)
-        path = "/api/v2/passwords"
-        put(path, model)
-      end
-
-
       # Create a new account
       #
       # # For Registrar Use Only
@@ -117,21 +101,6 @@ module AvaTax
       # @return [ErrorDetail[]]
       def delete_subscription(accountId, id)
         path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        delete(path)
-      end
-
-
-      # Delete a single user
-      #
-      # # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Mark the user object identified by this URL as deleted.
-      # @param id [Integer] The ID of the user you wish to delete.
-      # @param accountId [Integer] The accountID of the user you wish to delete.
-      # @return [ErrorDetail[]]
-      def delete_user(id, accountId)
-        path = "/api/v2/accounts/#{accountId}/users/#{id}"
         delete(path)
       end
 

@@ -41,7 +41,7 @@ module AvaTax
 
       # Retrieve a single item
       #
-      # Get the item object identified by this URL.
+      # Get the `Item` object identified by this URL.
       #
       # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
       # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
@@ -68,6 +68,7 @@ module AvaTax
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      #
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
@@ -76,8 +77,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that defined these items
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})
@@ -97,6 +98,7 @@ module AvaTax
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      #
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
@@ -104,8 +106,8 @@ module AvaTax
       # * Attributes
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items(options={})
@@ -124,8 +126,8 @@ module AvaTax
       # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
       #
-      # All data from the existing object will be replaced with data in the object you PUT.
-      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      # All data from the existing object will be replaced with data in the object you PUT. To set a field's value to null,
+      # you may either set its value to null or omit that field from the object you post.
       # @param companyId [Integer] The ID of the company that this item belongs to.
       # @param id [Integer] The ID of the item you wish to update
       # @param model [Object] The item object you wish to update.

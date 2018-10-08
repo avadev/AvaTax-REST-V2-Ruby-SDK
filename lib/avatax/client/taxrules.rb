@@ -5,11 +5,19 @@ module AvaTax
 
       # Create a new tax rule
       #
-      # Create one or more new taxrule objects attached to this company.
-      # A tax rule represents a custom taxability rule for a product or service sold by your company.
-      # If you have obtained a custom tax ruling from an auditor that changes the behavior of certain goods or services
-      # within certain taxing jurisdictions, or you have obtained special tax concessions for certain dates or locations,
-      # you may wish to create a TaxRule object to override the AvaTax engine's default behavior in those circumstances.
+      # Create one or more custom tax rules attached to this company.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       # @param companyId [Integer] The ID of the company that owns this tax rule.
       # @param model [TaxRuleModel[]] The tax rule you wish to create.
       # @return [TaxRuleModel[]]
@@ -21,7 +29,19 @@ module AvaTax
 
       # Delete a single tax rule
       #
-      # Mark the TaxRule identified by this URL as deleted.
+      # Mark the custom tax rule identified by this URL as deleted.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       # @param companyId [Integer] The ID of the company that owns this tax rule.
       # @param id [Integer] The ID of the tax rule you wish to delete.
       # @return [ErrorDetail[]]
@@ -34,10 +54,18 @@ module AvaTax
       # Retrieve a single tax rule
       #
       # Get the taxrule object identified by this URL.
-      # A tax rule represents a custom taxability rule for a product or service sold by your company.
-      # If you have obtained a custom tax ruling from an auditor that changes the behavior of certain goods or services
-      # within certain taxing jurisdictions, or you have obtained special tax concessions for certain dates or locations,
-      # you may wish to create a TaxRule object to override the AvaTax engine's default behavior in those circumstances.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       # @param companyId [Integer] The ID of the company that owns this tax rule
       # @param id [Integer] The primary key of this tax rule
       # @return [Object]
@@ -50,18 +78,26 @@ module AvaTax
       # Retrieve tax rules for this company
       #
       # List all taxrule objects attached to this company.
-      # A tax rule represents a custom taxability rule for a product or service sold by your company.
-      # If you have obtained a custom tax ruling from an auditor that changes the behavior of certain goods or services
-      # within certain taxing jurisdictions, or you have obtained special tax concessions for certain dates or locations,
-      # you may wish to create a TaxRule object to override the AvaTax engine's default behavior in those circumstances.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param companyId [Integer] The ID of the company that owns these tax rules
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_rules(companyId, options={})
@@ -73,17 +109,25 @@ module AvaTax
       # Retrieve all tax rules
       #
       # Get multiple taxrule objects across all companies.
-      # A tax rule represents a custom taxability rule for a product or service sold by your company.
-      # If you have obtained a custom tax ruling from an auditor that changes the behavior of certain goods or services
-      # within certain taxing jurisdictions, or you have obtained special tax concessions for certain dates or locations,
-      # you may wish to create a TaxRule object to override the AvaTax engine's default behavior in those circumstances.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param include [String] A comma separated list of additional data to retrieve.
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_tax_rules(options={})
@@ -94,13 +138,19 @@ module AvaTax
 
       # Update a single tax rule
       #
-      # Replace the existing taxrule object at this URL with an updated object.
-      # A tax rule represents a custom taxability rule for a product or service sold by your company.
-      # If you have obtained a custom tax ruling from an auditor that changes the behavior of certain goods or services
-      # within certain taxing jurisdictions, or you have obtained special tax concessions for certain dates or locations,
-      # you may wish to create a TaxRule object to override the AvaTax engine's default behavior in those circumstances.
-      # All data from the existing object will be replaced with data in the object you PUT.
-      # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      # Replace the existing custom tax rule object at this URL with an updated object.
+      #
+      # A tax rule represents a rule that changes the default AvaTax behavior for a product or jurisdiction. Custom tax rules
+      # can be used to change the taxability of an item, to change the tax base of an item, or to change the tax rate
+      # charged when selling an item. Tax rules can also change tax behavior depending on the `entityUseCode` value submitted
+      # with the transaction.
+      #
+      # You can create custom tax rules to customize the behavior of AvaTax to match specific rules that are custom to your
+      # business. If you have obtained a ruling from a tax auditor that requires custom tax calculations, you can use
+      # custom tax rules to redefine the behavior for your company or item.
+      #
+      # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
+      # auditor, legal representative, and accounting team.
       # @param companyId [Integer] The ID of the company that this tax rule belongs to.
       # @param id [Integer] The ID of the tax rule you wish to update
       # @param model [Object] The tax rule you wish to update.
