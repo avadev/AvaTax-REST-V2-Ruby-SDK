@@ -50,22 +50,25 @@ module AvaTax
 
       # Retrieve audit history for an account.
       #
-      # Retrieve audit history for an account.
+      # Retrieve audit trace history for an account.
       #
-      # Audit history provides you with the data necessary to report and investigate calls made from your account.
+      # Your audit trace history contains a record of all API calls made against the AvaTax REST API. You can use this API to investigate
+      # problems and see exactly what information was sent back and forth between your code and AvaTax.
       #
       # When specifying a start and end datetime, please include a valid timezone indicator, such as the "Z" present in the examples for the start and end query parameters.
       # You can learn more about valid time zone designators at https://en.wikipedia.org/wiki/ISO_8601#Time_zone_designators.
       #
-      # For performance reasons, there are are limits to the request size. Currently, the per-call limits are a one hour duration, 50 MB of data, and 30 records at a time.
+      # This API enforces limits to the amount of data retrieved. These limits are subject to change.
       #
-      # Due to the volume of traffic from the system, audit history is not guaranteed to be immediately available. In some cases, this could even take an hour or more.
-      # If you receive no results where results are expected, this is likely an indication that the data is not yet available.
+      # * You may request data from a maximum of a one-hour time period.
+      # * The amount of data and number of API calls returned by this API are limited and may be adjusted at any time.
+      # * Old records may be migrated out of immediately available storage. To request older data, please contact your account manager.
+      # * New records must migrate to available storage before they can be retrieved. You may need to wait a period of time before newly created records can be fetched.
       # @param id [Integer] The ID of the account you wish to audit.
       # @param start [DateTime] The start datetime of audit history you with to retrieve, e.g. "2018-06-08T17:00:00Z". Defaults to the past 15 minutes.
       # @param end [DateTime] The end datetime of audit history you with to retrieve, e.g. "2018-06-08T17:15:00Z. Defaults to the current time. Maximum of an hour after the start time.
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
       def audit_account(id, options={})
         path = "/api/v2/accounts/#{id}/audit"
@@ -127,8 +130,8 @@ module AvaTax
       # For more information about filtering in REST, please see the documentation at http://developer.avalara.com/avatax/filtering-in-rest/ .
       # @param include [String] A comma separated list of objects to fetch underneath this account. Any object with a URL path underneath this account can be fetched by specifying its name.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_accounts(options={})

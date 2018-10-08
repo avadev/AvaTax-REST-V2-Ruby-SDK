@@ -3,6 +3,23 @@ module AvaTax
     module Users 
 
 
+      # Change Password
+      #
+      # Allows a user to change their password via an API call.
+      #
+      # This API allows an authenticated user to change their password via an API call. This feature is only available
+      # for accounts that do not use SAML integrated password validation.
+      #
+      # This API only allows the currently authenticated user to change their password; it cannot be used to apply to a
+      # different user than the one authenticating the current API call.
+      # @param model [Object] An object containing your current password and the new password.
+      # @return [String]
+      def change_password(model)
+        path = "/api/v2/passwords"
+        put(path, model)
+      end
+
+
       # Create new users
       #
       # Create one or more new user objects attached to this account.
@@ -20,6 +37,23 @@ module AvaTax
       def create_users(accountId, model)
         path = "/api/v2/accounts/#{accountId}/users"
         post(path, model)
+      end
+
+
+      # Delete a single user
+      #
+      # Mark the user object identified by this URL as deleted.
+      #
+      # This API is available for use by account and company administrators only.
+      #
+      # Account and company administrators may only delete users within the appropriate organizations
+      # they control.
+      # @param id [Integer] The ID of the user you wish to delete.
+      # @param accountId [Integer] The accountID of the user you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_user(id, accountId)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        delete(path)
       end
 
 
@@ -63,20 +97,6 @@ module AvaTax
       end
 
 
-      # Get information about a username.
-      #
-      # You may call this API prior to creating a user, to check if a particular username is available for use. Using this API, you can
-      # present a friendly experience prior to attempting to create a new user object.
-      #
-      # Please ensure that the query string is url encoded if you wish to check information for a user that contains url-sensitive characters.
-      # @param username [String] The username to search.
-      # @return [Object]
-      def get_username(options={})
-        path = "/api/v2/usernames"
-        get(path, options)
-      end
-
-
       # Retrieve users for this account
       #
       # List all user objects attached to this account.
@@ -90,8 +110,8 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to list.
       # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_users_by_account(accountId, options={})
@@ -114,8 +134,8 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_users(options={})

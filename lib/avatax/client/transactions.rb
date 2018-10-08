@@ -248,6 +248,7 @@ module AvaTax
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
       # * ForceTimeout - Simulates a timeout. This adds a 30 second delay and error to your API call. This can be used to test your code to ensure it can respond correctly in the case of a dropped connection.
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -385,8 +386,8 @@ module AvaTax
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param include [String] Specifies objects to include in this fetch call
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_transactions_by_company(companyCode, options={})
@@ -456,7 +457,7 @@ module AvaTax
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param documentType [String] (Optional): The document type of the transaction to refund. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
-      # @param useTaxDateOverride [object] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
+      # @param useTaxDateOverride [Boolean] (Optional): If set to true, processes refund using taxDateOverride rather than taxAmountOverride (Note: taxAmountOverride is not allowed for SST states).
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})

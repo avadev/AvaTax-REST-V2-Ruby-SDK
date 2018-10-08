@@ -105,12 +105,24 @@ module AvaTax
       end
 
 
-      # ToDo
+      # Link two customer records together
       #
-      # 
-      # @param companyId [Integer] 
-      # @param code [String] 
-      # @param model [Object] 
+      # Links a Ship-To customer record with a Bill-To customer record.
+      #
+      # Customer records represent businesses or individuals who can provide exemption certificates. Some customers
+      # may have certificates that are linked to their shipping address or their billing address. To group these
+      # customer records together, you may link multiple bill-to and ship-to addresses together to represent a single
+      # entity that has multiple different addresses of different kinds.
+      #
+      # In general, a customer will have only one primary billing address and multiple ship-to addresses, representing
+      # all of the different locations where they receive goods. To facilitate this type of customer, you can send in
+      # one bill-to customer code and multiple ship-to customer codes in a single API call.
+      #
+      # Note that you can only link a ship-to customer record to a bill-to customer record. You may not link two customers
+      # of the same kind together.
+      # @param companyId [Integer] The unique ID number of the company defining customers.
+      # @param code [String] The code of the bill-to customer to link.
+      # @param model [Object] A list of information about ship-to customers to link to this bill-to customer.
       # @return [Object]
       def link_ship_to_customers_to_bill_customer(companyId, code, model)
         path = "/api/v2/companies/#{companyId}/customers/billto/#{code}/shipto/link"
@@ -136,8 +148,8 @@ module AvaTax
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * Customers - Retrieves the list of customers linked to the certificate.   * PoNumbers - Retrieves all PO numbers tied to the certificate.   * Attributes - Retrieves all attributes applied to the certificate.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificates_for_customer(companyId, customerCode, options={})
@@ -195,8 +207,8 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param include [String] OPTIONAL - You can specify the value `certificates` to fetch information about certificates linked to the customer.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with $skip to provide pagination for large datasets.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with $top to provide pagination for large datasets.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_customers(companyId, options={})

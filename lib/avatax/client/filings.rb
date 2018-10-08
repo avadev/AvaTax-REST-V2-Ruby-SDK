@@ -256,10 +256,11 @@ module AvaTax
       # based on filing frequency of filing.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param id [Integer] The id of the filing return your retrieving
+      # @param details [Boolean] Indicates if you would like the credit details returned
       # @return [FetchResult]
-      def get_filing_return(companyId, id)
+      def get_filing_return(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/filings/returns/#{id}"
-        get(path)
+        get(path, options)
       end
 
 

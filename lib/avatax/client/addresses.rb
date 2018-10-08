@@ -19,8 +19,6 @@ module AvaTax
       # @param postalCode [String] Postal Code / Zip Code
       # @param country [String] Two character ISO 3166 Country Code (see /api/v2/definitions/countries for a full list)
       # @param textCase [String] selectable text case for address validation (See TextCase::* for a list of allowable values)
-      # @param latitude [BigDecimal] Geospatial latitude measurement
-      # @param longitude [BigDecimal] Geospatial longitude measurement
       # @return [Object]
       def resolve_address(options={})
         path = "/api/v2/addresses/resolve"
