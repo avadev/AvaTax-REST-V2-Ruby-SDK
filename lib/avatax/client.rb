@@ -7,6 +7,7 @@ module AvaTax
     include AvaTax::Client::Batches
     include AvaTax::Client::Companies
     include AvaTax::Client::Contacts
+    include AvaTax::Client::Customers
     include AvaTax::Client::Definitions
     include AvaTax::Client::FilingCalendars
     include AvaTax::Client::Filings
