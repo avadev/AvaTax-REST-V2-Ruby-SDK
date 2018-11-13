@@ -24,6 +24,7 @@ module AvaTax
     include AvaTax::Client::Settings
     include AvaTax::Client::Subscriptions
     include AvaTax::Client::TaxCodes
+    include AvaTax::Client::TaxContent
     include AvaTax::Client::TaxRules
     include AvaTax::Client::Transactions
     include AvaTax::Client::Upcs
