@@ -6,35 +6,36 @@ Installation
 ------------
 	gem install avatax
 
-Simple example
+Simple Code Example
 -------------------------
-	createTransactionModel = {
-	  "type" => 'SalesInvoice',
-	  "companyCode" => '12670',
-	  "date" => '2017-06-05',
-	  "customerCode" => 'ABC',
-	  "addresses" => {
-	    "ShipFrom" => {
-	      "line1" => "123 Main Street",
-	      "city" => "Irvine",
-	      "region" => "CA",
-	      "country" => "US",
-	      "postalCode" => "92615"
-	    },
-	    "ShipTo" => {
-	      "line1" => "100 Market Street",
-	      "city" => "San Francisco",
-	      "region" => "CA",
-	      "country" => "US",
-	      "postalCode" => "94105"
-	    }
-	  },
-	  "lines" => [ { "amount" => 100 }]
-	}
-	transaction = @client.create_transaction(createTransactionModel)
+```ruby
+createTransactionModel = {
+	"type" => 'SalesInvoice',
+	"companyCode" => '12670',
+	"date" => '2017-06-05',
+	"customerCode" => 'ABC',
+	"addresses" => {
+		"ShipFrom" => {
+			"line1" => "123 Main Street",
+			"city" => "Irvine",
+			"region" => "CA",
+			"country" => "US",
+			"postalCode" => "92615"
+		},
+		"ShipTo" => {
+			"line1" => "100 Market Street",
+			"city" => "San Francisco",
+			"region" => "CA",
+			"country" => "US",
+			"postalCode" => "94105"
+		}
+	},
+	"lines" => [ { "amount" => 100 }]
+}
+transaction = @client.create_transaction(createTransactionModel)
+```
 
-
-If you'd like to see a more complete and complex example, check out our [example folder](/example).
+If you'd like to see a more complete code example with credentials, check out our [example folder](/example).
 
 AvaTax REST and Search APIs
 ------------------------------
