@@ -6,6 +6,40 @@ Installation
 ------------
 	gem install avatax
 
+Simple Code Example
+-------------------------
+```ruby
+@client = AvaTax::Client.new(:logger => true)
+
+createTransactionModel = {
+  "type" => 'SalesInvoice',
+  "companyCode" => '12670',
+  "date" => '2017-06-05',
+  "customerCode" => 'ABC',
+  "addresses" => {
+    "ShipFrom" => {
+      "line1" => "123 Main Street",
+      "city" => "Irvine",
+      "region" => "CA",
+      "country" => "US",
+      "postalCode" => "92615"
+    },
+    "ShipTo" => {
+      "line1" => "100 Market Street",
+      "city" => "San Francisco",
+      "region" => "CA",
+      "country" => "US",
+      "postalCode" => "94105"
+    }
+  },
+  "lines" => [ { "amount" => 100 }]
+}
+
+transaction = @client.create_transaction(createTransactionModel)
+```
+
+If you'd like to see a more complete code example with credentials, check out our [example folder](/example).
+
 AvaTax REST and Search APIs
 ------------------------------
 Our [developer site](https://developer.avalara.com/) documents all the AvaTax REST and other APIs. Subscribe to the [RSS feed](developer.avalara.com/feed.xml) to stay up to date on the lates news and announcements.
