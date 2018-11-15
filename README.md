@@ -9,6 +9,8 @@ Installation
 Simple Code Example
 -------------------------
 ```ruby
+@client = AvaTax::Client.new(:logger => true)
+
 createTransactionModel = {
   "type" => 'SalesInvoice',
   "companyCode" => '12670',
