@@ -34,6 +34,7 @@ createTransactionModel = {
   },
   "lines" => [ { "amount" => 100 }]
 }
+
 transaction = @client.create_transaction(createTransactionModel)
 ```
 
