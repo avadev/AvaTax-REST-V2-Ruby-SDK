@@ -6,6 +6,14 @@ Installation
 ------------
 	gem install avatax
 
+Simple example
+-------------------------
+
+
+
+
+If you'd like to see a more complete and complex example, check out our [example foler](/example).
+
 AvaTax REST and Search APIs
 ------------------------------
 Our [developer site](https://developer.avalara.com/) documents all the AvaTax REST and other APIs. Subscribe to the [RSS feed](developer.avalara.com/feed.xml) to stay up to date on the lates news and announcements.
