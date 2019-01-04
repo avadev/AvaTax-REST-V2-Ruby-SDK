@@ -22,6 +22,6 @@ companies = client.query_companies
 RSpec.configure do |config|
   config.before {
     @client = client
-    @company_code = companies["value"][1]["companyCode"]
+    @company_code = companies["value"][0]["companyCode"]
   }
 end
