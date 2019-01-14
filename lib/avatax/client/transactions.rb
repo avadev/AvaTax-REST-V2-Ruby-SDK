@@ -351,6 +351,7 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       # @param id [Integer] The unique ID number of the transaction to retrieve
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
@@ -541,7 +542,7 @@ module AvaTax
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to void
       # @param documentType [String] (Optional): The document type of the transaction to void. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
-      # @param model [Object] The void request you wish to execute
+      # @param model [Object] The void request you wish to execute. To void a transaction the code must be set to 'DocVoided'
       # @return [Object]
       def void_transaction(companyCode, transactionCode, model, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/void"

@@ -114,11 +114,12 @@ module AvaTax
       # This API is only available for Avalara Registrar Admins, and can be used to reset the password of any
       # user based on internal Avalara business processes.
       # @param userId [Integer] The unique ID of the user whose password will be changed
+      # @param unmigrateFromAi [Boolean] If user's password was migrated to AI, undo this.
       # @param model [Object] The new password for this user
       # @return [String]
-      def reset_password(userId, model)
+      def reset_password(userId, model, options={})
         path = "/api/v2/passwords/#{userId}/reset"
-        post(path, model)
+        post(path, model, options)
       end
 
 

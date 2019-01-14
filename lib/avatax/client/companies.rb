@@ -151,15 +151,15 @@ module AvaTax
       # Retrieve a list of all configuration settings tied to this company.
       #
       # Configuration settings provide you with the ability to control features of your account and of your
-      # tax software. The category names `AvaCertServiceConfig` is reserved for
-      # Avalara internal software configuration values; to store your own account-level settings, please
+      # tax software. The category name `AvaCertServiceConfig` is reserved for
+      # Avalara internal software configuration values; to store your own company-level settings, please
       # create a new category name that begins with `X-`, for example, `X-MyCustomCategory`.
       #
       # Company settings are permanent settings that cannot be deleted. You can set the value of a
-      # company setting to null if desired.
+      # company setting to null if desired and if the particular setting supports it.
       #
-      # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
-      # processing, and should only be changed with care.
+      # Avalara-based company settings for `AvaCertServiceConfig` affect your company's exemption certificate
+      # processing, and should be changed with care.
       # @param id [Integer] 
       # @return [CompanyConfigurationModel[]]
       def get_company_configuration(id)
@@ -247,20 +247,20 @@ module AvaTax
       end
 
 
-      # Change configuration settings for this account
+      # Change configuration settings for this company
       #
-      # Update configuration settings tied to this account.
+      # Update configuration settings tied to this company.
       #
       # Configuration settings provide you with the ability to control features of your account and of your
       # tax software. The category names `AvaCertServiceConfig` is reserved for
-      # Avalara internal software configuration values; to store your own account-level settings, please
+      # Avalara internal software configuration values; to store your own company-level settings, please
       # create a new category name that begins with `X-`, for example, `X-MyCustomCategory`.
       #
       # Company settings are permanent settings that cannot be deleted. You can set the value of a
-      # company setting to null if desired.
+      # company setting to null if desired and if the particular setting supports it.
       #
-      # Avalara-based account settings for `AvaCertServiceConfig` affect your account's exemption certificate
-      # processing, and should only be changed with care.
+      # Avalara-based company settings for `AvaCertServiceConfig` affect your company's exemption certificate
+      # processing, and should be changed with care.
       # @param id [Integer] 
       # @param model [CompanyConfigurationModel[]] 
       # @return [CompanyConfigurationModel[]]

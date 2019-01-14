@@ -27,8 +27,8 @@ module AvaTax
       # Test whether a form supports online login verification
       #
       # This API is intended to be useful to identify whether the user should be allowed
-      # to automatically verify their login and password.
-      # @param form [String] The name of the form you would like to verify. This can be the tax form code or the legacy return name
+      # to automatically verify their login and password. This API will provide a result only if the form supports automatic online login verification.
+      # @param form [String] The name of the form you would like to verify. This is the tax form code
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -640,6 +640,22 @@ module AvaTax
       end
 
 
+      # Retrieve the parameters by companyCode and itemCode.
+      #
+      # Returns the list of parameters based on the company country and state jurisdiction and the item code.
+      # @param companyCode [String] Company code.
+      # @param itemCode [String] Item code.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_parameters_by_item(companyCode, itemCode, options={})
+        path = "/api/v2/definitions/parameters/byitem/#{companyCode}/#{itemCode}"
+        get(path, options)
+      end
+
+
       # Retrieve the full list of Avalara-supported permissions
       #
       # Returns the full list of Avalara-supported permission types.
@@ -685,6 +701,41 @@ module AvaTax
       # @return [FetchResult]
       def list_preferred_programs(options={})
         path = "/api/v2/definitions/preferredprograms"
+        get(path, options)
+      end
+
+
+      # List all available product classification systems.
+      #
+      # List all available product classification systems.
+      #
+      # Tax authorities use product classification systems as a way to identify products and associate them with a tax rate.
+      # More than one tax authority might use the same product classification system, but they might charge different tax rates for products.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_product_classification_systems(options={})
+        path = "/api/v2/definitions/productclassificationsystems"
+        get(path, options)
+      end
+
+
+      # List all product classification systems available to a company based on its nexus.
+      #
+      # Lists all product classification systems available to a company based on its nexus.
+      #
+      # Tax authorities use product classification systems as a way to identify products and associate them with a tax rate.
+      # More than one tax authority might use the same product classification system, but they might charge different tax rates for products.
+      # @param companyCode [String] The company code.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_product_classification_systems_by_company(companyCode, options={})
+        path = "/api/v2/definitions/productclassificationsystems/bycompany/#{companyCode}"
         get(path, options)
       end
 
