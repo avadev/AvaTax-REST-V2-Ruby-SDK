@@ -29,7 +29,7 @@ module AvaTax
       # Retrieve a single AvaFileForm
       #
       # Get the AvaFileForm object identified by this URL.
-      # @param id [String] The primary key of this AvaFileForm
+      # @param id [Integer] The primary key of this AvaFileForm
       # @return [Object]
       def get_ava_file_form(id)
         path = "/api/v2/avafileforms/#{id}"

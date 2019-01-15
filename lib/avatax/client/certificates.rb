@@ -25,11 +25,12 @@ module AvaTax
       # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
       # storage for this company, call `RequestCertificateSetup`.
       # @param companyId [Integer] The ID number of the company recording this certificate
+      # @param preValidatedExemptionReason [Boolean] If set to true, the certificate will bypass the human verification process.
       # @param model [CertificateModel[]] Certificates to be created
       # @return [CertificateModel[]]
-      def create_certificates(companyId, model)
+      def create_certificates(companyId, model, options={})
         path = "/api/v2/companies/#{companyId}/certificates"
-        post(path, model)
+        post(path, model, options)
       end
 
 

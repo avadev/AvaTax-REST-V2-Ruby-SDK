@@ -39,12 +39,11 @@ module AvaTax
       # If you have not read or accepted the terms and conditions, this API call will return the
       # unchanged account model.
       # @param id [Integer] The ID of the account to activate
-      # @param include [String] Elements to include when fetching the account
       # @param model [Object] The activation request
       # @return [Object]
-      def activate_account(id, model, options={})
+      def activate_account(id, model)
         path = "/api/v2/accounts/#{id}/activate"
-        post(path, model, options)
+        post(path, model)
       end
 
 
