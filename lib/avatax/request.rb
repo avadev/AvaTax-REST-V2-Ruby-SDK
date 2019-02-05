@@ -26,7 +26,7 @@ module AvaTax
         when :get, :delete
           request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
         when :post, :put
-          request.path = ("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
+          request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
           request.headers['Content-Type'] = 'application/json'
           request.body = model.to_json unless model.empty?
         end
