@@ -138,7 +138,7 @@ module AvaTax
       #  * TaxRules
       #  * UPC
       # @param id [Integer] The ID of the company to retrieve.
-      # @param include [String] OPTIONAL: A comma separated list of special fetch options.       * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
+      # @param include [String] OPTIONAL: A comma separated list of special fetch options.      * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
       # @return [Object]
       def get_company(id, options={})
         path = "/api/v2/companies/#{id}"

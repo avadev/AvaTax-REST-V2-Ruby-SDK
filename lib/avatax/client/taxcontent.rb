@@ -74,6 +74,21 @@ module AvaTax
       end
 
 
+      # Retrieve send-sale tax content for this company.
+      #
+      # This API is available by invitation only.
+      # @param date [DateTime] The date for which we are fetching tax content.
+      # @param taxCode [String] The tax code for which we are fetching tax content.
+      # @param companyId [Integer] The unique ID number of the company which is fetching tax content.
+      # @param format [String] Requests a specific data format for this content file. (See SendSalesOutputFileFormat::* for a list of allowable values)
+      # @param type [String] Requests a specific encoding for this content file. (See SendSalesFileType::* for a list of allowable values)
+      # @return [Object]
+      def download_send_sales_rate_file(date, taxCode, companyId, options={})
+        path = "/api/v2/sendsalescontent/download/#{companyId}/#{taxCode}/#{date}"
+        get(path, options)
+      end
+
+
       # Download a file listing tax rates by postal code
       #
       # Download a CSV file containing all five digit postal codes in the United States and their sales

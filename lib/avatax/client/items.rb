@@ -280,6 +280,29 @@ module AvaTax
       end
 
 
+      # Sync items from a product catalog
+      #
+      # Syncs a list of items with AvaTax without waiting for them to be created. It is ideal for syncing large product catalogs
+      # with AvaTax.
+      #
+      # Any invalid or duplicate items will be ignored. To diagnose why an item is not created, use the normal create transaction API to receive validation information.
+      #
+      # This API is currently limited to 1000 items per call (the limit is subject to change).
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
+      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
+      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
+      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
+      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param model [Object] The request object.
+      # @return [Object]
+      def sync_items(companyId, model)
+        path = "/api/v2/companies/#{companyId}/items/sync"
+        post(path, model)
+      end
+
+
       # Update a single item
       #
       # Replace the existing `Item` object at this URL with an updated object.

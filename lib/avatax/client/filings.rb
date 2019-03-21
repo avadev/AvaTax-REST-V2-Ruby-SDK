@@ -206,6 +206,18 @@ module AvaTax
       end
 
 
+      # Retrieve a list of filings for the specified accrual return.
+      #
+      # 
+      # @param companyId [Integer] The ID of the company that owns these batches
+      # @param filingReturnId [Integer] The ID of the accrual return
+      # @return [FetchResult]
+      def get_accrual_fillings(companyId, filingReturnId)
+        path = "/api/v2/companies/#{companyId}/filings/accrual/#{filingReturnId}"
+        get(path)
+      end
+
+
       # Retrieve a single attachment for a filing
       #
       # This API is available by invitation only.
