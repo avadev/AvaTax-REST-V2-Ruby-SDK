@@ -218,6 +218,8 @@ module AvaTax
       # Retrieve all filing calendars
       #
       # This API is available by invitation only.
+      #
+      # This API is deprecated - please use POST `/api/v2/filingrequests/query` API.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* formCountry, formRegion, taxFormCode, taxAuthorityId, taxAuthorityName, taxAuthorityType, settings
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -231,9 +233,28 @@ module AvaTax
       end
 
 
+      # Retrieve all filing calendars
+      #
+      # This API is available by invitation only.
+      #
+      # This API is intended to replace the GET `/api/v2/filingcalendars` API. The fetch request object is posted on the body of the request instead of the URI, so it's not limited by a set number of characters.
+      # The documentation of the GET API shows how filtering, sorting and pagination works.
+      # @param returnCountry [String] If specified, fetches only filing calendars that apply to tax filings in this specific country. Uses ISO 3166 country codes.
+      # @param returnRegion [String] If specified, fetches only filing calendars that apply to tax filings in this specific region. Uses ISO 3166 region codes.
+      # @param model [Object] Query object to filter, sort and paginate the filing calendars.
+      # @return [FetchResult]
+      def query_filing_calendars_post(model, options={})
+        path = "/api/v2/filingcalendars/query"
+        post(path, model, options)
+      end
+
+
       # Retrieve all filing requests
       #
       # This API is available by invitation only.
+      #
+      # This API is deprecated - please use POST `/api/v2/filingrequests/query` API.
+      #
       # A "filing request" represents a request to change an existing filing calendar. Filing requests
       # are reviewed and validated by Avalara Compliance before being implemented.
       #
@@ -248,6 +269,21 @@ module AvaTax
       def query_filing_requests(options={})
         path = "/api/v2/filingrequests"
         get(path, options)
+      end
+
+
+      # Retrieve all filing requests
+      #
+      # This API is available by invitation only.
+      #
+      # This API is intended to replace the GET `/api/v2/filingrequests` API. The fetch request object is posted on the body of the request instead of the URI, so it's not limited by a set number of characters.
+      # The documentation of the GET API shows how filtering, sorting and pagination works.
+      # @param filingCalendarId [Integer] Specific filing calendar id for the request
+      # @param model [Object] Query object to filter, sort and paginate the filing calendars.
+      # @return [FetchResult]
+      def query_filing_requests_post(model, options={})
+        path = "/api/v2/filingrequests/query"
+        post(path, model, options)
       end
 
 
@@ -273,7 +309,7 @@ module AvaTax
       # Edit existing Filing Calendar
       #
       # This API is available by invitation only.
-      # @param companyId [Integer] The unique ID of the company that owns the filing request object
+      # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param id [Integer] The unique ID of the filing calendar object
       # @param model [Object] The filing calendar model you are wishing to update with.
       # @return [Object]

@@ -277,6 +277,9 @@ module AvaTax
       # Retrieve all notices.
       #
       # This API is available by invitation only.
+      #
+      # This API is deprecated - please use POST `/api/v2/notices/query` API.
+      #
       # Get multiple notice objects across all companies.
       # A 'notice' represents a letter sent to a business by a tax authority regarding tax filing issues. Avalara
       # Returns customers often receive support and assistance from the Compliance Notices team in handling notices received by taxing authorities.
@@ -292,6 +295,20 @@ module AvaTax
       def query_notices(options={})
         path = "/api/v2/notices"
         get(path, options)
+      end
+
+
+      # Retrieve all notices.
+      #
+      # This API is available by invitation only.
+      #
+      # This API is intended to replace the GET `/api/v2/notices` API. The fetch request object is posted on the body of the request instead of the URI, so it's not limited by a set number of characters.
+      # The documentation of the GET API shows how filtering, sorting and pagination works.
+      # @param model [Object] Query object to filter, sort and paginate the filing calendars.
+      # @return [FetchResult]
+      def query_notices_post(model)
+        path = "/api/v2/notices/query"
+        post(path, model)
       end
 
 

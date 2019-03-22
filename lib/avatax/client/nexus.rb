@@ -137,6 +137,25 @@ module AvaTax
       end
 
 
+      # Summarize nexus by NexusTaxTypeGroup for this company
+      #
+      # Provides a summary of nexus information useful for quickly displaying key information.
+      #
+      # The concept of Nexus indicates a place where your company is legally obligated to collect and remit transactional
+      # taxes. The legal requirements for nexus may vary per country and per jurisdiction; please seek advice from your
+      # accountant or lawyer prior to declaring nexus.
+      #
+      # This API produces only basic information about your company's nexus declarations. For example, it will show
+      # the number of nexus declarations of each tax type. To request more information about your company's nexus
+      # declarations, please use `QueryNexus` or `ListNexusByCompany`.
+      # @param companyId [Integer] The ID of the company that owns these nexus objects
+      # @return [Object]
+      def nexus_summary(companyId)
+        path = "/api/v2/companies/#{companyId}/nexus/summary"
+        get(path)
+      end
+
+
       # Retrieve all nexus
       #
       # Get multiple nexus objects across all companies.

@@ -97,6 +97,20 @@ module AvaTax
       end
 
 
+      # Get information about a username.
+      #
+      # You may call this API prior to creating a user, to check if a particular username is available for use. Using this API, you can
+      # present a friendly experience prior to attempting to create a new user object.
+      #
+      # Please ensure that the query string is url encoded if you wish to check information for a user that contains url-sensitive characters.
+      # @param username [String] The username to search.
+      # @return [Object]
+      def get_username(options={})
+        path = "/api/v2/usernames"
+        get(path, options)
+      end
+
+
       # Retrieve users for this account
       #
       # List all user objects attached to this account.
