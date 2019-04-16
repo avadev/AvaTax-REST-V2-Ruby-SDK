@@ -19,6 +19,10 @@ module AvaTax
       # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
       #
       # This API works for all report types.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] The unique ID number of this report
       # @return [Object]
       def download_report(id)
@@ -37,6 +41,10 @@ module AvaTax
       # * In the result of the Initiate API, you receive back a report's `id` value.
       # * Check the status of a report by calling `GetReport` and passing in the report's `id` value.
       # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The unique ID number of the company to report on.
       # @param model [Object] Options that may be configured to customize the report.
       # @return [Object]
@@ -80,6 +88,10 @@ module AvaTax
       # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
       #
       # The `ExportDocumentLine` report produces information about invoice lines recorded within your account.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The unique ID number of the company to report on.
       # @param model [Object] Options that may be configured to customize the report.
       # @return [ReportModel[]]
@@ -102,6 +114,10 @@ module AvaTax
       # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
       #
       # This API call returns information about all report types across your entire account.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @return [FetchResult]
       def list_reports()
         path = "/api/v2/reports"

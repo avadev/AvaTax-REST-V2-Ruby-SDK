@@ -12,6 +12,10 @@ module AvaTax
       #
       # This API only allows the currently authenticated user to change their password; it cannot be used to apply to a
       # different user than the one authenticating the current API call.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param model [Object] An object containing your current password and the new password.
       # @return [String]
       def change_password(model)
@@ -31,6 +35,10 @@ module AvaTax
       #
       # A newly created user will receive an email inviting them to create their password. This means that you
       # must provide a valid email address for all user accounts created.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param accountId [Integer] The unique ID number of the account where these users will be created.
       # @param model [UserModel[]] The user or array of users you wish to create.
       # @return [UserModel[]]
@@ -48,6 +56,10 @@ module AvaTax
       #
       # Account and company administrators may only delete users within the appropriate organizations
       # they control.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, CSPTester, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TreasuryAdmin.
       # @param id [Integer] The ID of the user you wish to delete.
       # @param accountId [Integer] The accountID of the user you wish to delete.
       # @return [ErrorDetail[]]
@@ -61,6 +73,14 @@ module AvaTax
       #
       # Get the user object identified by this URL.
       # A user represents one person with access privileges to make API calls and work with a specific account.
+      #
+      #  You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * FetchDeleted
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @param include [String] Optional fetch commands.
@@ -88,26 +108,16 @@ module AvaTax
       # * If the 'permissions' array within entitlements does not contain 'AccountSvc.CompanySave', the call will fail.
       #
       # For a full list of defined permissions, please use '/api/v2/definitions/permissions' .
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @return [Object]
       def get_user_entitlements(id, accountId)
         path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
         get(path)
-      end
-
-
-      # Get information about a username.
-      #
-      # You may call this API prior to creating a user, to check if a particular username is available for use. Using this API, you can
-      # present a friendly experience prior to attempting to create a new user object.
-      #
-      # Please ensure that the query string is url encoded if you wish to check information for a user that contains url-sensitive characters.
-      # @param username [String] The username to search.
-      # @return [Object]
-      def get_username(options={})
-        path = "/api/v2/usernames"
-        get(path, options)
       end
 
 
@@ -121,6 +131,14 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * FetchDeleted
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param accountId [Integer] The accountID of the user you wish to list.
       # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
@@ -146,6 +164,14 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * FetchDeleted
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -164,6 +190,10 @@ module AvaTax
       # A user represents one person with access privileges to make API calls and work with a specific account.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the user you wish to update.
       # @param accountId [Integer] The accountID of the user you wish to update.
       # @param model [Object] The user object you wish to update.

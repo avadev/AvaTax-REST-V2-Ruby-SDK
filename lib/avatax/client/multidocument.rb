@@ -15,6 +15,11 @@ module AvaTax
       # Both the revisions will be available for retrieval based on their code and ID numbers. Only transactions in Committed status can be reported on a tax filing by Avalara's Managed Returns Service.
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered locked and are no longer available for adjustments.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in this fetch call
@@ -42,6 +47,11 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @return [Object]
@@ -61,6 +71,11 @@ module AvaTax
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
       # Any changes made to a committed transaction will generate a transaction history.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param model [Object] The commit request you wish to execute
       # @return [Object]
       def commit_multi_document_transaction(model)
@@ -103,6 +118,11 @@ module AvaTax
       # * ForceTimeout - Simulates a timeout. This adds a 30 second delay and error to your API call. This can be used to test your code to ensure it can respond correctly in the case of a dropped connection.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] the multi document transaction model
       # @return [Object]
@@ -126,6 +146,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param code [String] 
       # @param type [String]  (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -159,6 +184,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param id [Integer] The unique ID number of the MultiDocument transaction to retrieve
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @return [Object]
@@ -189,6 +219,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* documents
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -239,6 +274,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param code [String] The code of this MultiDocument transaction
       # @param type [String] The type of this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -258,6 +298,11 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param model [Object] Information from your accounting system to verify against this MultiDocument transaction as it is stored in AvaTax
       # @return [Object]
       def verify_multi_document_transaction(model)
@@ -277,6 +322,11 @@ module AvaTax
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns Service are considered `locked`,
       # and they are no longer available to be voided.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param model [Object] The void request you wish to execute

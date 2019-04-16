@@ -10,6 +10,10 @@ module AvaTax
       #
       # Create a single new account object.
       # When creating an account object you may attach subscriptions and users as part of the 'Create' call.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param model [Object] The account you wish to create.
       # @return [AccountModel[]]
       def create_account(model)
@@ -30,6 +34,11 @@ module AvaTax
       #
       # An example of a notification would be a message about new software, or a change to AvaTax that may
       # affect you, or a potential issue with your company's tax profile.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [NotificationsAPI:Create].
       # @param model [NotificationModel[]] The notifications you wish to create.
       # @return [NotificationModel[]]
       def create_notifications(model)
@@ -40,12 +49,15 @@ module AvaTax
 
       # Create a new subscription
       #
-      # # For Registrar Use Only
       # This API is for use by Avalara Registrar administrative users only.
       #
       # Create one or more new subscription objects attached to this account.
       # A 'subscription' indicates a licensed subscription to a named Avalara service.
       # To request or remove subscriptions, please contact Avalara sales or your customer account manager.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that owns this subscription.
       # @param model [SubscriptionModel[]] The subscription you wish to create.
       # @return [SubscriptionModel[]]
@@ -62,6 +74,10 @@ module AvaTax
       #
       # Delete an account.
       # Deleting an account will delete all companies and all account level users attached to this account.
+      #
+      # ### Security Policies
+      #
+      # * This API requires the user role SystemAdmin.
       # @param id [Integer] The ID of the account you wish to delete.
       # @return [ErrorDetail[]]
       def delete_account(id)
@@ -82,6 +98,11 @@ module AvaTax
       #
       # An example of a notification would be a message about new software, or a change to AvaTax that may
       # affect you, or a potential issue with your company's tax profile.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [NotificationsAPI:Create].
       # @param id [Integer] The id of the notification you wish to delete.
       # @return [ErrorDetail[]]
       def delete_notification(id)
@@ -96,6 +117,10 @@ module AvaTax
       # This API is for use by Avalara Registrar administrative users only.
       #
       # Mark the existing account identified by this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that owns this subscription.
       # @param id [Integer] The ID of the subscription you wish to delete.
       # @return [ErrorDetail[]]
@@ -113,6 +138,11 @@ module AvaTax
       # Allows a system admin to reset the password for a specific user via the API.
       # This API is only available for Avalara Registrar Admins, and can be used to reset the password of any
       # user based on internal Avalara business processes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available to Avalara system-level (registrar-level) users only.
       # @param userId [Integer] The unique ID of the user whose password will be changed
       # @param unmigrateFromAi [Boolean] If user's password was migrated to AI, undo this.
       # @param model [Object] The new password for this user
@@ -129,6 +159,10 @@ module AvaTax
       # This API is for use by Avalara Registrar administrative users only.
       #
       # Replace an existing account object with an updated account object.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the account you wish to update.
       # @param model [Object] The account object you wish to update.
       # @return [Object]
@@ -150,6 +184,11 @@ module AvaTax
       #
       # An example of a notification would be a message about new software, or a change to AvaTax that may
       # affect you, or a potential issue with your company's tax profile.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [NotificationsAPI:Create].
       # @param id [Integer] The id of the notification you wish to update.
       # @param model [Object] The notification object you wish to update.
       # @return [Object]
@@ -169,6 +208,10 @@ module AvaTax
       # To request or remove subscriptions, please contact Avalara sales or your customer account manager.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that this subscription belongs to.
       # @param id [Integer] The ID of the subscription you wish to update
       # @param model [Object] The subscription you wish to update.

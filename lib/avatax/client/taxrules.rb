@@ -18,6 +18,10 @@ module AvaTax
       #
       # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
       # auditor, legal representative, and accounting team.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this tax rule.
       # @param model [TaxRuleModel[]] The tax rule you wish to create.
       # @return [TaxRuleModel[]]
@@ -42,6 +46,10 @@ module AvaTax
       #
       # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
       # auditor, legal representative, and accounting team.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this tax rule.
       # @param id [Integer] The ID of the tax rule you wish to delete.
       # @return [ErrorDetail[]]
@@ -66,6 +74,10 @@ module AvaTax
       #
       # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
       # auditor, legal representative, and accounting team.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this tax rule
       # @param id [Integer] The primary key of this tax rule
       # @return [Object]
@@ -93,6 +105,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns these tax rules
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, rateTypeCode, taxTypeGroup, taxSubType
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -124,6 +140,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, rateTypeCode, taxTypeGroup, taxSubType
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -151,6 +171,10 @@ module AvaTax
       #
       # Please use custom tax rules carefully and ensure that these tax rules match the behavior agreed upon with your
       # auditor, legal representative, and accounting team.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that this tax rule belongs to.
       # @param id [Integer] The ID of the tax rule you wish to update
       # @param model [Object] The tax rule you wish to update.

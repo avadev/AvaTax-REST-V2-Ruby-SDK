@@ -7,6 +7,11 @@ module AvaTax
       #
       # Create one or more new UPC objects attached to this company.
       # A UPC represents a single UPC code in your catalog and matches this product to the tax code identified by this UPC.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param model [UPCModel[]] The UPC you wish to create.
       # @return [UPCModel[]]
@@ -19,6 +24,11 @@ module AvaTax
       # Delete a single UPC
       #
       # Marks the UPC object identified by this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param id [Integer] The ID of the UPC you wish to delete.
       # @return [ErrorDetail[]]
@@ -32,6 +42,11 @@ module AvaTax
       #
       # Get the UPC object identified by this URL.
       # A UPC represents a single UPC code in your catalog and matches this product to the tax code identified by this UPC.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param companyId [Integer] The ID of the company that owns this UPC
       # @param id [Integer] The primary key of this UPC
       # @return [Object]
@@ -48,6 +63,11 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param companyId [Integer] The ID of the company that owns these UPCs
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -68,6 +88,11 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -86,6 +111,11 @@ module AvaTax
       # A UPC represents a single UPC code in your catalog and matches this product to the tax code identified by this UPC.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaUpc.
       # @param companyId [Integer] The ID of the company that this UPC belongs to.
       # @param id [Integer] The ID of the UPC you wish to update
       # @param model [Object] The UPC you wish to update.

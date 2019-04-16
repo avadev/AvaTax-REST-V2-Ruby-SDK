@@ -12,6 +12,12 @@ module AvaTax
       # Sometimes Compliance has to manually unapprove and reapprove to modify liability or filing for the customer.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to approve.
       # @param month [Integer] The month of the filing period to approve.
@@ -32,6 +38,12 @@ module AvaTax
       # Sometimes Compliance has to manually unapprove and reapprove to modify liability or filing for the customer.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to approve.
       # @param month [Integer] The month of the filing period to approve.
@@ -53,6 +65,12 @@ module AvaTax
       # Sometimes Compliance has to manually unapprove and reapprove to modify liability or filing for the customer.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to approve.
       # @param month [Integer] The month of the filing period to approve.
@@ -74,6 +92,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API creates a new adjustment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param year [Integer] The year of the filing's filing period being adjusted.
       # @param month [Integer] The month of the filing's filing period being adjusted.
@@ -95,6 +119,12 @@ module AvaTax
       # usually due to customer wanting to report tax Avatax does not support, e.g. bad debts, rental tax.
       # This API creates a new augmentation for an existing tax filing.
       # This API can only be used when the filing has not been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being changed.
       # @param year [Integer] The month of the filing's filing period being changed.
       # @param month [Integer] The month of the filing's filing period being changed.
@@ -117,6 +147,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API creates a new payment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param year [Integer] The year of the filing's filing period being adjusted.
       # @param month [Integer] The month of the filing's filing period being adjusted.
@@ -139,6 +175,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API deletes an adjustment for an existing tax filing.
       # This API can only be used when the filing has been unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the adjustment being deleted.
       # @return [ErrorDetail[]]
@@ -155,6 +197,12 @@ module AvaTax
       # usually due to customer wanting to report tax Avatax does not support, e.g. bad debts, rental tax.
       # This API deletes an augmentation for an existing tax filing.
       # This API can only be used when the filing has been unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being changed.
       # @param id [Integer] The ID of the augmentation being added.
       # @return [ErrorDetail[]]
@@ -172,6 +220,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API deletes an payment for an existing tax filing.
       # This API can only be used when the filing has been unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the payment being deleted.
       # @return [ErrorDetail[]]
@@ -184,6 +238,12 @@ module AvaTax
       # Retrieve worksheet checkup report for company and filing period.
       #
       # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param filingsId [Integer] The unique id of the worksheet.
       # @param companyId [Integer] The unique ID of the company that owns the worksheet.
       # @return [Object]
@@ -196,6 +256,12 @@ module AvaTax
       # Retrieve worksheet checkup report for company and filing period.
       #
       # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The unique ID of the company that owns the worksheets object.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The month of the filing period.
@@ -208,7 +274,9 @@ module AvaTax
 
       # Retrieve a list of filings for the specified accrual return.
       #
-      # 
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns these batches
       # @param filingReturnId [Integer] The ID of the accrual return
       # @return [FetchResult]
@@ -221,6 +289,12 @@ module AvaTax
       # Retrieve a single attachment for a filing
       #
       # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param filingReturnId [Integer] The unique id of the worksheet return.
       # @param fileId [Integer] The unique id of the document you are downloading
@@ -236,6 +310,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -251,6 +331,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -266,6 +352,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param id [Integer] The id of the filing return your retrieving
       # @param details [Boolean] Indicates if you would like the credit details returned
@@ -281,6 +373,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -296,6 +394,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -312,6 +416,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -329,6 +439,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -345,7 +461,11 @@ module AvaTax
       # Retrieve a list of filings for the specified company in the year and month of a given filing period.
       # This gets the basic information from the filings and doesn't include anything extra.
       #
-      # 
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns these batches
       # @param endPeriodMonth [Integer] The month of the period you are trying to retrieve
       # @param endPeriodYear [Integer] The year of the period you are trying to retrieve
@@ -366,6 +486,12 @@ module AvaTax
       # This API is available by invitation only.
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period.
       # @param month [Integer] The two digit month of the filing period.
@@ -387,6 +513,12 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to be rebuilt.
       # @param month [Integer] The month of the filing period to be rebuilt.
@@ -406,6 +538,12 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to be rebuilt.
       # @param month [Integer] The month of the filing period to be rebuilt.
@@ -426,6 +564,12 @@ module AvaTax
       # A "filing period" is the year and month of the date of the latest customer transaction allowed to be reported on a filing,
       # based on filing frequency of filing.
       # This API requires filing to be unapproved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyId [Integer] The ID of the company that owns the filings.
       # @param year [Integer] The year of the filing period to be rebuilt.
       # @param month [Integer] The month of the filing period to be rebuilt.
@@ -447,6 +591,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API modifies an adjustment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the adjustment being edited.
       # @param model [Object] The updated Adjustment.
@@ -464,6 +614,12 @@ module AvaTax
       # usually due to customer wanting to report tax Avatax does not support, e.g. bad debts, rental tax.
       # This API modifies an augmentation for an existing tax filing.
       # This API can only be used when the filing has not been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being changed.
       # @param id [Integer] The ID of the augmentation being edited.
       # @param model [Object] The updated Augmentation.
@@ -482,6 +638,12 @@ module AvaTax
       # Sometimes may be a manual change in tax liability similar to an augmentation.
       # This API modifies an payment for an existing tax filing.
       # This API can only be used when the filing has not yet been approved.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, CSPTester, FirmUser, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The ID of the company that owns the filing being adjusted.
       # @param id [Integer] The ID of the payment being edited.
       # @param model [Object] The updated Payment.

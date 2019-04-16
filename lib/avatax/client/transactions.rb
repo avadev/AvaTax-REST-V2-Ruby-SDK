@@ -25,6 +25,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       #
       #  If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be added
       # @return [Object]
@@ -47,9 +52,25 @@ module AvaTax
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered `locked` and are
       # no longer available for adjustments.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to adjust
       # @param documentType [String] (Optional): The document type of the transaction to adjust. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The adjustment you wish to make
       # @return [Object]
       def adjust_transaction(companyCode, transactionCode, model, options={})
@@ -75,6 +96,11 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @return [Object]
@@ -101,6 +127,11 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @param documentType [String] The document type of the original transaction (See DocumentType::* for a list of allowable values)
@@ -120,6 +151,11 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # ### Security Policies
+      #
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param model [Object] bulk lock request
       # @return [Object]
       def bulk_lock_transaction(model)
@@ -141,9 +177,25 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, AvaTaxST.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to change
       # @param documentType [String] (Optional): The document type of the transaction to change document code. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The code change request you wish to execute
       # @return [Object]
       def change_transaction_code(companyCode, transactionCode, model, options={})
@@ -164,9 +216,24 @@ module AvaTax
       # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
       #
       # Any changes made to a committed transaction will generate a transaction history.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to commit
       # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The commit request you wish to execute
       # @return [Object]
       def commit_transaction(companyCode, transactionCode, model, options={})
@@ -205,6 +272,11 @@ module AvaTax
       # * ForceTimeout - Simulates a timeout. This adds a 30 second delay and error to your API call. This can be used to test your code to ensure it can respond correctly in the case of a dropped connection.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create or adjust
       # @return [Object]
@@ -251,6 +323,11 @@ module AvaTax
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create
       # @return [Object]
@@ -279,6 +356,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       #
       #  If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be removed
       # @return [Object]
@@ -308,6 +390,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] (Optional): The document type of the transaction to retrieve (See DocumentType::* for a list of allowable values)
@@ -322,6 +409,11 @@ module AvaTax
       # Retrieve a single transaction by code
       #
       # DEPRECATED: Please use the `GetTransactionByCode` API instead.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
@@ -352,6 +444,11 @@ module AvaTax
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param id [Integer] The unique ID number of the transaction to retrieve
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
@@ -384,6 +481,11 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param dataSourceId [Integer] Optionally filter transactions to those from a specific data source.
       # @param include [String] Specifies objects to include in this fetch call
@@ -411,9 +513,25 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to lock
       # @param documentType [String] (Optional): The document type of the transaction to lock. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The lock request you wish to execute
       # @return [Object]
       def lock_transaction(companyCode, transactionCode, model, options={})
@@ -453,8 +571,13 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
-      #
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The code of the company that made the original sale
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -480,9 +603,24 @@ module AvaTax
       # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
       #
       # This API is available for users who want to execute more than one action at a time.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
       # @param documentType [String] (Optional): The document type of the transaction to settle. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
       def settle_transaction(companyCode, transactionCode, model, options={})
@@ -497,9 +635,25 @@ module AvaTax
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered `locked` and are
       # no longer available to be uncommitted.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to commit
       # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def uncommit_transaction(companyCode, transactionCode, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/uncommit"
@@ -517,9 +671,25 @@ module AvaTax
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
       # @param documentType [String] (Optional): The document type of the transaction to verify. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
       def verify_transaction(companyCode, transactionCode, model, options={})
@@ -540,9 +710,25 @@ module AvaTax
       # If you have more than one document with the same `code`, specify the `documentType` parameter to choose between them.
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are no longer available to be voided.
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to void
       # @param documentType [String] (Optional): The document type of the transaction to void. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The void request you wish to execute. To void a transaction the code must be set to 'DocVoided'
       # @return [Object]
       def void_transaction(companyCode, transactionCode, model, options={})

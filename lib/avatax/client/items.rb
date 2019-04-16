@@ -12,6 +12,10 @@ module AvaTax
       # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
       #
       # An item may only have one classification per tax system.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param model [ItemClassificationInputModel[]] The item classifications you wish to create.
@@ -35,6 +39,10 @@ module AvaTax
       # To see available parameters for this item, call `/api/v2/definitions/parameters?$filter=attributeType eq Product`
       #
       # Some parameters are only available for use if you have subscribed to specific AvaTax services. To see which parameters you are able to use, add the query parameter "$showSubscribed=true" to the parameter definition call above.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this item parameter.
       # @param itemId [Integer] The item id.
       # @param model [ItemParameterModel[]] The item parameters you wish to create.
@@ -56,6 +64,10 @@ module AvaTax
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
       #
       # The tax code takes precedence over the tax code id if both are provided.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
@@ -76,6 +88,10 @@ module AvaTax
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
       #
       # Deleting an item will also delete the parameters and classifications associated with that item.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param id [Integer] The ID of the item you wish to delete.
       # @return [ErrorDetail[]]
@@ -92,6 +108,10 @@ module AvaTax
       # A classification is the code for a product in a particular tax system. Classifications enable an item to be used in multiple tax systems which may have different tax rates for a product.
       #
       # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
@@ -111,6 +131,10 @@ module AvaTax
       # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
       #
       # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
@@ -130,6 +154,10 @@ module AvaTax
       # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
       # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param id [Integer] The primary key of this item
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -147,6 +175,10 @@ module AvaTax
       # A classification is the code for a product in a particular tax system. Classifications enable an item to be used in multiple tax systems which may have different tax rates for a product.
       #
       # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
@@ -166,6 +198,10 @@ module AvaTax
       # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
       #
       # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
@@ -186,6 +222,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` classification; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` classifications.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* productCode, systemCode
@@ -211,6 +251,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
@@ -242,6 +286,10 @@ module AvaTax
       #
       # * Parameters
       # * Classifications
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that defined these items
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -268,6 +316,10 @@ module AvaTax
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       #
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -277,29 +329,6 @@ module AvaTax
       def query_items(options={})
         path = "/api/v2/items"
         get(path, options)
-      end
-
-
-      # Sync items from a product catalog
-      #
-      # Syncs a list of items with AvaTax without waiting for them to be created. It is ideal for syncing large product catalogs
-      # with AvaTax.
-      #
-      # Any invalid or duplicate items will be ignored. To diagnose why an item is not created, use the normal create transaction API to receive validation information.
-      #
-      # This API is currently limited to 1000 items per call (the limit is subject to change).
-      #
-      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
-      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
-      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
-      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
-      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
-      # @param companyId [Integer] The ID of the company that owns this item.
-      # @param model [Object] The request object.
-      # @return [Object]
-      def sync_items(companyId, model)
-        path = "/api/v2/companies/#{companyId}/items/sync"
-        post(path, model)
       end
 
 
@@ -317,6 +346,10 @@ module AvaTax
       # you may either set its value to null or omit that field from the object you post.
       #
       # The tax code takes precedence over the tax code id if both are provided.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that this item belongs to.
       # @param id [Integer] The ID of the item you wish to update
       # @param model [Object] The item object you wish to update.
@@ -336,6 +369,10 @@ module AvaTax
       # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
       #
       # An item may only have one classification per tax system.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
@@ -356,6 +393,10 @@ module AvaTax
       # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
       #
       # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id
       # @param id [Integer] The item parameter id

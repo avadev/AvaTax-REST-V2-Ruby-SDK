@@ -28,6 +28,11 @@ module AvaTax
       # file for a single location at a time, please use `BuildTaxContentFileForLocation`.
       #
       # NOTE: This API does not work for Tennessee tax holiday scenarios.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param model [Object] Parameters about the desired file format and report format, specifying which company, locations and TaxCodes to include.
       # @return [Object]
       def build_tax_content_file(model)
@@ -61,6 +66,11 @@ module AvaTax
       # file for a multiple locations in a single file, please use `BuildTaxContentFile`.
       #
       # NOTE: This API does not work for Tennessee tax holiday scenarios.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The ID number of the company that owns this location.
       # @param id [Integer] The ID number of the location to retrieve point-of-sale data.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default)
@@ -70,21 +80,6 @@ module AvaTax
       # @return [Object]
       def build_tax_content_file_for_location(companyId, id, options={})
         path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
-        get(path, options)
-      end
-
-
-      # Retrieve send-sale tax content for this company.
-      #
-      # This API is available by invitation only.
-      # @param date [DateTime] The date for which we are fetching tax content.
-      # @param taxCode [String] The tax code for which we are fetching tax content.
-      # @param companyId [Integer] The unique ID number of the company which is fetching tax content.
-      # @param format [String] Requests a specific data format for this content file. (See SendSalesOutputFileFormat::* for a list of allowable values)
-      # @param type [String] Requests a specific encoding for this content file. (See SendSalesFileType::* for a list of allowable values)
-      # @return [Object]
-      def download_send_sales_rate_file(date, taxCode, companyId, options={})
-        path = "/api/v2/sendsalescontent/download/#{companyId}/#{taxCode}/#{date}"
         get(path, options)
       end
 
@@ -131,6 +126,10 @@ module AvaTax
       # * TAX_SHIPPING_AND_HANDLING_TOGETHER - This column contains 'Y' if shipping and handling are taxable when sent together.
       #
       # For more detailed tax content, please use the `BuildTaxContentFile` API which allows usage of exact items and exact locations.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
       # @param region [String] If the region is provided, this API is going to generate the tax rate per zipcode for only the region specified.
       # @return [Object]

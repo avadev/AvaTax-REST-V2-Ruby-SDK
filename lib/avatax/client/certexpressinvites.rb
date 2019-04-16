@@ -20,6 +20,11 @@ module AvaTax
       # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
       # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
       # storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that will record certificates
       # @param customerCode [String] The number of the customer where the request is sent to
       # @param model [CreateCertExpressInvitationModel[]] the requests to send out to customers
@@ -47,6 +52,11 @@ module AvaTax
       # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
       # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
       # storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that issued this invitation
       # @param customerCode [String] The number of the customer where the request is sent to
       # @param id [Integer] The unique ID number of this CertExpress invitation
@@ -75,6 +85,11 @@ module AvaTax
       # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
       # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
       # storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that issued this invitation
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.       No options are defined at this time.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* companyId, customer, coverLetter, exposureZones, exemptReasons, requestLink

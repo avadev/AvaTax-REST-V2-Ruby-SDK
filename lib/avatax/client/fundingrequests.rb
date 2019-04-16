@@ -17,6 +17,12 @@ module AvaTax
       # JavaScript funding setup widget inline.
       # Use the 'methodReturn.javaScript' return value to insert this widget into your HTML page.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
       def activate_funding_request(id)
@@ -37,6 +43,12 @@ module AvaTax
       # before approval.
       # This API checks the status on an existing funding request.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
       def funding_request_status(id)

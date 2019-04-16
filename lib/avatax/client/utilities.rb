@@ -56,6 +56,10 @@ module AvaTax
       # if you do not have verified connection credentials. If this API fails, either your computer is not connected to
       # the internet, or there is a routing problem between your office and Avalara, or the Avalara server is not available.
       # For more information on the uptime of AvaTax, please see [Avalara's AvaTax Status Page](https://status.avalara.com/).
+      #
+      # ### Security Policies
+      #
+      # * This API may be called without providing authentication credentials.
       # @return [Object]
       def ping()
         path = "/api/v2/utilities/ping"
