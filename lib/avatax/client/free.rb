@@ -15,6 +15,10 @@ module AvaTax
       # available in the free trial and its limitations, please see the [AvaTax Developer Website Free Trial page](https://developer.avalara.com/avatax/signup/).
       #
       # After your free trial concludes, you will still be able to use the [Free AvaTax API Suite](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Free/).
+      #
+      # ### Security Policies
+      #
+      # * This API may be called without providing authentication credentials.
       # @param model [Object] Required information to provision a free trial account.
       # @return [Object]
       def request_free_trial(model)

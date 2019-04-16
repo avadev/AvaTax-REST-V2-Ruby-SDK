@@ -17,6 +17,10 @@ module AvaTax
       #
       # When you call this API, all account administrators for this account will receive an email with the newly updated license key.
       # The email will specify which user reset the license key and it will contain the new key to use to update your connectors.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the account you wish to update.
       # @param model [Object] A request confirming that you wish to reset the license key of this account.
       # @return [Object]
@@ -38,6 +42,10 @@ module AvaTax
       #
       # If you have not read or accepted the terms and conditions, this API call will return the
       # unchanged account model.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the account to activate
       # @param model [Object] The activation request
       # @return [Object]
@@ -63,6 +71,10 @@ module AvaTax
       # * The amount of data and number of API calls returned by this API are limited and may be adjusted at any time.
       # * Old records may be migrated out of immediately available storage. To request older data, please contact your account manager.
       # * New records must migrate to available storage before they can be retrieved. You may need to wait a period of time before newly created records can be fetched.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the account you wish to audit.
       # @param start [DateTime] The start datetime of audit history you with to retrieve, e.g. "2018-06-08T17:00:00Z". Defaults to the past 15 minutes.
       # @param end [DateTime] The end datetime of audit history you with to retrieve, e.g. "2018-06-08T17:15:00Z. Defaults to the current time. Maximum of an hour after the start time.
@@ -82,6 +94,10 @@ module AvaTax
       #
       # * Subscriptions
       # * Users
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the account to retrieve
       # @param include [String] A comma separated list of special fetch options
       # @return [Object]
@@ -105,6 +121,10 @@ module AvaTax
       #
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] 
       # @return [AccountConfigurationModel[]]
       def get_account_configuration(id)
@@ -127,6 +147,10 @@ module AvaTax
       # * Users
       #
       # For more information about filtering in REST, please see the documentation at http://developer.avalara.com/avatax/filtering-in-rest/ .
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param include [String] A comma separated list of objects to fetch underneath this account. Any object with a URL path underneath this account can be fetched by specifying its name.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* subscriptions, users
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -153,6 +177,10 @@ module AvaTax
       #
       # Avalara-based account settings for `TaxServiceConfig` and `AddressServiceConfig` affect your account's
       # tax calculation and address resolution, and should only be changed with care.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param id [Integer] 
       # @param model [AccountConfigurationModel[]] 
       # @return [AccountConfigurationModel[]]

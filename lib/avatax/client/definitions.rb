@@ -15,6 +15,10 @@ module AvaTax
       #
       # This API is intended to be useful to review the descriptive hierarchy of an HS Code, which can be particularly helpful
       # when HS Codes can have multiple levels of generic descriptions.
+      #
+      # ### Security Policies
+      #
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
       # @param country [String] The name or code of the destination country.
       # @param hsCode [String] The partial or full HS Code for which you would like to view all of the parents.
       # @return [FetchResult]
@@ -211,6 +215,10 @@ module AvaTax
       # Section/Chapter/Heading/Subheading/Classification.
       #
       # This API is intended to be useful to identify the correct HS Code to use for your item.
+      #
+      # ### Security Policies
+      #
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
       # @param country [String] The name or code of the destination country.
       # @param hsCode [String] The Section or partial HS Code for which you would like to view the next level of HS Code detail, if more detail is available.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* hsCodeSource, system, destinationCountry, isDecisionNode, zeroPaddingCount, isSystemDefined, isTaxable, effDate, endDate, hsCodeSourceLength
@@ -232,6 +240,10 @@ module AvaTax
       #
       # This API is intended to be useful to identify the top level Sections for
       # further LandedCost HS Code lookups.
+      #
+      # ### Security Policies
+      #
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
       # @return [FetchResult]
       def list_cross_border_sections()
         path = "/api/v2/definitions/crossborder/sections"
@@ -382,7 +394,7 @@ module AvaTax
       # Returns the full list of all Avalara-supported nexus for all countries and regions.
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -407,7 +419,7 @@ module AvaTax
       # @param region [String] Name or ISO 3166 code identifying the region portion of the address.      This field supports many different region identifiers:   * Two and three character ISO 3166 region codes   * Fully spelled out names of the region in ISO supported languages   * Common alternative spellings for many regions      For a full list of all supported codes and names, please see the Definitions API `ListRegions`.
       # @param postalCode [String] The postal code or zip code portion of this address.
       # @param country [String] Name or ISO 3166 code identifying the country portion of this address.      This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries      For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -424,7 +436,7 @@ module AvaTax
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country.
       # @param country [String] The country in which you want to fetch the system nexus
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -442,7 +454,7 @@ module AvaTax
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country and region.
       # @param country [String] The two-character ISO-3166 code for the country.
       # @param region [String] The two or three character region code for the region.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -466,6 +478,10 @@ module AvaTax
       # This API is intended to provide useful information when examining a tax form. If you are about to begin filing
       # a tax form, you may want to know whether you have declared nexus in all the jurisdictions related to that tax
       # form in order to better understand how the form will be filled out.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param formCode [String] The form code that we are looking up the nexus for
       # @return [Object]
       def list_nexus_by_form_code(formCode)
@@ -643,6 +659,10 @@ module AvaTax
       # Retrieve the parameters by companyCode and itemCode.
       #
       # Returns the list of parameters based on the company country and state jurisdiction and the item code.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyCode [String] Company code.
       # @param itemCode [String] Item code.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, values
@@ -891,6 +911,10 @@ module AvaTax
       # Avalara supports correct tax rates and taxability rules for all TaxCodes in all supported jurisdictions.
       # If you identify your products by tax code in your 'Create Transacion' API calls, Avalara will correctly calculate tax rates and
       # taxability rules for this product in all supported jurisdictions.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.

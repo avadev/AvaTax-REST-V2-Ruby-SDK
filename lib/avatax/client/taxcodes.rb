@@ -10,6 +10,10 @@ module AvaTax
       # Avalara supports correct tax rates and taxability rules for all TaxCodes in all supported jurisdictions.
       # If you identify your products by tax code in your 'Create Transacion' API calls, Avalara will correctly calculate tax rates and
       # taxability rules for this product in all supported jurisdictions.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param model [TaxCodeModel[]] The tax code you wish to create.
       # @return [TaxCodeModel[]]
@@ -22,6 +26,10 @@ module AvaTax
       # Delete a single tax code
       #
       # Marks the existing TaxCode object at this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param id [Integer] The ID of the tax code you wish to delete.
       # @return [ErrorDetail[]]
@@ -38,6 +46,10 @@ module AvaTax
       # Avalara supports correct tax rates and taxability rules for all TaxCodes in all supported jurisdictions.
       # If you identify your products by tax code in your 'Create Transacion' API calls, Avalara will correctly calculate tax rates and
       # taxability rules for this product in all supported jurisdictions.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this tax code
       # @param id [Integer] The primary key of this tax code
       # @return [Object]
@@ -57,6 +69,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns these tax codes
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -80,6 +96,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -101,6 +121,10 @@ module AvaTax
       # taxability rules for this product in all supported jurisdictions.
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that this tax code belongs to.
       # @param id [Integer] The ID of the tax code you wish to update
       # @param model [Object] The tax code you wish to update.

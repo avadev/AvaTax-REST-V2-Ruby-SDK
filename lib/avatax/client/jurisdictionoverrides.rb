@@ -11,6 +11,10 @@ module AvaTax
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param model [JurisdictionOverrideModel[]] The jurisdiction override objects to create
       # @return [JurisdictionOverrideModel[]]
@@ -23,6 +27,10 @@ module AvaTax
       # Delete a single override
       #
       # Marks the item object at this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param id [Integer] The ID of the override you wish to delete
       # @return [ErrorDetail[]]
@@ -40,6 +48,10 @@ module AvaTax
       # jurisdiction for a specific address. If you encounter an address that is on the boundary
       # between two different jurisdictions, you can choose to set up a jurisdiction override
       # to switch this address to use different taxing jurisdictions.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param id [Integer] The primary key of this override
       # @return [Object]
@@ -60,6 +72,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param accountId [Integer] The ID of the account that owns this override
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* country, Jurisdictions
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -84,6 +100,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* country, Jurisdictions
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -99,6 +119,10 @@ module AvaTax
       # Update a single jurisdictionoverride
       #
       # Replace the existing jurisdictionoverride object at this URL with an updated object.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param accountId [Integer] The ID of the account that this jurisdictionoverride belongs to.
       # @param id [Integer] The ID of the jurisdictionoverride you wish to update
       # @param model [Object] The jurisdictionoverride object you wish to update.

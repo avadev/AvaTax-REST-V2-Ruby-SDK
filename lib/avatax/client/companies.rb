@@ -18,6 +18,10 @@ module AvaTax
       # * Avalara compliance team members may change a company from `FirstFiling` to `Active`.
       #
       # All other status changes must be requested through the Avalara customer support team.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] 
       # @param model [Object] 
       # @return [String]
@@ -41,6 +45,10 @@ module AvaTax
       # This API only provides a limited subset of functionality compared to the 'Create Company' API call.
       # If you need additional features or options not present in this 'Quick Setup' API call, please use the full 'Create Company' call instead.
       # Please allow 1 minute before making transactions using the company.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param model [Object] Information about the company you wish to create.
       # @return [Object]
       def company_initialize(model)
@@ -54,6 +62,10 @@ module AvaTax
       # Create one or more new company objects.
       # A 'company' represents a single corporation or individual that is registered to handle transactional taxes.
       # You may attach nested data objects such as contacts, locations, and nexus with this CREATE call, and those objects will be created with the company.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param model [CompanyModel[]] Either a single company object or an array of companies to create
       # @return [CompanyModel[]]
       def create_companies(model)
@@ -74,6 +86,10 @@ module AvaTax
       # before approval.
       # This API records that an ambedded HTML funding setup widget was activated.
       # This API requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The unique identifier of the company
       # @param model [Object] The funding initialization request
       # @return [Object]
@@ -86,6 +102,10 @@ module AvaTax
       # Delete a single company
       #
       # Deleting a company will delete all child companies, and all users attached to this company.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the company you wish to delete.
       # @return [ErrorDetail[]]
       def delete_company(id)
@@ -100,6 +120,12 @@ module AvaTax
       # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # Returns the funding configuration of the requested company.
       # .
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The unique identifier of the company
       # @return [Object]
       def funding_configuration_by_company(companyId)
@@ -114,6 +140,12 @@ module AvaTax
       # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # Returns the funding configuration of the requested company.
       # .
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param companyId [Integer] The unique identifier of the company
       # @param currency [String] The currency of the funding. USD and CAD are the only valid currencies
       # @return [FundingConfigurationModel[]]
@@ -137,8 +169,12 @@ module AvaTax
       #  * TaxCodes
       #  * TaxRules
       #  * UPC
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the company to retrieve.
-      # @param include [String] OPTIONAL: A comma separated list of special fetch options.      * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
+      # @param include [String] OPTIONAL: A comma separated list of special fetch options.      * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", "NonReportingChildren" or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
       # @return [Object]
       def get_company(id, options={})
         path = "/api/v2/companies/#{id}"
@@ -160,6 +196,10 @@ module AvaTax
       #
       # Avalara-based company settings for `AvaCertServiceConfig` affect your company's exemption certificate
       # processing, and should be changed with care.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] 
       # @return [CompanyConfigurationModel[]]
       def get_company_configuration(id)
@@ -183,6 +223,10 @@ module AvaTax
       # * `FilingRequested` - The company has requested to begin filing tax returns, but Avalara's compliance team has not yet begun filing.
       # * `FirstFiling` - The company has recently filing tax returns and is in a new status.
       # * `Active` - The company is currently active and is filing tax returns via Avalara Managed Returns.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] 
       # @return [String]
       def get_filing_status(id)
@@ -197,6 +241,10 @@ module AvaTax
       # Requires a subscription to Avalara Managed Returns or SST Certified Service Provider.
       # Returns a list of funding setup requests and their current status.
       # Each object in the result is a request that was made to setup or adjust funding status for this company.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The unique identifier of the company
       # @return [FundingStatusModel[]]
       def list_funding_requests_by_company(id)
@@ -210,6 +258,10 @@ module AvaTax
       # This API is available by invitation only.
       #
       # Get a list of companies with an active MRS service.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @return [FetchResult]
       def list_mrs_companies()
         path = "/api/v2/companies/mrs"
@@ -235,8 +287,12 @@ module AvaTax
       # * TaxCodes
       # * TaxRules
       # * UPC
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param include [String] A comma separated list of objects to fetch underneath this company. Any object with a URL path underneath this company can be fetched by specifying its name.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* contacts, items, locations, nexus, settings, taxCodes, taxRules, upcs, exemptCerts
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* contacts, items, locations, nexus, settings, taxCodes, taxRules, upcs, nonReportingChildCompanies, exemptCerts
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -261,6 +317,10 @@ module AvaTax
       #
       # Avalara-based company settings for `AvaCertServiceConfig` affect your company's exemption certificate
       # processing, and should be changed with care.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param id [Integer] 
       # @param model [CompanyConfigurationModel[]] 
       # @return [CompanyConfigurationModel[]]
@@ -281,6 +341,10 @@ module AvaTax
       # such as contacts, locations, or settings are not permitted. To update the nested objects
       #
       # To set a field's value to `null`, you may either set its value to `null` or omit that field from the object you PUT.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the company you wish to update.
       # @param model [Object] The company object you wish to update.
       # @return [Object]

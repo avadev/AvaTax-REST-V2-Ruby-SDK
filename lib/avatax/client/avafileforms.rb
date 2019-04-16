@@ -7,6 +7,12 @@ module AvaTax
       #
       # Create one or more AvaFileForms
       # A 'AvaFileForm' represents a form supported by our returns team
+      #
+      # ### Security Policies
+      #
+      # * This API requires the user role Compliance Root User.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param model [AvaFileFormModel[]] The AvaFileForm you wish to create.
       # @return [AvaFileFormModel[]]
       def create_ava_file_forms(model)
@@ -18,6 +24,12 @@ module AvaTax
       # Delete a single AvaFileForm
       #
       # Marks the existing AvaFileForm object at this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: Compliance Root User, ComplianceUser, FirmAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param id [Integer] The ID of the AvaFileForm you wish to delete.
       # @return [ErrorDetail[]]
       def delete_ava_file_form(id)
@@ -29,6 +41,12 @@ module AvaTax
       # Retrieve a single AvaFileForm
       #
       # Get the AvaFileForm object identified by this URL.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CompanyUser, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, FirmAdmin, FirmUser, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # @param id [Integer] The primary key of this AvaFileForm
       # @return [Object]
       def get_ava_file_form(id)
@@ -41,6 +59,12 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CompanyUser, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, FirmAdmin, FirmUser, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* outletTypeId
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -57,6 +81,12 @@ module AvaTax
       #
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires the user role Compliance Root User.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
       # @param id [Integer] The ID of the AvaFileForm you wish to update
       # @param model [Object] The AvaFileForm model you wish to update.
       # @return [Object]

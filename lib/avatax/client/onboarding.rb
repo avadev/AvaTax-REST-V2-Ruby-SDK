@@ -19,6 +19,12 @@ module AvaTax
       # API will be created in `Active` status. If the customer has not yet read and accepted these terms and
       # conditions, the account will be created in `New` status and they can receive a license key by logging
       # onto the AvaTax website and reviewing terms and conditions online.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Onboarding] for your servers.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [Onboarding:RequestNewAccount].
       # @param model [Object] Information about the account you wish to create and the selected product offerings.
       # @return [Object]
       def request_new_account(model)
@@ -31,6 +37,12 @@ module AvaTax
       #
       # This API is for use by partner onboarding services customers only. This will allow the partners to allow
       # the add new entitlement to an existing customer
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Onboarding] for your servers.
+      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [Onboarding:RequestNewAccount].
       # @param id [Integer] The avatax account id of the customer
       # @param offer [String] The offer to be added to an already existing customer
       # @return [Object]

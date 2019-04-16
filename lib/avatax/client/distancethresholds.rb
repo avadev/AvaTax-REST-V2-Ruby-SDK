@@ -10,6 +10,10 @@ module AvaTax
       # A company-distance-threshold model indicates the distance between a company
       # and the taxing borders of various countries. Distance thresholds are necessary
       # to correctly calculate some value-added taxes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param model [CompanyDistanceThresholdModel[]] The DistanceThreshold object or objects you wish to create.
       # @return [CompanyDistanceThresholdModel[]]
@@ -26,6 +30,10 @@ module AvaTax
       # A company-distance-threshold model indicates the distance between a company
       # and the taxing borders of various countries. Distance thresholds are necessary
       # to correctly calculate some value-added taxes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param id [Integer] The unique ID number of the DistanceThreshold object you wish to delete.
       # @return [ErrorDetail[]]
@@ -42,6 +50,10 @@ module AvaTax
       # A company-distance-threshold model indicates the distance between a company
       # and the taxing borders of various countries. Distance thresholds are necessary
       # to correctly calculate some value-added taxes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns this DistanceThreshold object
       # @param id [Integer] The unique ID number referring to this DistanceThreshold object
       # @return [Object]
@@ -58,6 +70,10 @@ module AvaTax
       # A company-distance-threshold model indicates the distance between a company
       # and the taxing borders of various countries. Distance thresholds are necessary
       # to correctly calculate some value-added taxes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company whose DistanceThreshold objects you wish to list.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -81,6 +97,10 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -103,6 +123,10 @@ module AvaTax
       #
       # All data from the existing object will be replaced with data in the object you PUT.
       # To set a field's value to null, you may either set its value to null or omit that field from the object you post.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold object.
       # @param id [Integer] The unique ID number of the DistanceThreshold object to replace.
       # @param model [Object] The new DistanceThreshold object to store.

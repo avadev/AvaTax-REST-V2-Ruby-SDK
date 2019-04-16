@@ -24,6 +24,10 @@ module AvaTax
       #
       # Please note that nexus changes may not take effect immediately and you should plan to update your nexus settings in advance
       # of calculating tax for a location.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
@@ -50,6 +54,10 @@ module AvaTax
       #
       # Please note that nexus changes may not take effect immediately and you should plan to update your nexus settings in advance
       # of calculating tax for a location.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that will own this nexus.
       # @param model [DeclareNexusByAddressModel[]] The nexus you wish to create.
       # @return [NexusByAddressModel[]]
@@ -69,6 +77,10 @@ module AvaTax
       #
       # Please note that nexus changes may not take effect immediately and you should plan to update your nexus settings in advance
       # of calculating tax for a location.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param id [Integer] The ID of the nexus you wish to delete.
       # @return [ErrorDetail[]]
@@ -85,6 +97,10 @@ module AvaTax
       # The concept of Nexus indicates a place where your company is legally obligated to collect and remit transactional
       # taxes. The legal requirements for nexus may vary per country and per jurisdiction; please seek advice from your
       # accountant or lawyer prior to declaring nexus.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param id [Integer] The primary key of this nexus
       # @return [Object]
@@ -105,6 +121,10 @@ module AvaTax
       # This API is intended to provide useful information when examining a tax form. If you are about to begin filing
       # a tax form, you may want to know whether you have declared nexus in all the jurisdictions related to that tax
       # form in order to better understand how the form will be filled out.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param formCode [String] The form code that we are looking up the nexus for
       # @return [Object]
@@ -124,8 +144,12 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns these nexus objects
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -134,25 +158,6 @@ module AvaTax
       def list_nexus_by_company(companyId, options={})
         path = "/api/v2/companies/#{companyId}/nexus"
         get(path, options)
-      end
-
-
-      # Summarize nexus by NexusTaxTypeGroup for this company
-      #
-      # Provides a summary of nexus information useful for quickly displaying key information.
-      #
-      # The concept of Nexus indicates a place where your company is legally obligated to collect and remit transactional
-      # taxes. The legal requirements for nexus may vary per country and per jurisdiction; please seek advice from your
-      # accountant or lawyer prior to declaring nexus.
-      #
-      # This API produces only basic information about your company's nexus declarations. For example, it will show
-      # the number of nexus declarations of each tax type. To request more information about your company's nexus
-      # declarations, please use `QueryNexus` or `ListNexusByCompany`.
-      # @param companyId [Integer] The ID of the company that owns these nexus objects
-      # @return [Object]
-      def nexus_summary(companyId)
-        path = "/api/v2/companies/#{companyId}/nexus/summary"
-        get(path)
       end
 
 
@@ -166,7 +171,11 @@ module AvaTax
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, taxAuthorityId
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -199,6 +208,10 @@ module AvaTax
       #
       # Please note that nexus changes may not take effect immediately and you should plan to update your nexus settings in advance
       # of calculating tax for a location.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # @param companyId [Integer] The ID of the company that this nexus belongs to.
       # @param id [Integer] The ID of the nexus you wish to update
       # @param model [Object] The nexus object you wish to update.
