@@ -154,8 +154,9 @@ module AvaTax
       #
       # ### Security Policies
       #
+      # * This API requires the user role Compliance Root User.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
-      # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request host address whitelisting for [Returns] for your servers.
+      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param model [Object] bulk lock request
       # @return [Object]
       def bulk_lock_transaction(model)
@@ -657,6 +658,35 @@ module AvaTax
       # @return [Object]
       def uncommit_transaction(companyCode, transactionCode, options={})
         path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/uncommit"
+        post(path, options)
+      end
+
+
+      # Unvoids a transaction
+      #
+      # Unvoids a voided transaction
+      #
+      # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
+      #
+      # * Lines
+      # * Details (implies lines)
+      # * Summary (implies details)
+      # * Addresses
+      # * SummaryOnly (omit lines and details - reduces API response size)
+      # * LinesOnly (omit details - reduces API response size)
+      # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # @param companyCode [String] The company code of the company that recorded this transaction
+      # @param transactionCode [String] The transaction code to commit
+      # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
+      # @param include [String] Specifies objects to include in this fetch call
+      # @return [Object]
+      def unvoid_transaction(companyCode, transactionCode, options={})
+        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/unvoid"
         post(path, options)
       end
 
