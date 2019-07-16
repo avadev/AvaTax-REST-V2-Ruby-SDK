@@ -31,29 +31,6 @@ module AvaTax
       end
 
 
-      # Intiate and download an ExportDocumentLine report
-      #
-      # This API is deprecated.
-      #
-      # Please use the asynchronous reports APIs:
-      #
-      # * Begin a report by calling the report's Initiate API. There is a separate initiate API call for each report type.
-      # * In the result of the Initiate API, you receive back a report's `id` value.
-      # * Check the status of a report by calling `GetReport` and passing in the report's `id` value.
-      # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # @param companyId [Integer] The unique ID number of the company to report on.
-      # @param model [Object] Options that may be configured to customize the report.
-      # @return [Object]
-      def export_document_line(companyId, model)
-        path = "/api/v2/companies/#{companyId}/reports/exportdocumentline"
-        post(path, model)
-      end
-
-
       # Retrieve a single report
       #
       # Retrieve a single report by its unique ID number.
@@ -118,10 +95,10 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* reportType, parameters, createdUser, completedDate
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param companyId [Integer] The id of the company for which to get reports.
+      # @param pageKey [String] Provide a page key to retrieve the next page of results.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @return [FetchResult]
       def list_reports(options={})
         path = "/api/v2/reports"

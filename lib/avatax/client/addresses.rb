@@ -12,6 +12,11 @@ module AvaTax
       # This is the same API as the POST /api/v2/addresses/resolve endpoint.
       # Both verbs are supported to provide for flexible implementation.
       #
+      # Inorder to get any evaluation for an address please provide atleast one of the following fields/pairs:
+      # 1. postal code
+      # 2. line1 + city + region
+      # 3. line1 + postal code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
