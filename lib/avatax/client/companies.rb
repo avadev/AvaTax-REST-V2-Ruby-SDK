@@ -3,6 +3,43 @@ module AvaTax
     module Companies 
 
 
+      # Checks whether the integration being used to set up this company and run transactions onto this company is compliant to all requirements.
+      #
+      # Examines the most recent 100 transactions or data from the last month when verifying transaction-related integrations.
+      # For partners who write integrations against AvaTax for many clients, this API is a way to do a quick self testing to verify whether the
+      # written integrations for a company are sufficient enough to be delivered to the respective customers to start using it.
+      #
+      # This API provides messages specific enough (through predefined checks) to guide the partner on what integrations are still missing from the company to get fully certified.
+      # The API makes the following checks to conclude if the company is NOT fully certified:
+      # 1. Any past month items contains generic tax code of P0000000.
+      # 2. All the companies on the requesting account are test companies.
+      # 3. No Voided/Cancelled documents in the past 30 days.
+      # 4. There are less than 2 committed documents.
+      # 5. Any documentCode is a generic GUID string.
+      # 6. Any customerCode on document is a generic GUID string.
+      # 7. No document has more than 1 documentLine.
+      # 8. All of the documents have missing exemptionNo, customerUsageType, taxDateOverride or negative amount.
+      # 9. Any document quantity is a negative number.
+      # 10. Any document have repeated lines.
+      # 11. No document has shipping charge.
+      # 12. All documents have same ItemCodes, descriptions and taxCodes.
+      # 13. Less than 2 addresses used across all documents.
+      # 14. Whether locationCode was used in documents.
+      # 15. Account with AvaGlobal subscription and no documents have VATBuyerId.
+      # 16. Any document has currencyCode not being USD for accounts with AvaGlobal subscription.
+      # 17. All documents have countryCode used for accounts with AvaGlobal subscription.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param id [Integer] The ID of the company to check if its integration is certified.
+      # @return [String]
+      def certify_integration(id)
+        path = "/api/v2/companies/#{id}/certify"
+        get(path)
+      end
+
+
       # Change the filing status of this company
       #
       # Changes the current filing status of this company.
@@ -89,6 +126,7 @@ module AvaTax
       #
       # ### Security Policies
       #
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The unique identifier of the company
       # @param model [Object] The funding initialization request
@@ -124,7 +162,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The unique identifier of the company
       # @return [Object]
@@ -144,7 +182,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The unique identifier of the company
       # @param currency [String] The currency of the funding. USD and CAD are the only valid currencies
@@ -244,6 +282,7 @@ module AvaTax
       #
       # ### Security Policies
       #
+      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The unique identifier of the company
       # @return [FundingStatusModel[]]

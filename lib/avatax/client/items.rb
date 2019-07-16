@@ -3,6 +3,48 @@ module AvaTax
     module Items 
 
 
+      # Delete all classifications for an item
+      #
+      # Delete all the classifications for a given item.
+      #
+      # A classification is the code for a product in a particular tax system. Classifications enable an item to be used in multiple tax systems which may have different tax rates for a product.
+      #
+      # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param itemId [Integer] The ID of the item you wish to delete the classifications.
+      # @return [ErrorDetail[]]
+      def batch_delete_item_classifications(companyId, itemId)
+        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        delete(path)
+      end
+
+
+      # Delete all parameters for an item
+      #
+      # Delete all the parameters for a given item.
+      #
+      # Some items can be taxed differently depending on the properties of that item, such as the item grade or by a particular measurement of that item. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
+      #
+      # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param itemId [Integer] The ID of the item you wish to delete the parameters.
+      # @return [ErrorDetail[]]
+      def batch_delete_item_parameters(companyId, itemId)
+        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
+        delete(path)
+      end
+
+
       # Add classifications to an item.
       #
       # Add classifications to an item.
