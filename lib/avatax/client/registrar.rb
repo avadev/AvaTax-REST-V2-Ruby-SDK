@@ -32,6 +32,9 @@ module AvaTax
       # to regularly review notifications and then dismiss them when you are certain that you have addressed
       # any relevant concerns raised by this notification.
       #
+      # A Global notification is a message which is directed to all the accounts and is set to expire within
+      # a certain time and cannot be dismissed by the user. Make accountId and companyId null to create a global notification.
+      #
       # An example of a notification would be a message about new software, or a change to AvaTax that may
       # affect you, or a potential issue with your company's tax profile.
       #
