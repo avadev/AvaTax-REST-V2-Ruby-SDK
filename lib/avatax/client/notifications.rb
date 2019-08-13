@@ -18,6 +18,8 @@ module AvaTax
       # dismissed. You can then later review which employees of your company dismissed notifications to
       # determine if they were resolved appropriately.
       #
+      # A Global notification with null accountId and companyId cannot be dismissed and will expire within a given time span.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
