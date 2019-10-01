@@ -252,7 +252,7 @@ module AvaTax
       end
 
 
-      # List active certificates for a location
+      # List valid certificates for a location
       #
       # List valid certificates linked to a customer in a particular country and region.
       #

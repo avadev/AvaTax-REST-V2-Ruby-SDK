@@ -131,7 +131,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
-      # @param region [String] If the region is provided, this API is going to generate the tax rate per zipcode for only the region specified.
+      # @param region [String] A two character region code which limits results to a specific region.
       # @return [Object]
       def download_tax_rates_by_zip_code(date, options={})
         path = "/api/v2/taxratesbyzipcode/download/#{date}"
