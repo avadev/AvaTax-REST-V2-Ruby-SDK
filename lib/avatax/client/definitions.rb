@@ -307,6 +307,8 @@ module AvaTax
       #
       # This API allows you to examine all Avalara-supported jurisdictions. You can filter your search by supplying
       # SQL-like query for fetching only the ones you concerned about. For example: effectiveDate &gt; '2016-01-01'
+      #
+      # The rate, salesRate, and useRate fields are not available on the JurisdictionModels returned by this API.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* rate, salesRate, signatureCode, useRate
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
