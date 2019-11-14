@@ -100,6 +100,8 @@ module AvaTax
       # A 'company' represents a single corporation or individual that is registered to handle transactional taxes.
       # You may attach nested data objects such as contacts, locations, and nexus with this CREATE call, and those objects will be created with the company.
       #
+      # NOTE: Please do not use these blacklisted characters in company name and code: ';', '\', '|'.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
@@ -380,6 +382,8 @@ module AvaTax
       # such as contacts, locations, or settings are not permitted. To update the nested objects
       #
       # To set a field's value to `null`, you may either set its value to `null` or omit that field from the object you PUT.
+      #
+      # NOTE: Please do not use these blacklisted characters in company name and code: ';', '\', '|'.
       #
       # ### Security Policies
       #
