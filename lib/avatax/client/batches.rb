@@ -20,6 +20,11 @@ module AvaTax
       # required, please use the
       # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       #
+      # The maximum content length of the request body is limited to 28.6 MB. If this limit
+      # is exceeded, a 404 Not Found status will be returned (possibly with a CORS error if
+      # the API is called from a browser). In this situation, please split the request into
+      # smaller batches.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
