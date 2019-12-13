@@ -55,7 +55,7 @@ module AvaTax
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
-      # @return [Object]
+      # @return [ErrorDetail[]]
       def delete_customer(companyId, customerCode)
         path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
         delete(path)

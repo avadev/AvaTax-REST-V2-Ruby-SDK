@@ -171,6 +171,7 @@ module AvaTax
       #
       # * This API requires the user role Compliance Root User.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param model [Object] bulk lock request
       # @return [Object]
       def bulk_lock_transaction(model)
