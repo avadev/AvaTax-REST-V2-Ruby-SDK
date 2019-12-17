@@ -65,14 +65,13 @@ module AvaTax
 
       # List certificate attributes used by a company
       #
-      # List the certificate attributes defined by a company either specified by the user or the user's default company.
+      # List the certificate attributes defined by a company.
       #
       # A certificate may have multiple attributes that control its behavior. You may apply or remove attributes to a
       # certificate at any time.
       #
       # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
       # check and provision account.
-      # @param companyid [Integer] Id of the company the user wish to fetch the certificates' attributes from. If not specified the API will use user's default company.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
