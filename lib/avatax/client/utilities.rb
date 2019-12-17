@@ -13,7 +13,7 @@ module AvaTax
       # within AvaTax. You can examine the subscriptions returned from this API call to look for a particular product
       # or subscription to provide useful information to the current user as to whether they are entitled to use
       # specific features of AvaTax.
-      # @param serviceTypeId [String] The service to check
+      # @param serviceTypeId [String] The service to check (See ServiceTypeId::* for a list of allowable values)
       # @return [Object]
       def get_my_subscription(serviceTypeId)
         path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
