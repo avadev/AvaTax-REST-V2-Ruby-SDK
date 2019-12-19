@@ -10,21 +10,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('faraday_middleware-parse_oj', '~> 0.3.2')
   s.authors = ["Marcus Vorwaller"]
   s.description = %q{A Ruby wrapper for the AvaTax REST and Search APIs}
-  s.post_install_message =<<eos
-********************************************************************************
-
-AvaTax REST API
-------------------------------
-Our developer site documents the AvaTax REST API.
-(http://developer.avatax.com).
-Blog
-----------------------------
-The Developer Blog is a great place to learn more about the API and AvaTax integrations
-Subscribe to the RSS feed be notified of new posts:
-(http://developer.avatax.com/blog).
-
-********************************************************************************
-eos
   s.email = ['marcus.vorwaller@avalara.com']
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files = `git ls-files`.split("\n")
