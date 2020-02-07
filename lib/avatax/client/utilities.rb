@@ -15,11 +15,8 @@ module AvaTax
       # specific features of AvaTax.
       # @param serviceTypeId [String] The service to check
       # @return [Object]
-      def get_my_subscription(serviceTypeId)
-        path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
-        get(path)
-      end
-
+      def get_my_subscription(serviceTypeId)        path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
+        get(path)      end
 
       # List all services to which the current user is subscribed
       #
@@ -32,11 +29,8 @@ module AvaTax
       # or subscription to provide useful information to the current user as to whether they are entitled to use
       # specific features of AvaTax.
       # @return [FetchResult]
-      def list_my_subscriptions()
-        path = "/api/v2/utilities/subscriptions"
-        get(path)
-      end
-
+      def list_my_subscriptions()        path = "/api/v2/utilities/subscriptions"
+        get(path)      end
 
       # Tests connectivity and version of the service
       #
@@ -61,11 +55,8 @@ module AvaTax
       #
       # * This API may be called without providing authentication credentials.
       # @return [Object]
-      def ping()
-        path = "/api/v2/utilities/ping"
-        get(path)
-      end
-
+      def ping()        path = "/api/v2/utilities/ping"
+        get(path)      end
     end
   end
 end

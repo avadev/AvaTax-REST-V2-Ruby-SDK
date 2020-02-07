@@ -24,11 +24,8 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
-      def activate_funding_request(id)
-        path = "/api/v2/fundingrequests/#{id}/widget"
-        get(path)
-      end
-
+      def activate_funding_request(id)        path = "/api/v2/fundingrequests/#{id}/widget"
+        get(path)      end
 
       # Retrieve status about a funding setup request
       #
@@ -49,11 +46,8 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
-      def funding_request_status(id)
-        path = "/api/v2/fundingrequests/#{id}"
-        get(path)
-      end
-
+      def funding_request_status(id)        path = "/api/v2/fundingrequests/#{id}"
+        get(path)      end
     end
   end
 end

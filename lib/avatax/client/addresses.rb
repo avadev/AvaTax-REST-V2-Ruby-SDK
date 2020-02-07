@@ -30,11 +30,8 @@ module AvaTax
       # @param country [String] Two character ISO 3166 Country Code (see /api/v2/definitions/countries for a full list)
       # @param textCase [String] selectable text case for address validation (See TextCase::* for a list of allowable values)
       # @return [Object]
-      def resolve_address(options={})
-        path = "/api/v2/addresses/resolve"
-        get(path, options)
-      end
-
+      def resolve_address(options={})        path = "/api/v2/addresses/resolve"
+        get(path, options)      end
 
       # Retrieve geolocation information for a specified address
       #
@@ -51,11 +48,8 @@ module AvaTax
       # * This API depends on the following active services<br />*Required* (all): AutoAddress.
       # @param model [Object] The address to resolve
       # @return [Object]
-      def resolve_address_post(model)
-        path = "/api/v2/addresses/resolve"
-        post(path, model)
-      end
-
+      def resolve_address_post(model)        path = "/api/v2/addresses/resolve"
+        post(path, model)      end
     end
   end
 end
