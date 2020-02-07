@@ -29,11 +29,8 @@ module AvaTax
       # @param customerCode [String] The number of the customer where the request is sent to
       # @param model [CreateCertExpressInvitationModel[]] the requests to send out to customers
       # @return [CertExpressInvitationStatusModel[]]
-      def create_cert_express_invitation(companyId, customerCode, model)
-        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites"
-        post(path, model)
-      end
-
+      def create_cert_express_invitation(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites"
+        post(path, model)      end
 
       # Retrieve a single CertExpress invitation
       #
@@ -62,11 +59,8 @@ module AvaTax
       # @param id [Integer] The unique ID number of this CertExpress invitation
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. No options are defined at this time.
       # @return [Object]
-      def get_cert_express_invitation(companyId, customerCode, id, options={})
-        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites/#{id}"
-        get(path, options)
-      end
-
+      def get_cert_express_invitation(companyId, customerCode, id, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites/#{id}"
+        get(path, options)      end
 
       # List CertExpress invitations
       #
@@ -97,11 +91,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_cert_express_invitations(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/certexpressinvites"
-        get(path, options)
-      end
-
+      def list_cert_express_invitations(companyId, options={})        path = "/api/v2/companies/#{companyId}/certexpressinvites"
+        get(path, options)      end
     end
   end
 end

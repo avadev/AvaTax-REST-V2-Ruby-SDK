@@ -31,11 +31,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
-      def create_nexus(companyId, model)
-        path = "/api/v2/companies/#{companyId}/nexus"
-        post(path, model)
-      end
-
+      def create_nexus(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus"
+        post(path, model)      end
 
       # Creates nexus for a list of addresses.
       #
@@ -61,11 +58,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that will own this nexus.
       # @param model [DeclareNexusByAddressModel[]] The nexus you wish to create.
       # @return [NexusByAddressModel[]]
-      def declare_nexus_by_address(companyId, model)
-        path = "/api/v2/companies/#{companyId}/nexus/byaddress"
-        post(path, model)
-      end
-
+      def declare_nexus_by_address(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus/byaddress"
+        post(path, model)      end
 
       # Delete a single nexus
       #
@@ -84,11 +78,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param id [Integer] The ID of the nexus you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_nexus(companyId, id)
-        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        delete(path)
-      end
-
+      def delete_nexus(companyId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
+        delete(path)      end
 
       # Retrieve a single nexus
       #
@@ -104,11 +95,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param id [Integer] The primary key of this nexus
       # @return [Object]
-      def get_nexus(companyId, id)
-        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        get(path)
-      end
-
+      def get_nexus(companyId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
+        get(path)      end
 
       # List company nexus related to a tax form
       #
@@ -128,11 +116,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param formCode [String] The form code that we are looking up the nexus for
       # @return [Object]
-      def get_nexus_by_form_code(companyId, formCode)
-        path = "/api/v2/companies/#{companyId}/nexus/byform/#{formCode}"
-        get(path)
-      end
-
+      def get_nexus_by_form_code(companyId, formCode)        path = "/api/v2/companies/#{companyId}/nexus/byform/#{formCode}"
+        get(path)      end
 
       # Retrieve nexus for this company
       #
@@ -155,11 +140,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_nexus_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/nexus"
-        get(path, options)
-      end
-
+      def list_nexus_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/nexus"
+        get(path, options)      end
 
       # Retrieve all nexus
       #
@@ -181,11 +163,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_nexus(options={})
-        path = "/api/v2/nexus"
-        get(path, options)
-      end
-
+      def query_nexus(options={})        path = "/api/v2/nexus"
+        get(path, options)      end
 
       # Update a single nexus
       #
@@ -216,11 +195,8 @@ module AvaTax
       # @param id [Integer] The ID of the nexus you wish to update
       # @param model [Object] The nexus object you wish to update.
       # @return [Object]
-      def update_nexus(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        put(path, model)
-      end
-
+      def update_nexus(companyId, id, model)        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
+        put(path, model)      end
     end
   end
 end
