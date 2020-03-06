@@ -18,6 +18,7 @@ module AvaTax
           },
         :url => endpoint,
         :proxy => proxy,
+        :timeout => 1200000
       }.merge(connection_options)
 
       Faraday.new(options) do |faraday|
