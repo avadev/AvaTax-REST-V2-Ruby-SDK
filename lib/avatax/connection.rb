@@ -17,8 +17,7 @@ module AvaTax
            'X-Avalara-Client' => client_id
           },
         :url => endpoint,
-        :proxy => proxy,
-        :timeout => 1200000
+        :proxy => proxy
       }.merge(connection_options)
 
       Faraday.new(options) do |faraday|
