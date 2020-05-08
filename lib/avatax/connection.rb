@@ -1,4 +1,4 @@
-require 'faraday_middleware/parse_oj'
+require 'faraday_middleware'
 
 module AvaTax
 
@@ -27,7 +27,7 @@ module AvaTax
           }
         end
 
-        faraday.response :oj, content_type: /\bjson$/
+        faraday.response :json, content_type: /\bjson$/
         faraday.basic_auth(username, password)
 
         if logger
