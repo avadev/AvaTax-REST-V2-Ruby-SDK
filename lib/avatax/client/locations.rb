@@ -40,13 +40,14 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * LocationSettings
+      # * parameters
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
-      # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}"
         get(path, options)      end
@@ -64,13 +65,14 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * LocationSettings
+      # * parameters
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns these locations
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings
-      # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings, parameters
+      # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -92,11 +94,12 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * LocationSettings
+      # * parameters
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings, parameters
       # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.

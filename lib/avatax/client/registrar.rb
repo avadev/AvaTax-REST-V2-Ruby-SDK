@@ -67,7 +67,7 @@ module AvaTax
       # This API is for use by Avalara Registrar administrative users only.
       #
       # Delete an account.
-      # Deleting an account will delete all companies and all account level users attached to this account.
+      # Deleting an account will delete all companies, all account level users and license keys attached to this account.
       #
       # ### Security Policies
       #

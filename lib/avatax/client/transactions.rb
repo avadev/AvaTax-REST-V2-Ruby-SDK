@@ -60,10 +60,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -96,10 +97,11 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -129,10 +131,11 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -188,10 +191,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -229,10 +233,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -396,10 +401,11 @@ module AvaTax
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -417,10 +423,11 @@ module AvaTax
       #
       # DEPRECATED: Please use the `GetTransactionByCode` API instead.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -488,10 +495,11 @@ module AvaTax
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -532,10 +540,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -584,10 +593,11 @@ module AvaTax
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -626,10 +636,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -660,10 +671,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -691,10 +703,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -729,10 +742,11 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -770,15 +784,16 @@ module AvaTax
       # * LinesOnly (omit details - reduces API response size)
       # * TaxDetailsByTaxType - Includes the aggregated tax, exempt tax, taxable and non-taxable for each tax type returned in the transaction summary.
       #
-      # NOTE: If your companyCode or transactionCode contains any of these characters /, + or ? please use the following encoding before making a request:
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to void
       # @param documentType [String] (Optional): The document type of the transaction to void. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)

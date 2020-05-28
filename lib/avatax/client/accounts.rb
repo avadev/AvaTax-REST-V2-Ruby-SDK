@@ -13,10 +13,12 @@ module AvaTax
       # an account has been activated by reading and accepting Avalara's terms and conditions. To activate your account
       # please log onto the AvaTax website or call the `ActivateAccount` API.
       #
+      # You can only reset license with 'Default' license key name.
       # Resetting a license key cannot be undone. Any previous license keys will immediately cease to work when a new key is created.
       #
       # When you call this API, all account administrators for this account will receive an email with the newly updated license key.
       # The email will specify which user reset the license key and it will contain the new key to use to update your connectors.
+      # Note: The reset license key functionality will only be available for existing active license key i.e. when you reset license key for the account, the Default license key will be reset.The reset license key functionality is not available for newly created license keys i.e. license keys other than Default
       #
       # ### Security Policies
       #
@@ -53,7 +55,7 @@ module AvaTax
       #
       # Retrieve audit trace history for an account.
       #
-      # Your audit trace history contains a record of all API calls made against the AvaTax REST API. You can use this API to investigate
+      # Your audit trace history contains a record of all API calls made against the AvaTax REST API that returned an error. You can use this API to investigate
       # problems and see exactly what information was sent back and forth between your code and AvaTax.
       #
       # When specifying a start and end datetime, please include a valid timezone indicator, such as the "Z" present in the examples for the start and end query parameters.
@@ -77,6 +79,45 @@ module AvaTax
       # @return [FetchResult]
       def audit_account(id, options={})        path = "/api/v2/accounts/#{id}/audit"
         get(path, options)      end
+
+      # Create license key for this account
+      #
+      # Creates a new license key for this account.
+      #
+      # To create a license key for your account, you must specify the ID of the account and license key name.
+      #
+      # This API is only available to account administrators for the account in question, and may only be called after
+      # an account has been activated by reading and accepting Avalara's terms and conditions. To activate your account
+      # please log onto the AvaTax website or call the `ActivateAccount` API.
+      #
+      # You will reference this key using license key name. The existing license key will be using 'Default' as license key name.
+      # Hence make sure that the license key name is unique per account considering the existing license key name 'Default'
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param id [Integer] The ID of the account you wish to update.
+      # @param model [Object] 
+      # @return [Object]
+      def create_license_key(id, model)        path = "/api/v2/accounts/#{id}/licensekey"
+        post(path, model)      end
+
+      # Delete license key for this account by license key name
+      #
+      # Deletes the license key for this account using license key name.
+      #
+      # To delete a license key for your account, you must specify the accountID of the account and license key name.
+      #
+      # This API is only available to account administrators for the account in question.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param id [Integer] The ID of the account you wish to update.
+      # @param licensekeyname [String] The license key name you wish to update.
+      # @return [ErrorDetail[]]
+      def delete_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
+        delete(path)      end
 
       # Retrieve a single account
       #
@@ -116,6 +157,29 @@ module AvaTax
       # @param id [Integer] 
       # @return [AccountConfigurationModel[]]
       def get_account_configuration(id)        path = "/api/v2/accounts/#{id}/configuration"
+        get(path)      end
+
+      # Retrieve license key by license key name
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param id [Integer] The ID of the account to retrieve
+      # @param licensekeyname [String] The ID of the account to retrieve
+      # @return [Object]
+      def get_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
+        get(path)      end
+
+      # Retrieve all license keys for this account
+      #
+      # Gets list of all the license keys used by the account.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param id [Integer] The ID of the account to retrieve
+      # @return [AccountLicenseKeyModel[]]
+      def get_license_keys(id)        path = "/api/v2/accounts/#{id}/licensekeys"
         get(path)      end
 
       # Retrieve all accounts
