@@ -3,161 +3,52 @@ module AvaTax
     module AdvancedRules 
 
 
-      # Approve an advanced rule script to run.
+      # Create a lookup file for a company
       #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # 
+      # @param accountId [Integer] The ID of the account for the company
+      # @param companyId [Integer] The ID of the company for which the lookup file is to be created
+      # @param model [Object] The lookup file you wish to create
       # @return [Object]
-      def approve_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/approve"
-        post(path)
-      end
+      def create_company_lookup_file(accountId, companyId, model)        path = "/api/v2/advancedrules/accounts/#{accountId}/companies/#{companyId}/lookupFiles"
+        post(path, model)      end
 
-
-      # Create an advanced rule.
+      # Delete a lookup file
       #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that will own the Advanced Rule.
-      # @param scriptType [String] The script transform type, Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
-      # @param crashBehavior [String] The behavior the script should take if it crashes: Fail or Proceed. (See AdvancedRuleCrashBehavior::* for a list of allowable values)
-      # @param file [Object] The JavaScript file containing the advanced rule.
-      # @return [String]
-      def create_advanced_rule_script(accountId, scriptType, options={})
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}"
-        post(path, options)
-      end
-
-
-      # Create a lookup table for an advanced rule
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param csvTableName [String] The name to assign the CSV lookup table.
-      # @param file [Object] A CSV file containing lookup data for an advanced rule.
-      # @return [String]
-      def create_advanced_rule_table(accountId, csvTableName)
-        path = "/api/v2/accounts/#{accountId}/advancedruletables/#{csvTableName}"
-        post(path)
-      end
-
-
-      # Delete an account's active advanced rule
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # 
+      # @param accountId [Integer] The ID of the account for the company the lookup file is for
+      # @param id [String] The unique ID/GUID for the company lookup file to be deleted
       # @return [ErrorDetail[]]
-      def delete_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}"
-        delete(path)
-      end
+      def delete_lookup_file(accountId, id)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
+        delete(path)      end
 
-
-      # Delete a lookup table for an advanced rule.
+      # Get the lookup files for a company
       #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param csvTableName [String] The name of the CSV lookup table to delete.
-      # @return [ErrorDetail[]]
-      def delete_advanced_rule_table(accountId, csvTableName)
-        path = "/api/v2/accounts/#{accountId}/advancedruletables/#{csvTableName}"
-        delete(path)
-      end
+      # 
+      # @param accountId [Integer] The account ID for the company
+      # @param companyId [Integer] The ID of the company for which to retrieve lookup files
+      # @return [FetchResult]
+      def get_company_lookup_files(accountId, companyId)        path = "/api/v2/advancedrules/accounts/#{accountId}/companies/#{companyId}/lookupFiles"
+        get(path)      end
 
-
-      # Disable an advanced rule so that it cannot be run.
+      # Get a lookup file for an accountId and companyLookupFileId
       #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration. ///
-      # @param accountId [Integer] 
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # 
+      # @param accountId [Integer] The ID of the account for the lookup file
+      # @param id [String] The unique ID/GUID of the company lookup file to return
       # @return [Object]
-      def disable_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/disable"
-        post(path)
-      end
+      def get_lookup_file(accountId, id)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
+        get(path)      end
 
-
-      # Enable an approved advanced rule so that it can be run.
+      # Update a lookup file
       #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] 
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
+      # 
+      # @param accountId [Integer] The ID of the account for the company the lookup file is for
+      # @param id [String] The unique ID/GUID of the company lookup file to be updated
+      # @param model [Object] The new values to update the lookup file
       # @return [Object]
-      def enable_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/enable"
-        post(path)
-      end
-
-
-      # Get an account's advanced rule script.
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
-      # @return [Object]
-      def get_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}"
-        get(path)
-      end
-
-
-      # Get an advanced rule lookup table for an account
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param csvTableName [String] The name of the CSV lookup table to get.
-      # @return [Object]
-      def get_advanced_rule_table(accountId, csvTableName)
-        path = "/api/v2/accounts/#{accountId}/advancedruletables/#{csvTableName}"
-        get(path)
-      end
-
-
-      # Get all advanced rule lookup tables for an account
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @return [Object]
-      def get_advanced_rule_tables(accountId)
-        path = "/api/v2/accounts/#{accountId}/advancedruletables"
-        get(path)
-      end
-
-
-      # Unapprove an advanced rule script so that it cannot be run.
-      #
-      # This API is available by invite only and implementation support is required.
-      # Please contact your Customer Account Manager if you are interested in using
-      # Advanced Rules in your AvaTax integration.
-      # @param accountId [Integer] The ID of the account that owns the Advanced Rule.
-      # @param scriptType [String] The script transform type: Request or Response. (See AdvancedRuleScriptType::* for a list of allowable values)
-      # @return [Object]
-      def unapprove_advanced_rule_script(accountId, scriptType)
-        path = "/api/v2/accounts/#{accountId}/advancedrulescripts/#{scriptType}/unapprove"
-        post(path)
-      end
-
+      def update_lookup_file(accountId, id, model)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
+        put(path, model)      end
     end
   end
 end

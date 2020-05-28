@@ -16,6 +16,12 @@ module AvaTax
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns are considered locked and are no longer available for adjustments.
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -45,6 +51,12 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -65,6 +77,12 @@ module AvaTax
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
       # Any changes made to a committed transaction will generate a transaction history.
+      #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -110,6 +128,12 @@ module AvaTax
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -134,6 +158,12 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -170,6 +200,12 @@ module AvaTax
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -201,6 +237,12 @@ module AvaTax
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
       # * LinesOnly (omit details - reduces API response size)
+      #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
@@ -254,6 +296,12 @@ module AvaTax
       #
       # If you omit the `$include` parameter, the API will assume you want `Summary,Addresses`.
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -275,6 +323,12 @@ module AvaTax
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
       # sales, purchases, inventory transfer, and returns (also called refunds).
       #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -295,6 +349,12 @@ module AvaTax
       #
       # Transactions that have been previously reported to a tax authority by Avalara Managed Returns Service are considered `locked`,
       # and they are no longer available to be voided.
+      #
+      # NOTE: If your companyCode or transactionCode contains any of these characters /, +, ? or a space please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
+      # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
+      # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
