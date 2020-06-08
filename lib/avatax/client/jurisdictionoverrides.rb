@@ -18,8 +18,11 @@ module AvaTax
       # @param accountId [Integer] The ID of the account that owns this override
       # @param model [JurisdictionOverrideModel[]] The jurisdiction override objects to create
       # @return [JurisdictionOverrideModel[]]
-      def create_jurisdiction_overrides(accountId, model)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        post(path, model)      end
+      def create_jurisdiction_overrides(accountId, model)
+        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
+        post(path, model)
+      end
+
 
       # Delete a single override
       #
@@ -31,8 +34,11 @@ module AvaTax
       # @param accountId [Integer] The ID of the account that owns this override
       # @param id [Integer] The ID of the override you wish to delete
       # @return [ErrorDetail[]]
-      def delete_jurisdiction_override(accountId, id)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        delete(path)      end
+      def delete_jurisdiction_override(accountId, id)
+        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single override
       #
@@ -49,8 +55,11 @@ module AvaTax
       # @param accountId [Integer] The ID of the account that owns this override
       # @param id [Integer] The primary key of this override
       # @return [Object]
-      def get_jurisdiction_override(accountId, id)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        get(path)      end
+      def get_jurisdiction_override(accountId, id)
+        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
+        get(path)
+      end
+
 
       # Retrieve overrides for this account
       #
@@ -74,8 +83,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_jurisdiction_overrides_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        get(path, options)      end
+      def list_jurisdiction_overrides_by_account(accountId, options={})
+        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
+        get(path, options)
+      end
+
 
       # Retrieve all overrides
       #
@@ -98,8 +110,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_jurisdiction_overrides(options={})        path = "/api/v2/jurisdictionoverrides"
-        get(path, options)      end
+      def query_jurisdiction_overrides(options={})
+        path = "/api/v2/jurisdictionoverrides"
+        get(path, options)
+      end
+
 
       # Update a single jurisdictionoverride
       #
@@ -112,8 +127,11 @@ module AvaTax
       # @param id [Integer] The ID of the jurisdictionoverride you wish to update
       # @param model [Object] The jurisdictionoverride object you wish to update.
       # @return [Object]
-      def update_jurisdiction_override(accountId, id, model)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        put(path, model)      end
+      def update_jurisdiction_override(accountId, id, model)
+        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

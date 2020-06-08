@@ -26,8 +26,11 @@ module AvaTax
       # @param id [Integer] The ID of the account you wish to update.
       # @param model [Object] A request confirming that you wish to reset the license key of this account.
       # @return [Object]
-      def account_reset_license_key(id, model)        path = "/api/v2/accounts/#{id}/resetlicensekey"
-        post(path, model)      end
+      def account_reset_license_key(id, model)
+        path = "/api/v2/accounts/#{id}/resetlicensekey"
+        post(path, model)
+      end
+
 
       # Activate an account by accepting terms and conditions
       #
@@ -48,8 +51,11 @@ module AvaTax
       # @param id [Integer] The ID of the account to activate
       # @param model [Object] The activation request
       # @return [Object]
-      def activate_account(id, model)        path = "/api/v2/accounts/#{id}/activate"
-        post(path, model)      end
+      def activate_account(id, model)
+        path = "/api/v2/accounts/#{id}/activate"
+        post(path, model)
+      end
+
 
       # Retrieve audit history for an account.
       #
@@ -77,8 +83,11 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
-      def audit_account(id, options={})        path = "/api/v2/accounts/#{id}/audit"
-        get(path, options)      end
+      def audit_account(id, options={})
+        path = "/api/v2/accounts/#{id}/audit"
+        get(path, options)
+      end
+
 
       # Create license key for this account
       #
@@ -99,8 +108,11 @@ module AvaTax
       # @param id [Integer] The ID of the account you wish to update.
       # @param model [Object] 
       # @return [Object]
-      def create_license_key(id, model)        path = "/api/v2/accounts/#{id}/licensekey"
-        post(path, model)      end
+      def create_license_key(id, model)
+        path = "/api/v2/accounts/#{id}/licensekey"
+        post(path, model)
+      end
+
 
       # Delete license key for this account by license key name
       #
@@ -116,8 +128,11 @@ module AvaTax
       # @param id [Integer] The ID of the account you wish to update.
       # @param licensekeyname [String] The license key name you wish to update.
       # @return [ErrorDetail[]]
-      def delete_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
-        delete(path)      end
+      def delete_license_key(id, licensekeyname)
+        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
+        delete(path)
+      end
+
 
       # Retrieve a single account
       #
@@ -133,8 +148,11 @@ module AvaTax
       # @param id [Integer] The ID of the account to retrieve
       # @param include [String] A comma separated list of special fetch options
       # @return [Object]
-      def get_account(id, options={})        path = "/api/v2/accounts/#{id}"
-        get(path, options)      end
+      def get_account(id, options={})
+        path = "/api/v2/accounts/#{id}"
+        get(path, options)
+      end
+
 
       # Get configuration settings for this account
       #
@@ -156,8 +174,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] 
       # @return [AccountConfigurationModel[]]
-      def get_account_configuration(id)        path = "/api/v2/accounts/#{id}/configuration"
-        get(path)      end
+      def get_account_configuration(id)
+        path = "/api/v2/accounts/#{id}/configuration"
+        get(path)
+      end
+
 
       # Retrieve license key by license key name
       #
@@ -167,8 +188,11 @@ module AvaTax
       # @param id [Integer] The ID of the account to retrieve
       # @param licensekeyname [String] The ID of the account to retrieve
       # @return [Object]
-      def get_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
-        get(path)      end
+      def get_license_key(id, licensekeyname)
+        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
+        get(path)
+      end
+
 
       # Retrieve all license keys for this account
       #
@@ -179,8 +203,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the account to retrieve
       # @return [AccountLicenseKeyModel[]]
-      def get_license_keys(id)        path = "/api/v2/accounts/#{id}/licensekeys"
-        get(path)      end
+      def get_license_keys(id)
+        path = "/api/v2/accounts/#{id}/licensekeys"
+        get(path)
+      end
+
 
       # Retrieve all accounts
       #
@@ -206,8 +233,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_accounts(options={})        path = "/api/v2/accounts"
-        get(path, options)      end
+      def query_accounts(options={})
+        path = "/api/v2/accounts"
+        get(path, options)
+      end
+
 
       # Change configuration settings for this account
       #
@@ -230,8 +260,11 @@ module AvaTax
       # @param id [Integer] 
       # @param model [AccountConfigurationModel[]] 
       # @return [AccountConfigurationModel[]]
-      def set_account_configuration(id, model)        path = "/api/v2/accounts/#{id}/configuration"
-        post(path, model)      end
+      def set_account_configuration(id, model)
+        path = "/api/v2/accounts/#{id}/configuration"
+        post(path, model)
+      end
+
     end
   end
 end

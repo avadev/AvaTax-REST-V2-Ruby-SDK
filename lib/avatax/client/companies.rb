@@ -34,8 +34,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The ID of the company to check if its integration is certified.
       # @return [String]
-      def certify_integration(id)        path = "/api/v2/companies/#{id}/certify"
-        get(path)      end
+      def certify_integration(id)
+        path = "/api/v2/companies/#{id}/certify"
+        get(path)
+      end
+
 
       # Change the filing status of this company
       #
@@ -59,8 +62,11 @@ module AvaTax
       # @param id [Integer] 
       # @param model [Object] 
       # @return [String]
-      def change_filing_status(id, model)        path = "/api/v2/companies/#{id}/filingstatus"
-        post(path, model)      end
+      def change_filing_status(id, model)
+        path = "/api/v2/companies/#{id}/filingstatus"
+        post(path, model)
+      end
+
 
       # Quick setup for a company with a single physical address
       #
@@ -82,8 +88,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param model [Object] Information about the company you wish to create.
       # @return [Object]
-      def company_initialize(model)        path = "/api/v2/companies/initialize"
-        post(path, model)      end
+      def company_initialize(model)
+        path = "/api/v2/companies/initialize"
+        post(path, model)
+      end
+
 
       # Create new companies
       #
@@ -98,8 +107,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # @param model [CompanyModel[]] Either a single company object or an array of companies to create
       # @return [CompanyModel[]]
-      def create_companies(model)        path = "/api/v2/companies"
-        post(path, model)      end
+      def create_companies(model)
+        path = "/api/v2/companies"
+        post(path, model)
+      end
+
 
       # Request managed returns funding setup for a company
       #
@@ -121,8 +133,11 @@ module AvaTax
       # @param id [Integer] The unique identifier of the company
       # @param model [Object] The funding initialization request
       # @return [Object]
-      def create_funding_request(id, model)        path = "/api/v2/companies/#{id}/funding/setup"
-        post(path, model)      end
+      def create_funding_request(id, model)
+        path = "/api/v2/companies/#{id}/funding/setup"
+        post(path, model)
+      end
+
 
       # Delete a single company
       #
@@ -133,8 +148,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, TechnicalSupportAdmin.
       # @param id [Integer] The ID of the company you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_company(id)        path = "/api/v2/companies/#{id}"
-        delete(path)      end
+      def delete_company(id)
+        path = "/api/v2/companies/#{id}"
+        delete(path)
+      end
+
 
       # Check the funding configuration of a company
       #
@@ -149,8 +167,11 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param companyId [Integer] The unique identifier of the company
       # @return [Object]
-      def funding_configuration_by_company(companyId)        path = "/api/v2/companies/#{companyId}/funding/configuration"
-        get(path)      end
+      def funding_configuration_by_company(companyId)
+        path = "/api/v2/companies/#{companyId}/funding/configuration"
+        get(path)
+      end
+
 
       # Check the funding configuration of a company
       #
@@ -166,8 +187,11 @@ module AvaTax
       # @param companyId [Integer] The unique identifier of the company
       # @param currency [String] The currency of the funding. USD and CAD are the only valid currencies
       # @return [FundingConfigurationModel[]]
-      def funding_configurations_by_company_and_currency(companyId, options={})        path = "/api/v2/companies/#{companyId}/funding/configurations"
-        get(path, options)      end
+      def funding_configurations_by_company_and_currency(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/funding/configurations"
+        get(path, options)
+      end
+
 
       # Retrieve a single company
       #
@@ -191,8 +215,11 @@ module AvaTax
       # @param id [Integer] The ID of the company to retrieve.
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.      * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", "NonReportingChildren" or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
       # @return [Object]
-      def get_company(id, options={})        path = "/api/v2/companies/#{id}"
-        get(path, options)      end
+      def get_company(id, options={})
+        path = "/api/v2/companies/#{id}"
+        get(path, options)
+      end
+
 
       # Get configuration settings for this company
       #
@@ -214,8 +241,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] 
       # @return [CompanyConfigurationModel[]]
-      def get_company_configuration(id)        path = "/api/v2/companies/#{id}/configuration"
-        get(path)      end
+      def get_company_configuration(id)
+        path = "/api/v2/companies/#{id}/configuration"
+        get(path)
+      end
+
 
       # Get this company's filing status
       #
@@ -238,8 +268,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] 
       # @return [String]
-      def get_filing_status(id)        path = "/api/v2/companies/#{id}/filingstatus"
-        get(path)      end
+      def get_filing_status(id)
+        path = "/api/v2/companies/#{id}/filingstatus"
+        get(path)
+      end
+
 
       # Check managed returns funding status for a company
       #
@@ -254,8 +287,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The unique identifier of the company
       # @return [FundingStatusModel[]]
-      def list_funding_requests_by_company(id)        path = "/api/v2/companies/#{id}/funding"
-        get(path)      end
+      def list_funding_requests_by_company(id)
+        path = "/api/v2/companies/#{id}/funding"
+        get(path)
+      end
+
 
       # Retrieve a list of MRS Companies with account
       #
@@ -267,8 +303,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @return [FetchResult]
-      def list_mrs_companies()        path = "/api/v2/companies/mrs"
-        get(path)      end
+      def list_mrs_companies()
+        path = "/api/v2/companies/mrs"
+        get(path)
+      end
+
 
       # Retrieve all companies
       #
@@ -299,8 +338,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_companies(options={})        path = "/api/v2/companies"
-        get(path, options)      end
+      def query_companies(options={})
+        path = "/api/v2/companies"
+        get(path, options)
+      end
+
 
       # Change configuration settings for this company
       #
@@ -323,8 +365,11 @@ module AvaTax
       # @param id [Integer] 
       # @param model [CompanyConfigurationModel[]] 
       # @return [CompanyConfigurationModel[]]
-      def set_company_configuration(id, model)        path = "/api/v2/companies/#{id}/configuration"
-        post(path, model)      end
+      def set_company_configuration(id, model)
+        path = "/api/v2/companies/#{id}/configuration"
+        post(path, model)
+      end
+
 
       # Update a single company
       #
@@ -346,8 +391,11 @@ module AvaTax
       # @param id [Integer] The ID of the company you wish to update.
       # @param model [Object] The company object you wish to update.
       # @return [Object]
-      def update_company(id, model)        path = "/api/v2/companies/#{id}"
-        put(path, model)      end
+      def update_company(id, model)
+        path = "/api/v2/companies/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

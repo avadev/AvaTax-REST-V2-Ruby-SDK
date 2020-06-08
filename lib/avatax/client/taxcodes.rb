@@ -17,8 +17,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param model [TaxCodeModel[]] The tax code you wish to create.
       # @return [TaxCodeModel[]]
-      def create_tax_codes(companyId, model)        path = "/api/v2/companies/#{companyId}/taxcodes"
-        post(path, model)      end
+      def create_tax_codes(companyId, model)
+        path = "/api/v2/companies/#{companyId}/taxcodes"
+        post(path, model)
+      end
+
 
       # Delete a single tax code
       #
@@ -30,8 +33,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param id [Integer] The ID of the tax code you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        delete(path)      end
+      def delete_tax_code(companyId, id)
+        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single tax code
       #
@@ -47,8 +53,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this tax code
       # @param id [Integer] The primary key of this tax code
       # @return [Object]
-      def get_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        get(path)      end
+      def get_tax_code(companyId, id)
+        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
+        get(path)
+      end
+
 
       # Retrieve tax codes for this company
       #
@@ -71,8 +80,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_tax_codes_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/taxcodes"
-        get(path, options)      end
+      def list_tax_codes_by_company(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/taxcodes"
+        get(path, options)
+      end
+
 
       # Retrieve all tax codes
       #
@@ -94,8 +106,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_tax_codes(options={})        path = "/api/v2/taxcodes"
-        get(path, options)      end
+      def query_tax_codes(options={})
+        path = "/api/v2/taxcodes"
+        get(path, options)
+      end
+
 
       # Update a single tax code
       #
@@ -114,8 +129,11 @@ module AvaTax
       # @param id [Integer] The ID of the tax code you wish to update
       # @param model [Object] The tax code you wish to update.
       # @return [Object]
-      def update_tax_code(companyId, id, model)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        put(path, model)      end
+      def update_tax_code(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

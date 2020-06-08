@@ -9,8 +9,11 @@ module AvaTax
       # @param companyId [Integer] 
       # @param model [TransactionReferenceFieldModel[]] 
       # @return [FetchResult]
-      def tag_transaction(companyId, model)        path = "/api/v2/companies/#{companyId}/transactions/tag"
-        put(path, model)      end
+      def tag_transaction(companyId, model)
+        path = "/api/v2/companies/#{companyId}/transactions/tag"
+        put(path, model)
+      end
+
     end
   end
 end

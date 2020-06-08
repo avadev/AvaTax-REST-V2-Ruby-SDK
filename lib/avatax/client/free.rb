@@ -21,8 +21,11 @@ module AvaTax
       # * This API may be called without providing authentication credentials.
       # @param model [Object] Required information to provision a free trial account.
       # @return [Object]
-      def request_free_trial(model)        path = "/api/v2/accounts/freetrials/request"
-        post(path, model)      end
+      def request_free_trial(model)
+        path = "/api/v2/accounts/freetrials/request"
+        post(path, model)
+      end
+
 
       # FREE API - Sales tax rates for a specified address
       #
@@ -59,8 +62,11 @@ module AvaTax
       # @param postalCode [String] The postal code of the location.
       # @param country [String] Name or ISO 3166 code identifying the country.     This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries     For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
       # @return [Object]
-      def tax_rates_by_address(options={})        path = "/api/v2/taxrates/byaddress"
-        get(path, options)      end
+      def tax_rates_by_address(options={})
+        path = "/api/v2/taxrates/byaddress"
+        get(path, options)
+      end
+
 
       # FREE API - Sales tax rates for a specified country and postal code. This API is only available for US postal codes.
       #
@@ -94,8 +100,11 @@ module AvaTax
       # @param country [String] Name or ISO 3166 code identifying the country.     This field supports many different country identifiers:   * Two character ISO 3166 codes   * Three character ISO 3166 codes   * Fully spelled out names of the country in ISO supported languages   * Common alternative spellings for many countries     For a full list of all supported codes and names, please see the Definitions API `ListCountries`.
       # @param postalCode [String] The postal code of the location.
       # @return [Object]
-      def tax_rates_by_postal_code(options={})        path = "/api/v2/taxrates/bypostalcode"
-        get(path, options)      end
+      def tax_rates_by_postal_code(options={})
+        path = "/api/v2/taxrates/bypostalcode"
+        get(path, options)
+      end
+
     end
   end
 end

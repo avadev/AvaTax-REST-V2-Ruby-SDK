@@ -14,8 +14,11 @@ module AvaTax
       # @param companyId [Integer] The id of the company you which to create the datasources
       # @param model [DataSourceModel[]] 
       # @return [DataSourceModel[]]
-      def create_data_sources(companyId, model)        path = "/api/v2/companies/#{companyId}/datasources"
-        post(path, model)      end
+      def create_data_sources(companyId, model)
+        path = "/api/v2/companies/#{companyId}/datasources"
+        post(path, model)
+      end
+
 
       # Delete a datasource by datasource id for a company.
       #
@@ -28,8 +31,11 @@ module AvaTax
       # @param companyId [Integer] The id of the company the datasource belongs to.
       # @param id [Integer] The id of the datasource you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_data_source(companyId, id)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        delete(path)      end
+      def delete_data_source(companyId, id)
+        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
+        delete(path)
+      end
+
 
       # Get data source by data source id
       #
@@ -42,8 +48,11 @@ module AvaTax
       # @param companyId [Integer] 
       # @param id [Integer] data source id
       # @return [Object]
-      def get_data_source_by_id(companyId, id)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        get(path)      end
+      def get_data_source_by_id(companyId, id)
+        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
+        get(path)
+      end
+
 
       # Retrieve all datasources for this company
       #
@@ -59,8 +68,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_data_sources(companyId, options={})        path = "/api/v2/companies/#{companyId}/datasources"
-        get(path, options)      end
+      def list_data_sources(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/datasources"
+        get(path, options)
+      end
+
 
       # Retrieve all datasources
       #
@@ -78,8 +90,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_data_sources(options={})        path = "/api/v2/datasources"
-        get(path, options)      end
+      def query_data_sources(options={})
+        path = "/api/v2/datasources"
+        get(path, options)
+      end
+
 
       # Update a datasource identified by id for a company
       #
@@ -93,8 +108,11 @@ module AvaTax
       # @param id [Integer] The id of the datasource you wish to delete.
       # @param model [Object] 
       # @return [Object]
-      def update_data_source(companyId, id, model)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        put(path, model)      end
+      def update_data_source(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end
