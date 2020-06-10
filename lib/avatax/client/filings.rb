@@ -20,8 +20,11 @@ module AvaTax
       # @param filingCalendarId [Integer] The filing calendar id of the return you are trying to retrieve
       # @param taxformCode [String] The unique tax form code of the form.
       # @return [FetchResult]
-      def get_filed_returns(companyId, options={})        path = "/api/v2/companies/#{companyId}/filings/returns/filed"
-        get(path, options)      end
+      def get_filed_returns(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/filings/returns/filed"
+        get(path, options)
+      end
+
     end
   end
 end

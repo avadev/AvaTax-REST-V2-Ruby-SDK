@@ -14,8 +14,11 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param model [AvaFileFormModel[]] The AvaFileForm you wish to create.
       # @return [AvaFileFormModel[]]
-      def create_ava_file_forms(model)        path = "/api/v2/avafileforms"
-        post(path, model)      end
+      def create_ava_file_forms(model)
+        path = "/api/v2/avafileforms"
+        post(path, model)
+      end
+
 
       # Delete a single AvaFileForm
       #
@@ -27,8 +30,11 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param id [Integer] The ID of the AvaFileForm you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        delete(path)      end
+      def delete_ava_file_form(id)
+        path = "/api/v2/avafileforms/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single AvaFileForm
       #
@@ -40,8 +46,11 @@ module AvaTax
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param id [Integer] The primary key of this AvaFileForm
       # @return [Object]
-      def get_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        get(path)      end
+      def get_ava_file_form(id)
+        path = "/api/v2/avafileforms/#{id}"
+        get(path)
+      end
+
 
       # Retrieve all AvaFileForms
       #
@@ -57,8 +66,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_ava_file_forms(options={})        path = "/api/v2/avafileforms"
-        get(path, options)      end
+      def query_ava_file_forms(options={})
+        path = "/api/v2/avafileforms"
+        get(path, options)
+      end
+
 
       # Update a AvaFileForm
       #
@@ -72,8 +84,11 @@ module AvaTax
       # @param id [Integer] The ID of the AvaFileForm you wish to update
       # @param model [Object] The AvaFileForm model you wish to update.
       # @return [Object]
-      def update_ava_file_form(id, model)        path = "/api/v2/avafileforms/#{id}"
-        put(path, model)      end
+      def update_ava_file_form(id, model)
+        path = "/api/v2/avafileforms/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

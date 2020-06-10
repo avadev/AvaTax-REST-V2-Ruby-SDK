@@ -17,8 +17,11 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param model [CompanyDistanceThresholdModel[]] The DistanceThreshold object or objects you wish to create.
       # @return [CompanyDistanceThresholdModel[]]
-      def create_distance_threshold(companyId, model)        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        post(path, model)      end
+      def create_distance_threshold(companyId, model)
+        path = "/api/v2/companies/#{companyId}/distancethresholds"
+        post(path, model)
+      end
+
 
       # Delete a single DistanceThreshold object
       #
@@ -34,8 +37,11 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param id [Integer] The unique ID number of the DistanceThreshold object you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        delete(path)      end
+      def delete_distance_threshold(companyId, id)
+        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single DistanceThreshold
       #
@@ -51,8 +57,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this DistanceThreshold object
       # @param id [Integer] The unique ID number referring to this DistanceThreshold object
       # @return [Object]
-      def get_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        get(path)      end
+      def get_distance_threshold(companyId, id)
+        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
+        get(path)
+      end
+
 
       # Retrieve all DistanceThresholds for this company.
       #
@@ -72,8 +81,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_distance_thresholds(companyId, options={})        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        get(path, options)      end
+      def list_distance_thresholds(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/distancethresholds"
+        get(path, options)
+      end
+
 
       # Retrieve all DistanceThreshold objects
       #
@@ -95,8 +107,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_distance_thresholds(options={})        path = "/api/v2/distancethresholds"
-        get(path, options)      end
+      def query_distance_thresholds(options={})
+        path = "/api/v2/distancethresholds"
+        get(path, options)
+      end
+
 
       # Update a DistanceThreshold object
       #
@@ -116,8 +131,11 @@ module AvaTax
       # @param id [Integer] The unique ID number of the DistanceThreshold object to replace.
       # @param model [Object] The new DistanceThreshold object to store.
       # @return [Object]
-      def update_distance_threshold(companyId, id, model)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        put(path, model)      end
+      def update_distance_threshold(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

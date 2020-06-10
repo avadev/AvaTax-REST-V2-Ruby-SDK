@@ -25,8 +25,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The id of the notification you wish to mark as dismissed.
       # @return [Object]
-      def dismiss_notification(id)        path = "/api/v2/notifications/#{id}/dismiss"
-        put(path)      end
+      def dismiss_notification(id)
+        path = "/api/v2/notifications/#{id}/dismiss"
+        put(path)
+      end
+
 
       # Retrieve a single notification.
       #
@@ -44,8 +47,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param id [Integer] The id of the notification to retrieve.
       # @return [Object]
-      def get_notification(id)        path = "/api/v2/notifications/#{id}"
-        get(path)      end
+      def get_notification(id)
+        path = "/api/v2/notifications/#{id}"
+        get(path)
+      end
+
 
       # List all notifications.
       #
@@ -69,8 +75,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_notifications(options={})        path = "/api/v2/notifications"
-        get(path, options)      end
+      def list_notifications(options={})
+        path = "/api/v2/notifications"
+        get(path, options)
+      end
+
     end
   end
 end

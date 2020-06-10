@@ -15,8 +15,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param model [UPCModel[]] The UPC you wish to create.
       # @return [UPCModel[]]
-      def create_u_p_cs(companyId, model)        path = "/api/v2/companies/#{companyId}/upcs"
-        post(path, model)      end
+      def create_u_p_cs(companyId, model)
+        path = "/api/v2/companies/#{companyId}/upcs"
+        post(path, model)
+      end
+
 
       # Delete a single UPC
       #
@@ -29,8 +32,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param id [Integer] The ID of the UPC you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        delete(path)      end
+      def delete_u_p_c(companyId, id)
+        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single UPC
       #
@@ -44,8 +50,11 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this UPC
       # @param id [Integer] The primary key of this UPC
       # @return [Object]
-      def get_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        get(path)      end
+      def get_u_p_c(companyId, id)
+        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
+        get(path)
+      end
+
 
       # Retrieve UPCs for this company
       #
@@ -66,8 +75,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_u_p_cs_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/upcs"
-        get(path, options)      end
+      def list_u_p_cs_by_company(companyId, options={})
+        path = "/api/v2/companies/#{companyId}/upcs"
+        get(path, options)
+      end
+
 
       # Retrieve all UPCs
       #
@@ -87,8 +99,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_u_p_cs(options={})        path = "/api/v2/upcs"
-        get(path, options)      end
+      def query_u_p_cs(options={})
+        path = "/api/v2/upcs"
+        get(path, options)
+      end
+
 
       # Update a single UPC
       #
@@ -105,8 +120,11 @@ module AvaTax
       # @param id [Integer] The ID of the UPC you wish to update
       # @param model [Object] The UPC you wish to update.
       # @return [Object]
-      def update_u_p_c(companyId, id, model)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        put(path, model)      end
+      def update_u_p_c(companyId, id, model)
+        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end

@@ -18,8 +18,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param model [Object] An object containing your current password and the new password.
       # @return [String]
-      def change_password(model)        path = "/api/v2/passwords"
-        put(path, model)      end
+      def change_password(model)
+        path = "/api/v2/passwords"
+        put(path, model)
+      end
+
 
       # Create new users
       #
@@ -39,8 +42,11 @@ module AvaTax
       # @param accountId [Integer] The unique ID number of the account where these users will be created.
       # @param model [UserModel[]] The user or array of users you wish to create.
       # @return [UserModel[]]
-      def create_users(accountId, model)        path = "/api/v2/accounts/#{accountId}/users"
-        post(path, model)      end
+      def create_users(accountId, model)
+        path = "/api/v2/accounts/#{accountId}/users"
+        post(path, model)
+      end
+
 
       # Delete a single user
       #
@@ -57,8 +63,11 @@ module AvaTax
       # @param id [Integer] The ID of the user you wish to delete.
       # @param accountId [Integer] The accountID of the user you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_user(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        delete(path)      end
+      def delete_user(id, accountId)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        delete(path)
+      end
+
 
       # Retrieve a single user
       #
@@ -76,8 +85,11 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @param include [String] Optional fetch commands.
       # @return [Object]
-      def get_user(id, accountId, options={})        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        get(path, options)      end
+      def get_user(id, accountId, options={})
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        get(path, options)
+      end
+
 
       # Retrieve all entitlements for a single user
       #
@@ -103,8 +115,11 @@ module AvaTax
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @return [Object]
-      def get_user_entitlements(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
-        get(path)      end
+      def get_user_entitlements(id, accountId)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
+        get(path)
+      end
+
 
       # Retrieve users for this account
       #
@@ -131,8 +146,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_users_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/users"
-        get(path, options)      end
+      def list_users_by_account(accountId, options={})
+        path = "/api/v2/accounts/#{accountId}/users"
+        get(path, options)
+      end
+
 
       # Retrieve all users
       #
@@ -160,8 +178,11 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_users(options={})        path = "/api/v2/users"
-        get(path, options)      end
+      def query_users(options={})
+        path = "/api/v2/users"
+        get(path, options)
+      end
+
 
       # Update a single user
       #
@@ -177,8 +198,11 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to update.
       # @param model [Object] The user object you wish to update.
       # @return [Object]
-      def update_user(id, accountId, model)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        put(path, model)      end
+      def update_user(id, accountId, model)
+        path = "/api/v2/accounts/#{accountId}/users/#{id}"
+        put(path, model)
+      end
+
     end
   end
 end
