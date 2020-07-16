@@ -29,7 +29,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be added
       # @return [Object]
@@ -67,12 +67,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to adjust
       # @param documentType [String] (Optional): The document type of the transaction to adjust. (See DocumentType::* for a list of allowable values)
@@ -107,12 +109,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @return [Object]
@@ -144,12 +148,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @param documentType [String] The document type of the original transaction (See DocumentType::* for a list of allowable values)
@@ -210,12 +216,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to change
       # @param documentType [String] (Optional): The document type of the transaction to change document code. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -255,6 +263,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -400,7 +410,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be removed
       # @return [Object]
@@ -435,6 +445,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -460,6 +472,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -538,6 +552,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -586,6 +602,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -642,12 +660,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code of the company that made the original sale
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -688,6 +708,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -726,12 +748,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to Uncommit
       # @param documentType [String] (Optional): The document type of the transaction to Uncommit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -761,12 +785,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to commit
       # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -803,12 +829,14 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
       # @param documentType [String] (Optional): The document type of the transaction to verify. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -848,6 +876,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies

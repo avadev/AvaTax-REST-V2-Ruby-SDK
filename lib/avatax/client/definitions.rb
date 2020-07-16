@@ -768,6 +768,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param countryCode [String] If not null, return all records with this code.
       # @return [FetchResult]
       def list_product_classification_systems(options={})
         path = "/api/v2/definitions/productclassificationsystems"
@@ -786,6 +787,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param countryCode [String] If not null, return all records with this code.
       # @return [FetchResult]
       def list_product_classification_systems_by_company(companyCode, options={})
         path = "/api/v2/definitions/productclassificationsystems/bycompany/#{companyCode}"

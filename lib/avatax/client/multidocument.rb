@@ -20,6 +20,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -58,6 +60,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -88,6 +92,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -141,6 +147,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -175,6 +183,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -219,6 +229,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -260,6 +272,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -321,6 +335,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -351,6 +367,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
@@ -381,6 +399,8 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
