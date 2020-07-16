@@ -10,7 +10,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyId [Integer] The id of the company you which to create the datasources
       # @param model [DataSourceModel[]] 
       # @return [DataSourceModel[]]
@@ -27,7 +27,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyId [Integer] The id of the company the datasource belongs to.
       # @param id [Integer] The id of the datasource you wish to delete.
       # @return [ErrorDetail[]]
@@ -44,7 +44,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyId [Integer] 
       # @param id [Integer] data source id
       # @return [Object]
@@ -61,7 +61,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyId [Integer] The id of the company you wish to retrieve the datasources.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* isEnabled, isSynced, isAuthorized, name, externalState
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -84,7 +84,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* isEnabled, isSynced, isAuthorized, name, externalState
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -103,7 +103,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyId [Integer] The id of the company the datasource belongs to.
       # @param id [Integer] The id of the datasource you wish to delete.
       # @param model [Object] 
