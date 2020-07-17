@@ -22,11 +22,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this setting.
       # @param model [SettingModel[]] The setting you wish to create.
       # @return [SettingModel[]]
-      def create_settings(companyId, model)
-        path = "/api/v2/companies/#{companyId}/settings"
-        post(path, model)
-      end
-
+      def create_settings(companyId, model)        path = "/api/v2/companies/#{companyId}/settings"
+        post(path, model)      end
 
       # Delete a single setting
       #
@@ -47,11 +44,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this setting.
       # @param id [Integer] The ID of the setting you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_setting(companyId, id)
-        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        delete(path)
-      end
-
+      def delete_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
+        delete(path)      end
 
       # Retrieve a single setting
       #
@@ -72,11 +66,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this setting
       # @param id [Integer] The primary key of this setting
       # @return [Object]
-      def get_setting(companyId, id)
-        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        get(path)
-      end
-
+      def get_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
+        get(path)      end
 
       # Retrieve all settings for this company
       #
@@ -104,11 +95,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_settings_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/settings"
-        get(path, options)
-      end
-
+      def list_settings_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/settings"
+        get(path, options)      end
 
       # Retrieve all settings
       #
@@ -135,11 +123,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_settings(options={})
-        path = "/api/v2/settings"
-        get(path, options)
-      end
-
+      def query_settings(options={})        path = "/api/v2/settings"
+        get(path, options)      end
 
       # Update a single setting
       #
@@ -165,11 +150,8 @@ module AvaTax
       # @param id [Integer] The ID of the setting you wish to update
       # @param model [Object] The setting you wish to update.
       # @return [Object]
-      def update_setting(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        put(path, model)
-      end
-
+      def update_setting(companyId, id, model)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
+        put(path, model)      end
     end
   end
 end

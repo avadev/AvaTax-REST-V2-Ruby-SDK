@@ -15,11 +15,8 @@ module AvaTax
       # @param accountId [Integer] The ID of the account that owns this subscription
       # @param id [Integer] The primary key of this subscription
       # @return [Object]
-      def get_subscription(accountId, id)
-        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        get(path)
-      end
-
+      def get_subscription(accountId, id)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
+        get(path)      end
 
       # Retrieve subscriptions for this account
       #
@@ -39,11 +36,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_subscriptions_by_account(accountId, options={})
-        path = "/api/v2/accounts/#{accountId}/subscriptions"
-        get(path, options)
-      end
-
+      def list_subscriptions_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/subscriptions"
+        get(path, options)      end
 
       # Retrieve all subscriptions
       #
@@ -62,11 +56,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_subscriptions(options={})
-        path = "/api/v2/subscriptions"
-        get(path, options)
-      end
-
+      def query_subscriptions(options={})        path = "/api/v2/subscriptions"
+        get(path, options)      end
     end
   end
 end
