@@ -17,11 +17,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param itemId [Integer] The ID of the item you wish to delete the classifications.
       # @return [ErrorDetail[]]
-      def batch_delete_item_classifications(companyId, itemId)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        delete(path)
-      end
-
+      def batch_delete_item_classifications(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        delete(path)      end
 
       # Delete all parameters for an item
       #
@@ -39,11 +36,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param itemId [Integer] The ID of the item you wish to delete the parameters.
       # @return [ErrorDetail[]]
-      def batch_delete_item_parameters(companyId, itemId)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        delete(path)
-      end
-
+      def batch_delete_item_parameters(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
+        delete(path)      end
 
       # Add classifications to an item.
       #
@@ -62,11 +56,8 @@ module AvaTax
       # @param itemId [Integer] The item id.
       # @param model [ItemClassificationInputModel[]] The item classifications you wish to create.
       # @return [ItemClassificationOutputModel[]]
-      def create_item_classifications(companyId, itemId, model)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        post(path, model)
-      end
-
+      def create_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        post(path, model)      end
 
       # Add parameters to an item.
       #
@@ -89,11 +80,8 @@ module AvaTax
       # @param itemId [Integer] The item id.
       # @param model [ItemParameterModel[]] The item parameters you wish to create.
       # @return [ItemParameterModel[]]
-      def create_item_parameters(companyId, itemId, model)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        post(path, model)
-      end
-
+      def create_item_parameters(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
+        post(path, model)      end
 
       # Create a new item
       #
@@ -113,11 +101,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
-      def create_items(companyId, model)
-        path = "/api/v2/companies/#{companyId}/items"
-        post(path, model)
-      end
-
+      def create_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items"
+        post(path, model)      end
 
       # Delete a single item
       #
@@ -137,11 +122,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param id [Integer] The ID of the item you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_item(companyId, id)
-        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        delete(path)
-      end
-
+      def delete_item(companyId, id)        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        delete(path)      end
 
       # Delete a single item classification.
       #
@@ -158,11 +140,8 @@ module AvaTax
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
       # @return [ErrorDetail[]]
-      def delete_item_classification(companyId, itemId, id)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        delete(path)
-      end
-
+      def delete_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
+        delete(path)      end
 
       # Delete a single item parameter
       #
@@ -181,11 +160,8 @@ module AvaTax
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
-      def delete_item_parameter(companyId, itemId, id)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        delete(path)
-      end
-
+      def delete_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
+        delete(path)      end
 
       # Retrieve a single item
       #
@@ -204,11 +180,8 @@ module AvaTax
       # @param id [Integer] The primary key of this item
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
-      def get_item(companyId, id, options={})
-        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        get(path, options)
-      end
-
+      def get_item(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        get(path, options)      end
 
       # Retrieve a single item classification.
       #
@@ -225,11 +198,8 @@ module AvaTax
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
       # @return [Object]
-      def get_item_classification(companyId, itemId, id)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        get(path)
-      end
-
+      def get_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
+        get(path)      end
 
       # Retrieve a single item parameter
       #
@@ -248,11 +218,8 @@ module AvaTax
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
       # @return [Object]
-      def get_item_parameter(companyId, itemId, id)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        get(path)
-      end
-
+      def get_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
+        get(path)      end
 
       # Retrieve classifications for an item.
       #
@@ -275,11 +242,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_item_classifications(companyId, itemId, options={})
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        get(path, options)
-      end
-
+      def list_item_classifications(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        get(path, options)      end
 
       # Retrieve parameters for an item
       #
@@ -304,11 +268,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_item_parameters(companyId, itemId, options={})
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        get(path, options)
-      end
-
+      def list_item_parameters(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
+        get(path, options)      end
 
       # Retrieve items for this company
       #
@@ -339,11 +300,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_items_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/items"
-        get(path, options)
-      end
-
+      def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
+        get(path, options)      end
 
       # Retrieve all items
       #
@@ -368,11 +326,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_items(options={})
-        path = "/api/v2/items"
-        get(path, options)
-      end
-
+      def query_items(options={})        path = "/api/v2/items"
+        get(path, options)      end
 
       # Sync items from a product catalog
       #
@@ -395,11 +350,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [Object] The request object.
       # @return [Object]
-      def sync_items(companyId, model)
-        path = "/api/v2/companies/#{companyId}/items/sync"
-        post(path, model)
-      end
-
+      def sync_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/sync"
+        post(path, model)      end
 
       # Update a single item
       #
@@ -423,11 +375,8 @@ module AvaTax
       # @param id [Integer] The ID of the item you wish to update
       # @param model [Object] The item object you wish to update.
       # @return [Object]
-      def update_item(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        put(path, model)
-      end
-
+      def update_item(companyId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        put(path, model)      end
 
       # Update an item classification.
       #
@@ -447,11 +396,8 @@ module AvaTax
       # @param id [Integer] The item classification id.
       # @param model [Object] The item object you wish to update.
       # @return [Object]
-      def update_item_classification(companyId, itemId, id, model)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        put(path, model)
-      end
-
+      def update_item_classification(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
+        put(path, model)      end
 
       # Update an item parameter
       #
@@ -471,11 +417,8 @@ module AvaTax
       # @param id [Integer] The item parameter id
       # @param model [Object] The item object you wish to update.
       # @return [Object]
-      def update_item_parameter(companyId, itemId, id, model)
-        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        put(path, model)
-      end
-
+      def update_item_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
+        put(path, model)      end
     end
   end
 end

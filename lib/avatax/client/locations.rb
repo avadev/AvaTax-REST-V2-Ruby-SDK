@@ -13,11 +13,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this location.
       # @param model [LocationModel[]] The location you wish to create.
       # @return [LocationModel[]]
-      def create_locations(companyId, model)
-        path = "/api/v2/companies/#{companyId}/locations"
-        post(path, model)
-      end
-
+      def create_locations(companyId, model)        path = "/api/v2/companies/#{companyId}/locations"
+        post(path, model)      end
 
       # Delete a single location
       #
@@ -29,11 +26,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this location.
       # @param id [Integer] The ID of the location you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_location(companyId, id)
-        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        delete(path)
-      end
-
+      def delete_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
+        delete(path)      end
 
       # Retrieve a single location
       #
@@ -55,11 +49,8 @@ module AvaTax
       # @param id [Integer] The primary key of this location
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
-      def get_location(companyId, id, options={})
-        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        get(path, options)
-      end
-
+      def get_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}"
+        get(path, options)      end
 
       # Retrieve locations for this company
       #
@@ -86,11 +77,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def list_locations_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/locations"
-        get(path, options)
-      end
-
+      def list_locations_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/locations"
+        get(path, options)      end
 
       # Retrieve all locations
       #
@@ -117,11 +105,8 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
-      def query_locations(options={})
-        path = "/api/v2/locations"
-        get(path, options)
-      end
-
+      def query_locations(options={})        path = "/api/v2/locations"
+        get(path, options)      end
 
       # Update a single location
       #
@@ -136,11 +121,8 @@ module AvaTax
       # @param id [Integer] The ID of the location you wish to update
       # @param model [Object] The location you wish to update.
       # @return [Object]
-      def update_location(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        put(path, model)
-      end
-
+      def update_location(companyId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
+        put(path, model)      end
 
       # Validate the location against local requirements
       #
@@ -154,11 +136,8 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
       # @return [Object]
-      def validate_location(companyId, id)
-        path = "/api/v2/companies/#{companyId}/locations/#{id}/validate"
-        get(path)
-      end
-
+      def validate_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}/validate"
+        get(path)      end
     end
   end
 end

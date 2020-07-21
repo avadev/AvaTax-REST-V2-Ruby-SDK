@@ -35,11 +35,8 @@ module AvaTax
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param model [Object] Parameters about the desired file format and report format, specifying which company, locations and TaxCodes to include.
       # @return [Object]
-      def build_tax_content_file(model)
-        path = "/api/v2/pointofsaledata/build"
-        post(path, model)
-      end
-
+      def build_tax_content_file(model)        path = "/api/v2/pointofsaledata/build"
+        post(path, model)      end
 
       # Build a tax content file for a single location
       #
@@ -78,11 +75,8 @@ module AvaTax
       # @param partnerId [String] If specified, requests a custom partner-formatted version of the file. (See PointOfSalePartnerId::* for a list of allowable values)
       # @param includeJurisCodes [Boolean] When true, the file will include jurisdiction codes in the result.
       # @return [Object]
-      def build_tax_content_file_for_location(companyId, id, options={})
-        path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
-        get(path, options)
-      end
-
+      def build_tax_content_file_for_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
+        get(path, options)      end
 
       # Download a file listing tax rates by postal code
       #
@@ -133,11 +127,8 @@ module AvaTax
       # @param date [DateTime] The date for which point-of-sale data would be calculated (today by default). Example input: 2016-12-31
       # @param region [String] A two character region code which limits results to a specific region.
       # @return [Object]
-      def download_tax_rates_by_zip_code(date, options={})
-        path = "/api/v2/taxratesbyzipcode/download/#{date}"
-        get(path, options)
-      end
-
+      def download_tax_rates_by_zip_code(date, options={})        path = "/api/v2/taxratesbyzipcode/download/#{date}"
+        get(path, options)      end
     end
   end
 end

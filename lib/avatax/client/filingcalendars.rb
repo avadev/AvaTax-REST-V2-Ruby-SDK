@@ -14,11 +14,8 @@ module AvaTax
       # @param filingCalendarId [Integer] The unique ID of the filing calendar that will remove setting
       # @param companyReturnSettingId [Integer] The unique ID of the company return setting that will be deleted from the filing calendar
       # @return [CompanyReturnSettingModel[]]
-      def delete_company_return_settings(companyId, filingCalendarId, companyReturnSettingId)
-        path = "/api/v2/companies/#{companyId}/filingcalendars/#{filingCalendarId}/setting/#{companyReturnSettingId}"
-        delete(path)
-      end
-
+      def delete_company_return_settings(companyId, filingCalendarId, companyReturnSettingId)        path = "/api/v2/companies/#{companyId}/filingcalendars/#{filingCalendarId}/setting/#{companyReturnSettingId}"
+        delete(path)      end
     end
   end
 end
