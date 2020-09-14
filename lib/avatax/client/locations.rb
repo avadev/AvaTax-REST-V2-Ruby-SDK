@@ -3,6 +3,30 @@ module AvaTax
     module Locations 
 
 
+      # Add parameters to a location.
+      #
+      # Add parameters to a location.
+      #
+      # Some locations can be taxed differently depending on the properties of that location. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a location will be used by default in tax calculation but will not show on the transaction line referencing the location.
+      #
+      # A parameter specified on a transaction line will override a location parameter if they share the same parameter name.
+      #
+      # To see available parameters for this location, call `/api/v2/definitions/parameters?$filter=attributeType eq Company`
+      #
+      # Some parameters are only available for use if you have subscribed to specific AvaTax services. To see which parameters you are able to use, add the query parameter "$showSubscribed=true" to the parameter definition call above.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that owns this location parameter.
+      # @param locationId [Integer] The location id.
+      # @param model [LocationParameterModel[]] The location parameters you wish to create.
+      # @return [LocationParameterModel[]]
+      def create_location_parameters(companyId, locationId, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
+        post(path, model)      end
+
       # Create a new location
       #
       # Create one or more new location objects attached to this company.
@@ -29,6 +53,26 @@ module AvaTax
       def delete_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
         delete(path)      end
 
+      # Delete a single location parameter
+      #
+      # Delete a single location parameter.
+      #
+      # Some locations can be taxed differently depending on the properties of that location. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a location will be used by default in tax calculation but will not show on the transaction line referencing the location.
+      #
+      # A parameter specified on a transaction line will override a location parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The company id
+      # @param locationId [Integer] The location id
+      # @param id [Integer] The parameter id
+      # @return [ErrorDetail[]]
+      def delete_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
+        delete(path)      end
+
       # Retrieve a single location
       #
       # Get the location object identified by this URL.
@@ -44,12 +88,58 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}"
+        get(path, options)      end
+
+      # Retrieve a single company location parameter
+      #
+      # Retrieve a single location parameter.
+      #
+      # Some locations can be taxed differently depending on the properties of that location. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a location will be used by default in tax calculation but will not show on the transaction line referencing the location.
+      #
+      # A parameter specified on a transaction line will override a location parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param companyId [Integer] The company id
+      # @param locationId [Integer] The location id
+      # @param id [Integer] The parameter id
+      # @return [Object]
+      def get_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
+        get(path)      end
+
+      # Retrieve parameters for a location
+      #
+      # List parameters for a location.
+      #
+      # Some locations can be taxed differently depending on the properties of that location. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a location will be used by default in tax calculation but will not show on the transaction line referencing the location.
+      #
+      # A parameter specified on a transaction line will override a location parameter if they share the same parameter name.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param companyId [Integer] The company id
+      # @param locationId [Integer] The ID of the location
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_location_parameters(companyId, locationId, options={})        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
         get(path, options)      end
 
       # Retrieve locations for this company
@@ -69,7 +159,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns these locations
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings, parameters
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -98,7 +188,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* settings, parameters
       # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -124,6 +214,27 @@ module AvaTax
       def update_location(companyId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
         put(path, model)      end
 
+      # Update a location parameter
+      #
+      # Update a location parameter.
+      #
+      # Some locations can be taxed differently depending on the properties of that location. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a location will be used by default in tax calculation but will not show on the transaction line referencing the location.
+      #
+      # A parameter specified on a transaction line will override a location parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The company id.
+      # @param locationId [Integer] The location id
+      # @param id [Integer] The location parameter id
+      # @param model [Object] The location parameter object you wish to update.
+      # @return [Object]
+      def update_location_parameter(companyId, locationId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
+        put(path, model)      end
+
       # Validate the location against local requirements
       #
       # Returns validation information for this location.
@@ -132,7 +243,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
       # @return [Object]

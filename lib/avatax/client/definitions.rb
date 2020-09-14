@@ -259,7 +259,7 @@ module AvaTax
       # Returns a list of all Avalara-supported taxing jurisdictions.
       #
       # This API allows you to examine all Avalara-supported jurisdictions. You can filter your search by supplying
-      # SQL-like query for fetching only the ones you concerned about. For example: effectiveDate &gt; '2016-01-01'
+      # SQL-like query for fetching only the ones you concerned about. For example: effectiveDate > '2016-01-01'
       #
       # The rate, salesRate, and useRate fields are not available on the JurisdictionModels returned by this API.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* rate, salesRate, signatureCode, useRate

@@ -3,6 +3,17 @@ module AvaTax
     module Filings 
 
 
+      # Retrieve a filing containing the return and all its accrual returns.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param companyId [Integer] The ID of the company that owns these returns
+      # @param filingReturnId [Integer] The ID of the filing return
+      # @return [FetchResult]
+      def get_accrual_filings(companyId, filingReturnId)        path = "/api/v2/companies/#{companyId}/filings/accrual/#{filingReturnId}"
+        get(path)      end
+
       # Retrieve a list of filed returns for the specified company in the year and month of a given filing period.
       #
       # ### Security Policies
