@@ -61,7 +61,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def list_contacts_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/contacts"
         get(path, options)      end
 
@@ -81,7 +81,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def query_contacts(options={})        path = "/api/v2/contacts"
         get(path, options)      end
 

@@ -28,7 +28,7 @@ module AvaTax
       # within AvaTax. You can examine the subscriptions returned from this API call to look for a particular product
       # or subscription to provide useful information to the current user as to whether they are entitled to use
       # specific features of AvaTax.
-      # @return [FetchResult]
+      # @return [Object]
       def list_my_subscriptions()        path = "/api/v2/utilities/subscriptions"
         get(path)      end
 

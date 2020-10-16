@@ -179,8 +179,8 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
-      # @param code [String] 
-      # @param type [String]  (See DocumentType::* for a list of allowable values)
+      # @param code [String] The multidocument code to retrieve
+      # @param type [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @return [Object]
       def get_multi_document_transaction_by_code_and_type(code, type, options={})        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}"
@@ -267,7 +267,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def list_multi_document_transactions(options={})        path = "/api/v2/transactions/multidocument"
         get(path, options)      end
 

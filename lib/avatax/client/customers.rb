@@ -113,7 +113,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded the provided customer
       # @param customerCode [String] The unique code representing the current customer
       # @param model [CustomerAttributeModel[]] The list of attributes to link to the customer.
-      # @return [FetchResult]
+      # @return [Object]
       def link_attributes_to_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes/link"
         put(path, model)      end
 
@@ -139,7 +139,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
-      # @return [FetchResult]
+      # @return [Object]
       def link_certificates_to_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/link"
         post(path, model)      end
 
@@ -194,7 +194,7 @@ module AvaTax
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded the provided customer
       # @param customerCode [String] The unique code representing the current customer
-      # @return [FetchResult]
+      # @return [Object]
       def list_attributes_for_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes"
         get(path)      end
 
@@ -224,7 +224,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def list_certificates_for_customer(companyId, customerCode, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates"
         get(path, options)      end
 
@@ -288,7 +288,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def query_customers(companyId, options={})        path = "/api/v2/companies/#{companyId}/customers"
         get(path, options)      end
 
@@ -317,7 +317,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded the customer
       # @param customerCode [String] The unique code representing the current customer
       # @param model [CustomerAttributeModel[]] The list of attributes to unlink from the customer.
-      # @return [FetchResult]
+      # @return [Object]
       def unlink_attributes_from_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes/unlink"
         put(path, model)      end
 
@@ -343,7 +343,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param model [Object] The list of certificates to link to this customer
-      # @return [FetchResult]
+      # @return [Object]
       def unlink_certificates_from_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/unlink"
         post(path, model)      end
 

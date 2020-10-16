@@ -14,16 +14,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the comment for.
       # @param model [NoticeCommentModel[]] The notice comments you wish to create.
       # @return [NoticeCommentModel[]]
-      def create_notice_comment(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/comments"
-        post(path, model)
-      end
-
+      def create_notice_comment(companyId, id, model)        path = "/api/v2/companies/#{companyId}/notices/#{id}/comments"
+        post(path, model)      end
 
       # Create a new notice finance details.
       #
@@ -37,16 +33,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice added to the finance details.
       # @param model [NoticeFinanceModel[]] The notice finance details you wish to create.
       # @return [NoticeFinanceModel[]]
-      def create_notice_finance_details(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails"
-        post(path, model)
-      end
-
+      def create_notice_finance_details(companyId, id, model)        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails"
+        post(path, model)      end
 
       # Create a new notice responsibility.
       #
@@ -59,16 +51,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the responsibility for.
       # @param model [NoticeResponsibilityDetailModel[]] The notice responsibilities you wish to create.
       # @return [NoticeResponsibilityDetailModel[]]
-      def create_notice_responsibilities(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/responsibilities"
-        post(path, model)
-      end
-
+      def create_notice_responsibilities(companyId, id, model)        path = "/api/v2/companies/#{companyId}/notices/#{id}/responsibilities"
+        post(path, model)      end
 
       # Create a new notice root cause.
       #
@@ -81,16 +69,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the tax notice we are adding the responsibility for.
       # @param model [NoticeRootCauseDetailModel[]] The notice root causes you wish to create.
       # @return [NoticeRootCauseDetailModel[]]
-      def create_notice_root_causes(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/rootcauses"
-        post(path, model)
-      end
-
+      def create_notice_root_causes(companyId, id, model)        path = "/api/v2/companies/#{companyId}/notices/#{id}/rootcauses"
+        post(path, model)      end
 
       # Create a new notice.
       #
@@ -103,15 +87,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param model [NoticeModel[]] The notice object you wish to create.
       # @return [NoticeModel[]]
-      def create_notices(companyId, model)
-        path = "/api/v2/companies/#{companyId}/notices"
-        post(path, model)
-      end
-
+      def create_notices(companyId, model)        path = "/api/v2/companies/#{companyId}/notices"
+        post(path, model)      end
 
       # Delete a single notice.
       #
@@ -124,16 +104,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
       # @param commentDetailsId [Integer] The ID of the comment you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_comment_details(companyId, id, commentDetailsId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/commentdetails/#{commentdetailsid}"
-        delete(path)
-      end
-
+      def delete_comment_details(companyId, id, commentDetailsId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/commentdetails/#{commentdetailsid}"
+        delete(path)      end
 
       # Delete a single notice.
       #
@@ -147,16 +123,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice you wish to delete the finance detail from.
       # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_finance_details(companyId, id, financeDetailsId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails/#{financedetailsid}"
-        delete(path)
-      end
-
+      def delete_finance_details(companyId, id, financeDetailsId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails/#{financedetailsid}"
+        delete(path)      end
 
       # Delete a single notice.
       #
@@ -169,15 +141,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param id [Integer] The ID of the notice you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_notice(companyId, id)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}"
-        delete(path)
-      end
-
+      def delete_notice(companyId, id)        path = "/api/v2/companies/#{companyId}/notices/#{id}"
+        delete(path)      end
 
       # Delete a single responsibility
       #
@@ -190,16 +158,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param noticeId [Integer] The ID of the notice you wish to delete.
       # @param id [Integer] The ID of the responsibility you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_responsibilities(companyId, noticeId, id)
-        path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/responsibilities/#{id}"
-        delete(path)
-      end
-
+      def delete_responsibilities(companyId, noticeId, id)        path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/responsibilities/#{id}"
+        delete(path)      end
 
       # Delete a single root cause.
       #
@@ -212,16 +176,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns this notice.
       # @param noticeId [Integer] The ID of the notice you wish to delete.
       # @param id [Integer] The ID of the root cause you wish to delete.
       # @return [ErrorDetail[]]
-      def delete_root_causes(companyId, noticeId, id)
-        path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/rootcauses/#{id}"
-        delete(path)
-      end
-
+      def delete_root_causes(companyId, noticeId, id)        path = "/api/v2/companies/#{companyId}/notices/#{noticeId}/rootcauses/#{id}"
+        delete(path)      end
 
       # Retrieve a single attachment
       #
@@ -232,15 +192,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company for this attachment.
       # @param id [Integer] The ResourceFileId of the attachment to download.
       # @return [Object]
-      def download_notice_attachment(companyId, id)
-        path = "/api/v2/companies/#{companyId}/notices/files/#{id}/attachment"
-        get(path)
-      end
-
+      def download_notice_attachment(companyId, id)        path = "/api/v2/companies/#{companyId}/notices/files/#{id}/attachment"
+        get(path)      end
 
       # Retrieve a single notice.
       #
@@ -253,15 +209,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company for this notice.
       # @param id [Integer] The ID of this notice.
       # @return [Object]
-      def get_notice(companyId, id)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}"
-        get(path)
-      end
-
+      def get_notice(companyId, id)        path = "/api/v2/companies/#{companyId}/notices/#{id}"
+        get(path)      end
 
       # Retrieve notice comments for a specific notice.
       #
@@ -274,15 +226,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] The ID of the notice.
       # @param companyId [Integer] The ID of the company that owns these notices.
-      # @return [FetchResult]
-      def get_notice_comments(id, companyId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/comments"
-        get(path)
-      end
-
+      # @return [Object]
+      def get_notice_comments(id, companyId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/comments"
+        get(path)      end
 
       # Retrieve notice finance details for a specific notice.
       #
@@ -296,15 +244,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] The ID of the company that owns these notices.
       # @param companyId [Integer] The ID of the company that owns these notices.
-      # @return [FetchResult]
-      def get_notice_finance_details(id, companyId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails"
-        get(path)
-      end
-
+      # @return [Object]
+      def get_notice_finance_details(id, companyId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/financedetails"
+        get(path)      end
 
       # Retrieve notice responsibilities for a specific notice.
       #
@@ -317,15 +261,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] The ID of the notice.
       # @param companyId [Integer] The ID of the company that owns these notices.
-      # @return [FetchResult]
-      def get_notice_responsibilities(id, companyId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/responsibilities"
-        get(path)
-      end
-
+      # @return [Object]
+      def get_notice_responsibilities(id, companyId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/responsibilities"
+        get(path)      end
 
       # Retrieve notice root causes for a specific notice.
       #
@@ -338,15 +278,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param id [Integer] The ID of the notice.
       # @param companyId [Integer] The ID of the company that owns these notices.
-      # @return [FetchResult]
-      def get_notice_root_causes(id, companyId)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}/rootcauses"
-        get(path)
-      end
-
+      # @return [Object]
+      def get_notice_root_causes(id, companyId)        path = "/api/v2/companies/#{companyId}/notices/#{id}/rootcauses"
+        get(path)      end
 
       # Retrieve notices for a company.
       #
@@ -362,19 +298,15 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that owns these notices.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* status, totalRemit, ticketReferenceNo, ticketReferenceUrl, reason, type, createdByUserName, documentReference, jurisdictionName, jurisdictionType, comments, finances, responsibility, rootCause
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def list_notices_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/notices"
-        get(path, options)
-      end
-
+      # @return [Object]
+      def list_notices_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/notices"
+        get(path, options)      end
 
       # Retrieve all notices.
       #
@@ -393,18 +325,14 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* status, totalRemit, ticketReferenceNo, ticketReferenceUrl, reason, type, createdByUserName, documentReference, jurisdictionName, jurisdictionType, comments, finances, responsibility, rootCause
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def query_notices(options={})
-        path = "/api/v2/notices"
-        get(path, options)
-      end
-
+      # @return [Object]
+      def query_notices(options={})        path = "/api/v2/notices"
+        get(path, options)      end
 
       # Retrieve all notices.
       #
@@ -417,14 +345,10 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param model [Object] Query object to filter, sort and paginate the filing calendars.
-      # @return [FetchResult]
-      def query_notices_post(model)
-        path = "/api/v2/notices/query"
-        post(path, model)
-      end
-
+      # @return [Object]
+      def query_notices_post(model)        path = "/api/v2/notices/query"
+        post(path, model)      end
 
       # Update a single notice finance detail.
       #
@@ -436,17 +360,13 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that this notice finance detail belongs to.
       # @param noticeid [Integer] The ID of the notice finance detail you wish to update.
       # @param financeDetailsId [Integer] The ID of the finance detail you wish to delete.
       # @param model [Object] The notice finance detail object you wish to update.
       # @return [Object]
-      def update_finance_details(companyId, noticeid, financeDetailsId, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/financedetails/#{financedetailsid}"
-        put(path, model)
-      end
-
+      def update_finance_details(companyId, noticeid, financeDetailsId, model)        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/financedetails/#{financedetailsid}"
+        put(path, model)      end
 
       # Update a single notice.
       #
@@ -461,16 +381,12 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that this notice belongs to.
       # @param id [Integer] The ID of the notice you wish to update.
       # @param model [Object] The notice object you wish to update.
       # @return [Object]
-      def update_notice(companyId, id, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{id}"
-        put(path, model)
-      end
-
+      def update_notice(companyId, id, model)        path = "/api/v2/companies/#{companyId}/notices/#{id}"
+        put(path, model)      end
 
       # Update a single notice comment.
       #
@@ -482,19 +398,15 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that this notice comment belongs to.
       # @param noticeid [Integer] The ID of the notice you wish to update.
       # @param commentDetailsId [Integer] The ID of the comment you wish to update.
       # @param model [Object] The notice comment object you wish to update.
       # @return [Object]
-      def update_notice_comments(companyId, noticeid, commentDetailsId, model)
-        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/commentdetails/#{commentdetailsid}"
-        put(path, model)
-      end
+      def update_notice_comments(companyId, noticeid, commentDetailsId, model)        path = "/api/v2/companies/#{companyId}/notices/#{noticeid}/commentdetails/#{commentdetailsid}"
+        put(path, model)      end
 
-
-      # Retrieve a single attachment
+      # Upload a new notice attachment.
       #
       # This API is available by invitation only.
       #
@@ -504,15 +416,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Operator, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
-      # * This API is available by invitation only.<br />*Exempt security roles*: ComplianceRootUser, ComplianceAdmin, ComplianceUser, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company for this attachment.
       # @param model [Object] The upload request.
       # @return [Object]
-      def upload_attachment(companyId, model)
-        path = "/api/v2/companies/#{companyId}/notices/files/attachment"
-        post(path, model)
-      end
-
+      def upload_attachment(companyId, model)        path = "/api/v2/companies/#{companyId}/notices/files/attachment"
+        post(path, model)      end
     end
   end
 end

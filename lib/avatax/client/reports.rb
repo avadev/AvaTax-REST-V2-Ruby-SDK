@@ -90,7 +90,7 @@ module AvaTax
       # @param pageKey [String] Provide a page key to retrieve the next page of results.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @return [FetchResult]
+      # @return [Object]
       def list_reports(options={})        path = "/api/v2/reports"
         get(path, options)      end
     end

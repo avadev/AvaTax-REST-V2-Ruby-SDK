@@ -167,7 +167,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to link to this certificate.
-      # @return [FetchResult]
+      # @return [Object]
       def link_attributes_to_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes/link"
         post(path, model)      end
 
@@ -196,7 +196,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers needed be added to the Certificate for exemption
-      # @return [FetchResult]
+      # @return [Object]
       def link_customers_to_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers/link"
         post(path, model)      end
 
@@ -223,7 +223,7 @@ module AvaTax
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
-      # @return [FetchResult]
+      # @return [Object]
       def list_attributes_for_certificate(companyId, id)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes"
         get(path)      end
 
@@ -251,7 +251,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.   No options are currently available when fetching customers.
-      # @return [FetchResult]
+      # @return [Object]
       def list_customers_for_certificate(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers"
         get(path, options)      end
 
@@ -285,7 +285,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
+      # @return [Object]
       def query_certificates(companyId, options={})        path = "/api/v2/companies/#{companyId}/certificates"
         get(path, options)      end
 
@@ -334,7 +334,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to unlink from this certificate.
-      # @return [FetchResult]
+      # @return [Object]
       def unlink_attributes_from_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes/unlink"
         post(path, model)      end
 
@@ -364,7 +364,7 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers to unlink from this certificate
-      # @return [FetchResult]
+      # @return [Object]
       def unlink_customers_from_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers/unlink"
         post(path, model)      end
 
