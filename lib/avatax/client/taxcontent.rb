@@ -3,6 +3,19 @@ module AvaTax
     module TaxContent 
 
 
+      # Retrieve send-sale tax content for this company.
+      #
+      # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Required* (all): SendSalesRateFile.
+      # @param model [Object] The send sales request model.
+      # @return [Object]
+      def build_send_sales_rate_file(model)        path = "/api/v2/sendsalescontent/download"
+        post(path, model)      end
+
       # Build a multi-location tax content file
       #
       # Builds a tax content file containing information useful for a retail point-of-sale solution.
@@ -76,6 +89,23 @@ module AvaTax
       # @param includeJurisCodes [Boolean] When true, the file will include jurisdiction codes in the result.
       # @return [Object]
       def build_tax_content_file_for_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}/pointofsaledata"
+        get(path, options)      end
+
+      # Retrieve send-sale tax content for this company.
+      #
+      # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API depends on the following active services<br />*Required* (all): SendSalesRateFile.
+      # @param date [DateTime] The date for which we are fetching tax content.
+      # @param taxCode [String] The tax code for which we are fetching tax content.
+      # @param companyId [Integer] The unique ID number of the company which is fetching tax content.
+      # @param format [String] Requests a specific data format for this content file. (See SendSalesOutputFileFormat::* for a list of allowable values)
+      # @param type [String] Requests a specific encoding for this content file. (See SendSalesFileType::* for a list of allowable values)
+      # @return [Object]
+      def download_send_sales_rate_file(date, taxCode, companyId, options={})        path = "/api/v2/sendsalescontent/download/#{companyId}/#{taxCode}/#{date}"
         get(path, options)      end
 
       # Download a file listing tax rates by postal code
