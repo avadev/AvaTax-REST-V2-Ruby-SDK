@@ -10,6 +10,7 @@ module AvaTax
     include AvaTax::Client::Contacts
     include AvaTax::Client::Customers
     include AvaTax::Client::Definitions
+    include AvaTax::Client::ECommerceToken
     include AvaTax::Client::FilingCalendars
     include AvaTax::Client::Filings
     include AvaTax::Client::Free
