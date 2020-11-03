@@ -179,8 +179,8 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
-      # @param code [String] 
-      # @param type [String]  (See DocumentType::* for a list of allowable values)
+      # @param code [String] The multidocument code to retrieve
+      # @param type [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @return [Object]
       def get_multi_document_transaction_by_code_and_type(code, type, options={})        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}"

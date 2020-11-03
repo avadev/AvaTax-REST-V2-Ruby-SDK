@@ -101,6 +101,29 @@ module AvaTax
       def create_companies(model)        path = "/api/v2/companies"
         post(path, model)      end
 
+      # Add parameters to a company.
+      #
+      # Add parameters to a company.
+      #
+      # Some companies can be taxed and reported differently depending on the properties of the company, such as IsPrimaryAddress. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a company will be used by default in tax calculation but will not show on the transaction line referencing the company.
+      #
+      # A company location parameter specified on a transaction line will override a company parameter if they share the same parameter name.
+      #
+      # To see available parameters for this company, call `/api/v2/definitions/parameters?$filter=attributeType eq Company`
+      #
+      # Some parameters are only available for use if you have subscribed to specific AvaTax services. To see which parameters you are able to use, add the query parameter "$showSubscribed=true" to the parameter definition call above.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that owns this company parameter.
+      # @param model [CompanyParameterDetailModel[]] The company parameters you wish to create.
+      # @return [CompanyParameterDetailModel[]]
+      def create_company_parameters(companyId, model)        path = "/api/v2/companies/#{companyId}/parameters"
+        post(path, model)      end
+
       # Request managed returns funding setup for a company
       #
       # This API is available by invitation only.
@@ -134,6 +157,24 @@ module AvaTax
       # @param id [Integer] The ID of the company you wish to delete.
       # @return [ErrorDetail[]]
       def delete_company(id)        path = "/api/v2/companies/#{id}"
+        delete(path)      end
+
+      # Delete a single company parameter
+      #
+      # Delete a parameter of a company.
+      # Some companies can be taxed and reported differently depending on the properties of the company, such as IsPrimaryAddress. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a company will be used by default in tax calculation but will not show on the transaction line referencing the company.
+      #
+      # A company location parameter specified on a transaction line will override a company parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The company id
+      # @param id [Integer] The parameter id
+      # @return [ErrorDetail[]]
+      def delete_company_parameter(companyId, id)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
         delete(path)      end
 
       # Check the funding configuration of a company
@@ -217,6 +258,25 @@ module AvaTax
       def get_company_configuration(id)        path = "/api/v2/companies/#{id}/configuration"
         get(path)      end
 
+      # Retrieve a single company parameter
+      #
+      # Retrieves a single parameter of a company.
+      #
+      # Some companies can be taxed and reported differently depending on the properties of the company, such as IsPrimaryAddress. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a company will be used by default in tax calculation but will not show on the transaction line referencing the company.
+      #
+      # A company location parameter specified on a transaction line will override a company parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param companyId [Integer] 
+      # @param id [Integer] 
+      # @return [Object]
+      def get_company_parameter_detail(companyId, id)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
+        get(path)      end
+
       # Get this company's filing status
       #
       # Retrieve the current filing status of this company.
@@ -240,6 +300,31 @@ module AvaTax
       # @return [String]
       def get_filing_status(id)        path = "/api/v2/companies/#{id}/filingstatus"
         get(path)      end
+
+      # Retrieve parameters for a company
+      #
+      # Retrieve all parameters of a company.
+      #
+      # Some companies can be taxed and reported differently depending on the properties of the company, such as IsPrimaryAddress. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a company will be used by default in tax calculation but will not show on the transaction line referencing the company.
+      #
+      # A company location parameter specified on a transaction line will override a company parameter if they share the same parameter name.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # @param companyId [Integer] The company id
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_company_parameter_details(companyId, options={})        path = "/api/v2/companies/#{companyId}/parameters"
+        get(path, options)      end
 
       # Check managed returns funding status for a company
       #
@@ -347,6 +432,26 @@ module AvaTax
       # @param model [Object] The company object you wish to update.
       # @return [Object]
       def update_company(id, model)        path = "/api/v2/companies/#{id}"
+        put(path, model)      end
+
+      # Update a company parameter
+      #
+      # Update a parameter of a company.
+      #
+      # Some companies can be taxed and reported differently depending on the properties of the company, such as IsPrimaryAddress. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to a company will be used by default in tax calculation but will not show on the transaction line referencing the company.
+      #
+      # A company location parameter specified on a transaction line will override a company parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The company id.
+      # @param id [Integer] The company parameter id
+      # @param model [Object] The company parameter object you wish to update.
+      # @return [Object]
+      def update_company_parameter_detail(companyId, id, model)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
         put(path, model)      end
     end
   end

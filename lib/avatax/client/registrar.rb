@@ -3,6 +3,20 @@ module AvaTax
     module Registrar 
 
 
+      # Bridge API for integration of validated certificates
+      #
+      # # For Registrar Use Only
+      # This API is for use by Avalara Registrar administrative users only.
+      #
+      # ### Security Policies
+      #
+      # * This API is available to Avalara system-level (registrar-level) users only.
+      # * This API depends on the following active services<br />*Required* (all): AvaCert.
+      # @param model [EcmsModel[]] Either a single exempt certificate or an array of certificates to create
+      # @return [EcmsModel[]]
+      def cert_capture_bridge(model)        path = "/api/v2/certcapturebridge"
+        post(path, model)      end
+
       # Create a new account
       #
       # # For Registrar Use Only
