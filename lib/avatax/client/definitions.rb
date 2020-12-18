@@ -18,7 +18,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
+      # * This API depends on the following active services:*Required* (all): AvaTaxGlobal.
       # @param country [String] The name or code of the destination country.
       # @param hsCode [String] The partial or full HS Code for which you would like to view all of the parents.
       # @return [FetchResult]
@@ -186,7 +186,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
+      # * This API depends on the following active services:*Required* (all): AvaTaxGlobal.
       # @param country [String] The name or code of the destination country.
       # @param hsCode [String] The Section or partial HS Code for which you would like to view the next level of HS Code detail, if more detail is available.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* hsCodeSource, system, destinationCountry, isDecisionNode, zeroPaddingCount, isSystemDefined, isTaxable, effDate, endDate, hsCodeSourceLength
@@ -208,7 +208,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxGlobal.
+      # * This API depends on the following active services:*Required* (all): AvaTaxGlobal.
       # @return [FetchResult]
       def list_cross_border_sections()        path = "/api/v2/definitions/crossborder/sections"
         get(path)      end
@@ -428,20 +428,6 @@ module AvaTax
       # @return [Object]
       def list_nexus_by_form_code(formCode)        path = "/api/v2/definitions/nexus/byform/#{formCode}"
         get(path)      end
-
-      # Retrieve the full list of Avalara-supported nexus for a tax type group.
-      #
-      # Returns all Avalara-supported nexus for the specified specified tax type group.
-      #
-      # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by tax type group.
-      # @param taxTypeGroup [String] The tax type group to fetch the supporting system nexus for.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxAuthorityId, taxName, parameters
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def list_nexus_by_tax_type_group(taxTypeGroup, options={})        path = "/api/v2/definitions/nexus/bytaxtypegroup/#{taxTypeGroup}"
-        get(path, options)      end
 
       # Retrieve the full list of nexus tax type groups
       #
@@ -848,20 +834,6 @@ module AvaTax
       def list_tax_sub_types(options={})        path = "/api/v2/definitions/taxsubtypes"
         get(path, options)      end
 
-      # Retrieve the full list of tax sub types by jurisdiction code and region
-      #
-      # Returns the full list of Avalara-supported tax sub-types by jurisdiction and region
-      # This API is intended to be useful to identify all the different tax sub-types.
-      # @param jurisdictionCode [String] The jurisdiction code of the tax sub type.
-      # @param region [String] The region of the tax sub type.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def list_tax_sub_types_by_jurisdiction_and_region(jurisdictionCode, region, options={})        path = "/api/v2/definitions/taxsubtypes/#{jurisdictionCode}/#{region}"
-        get(path, options)      end
-
       # Retrieve the full list of tax type groups
       #
       # Returns the full list of Avalara-supported tax type groups
@@ -885,24 +857,6 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_unit_of_measurement(options={})        path = "/api/v2/definitions/unitofmeasurements"
-        get(path, options)      end
-
-      # List customer attributes used by a company
-      #
-      # List the customer attributes defined by a company.
-      #
-      # A customer may have multiple attributes that control its behavior. You may apply or remove attributes to a
-      # customer at any time.
-      #
-      # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
-      # check and provision account.
-      # @param companyid [Integer] Id of the company the user wish to fetch the customers' attributes from. If not specified the API will use user's default company.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def query_company_customer_attributes(options={})        path = "/api/v2/definitions/customerattributes"
         get(path, options)      end
     end
   end

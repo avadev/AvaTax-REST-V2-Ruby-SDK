@@ -20,17 +20,17 @@ module AvaTax
       # * A link to the customer that is allowed to use this certificate
       # * Your tax transaction must contain the correct customer code
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # If the users specified in the certificates do not exist, the API will create the user and link them to the certificate
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The ID number of the company recording this certificate
       # @param preValidatedExemptionReason [Boolean] If set to true, the certificate will bypass the human verification process.
       # @param model [CertificateModel[]] Certificates to be created
@@ -49,15 +49,15 @@ module AvaTax
       #
       # Revoked certificates can no longer be used.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @return [ErrorDetail[]]
@@ -76,15 +76,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param page [Integer] If you choose `$type`=`Jpeg`, you must specify which page number to retrieve.
@@ -108,15 +108,15 @@ module AvaTax
       # * po_numbers - Retrieves all PO numbers tied to the certificate.
       # * attributes - Retrieves all attributes applied to the certificate.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.
@@ -137,7 +137,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The company ID to check
       # @return [Object]
       def get_certificate_setup(companyId)        path = "/api/v2/companies/#{companyId}/certificates/setup"
@@ -155,15 +155,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to link to this certificate.
@@ -184,15 +184,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers needed be added to the Certificate for exemption
@@ -212,15 +212,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @return [FetchResult]
@@ -239,15 +239,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.   No options are currently available when fetching customers.
@@ -270,15 +270,15 @@ module AvaTax
       # * po_numbers - Retrieves all PO numbers tied to the certificate.
       # * attributes - Retrieves all attributes applied to the certificate.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The ID number of the company to search
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* exemptionNumber, status, ecmsId, ecmsStatus, pdf, pages
@@ -304,7 +304,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] 
       # @return [Object]
       def request_certificate_setup(companyId)        path = "/api/v2/companies/#{companyId}/certificates/setup"
@@ -322,15 +322,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [CertificateAttributeModel[]] The list of attributes to unlink from this certificate.
@@ -352,15 +352,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The list of customers to unlink from this certificate
@@ -377,15 +377,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param model [Object] The new certificate object that will replace the existing one
@@ -405,15 +405,15 @@ module AvaTax
       # criteria you specify when you store the certificate. To view or manage your certificates directly, please
       # log onto the administrative website for the product you purchased.
       #
-      # Using exemption certificates endpoints requires setup of an auditable document storage for each company that will use certificates.
-      # Companies that do not have this storage system set up will receive the error `CertCaptureNotConfiguredError` when they call exemption
-      # certificate related APIs. To check if this company is set up, call `GetCertificateSetup`. To request setup of the auditable document
-      # storage for this company, call `RequestCertificateSetup`.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
       # @param companyId [Integer] The unique ID number of the company that recorded this certificate
       # @param id [Integer] The unique ID number of this certificate
       # @param file [Object] The exemption certificate file you wanted to upload. Accepted formats are: PDF, JPEG, TIFF, PNG.
