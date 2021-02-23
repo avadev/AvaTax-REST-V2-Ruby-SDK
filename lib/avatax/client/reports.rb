@@ -60,6 +60,15 @@ module AvaTax
       #
       # The `ExportDocumentLine` report produces information about invoice lines recorded within your account.
       #
+      # To split large reports into multiple smaller partitions, use the numberOfPartitions and partition properties on ExportDocumentLineModel.
+      #
+      # Example - split a report into three partitions
+      #
+      # * Follow the steps above with numberOfPartitions = 3 and partition = 0
+      # * Follow the steps above with numberOfPartitions = 3 and partition = 1
+      # * Follow the steps above with numberOfPartitions = 3 and partition = 2
+      # * Once all three reports are downloaded merge the files on the client side.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.

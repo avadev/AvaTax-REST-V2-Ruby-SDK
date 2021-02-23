@@ -29,7 +29,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be added
       # @return [Object]
@@ -71,7 +71,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to adjust
       # @param documentType [String] (Optional): The document type of the transaction to adjust. (See DocumentType::* for a list of allowable values)
@@ -110,7 +110,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @return [Object]
@@ -146,7 +146,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code identifying the company that owns this transaction
       # @param transactionCode [String] The code identifying the transaction
       # @param documentType [String] The document type of the original transaction (See DocumentType::* for a list of allowable values)
@@ -167,7 +167,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires the user role Compliance Root User.
-      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param model [Object] bulk lock request
       # @return [Object]
       def bulk_lock_transaction(model)        path = "/api/v2/transactions/lock"
@@ -208,7 +208,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to change
       # @param documentType [String] (Optional): The document type of the transaction to change document code. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -300,7 +300,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create or adjust
       # @return [Object]
@@ -353,7 +353,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] The transaction you wish to create
       # @return [Object]
@@ -383,7 +383,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] information about the transaction and lines to be removed
       # @return [Object]
@@ -422,7 +422,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] (Optional): The document type of the transaction to retrieve (See DocumentType::* for a list of allowable values)
@@ -446,7 +446,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to retrieve
       # @param documentType [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
@@ -478,7 +478,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param id [Integer] The unique ID number of the transaction to retrieve
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
@@ -520,11 +520,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param dataSourceId [Integer] Optionally filter transactions to those from a specific data source.
       # @param include [String] Specifies objects to include in this fetch call
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* totalDiscount, lines, addresses, locationTypes, summary, taxDetailsByTaxType, parameters, messages, invoiceMessages, isFakeTransaction
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* exchangeRateCurrencyCode, totalDiscount, lines, addresses, locationTypes, summary, taxDetailsByTaxType, parameters, messages, invoiceMessages, isFakeTransaction
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -536,7 +536,7 @@ module AvaTax
       #
       # Lock a transaction uniquely identified by this URL.
       #
-      # This API is mainly used for connector developer to simulate what happens when Returns product locks a document.
+      # This API is mainly used for connector developers to simulate what happens when the Returns product locks a document.
       # After this API call succeeds, the document will be locked and can't be voided or adjusted.
       #
       # This API is only available to customers in Sandbox with AvaTaxPro subscription. On production servers, this API is available by invitation only.
@@ -567,7 +567,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.<br />*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to lock
       # @param documentType [String] (Optional): The document type of the transaction to lock. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -622,7 +622,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The code of the company that made the original sale
       # @param transactionCode [String] The transaction code of the original sale
       # @param include [String] Specifies objects to include in the response after transaction is created
@@ -704,7 +704,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to Uncommit
       # @param documentType [String] (Optional): The document type of the transaction to Uncommit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -738,7 +738,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to commit
       # @param documentType [String] (Optional): The document type of the transaction to commit. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -779,7 +779,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to settle
       # @param documentType [String] (Optional): The document type of the transaction to verify. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)
@@ -823,7 +823,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro, BasicReturns.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # @param companyCode [String] The company code of the company that recorded this transaction
       # @param transactionCode [String] The transaction code to void
       # @param documentType [String] (Optional): The document type of the transaction to void. If not provided, the default is SalesInvoice. (See DocumentType::* for a list of allowable values)

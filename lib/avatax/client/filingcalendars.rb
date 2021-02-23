@@ -3,6 +3,21 @@ module AvaTax
     module FilingCalendars 
 
 
+      # Add or Edit options
+      #
+      # Returns a list of options for adding tax forms for the company and tax form code specified.
+      # Returns edit options when modifying a filing calendar.
+      # This API is available by invitation only.
+      #
+      # ### Security Policies
+      #
+      # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
+      # @param model [Object] Cycle Safe Options Request
+      # @return [Object]
+      def cycle_safe_options(companyId, model)        path = "/api/v2/companies/#{companyId}/filingcalendars/edit/cycleSafeOptions"
+        post(path, model)      end
+
       # Delete a company return setting
       #
       # This API is available by invitation only and only available for users with Compliance access

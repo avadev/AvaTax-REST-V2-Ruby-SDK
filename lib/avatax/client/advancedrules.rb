@@ -22,16 +22,6 @@ module AvaTax
       def delete_lookup_file(accountId, id)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
         delete(path)      end
 
-      # Get audit records by account id and date range.
-      #
-      # 
-      # @param accountId [Integer] The ID of the account
-      # @param fromDate [String] Date
-      # @param toDate [String] Date
-      # @return [Object]
-      def get_audit_records(accountId, fromDate, toDate)        path = "/api/v2/advancedrules/audits/accounts/#{accountId}/from/#{fromDate}/to/#{toDate}"
-        get(path)      end
-
       # Get the lookup files for a company
       #
       # 
