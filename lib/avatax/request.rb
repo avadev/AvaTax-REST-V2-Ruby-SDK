@@ -22,8 +22,6 @@ module AvaTax
 
     def request(method, path, model, options={})
       response = connection.send(method) do |request|
-        # timeout in seconds
-        request.options['timeout'] = 1200
         case method
         when :get, :delete
           request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
