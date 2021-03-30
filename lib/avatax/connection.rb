@@ -14,7 +14,8 @@ module AvaTax
           {
            'Accept' => "application/json; charset=utf-8",
            'User-Agent' => user_agent,
-           'X-Avalara-Client' => client_id
+           'X-Avalara-Client' => client_id,
+           'X-Avalara-UID' => client_uid
           },
         :url => endpoint,
         :proxy => proxy
