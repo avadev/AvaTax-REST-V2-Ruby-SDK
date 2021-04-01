@@ -24,9 +24,9 @@ module AvaTax
       response = connection.send(method) do |request|
         case method
         when :get, :delete
-          request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
+          request.url("#{encode_path(path)}?#{URI.encode_www_form(options)}")
         when :post, :put
-          request.url("#{URI.encode(path)}?#{URI.encode_www_form(options)}")
+          request.url("#{encode_path(path)}?#{URI.encode_www_form(options)}")
           request.headers['Content-Type'] = 'application/json'
           request.body = model.to_json unless model.empty?
         end
@@ -37,6 +37,12 @@ module AvaTax
       else
         response.body
       end
+    end
+
+    private
+
+    def encode_path(path)
+      path.split('/').map { |part| ERB::Util.url_encode(part) }.join('/')
     end
   end
 end
