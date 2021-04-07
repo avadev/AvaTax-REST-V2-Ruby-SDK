@@ -3,7 +3,6 @@ require File.expand_path('../request', __FILE__)
 
 module AvaTax
   class API
-
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
     def initialize(options={})
