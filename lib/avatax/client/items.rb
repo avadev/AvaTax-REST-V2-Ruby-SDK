@@ -39,6 +39,27 @@ module AvaTax
       def batch_delete_item_parameters(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
         delete(path)      end
 
+      # Bulk upload items from a product catalog
+      #
+      # Create/Update one or more item objects attached to this company.
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
+      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
+      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
+      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
+      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # The tax code takes precedence over the tax code id if both are provided.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that owns this items.
+      # @param model [Object] The items you wish to upload.
+      # @return [Object]
+      def bulk_upload_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/upload"
+        post(path, model)      end
+
       # Add classifications to an item.
       #
       # Add classifications to an item.
@@ -104,6 +125,22 @@ module AvaTax
       def create_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items"
         post(path, model)      end
 
+      # Create tags for a item
+      #
+      # Creates one or more new `Tag` objects attached to this Item.
+      #
+      # Item tags puts multiple labels for an item. So that item can be easily grouped by these tags.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
+      # @param model [ItemTagDetailModel[]] Tags you wish to associate with the Item
+      # @return [ItemTagDetailModel[]]
+      def create_item_tags(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
+        post(path, model)      end
+
       # Delete a single item
       #
       # Deletes the item object at this URL.
@@ -161,6 +198,37 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
+        delete(path)      end
+
+      # Delete item tag by id
+      #
+      # Deletes the `Tag` object of an Item at this URL.
+      #
+      # Item tags puts multiple labels for an item. So that item can be easily grouped by these tags.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
+      # @param itemTagDetailId [Integer] The ID of the item tag detail you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_item_tag(companyId, itemId, itemTagDetailId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags/#{itemTagDetailId}"
+        delete(path)      end
+
+      # Delete all item tags
+      #
+      # Deletes all `Tags` objects of an Item at this URL.
+      #
+      # Item tags puts multiple labels for an item. So that item can be easily grouped by these tags.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # @param companyId [Integer] The ID of the company that defined these items.
+      # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
+      # @return [ErrorDetail[]]
+      def delete_item_tags(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
         delete(path)      end
 
       # Retrieve a single item
@@ -221,6 +289,24 @@ module AvaTax
       def get_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
         get(path)      end
 
+      # Retrieve tags for an item
+      #
+      # Get the `Tag` objects of an Item identified by this URL.
+      #
+      # Item tags puts multiple labels for an item. So that item can be easily grouped by these tags.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* tagName
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @return [FetchResult]
+      def get_item_tags(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
+        get(path, options)      end
+
       # Retrieve classifications for an item.
       #
       # List classifications for an item.
@@ -263,7 +349,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit, isNeededForCalculation, isNeededForReturns, isNeededForClassification
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -294,7 +380,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -320,13 +406,41 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items(options={})        path = "/api/v2/items"
+        get(path, options)      end
+
+      # Retrieve all items associated with given tag
+      #
+      # Get multiple item objects associated with given tag.
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
+      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
+      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
+      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
+      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      #
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # @param companyId [Integer] The ID of the company that defined these items.
+      # @param tag [String] The master tag to be associated with item.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
+      # @param include [String] A comma separated list of additional data to retrieve.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def query_items_by_tag(companyId, tag, options={})        path = "/api/v2/companies/#{companyId}/items/bytags/#{tag}"
         get(path, options)      end
 
       # Sync items from a product catalog
