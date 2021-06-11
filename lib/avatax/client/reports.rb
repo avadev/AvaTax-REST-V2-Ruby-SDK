@@ -18,7 +18,7 @@ module AvaTax
       # * Check the status of a report by calling `GetReport` and passing in the report's `id` value.
       # * When a report's status is `Completed`, call `DownloadReport` to retrieve the file.
       #
-      # This API works for all report types.
+      # * We throttle this API. You can only call this API up to 5 times in a minute.
       #
       # ### Security Policies
       #

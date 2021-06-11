@@ -106,6 +106,19 @@ module AvaTax
       def list_certificate_exposure_zones(options={})        path = "/api/v2/definitions/certificateexposurezones"
         get(path, options)      end
 
+      # Retrieve the full list of Avalara-supported usage of extra parameters for classification of a item.
+      #
+      # Returns the full list of Avalara-supported usage of extra parameters for item classification.
+      # The list of parameters is available for use with Item Classification.
+      # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* values
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_classification_parameters_usage(options={})        path = "/api/v2/definitions/classification/parametersusage"
+        get(path, options)      end
+
       # Retrieve the full list of communications service types
       #
       # Returns full list of service types for a given transaction type ID.
@@ -564,7 +577,16 @@ module AvaTax
 
       # Retrieve the parameters by companyCode and itemCode.
       #
-      # Returns the list of parameters based on the company country and state jurisdiction and the item code.
+      # Returns the list of parameters based on the company's service types and the item code.
+      # Ignores nexus if a service type is configured in the 'IgnoreNexusForServiceTypes' configuration section.
+      # Ignores nexus for the AvaAlcohol service type.
+      #
+      # NOTE: If your company code or item code contains any of these characters /, +, ? or a space, please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: 'Company/Code' becomes 'Company_-ava2f-_Code'
+      # * Replace '+' with '\_-ava2b-\_' For example: 'Company+Code' becomes 'Company_-ava2b-_Code'
+      # * Replace '?' with '\_-ava3f-\_' For example: 'Company?Code' becomes 'Company_-ava3f-_Code'
+      # * Replace '%' with '\_-ava25-\_' For example: 'Company%Code' becomes 'Company_-ava25-_Code'
+      # * Replace '#' with '\_-ava23-\_' For example: 'Company#Code' becomes 'Company_-ava23-_Code'
       #
       # ### Security Policies
       #
@@ -653,6 +675,14 @@ module AvaTax
       #
       # Tax authorities use product classification systems as a way to identify products and associate them with a tax rate.
       # More than one tax authority might use the same product classification system, but they might charge different tax rates for products.
+      #
+      #
+      # NOTE: If your company code contains any of these characters /, +, ? or a space, please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: 'Company/Code' becomes 'Company_-ava2f-_Code'
+      # * Replace '+' with '\_-ava2b-\_' For example: 'Company+Code' becomes 'Company_-ava2b-_Code'
+      # * Replace '?' with '\_-ava3f-\_' For example: 'Company?Code' becomes 'Company_-ava3f-_Code'
+      # * Replace '%' with '\_-ava25-\_' For example: 'Company%Code' becomes 'Company_-ava25-_Code'
+      # * Replace '#' with '\_-ava23-\_' For example: 'Company#Code' becomes 'Company_-ava23-_Code'
       # @param companyCode [String] The company code.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* countries
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -715,6 +745,19 @@ module AvaTax
       def list_resource_file_types(options={})        path = "/api/v2/definitions/resourcefiletypes"
         get(path, options)      end
 
+      # Retrieve the full list of Avalara-supported usage of parameters used for returns.
+      #
+      # Returns the full list of Avalara-supported usage of extra parameters for the returns.
+      # This list of parameters is available for use with Returns.
+      # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* values
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_returns_parameters_usage(options={})        path = "/api/v2/definitions/returns/parametersusage"
+        get(path, options)      end
+
       # Retrieve the full list of Avalara-supported permissions
       #
       # Returns the full list of Avalara-supported permission types.
@@ -740,6 +783,17 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_subscription_types(options={})        path = "/api/v2/definitions/subscriptiontypes"
+        get(path, options)      end
+
+      # Retrieve the list all tags supported by avalara
+      #
+      # Retrieves the list of suggested locations for a marketplace.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_tags(options={})        path = "/api/v2/definitions/tags"
         get(path, options)      end
 
       # Retrieve the full list of Avalara-supported tax authorities.
