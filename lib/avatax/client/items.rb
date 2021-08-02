@@ -375,6 +375,7 @@ module AvaTax
       #
       # * Parameters
       # * Classifications
+      # * Tags
       #
       # ### Security Policies
       #

@@ -115,6 +115,16 @@ module AvaTax
       def delete_subscription(accountId, id)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
         delete(path)      end
 
+      # Retrieve List of Accounts by Account Migration Status
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # @param writeMode [String]  (See TssAccountMigrationId::* for a list of allowable values)
+      # @return [Object]
+      def list_accounts_by_tss_write_mode(writeMode)        path = "/api/v2/accounts/ListAccountsByTssWriteMode/#{writeMode}"
+        get(path)      end
+
       # Reset a user's password programmatically
       #
       # # For Registrar Use Only
