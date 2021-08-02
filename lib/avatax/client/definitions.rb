@@ -38,6 +38,17 @@ module AvaTax
       def get_login_verifier_by_form(form, options={})        path = "/api/v2/definitions/filingcalendars/loginverifiers/#{form}"
         get(path, options)      end
 
+      # List all market place locations.
+      #
+      # List all market place locations.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_all_marketplace_locations(options={})        path = "/api/v2/definitions/listallmarketplacelocations"
+        get(path, options)      end
+
       # Retrieve the full list of the AvaFile Forms available
       #
       # This API is deprecated.
