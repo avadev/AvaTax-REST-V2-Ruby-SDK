@@ -4,7 +4,8 @@ module AvaTax
 
   module Connection
     private
-    AUTHORIZATION_FILTER_REGEX = /(Authorization\:\ \"Basic\ )(\w+)\=/
+
+    AUTHORIZATION_FILTER_REGEX = /(Authorization:\ "Basic\ )(\w+)/
     REMOVED_LABEL = '\1[REMOVED]'
 
     def connection
