@@ -318,6 +318,27 @@ module AvaTax
       def list_jurisdictions_by_address(options={})        path = "/api/v2/definitions/jurisdictionsnearaddress"
         get(path, options)      end
 
+      # List jurisdictions based on the TaxType, TaxSubType and RateType provided
+      #
+      # Returns a list of all Avalara-supported taxing jurisdictions filtered by TaxType, TaxSubType and RateType.
+      #
+      # This API allows you to examine all Avalara-supported jurisdictions. You can filter your search by supplying
+      # SQL-like query for fetching only the ones you concerned about. For example: effectiveDate > '2016-01-01'
+      #
+      # The jurisdictionType, effectiveDate, and endDate are filterable fields available on the JurisdictionRateTypeTaxTypeMappingModels returned by this API.
+      # @param country [String] The country for which you want to retrieve the jurisdiction information
+      # @param region [String] The region for which you want to retrieve the jurisdiction information
+      # @param taxTypeId [String] The taxtype for which you want to retrieve the jurisdiction information
+      # @param taxSubTypeId [String] The taxsubtype for which you want to retrieve the jurisdiction information
+      # @param rateTypeId [String] The ratetype for which you want to retrieve the jurisdiction information
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* id, country, state, jurisdictionCode, longName, taxTypeId, taxSubTypeId, taxTypeGroupId, rateTypeId
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_jurisdictions_by_rate_type_tax_type_mapping(country, region, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/jurisdictions/countries/#{country}/regions/#{region}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}"
+        get(path, options)      end
+
       # Retrieve the list of questions that are required for a tax location
       #
       # Returns the list of additional questions you must answer when declaring a location in certain taxing jurisdictions.
@@ -452,6 +473,20 @@ module AvaTax
       # @return [Object]
       def list_nexus_by_form_code(formCode)        path = "/api/v2/definitions/nexus/byform/#{formCode}"
         get(path)      end
+
+      # Retrieve the full list of Avalara-supported nexus for a tax type group.
+      #
+      # Returns all Avalara-supported nexus for the specified specified tax type group.
+      #
+      # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by tax type group.
+      # @param taxTypeGroup [String] The tax type group to fetch the supporting system nexus for.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters, taxableNexus
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_nexus_by_tax_type_group(taxTypeGroup, options={})        path = "/api/v2/definitions/nexus/bytaxtypegroup/#{taxTypeGroup}"
+        get(path, options)      end
 
       # Retrieve the full list of nexus tax type groups
       #
@@ -717,6 +752,21 @@ module AvaTax
       def list_rate_types_by_country(country, options={})        path = "/api/v2/definitions/countries/#{country}/ratetypes"
         get(path, options)      end
 
+      # Retrieve the list of rate types by country, TaxType and by TaxSubType
+      #
+      # Returns the list of Avalara-supported rate type file types
+      # This API is intended to be useful to identify all the different rate types.
+      # @param country [String] The country to examine for rate types
+      # @param taxTypeId [String] The taxType for the country to examine for rate types
+      # @param taxSubTypeId [String] The taxSubType for the country and taxType to examine for rate types
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* id, rateType, description
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_rate_types_by_country_tax_type_tax_sub_type(country, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/countries/#{country}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}/ratetypes"
+        get(path, options)      end
+
       # List all ISO 3166 regions
       #
       # Returns a list of all ISO 3166 region codes and their US English friendly names.
@@ -899,6 +949,34 @@ module AvaTax
       def list_tax_sub_types(options={})        path = "/api/v2/definitions/taxsubtypes"
         get(path, options)      end
 
+      # Retrieve the full list of tax sub types by Country and TaxType
+      #
+      # Returns the full list of Avalara-supported tax sub-types
+      # This API is intended to be useful to identify all the different tax sub-types for given country and TaxType.
+      # @param country [String] The country to examine for taxsubtype
+      # @param taxTypeId [String] The taxType for the country to examine for taxsubtype
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_tax_sub_types_by_country_and_tax_type(country, taxTypeId, options={})        path = "/api/v2/definitions/taxsubtypes/countries/#{country}/taxtypes/#{taxTypeId}"
+        get(path, options)      end
+
+      # Retrieve the full list of tax sub types by jurisdiction code and region
+      #
+      # Returns the full list of Avalara-supported tax sub-types by jurisdiction and region
+      # This API is intended to be useful to identify all the different tax sub-types.
+      # @param jurisdictionCode [String] The jurisdiction code of the tax sub type.
+      # @param region [String] The region of the tax sub type.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_tax_sub_types_by_jurisdiction_and_region(jurisdictionCode, region, options={})        path = "/api/v2/definitions/taxsubtypes/#{jurisdictionCode}/#{region}"
+        get(path, options)      end
+
       # Retrieve the full list of tax type groups
       #
       # Returns the full list of Avalara-supported tax type groups
@@ -909,6 +987,32 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_type_groups(options={})        path = "/api/v2/definitions/taxtypegroups"
+        get(path, options)      end
+
+      # Retrieve the list of applicable TaxTypes
+      #
+      # Retrieves the list of applicable TaxTypes based on Nexus of the company.
+      # @param country [String] The country for which you want to retrieve the unitofbasis information
+      # @param companyId [Integer] Your companyId to retrieve the applicable taxtypes
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_tax_types_by_nexus_and_country(country, options={})        path = "/api/v2/definitions/taxtypes/countries/#{country}"
+        get(path, options)      end
+
+      # Retrieve the list of applicable UnitOfBasis
+      #
+      # Retrieves the list of applicable UnitOfBasis
+      # @param country [String] The country for which you want to retrieve the unitofbasis information
+      # @param taxTypeId [String] The taxtype for which you want to retrieve the unitofbasis information
+      # @param taxSubTypeId [String] The taxsubtype for which you want to retrieve the unitofbasis information
+      # @param rateTypeId [String] The ratetype for which you want to retrieve the unitofbasis information
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_unit_of_basis_by_country_and_tax_type_and_tax_sub_type_and_rate_type(country, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/unitofbasis/countries/#{country}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}"
         get(path, options)      end
 
       # List all defined units of measurement
