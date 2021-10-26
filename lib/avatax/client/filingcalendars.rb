@@ -11,6 +11,7 @@ module AvaTax
       #
       # ### Security Policies
       #
+      # * This API requires openId bearer token for authentication
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # @param companyId [Integer] The unique ID of the company that owns the filing calendar object
       # @param model [Object] Cycle Safe Options Request
@@ -24,6 +25,7 @@ module AvaTax
       #
       # ### Security Policies
       #
+      # * This API requires openId bearer token for authentication
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # @param companyId [Integer] The unique ID of the company
       # @param filingCalendarId [Integer] The unique ID of the filing calendar that will remove setting
