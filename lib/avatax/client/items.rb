@@ -371,6 +371,8 @@ module AvaTax
       #
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       #
+      # You may specify Tag Name in the `tagName` query parameter if you want to filter items on the basis of tagName
+      #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Parameters
@@ -386,6 +388,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param tagName [String] Tag Name on the basis of which you want to filter Items
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
         get(path, options)      end
