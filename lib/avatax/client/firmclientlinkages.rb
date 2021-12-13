@@ -10,10 +10,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def approve_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/approve"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
 
       # Request a new FirmClient account and create an approved linkage to it
       #
@@ -31,10 +32,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SystemAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] Information about the account you wish to create.
       # @return [Object]
       def create_and_link_new_firm_client_account(model)        path = "/api/v2/firmclientlinkages/createandlinkclient"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Links a firm account with the client account
       #
@@ -43,10 +45,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] FirmClientLinkageInputModel
       # @return [Object]
       def create_firm_client_linkage(model)        path = "/api/v2/firmclientlinkages"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a linkage
       #
@@ -55,10 +58,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [ErrorDetail[]]
       def delete_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Get linkage between a firm and client by id
       #
@@ -67,10 +71,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def get_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # List client linkages for a firm or client
       #
@@ -79,10 +84,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* firmAccountName, clientAccountName
       # @return [FetchResult]
       def list_firm_client_linkage(options={})        path = "/api/v2/firmclientlinkages"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Rejects linkage to a firm for a client account
       #
@@ -91,10 +97,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def reject_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/reject"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
 
       # Reset linkage status between a client and firm back to requested
       #
@@ -103,10 +110,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def reset_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/reset"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
 
       # Revokes previously approved linkage to a firm for a client account
       #
@@ -115,10 +123,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def revoke_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/revoke"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
     end
   end
 end

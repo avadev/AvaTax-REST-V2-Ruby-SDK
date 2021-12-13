@@ -20,12 +20,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this location parameter.
       # @param locationId [Integer] The location id.
       # @param model [LocationParameterModel[]] The location parameters you wish to create.
       # @return [LocationParameterModel[]]
       def create_location_parameters(companyId, locationId, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Create a new location
       #
@@ -34,11 +35,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this location.
       # @param model [LocationModel[]] The location you wish to create.
       # @return [LocationModel[]]
       def create_locations(companyId, model)        path = "/api/v2/companies/#{companyId}/locations"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a single location
       #
@@ -47,11 +49,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this location.
       # @param id [Integer] The ID of the location you wish to delete.
       # @return [ErrorDetail[]]
       def delete_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Delete a single location parameter
       #
@@ -66,12 +69,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param locationId [Integer] The location id
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Retrieve a single location
       #
@@ -89,12 +93,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve a single company location parameter
       #
@@ -109,12 +114,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param locationId [Integer] The location id
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # Retrieve parameters for a location
       #
@@ -132,6 +138,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param locationId [Integer] The ID of the location
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
@@ -140,7 +147,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_location_parameters(companyId, locationId, options={})        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve locations for this company
       #
@@ -160,6 +167,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these locations
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* isMarketplaceOutsideUsa, settings, parameters
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -168,7 +176,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_locations_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/locations"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve all locations
       #
@@ -189,6 +197,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* isMarketplaceOutsideUsa, settings, parameters
       # @param include [String] A comma separated list of additional data to retrieve. You may specify `LocationSettings` to retrieve location settings.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -196,7 +205,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_locations(options={})        path = "/api/v2/locations"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Update a single location
       #
@@ -207,12 +216,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this location belongs to.
       # @param id [Integer] The ID of the location you wish to update
       # @param model [Object] The location you wish to update.
       # @return [Object]
       def update_location(companyId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
 
       # Update a location parameter
       #
@@ -227,13 +237,14 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param locationId [Integer] The location id
       # @param id [Integer] The location parameter id
       # @param model [Object] The location parameter object you wish to update.
       # @return [Object]
       def update_location_parameter(companyId, locationId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
 
       # Validate the location against local requirements
       #
@@ -244,11 +255,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this location
       # @param id [Integer] The primary key of this location
       # @return [Object]
       def validate_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}/validate"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
     end
   end
 end

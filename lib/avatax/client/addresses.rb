@@ -21,6 +21,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AutoAddress.
+      # Swagger Name: AvaTaxClient	  
       # @param line1 [String] Line 1
       # @param line2 [String] Line 2
       # @param line3 [String] Line 3
@@ -31,7 +32,7 @@ module AvaTax
       # @param textCase [String] selectable text case for address validation (See TextCase::* for a list of allowable values)
       # @return [Object]
       def resolve_address(options={})        path = "/api/v2/addresses/resolve"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve geolocation information for a specified address
       #
@@ -46,10 +47,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AutoAddress.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] The address to resolve
       # @return [Object]
       def resolve_address_post(model)        path = "/api/v2/addresses/resolve"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
     end
   end
 end

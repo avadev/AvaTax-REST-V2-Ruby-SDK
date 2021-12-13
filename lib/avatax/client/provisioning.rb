@@ -25,10 +25,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # * This API is available by invitation only.
       # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [Provisioning:RequestNewAccount].
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] Information about the account you wish to create and the selected product offerings.
       # @return [Object]
       def request_new_account(model)        path = "/api/v2/accounts/request"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Request a new entitilement to an existing customer
       #
@@ -40,11 +41,12 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
       # * This API is available by invitation only.
       # * This API is available by invitation only. To request access to this feature, please speak to a business development manager and request access to [Provisioning:RequestNewAccount].
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The avatax account id of the customer
       # @param offer [String] The offer to be added to an already existing customer
       # @return [Object]
       def request_new_entitlement(id, offer)        path = "/api/v2/accounts/#{id}/entitlements/#{offer}"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
     end
   end
 end
