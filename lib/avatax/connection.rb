@@ -8,7 +8,7 @@ module AvaTax
     REMOVED_LABEL = '\1[REMOVED]'
 
     def connection
-      client_id = "#{app_name};#{app_version};RubySdk;#{AvaTax::VERSION.dup};#{machine_name}"
+      client_id = "#{app_name};#{app_version};RubySdk;API_VERSION;#{machine_name}"
       options = {
         :headers =>
           {
