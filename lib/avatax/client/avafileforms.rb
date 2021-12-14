@@ -12,10 +12,11 @@ module AvaTax
       #
       # * This API requires the user role Compliance Root User.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param model [AvaFileFormModel[]] The AvaFileForm you wish to create.
       # @return [AvaFileFormModel[]]
       def create_ava_file_forms(model)        path = "/api/v2/avafileforms"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a single AvaFileForm
       #
@@ -25,10 +26,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: Compliance Root User, ComplianceUser, FirmAdmin.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The ID of the AvaFileForm you wish to delete.
       # @return [ErrorDetail[]]
       def delete_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Retrieve a single AvaFileForm
       #
@@ -38,10 +40,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CompanyUser, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, FirmAdmin, FirmUser, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The primary key of this AvaFileForm
       # @return [Object]
       def get_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # Retrieve all AvaFileForms
       #
@@ -52,13 +55,14 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CompanyUser, Compliance Root User, Compliance Temp User, ComplianceAdmin, ComplianceUser, FirmAdmin, FirmUser, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* outletTypeId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_ava_file_forms(options={})        path = "/api/v2/avafileforms"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Update a AvaFileForm
       #
@@ -69,11 +73,12 @@ module AvaTax
       #
       # * This API requires the user role Compliance Root User.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The ID of the AvaFileForm you wish to update
       # @param model [Object] The AvaFileForm model you wish to update.
       # @return [Object]
       def update_ava_file_form(id, model)        path = "/api/v2/avafileforms/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
     end
   end
 end

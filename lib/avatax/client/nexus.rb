@@ -28,11 +28,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
       def create_nexus(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Add parameters to a nexus.
       #
@@ -50,12 +51,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus parameter.
       # @param nexusId [Integer] The nexus id.
       # @param model [NexusParameterDetailModel[]] The nexus parameters you wish to create.
       # @return [NexusParameterDetailModel[]]
       def create_nexus_parameters(companyId, nexusId, model)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Creates nexus for a list of addresses.
       #
@@ -78,11 +80,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that will own this nexus.
       # @param model [DeclareNexusByAddressModel[]] The nexus you wish to create.
       # @return [NexusByAddressModel[]]
       def declare_nexus_by_address(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus/byaddress"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a single nexus
       #
@@ -98,12 +101,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param id [Integer] The ID of the nexus you wish to delete.
       # @param cascadeDelete [Boolean] If true, deletes all the child nexus if they exist along with parent nexus
       # @return [ErrorDetail[]]
       def delete_nexus(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        delete(path, options)      end
+        delete(path, options, "21.12.0")      end
 
       # Delete a single nexus parameter
       #
@@ -117,12 +121,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param nexusId [Integer] The nexus id
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_nexus_parameter(companyId, nexusId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Delete all parameters for an nexus
       #
@@ -136,11 +141,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus.
       # @param nexusId [Integer] The ID of the nexus you wish to delete the parameters.
       # @return [ErrorDetail[]]
       def delete_nexus_parameters(companyId, nexusId)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Retrieve a single nexus
       #
@@ -156,12 +162,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param id [Integer] The primary key of this nexus
       # @param include [String] 
       # @return [Object]
       def get_nexus(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # List company nexus related to a tax form
       #
@@ -181,12 +188,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this nexus object
       # @param formCode [String] The form code that we are looking up the nexus for
       # @param include [String] 
       # @return [Object]
       def get_nexus_by_form_code(companyId, formCode, options={})        path = "/api/v2/companies/#{companyId}/nexus/byform/#{formCode}"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve a single nexus parameter
       #
@@ -200,12 +208,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param nexusId [Integer] The nexus id
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_nexus_parameter(companyId, nexusId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # Retrieve nexus for this company
       #
@@ -224,6 +233,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these nexus objects
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters, taxableNexus
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -232,7 +242,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/nexus"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve nexus for this company By TaxTypeGroup
       #
@@ -251,6 +261,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these nexus objects
       # @param taxTypeGroup [String] Name of TaxTypeGroup to filter by
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters, taxableNexus
@@ -260,7 +271,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_company_and_tax_type_group(companyId, taxTypeGroup, options={})        path = "/api/v2/companies/#{companyId}/nexus/byTaxTypeGroup/#{taxTypeGroup}"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve parameters for a nexus
       #
@@ -277,6 +288,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param nexusId [Integer] The nexus id
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* name, unit
@@ -285,7 +297,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_parameters(companyId, nexusId, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve all nexus
       #
@@ -304,6 +316,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters, taxableNexus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -311,7 +324,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_nexus(options={})        path = "/api/v2/nexus"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Update a single nexus
       #
@@ -338,12 +351,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this nexus belongs to.
       # @param id [Integer] The ID of the nexus you wish to update
       # @param model [Object] The nexus object you wish to update.
       # @return [Object]
       def update_nexus(companyId, id, model)        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
 
       # Update an nexus parameter
       #
@@ -358,13 +372,14 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param nexusId [Integer] The nexus id
       # @param id [Integer] The nexus parameter id
       # @param model [Object] The nexus object you wish to update.
       # @return [Object]
       def update_nexus_parameter(companyId, nexusId, id, model)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
     end
   end
 end

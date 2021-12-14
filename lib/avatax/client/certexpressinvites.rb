@@ -25,12 +25,13 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that will record certificates
       # @param customerCode [String] The number of the customer where the request is sent to
       # @param model [CreateCertExpressInvitationModel[]] the requests to send out to customers
       # @return [CertExpressInvitationStatusModel[]]
       def create_cert_express_invitation(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Retrieve a single CertExpress invitation
       #
@@ -54,13 +55,14 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that issued this invitation
       # @param customerCode [String] The number of the customer where the request is sent to
       # @param id [Integer] The unique ID number of this CertExpress invitation
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. No options are defined at this time.
       # @return [Object]
       def get_cert_express_invitation(companyId, customerCode, id, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites/#{id}"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # List CertExpress invitations
       #
@@ -84,6 +86,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that issued this invitation
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.      No options are defined at this time.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* companyId, customer, coverLetter, exposureZones, exemptReasons, requestLink
@@ -92,7 +95,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_cert_express_invitations(companyId, options={})        path = "/api/v2/companies/#{companyId}/certexpressinvites"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
     end
   end
 end

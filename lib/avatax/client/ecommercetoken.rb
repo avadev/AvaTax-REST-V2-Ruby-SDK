@@ -12,11 +12,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company ID that will be issued this certificate.
       # @param model [Object] 
       # @return [Object]
       def create_e_commerce_token(companyId, model)        path = "/api/v2/companies/#{companyId}/ecommercetokens"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Refresh an eCommerce token.
       #
@@ -27,11 +28,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company ID that the refreshed certificate belongs to.
       # @param model [Object] 
       # @return [FetchResult]
       def refresh_e_commerce_token(companyId, model)        path = "/api/v2/companies/#{companyId}/ecommercetokens"
-        put(path, model)      end
+        put(path, model, {}, "21.12.0")      end
     end
   end
 end

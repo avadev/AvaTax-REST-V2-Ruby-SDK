@@ -11,10 +11,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] The responsibility type to create
       # @return [Object]
       def create_notice_responsibility_type(model)        path = "/api/v2/notices/responsibilities"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Creates a new tax notice root cause type.
       #
@@ -24,10 +25,11 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] The root cause type to create
       # @return [Object]
       def create_notice_root_cause_type(model)        path = "/api/v2/notices/rootcauses"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a tax notice responsibility type.
       #
@@ -36,10 +38,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param responsibilityId [Integer] The unique ID of the responsibility type
       # @return [ErrorDetail[]]
       def delete_notice_responsibility_type(responsibilityId)        path = "/api/v2/notices/responsibilities/#{responsibilityId}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Delete a tax notice root cause type.
       #
@@ -48,10 +51,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPTester, FirmAdmin, FirmUser, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param rootCauseId [Integer] The unique ID of the root cause type
       # @return [ErrorDetail[]]
       def delete_notice_root_cause_type(rootCauseId)        path = "/api/v2/notices/rootcauses/#{rootCauseId}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
     end
   end
 end
