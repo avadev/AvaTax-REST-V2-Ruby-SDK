@@ -6,24 +6,25 @@ require "erb"
 module AvaTax
   module Request
 
-    def get(path, options={})
-      request(:get, path, nil, options)
+    def get(path, options={}, apiversion="")
+      request(:get, path, nil, options, apiversion)
     end
 
-    def post(path, model, options={})
-      request(:post, path, model, options)
+    def post(path, model, options={}, apiversion="")
+      request(:post, path, model, options, apiversion)
     end
 
-    def put(path, model, options={})
-      request(:put, path, model, options)
+    def put(path, model, options={}, apiversion="")
+      request(:put, path, model, options, apiversion)
     end
 
-    def delete(path, options={})
-      request(:delete, path, nil, options)
+    def delete(path, options={}, apiversion="")
+      request(:delete, path, nil, options, apiversion)
     end
 
-    def request(method, path, model, options={})
+    def request(method, path, model, options={}, apiversion="")
       response = connection.send(method) do |request|
+        request.headers['X-Avalara-Client'] = request.headers['X-Avalara-Client'].gsub("API_VERSION", apiversion)
         case method
         when :get, :delete
           request.url("#{encode_path(path)}?#{URI.encode_www_form(options)}")

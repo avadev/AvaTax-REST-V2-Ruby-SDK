@@ -31,5 +31,7 @@ module AvaTax
     include AvaTax::Client::Upcs
     include AvaTax::Client::Users
     include AvaTax::Client::Utilities
+    include AvaTax::Client::ShippingVerification
+    include AvaTax::Client::AgeVerification
   end
 end
