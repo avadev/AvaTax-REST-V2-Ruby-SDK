@@ -19,10 +19,11 @@ module AvaTax
       # ### Security Policies
       #
       # * This API may be called without providing authentication credentials.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] Required information to provision a free trial account.
       # @return [Object]
       def request_free_trial(model)        path = "/api/v2/accounts/freetrials/request"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
     end
   end
 end

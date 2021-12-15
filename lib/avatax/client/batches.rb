@@ -21,11 +21,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param id [Integer] The ID of the batch to cancel.
       # @return [Object]
       def cancel_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}/cancel"
-        post(path)      end
+        post(path, {}, "21.12.0")      end
 
       # Create a new batch
       #
@@ -52,11 +53,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [BatchModel[]] The batch you wish to create.
       # @return [BatchModel[]]
       def create_batches(companyId, model)        path = "/api/v2/companies/#{companyId}/batches"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Create a new transaction batch
       #
@@ -81,11 +83,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [Object] The transaction batch you wish to create.
       # @return [Object]
       def create_transaction_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/batches/transactions"
-        post(path, model)      end
+        post(path, model, {}, "21.12.0")      end
 
       # Delete a single batch
       #
@@ -103,11 +106,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: CSPAdmin, CSPTester, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param id [Integer] The ID of the batch to delete.
       # @return [ErrorDetail[]]
       def delete_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}"
-        delete(path)      end
+        delete(path, {}, "21.12.0")      end
 
       # Download a single batch file
       #
@@ -116,12 +120,13 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch
       # @param batchId [Integer] The ID of the batch object
       # @param id [Integer] The primary key of this batch file object
       # @return [Object]
       def download_batch(companyId, batchId, id)        path = "/api/v2/companies/#{companyId}/batches/#{batchId}/files/#{id}/attachment"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # Retrieve a single batch
       #
@@ -144,11 +149,12 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch
       # @param id [Integer] The primary key of this batch
       # @return [Object]
       def get_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}"
-        get(path)      end
+        get(path, {}, "21.12.0")      end
 
       # Retrieve all batches for this company
       #
@@ -177,6 +183,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these batches
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* files
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -185,7 +192,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_batches_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/batches"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
 
       # Retrieve all batches
       #
@@ -211,6 +218,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* files
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -218,7 +226,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_batches(options={})        path = "/api/v2/batches"
-        get(path, options)      end
+        get(path, options, "21.12.0")      end
     end
   end
 end
