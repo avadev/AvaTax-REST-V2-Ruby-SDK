@@ -20,7 +20,7 @@ module AvaTax
       # @param model [JurisdictionOverrideModel[]] The jurisdiction override objects to create
       # @return [JurisdictionOverrideModel[]]
       def create_jurisdiction_overrides(accountId, model)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Delete a single override
       #
@@ -34,7 +34,7 @@ module AvaTax
       # @param id [Integer] The ID of the override you wish to delete
       # @return [ErrorDetail[]]
       def delete_jurisdiction_override(accountId, id)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        delete(path, {}, "21.12.0")      end
+        delete(path, {}, "22.2.0")      end
 
       # Retrieve a single override
       #
@@ -53,7 +53,7 @@ module AvaTax
       # @param id [Integer] The primary key of this override
       # @return [Object]
       def get_jurisdiction_override(accountId, id)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # Retrieve overrides for this account
       #
@@ -79,7 +79,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_jurisdiction_overrides_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Retrieve all overrides
       #
@@ -104,7 +104,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_jurisdiction_overrides(options={})        path = "/api/v2/jurisdictionoverrides"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Update a single jurisdictionoverride
       #
@@ -119,7 +119,7 @@ module AvaTax
       # @param model [Object] The jurisdictionoverride object you wish to update.
       # @return [Object]
       def update_jurisdiction_override(accountId, id, model)        path = "/api/v2/accounts/#{accountId}/jurisdictionoverrides/#{id}"
-        put(path, model, {}, "21.12.0")      end
+        put(path, model, {}, "22.2.0")      end
     end
   end
 end

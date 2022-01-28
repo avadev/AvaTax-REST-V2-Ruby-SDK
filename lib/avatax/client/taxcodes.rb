@@ -19,7 +19,7 @@ module AvaTax
       # @param model [TaxCodeModel[]] The tax code you wish to create.
       # @return [TaxCodeModel[]]
       def create_tax_codes(companyId, model)        path = "/api/v2/companies/#{companyId}/taxcodes"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Delete a single tax code
       #
@@ -33,7 +33,7 @@ module AvaTax
       # @param id [Integer] The ID of the tax code you wish to delete.
       # @return [ErrorDetail[]]
       def delete_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        delete(path, {}, "21.12.0")      end
+        delete(path, {}, "22.2.0")      end
 
       # Retrieve a single tax code
       #
@@ -51,7 +51,7 @@ module AvaTax
       # @param id [Integer] The primary key of this tax code
       # @return [Object]
       def get_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # Retrieve tax codes for this company
       #
@@ -76,7 +76,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_codes_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/taxcodes"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Retrieve all tax codes
       #
@@ -100,7 +100,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_tax_codes(options={})        path = "/api/v2/taxcodes"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Update a single tax code
       #
@@ -121,7 +121,7 @@ module AvaTax
       # @param model [Object] The tax code you wish to update.
       # @return [Object]
       def update_tax_code(companyId, id, model)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        put(path, model, {}, "21.12.0")      end
+        put(path, model, {}, "22.2.0")      end
     end
   end
 end

@@ -14,7 +14,7 @@ module AvaTax
       # @param filingReturnId [Integer] The ID of the filing return
       # @return [FetchResult]
       def get_accrual_filings(companyId, filingReturnId)        path = "/api/v2/companies/#{companyId}/filings/accrual/#{filingReturnId}"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # Retrieve a list of filed returns for the specified company in the year and month of a given filing period.
       #
@@ -36,7 +36,7 @@ module AvaTax
       # @param taxformCode [String] The unique tax form code of the form.
       # @return [FetchResult]
       def get_filed_returns(companyId, options={})        path = "/api/v2/companies/#{companyId}/filings/returns/filed"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
     end
   end
 end

@@ -30,7 +30,7 @@ module AvaTax
       # @param model [CustomerModel[]] The list of customer objects to be created
       # @return [CustomerModel[]]
       def create_customers(companyId, model)        path = "/api/v2/companies/#{companyId}/customers"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Delete a customer record
       #
@@ -56,7 +56,7 @@ module AvaTax
       # @param customerCode [String] The unique code representing this customer
       # @return [Object]
       def delete_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
-        delete(path, {}, "21.12.0")      end
+        delete(path, {}, "22.2.0")      end
 
       # Retrieve a single customer
       #
@@ -89,7 +89,7 @@ module AvaTax
       # @param include [String] Specify optional additional objects to include in this fetch request
       # @return [Object]
       def get_customer(companyId, customerCode, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Link attributes to a customer
       #
@@ -119,7 +119,7 @@ module AvaTax
       # @param model [CustomerAttributeModel[]] The list of attributes to link to the customer.
       # @return [FetchResult]
       def link_attributes_to_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes/link"
-        put(path, model, {}, "21.12.0")      end
+        put(path, model, {}, "22.2.0")      end
 
       # Link certificates to a customer
       #
@@ -146,7 +146,7 @@ module AvaTax
       # @param model [Object] The list of certificates to link to this customer
       # @return [FetchResult]
       def link_certificates_to_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/link"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Link two customer records together
       #
@@ -174,7 +174,7 @@ module AvaTax
       # @param model [Object] A list of information about ship-to customers to link to this bill-to customer.
       # @return [Object]
       def link_ship_to_customers_to_bill_customer(companyId, code, model)        path = "/api/v2/companies/#{companyId}/customers/billto/#{code}/shipto/link"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Retrieve a customer's attributes
       #
@@ -203,7 +203,7 @@ module AvaTax
       # @param customerCode [String] The unique code representing the current customer
       # @return [FetchResult]
       def list_attributes_for_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # List certificates linked to a customer
       #
@@ -234,7 +234,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificates_for_customer(companyId, customerCode, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # List valid certificates for a location
       #
@@ -265,7 +265,7 @@ module AvaTax
       # @param region [String] Search for certificates matching this region. Uses the ISO 3166 two or three character state, region, or province code.
       # @return [Object]
       def list_valid_certificates_for_customer(companyId, customerCode, country, region)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/#{country}/#{region}"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # List all customers for this company
       #
@@ -300,7 +300,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_customers(companyId, options={})        path = "/api/v2/companies/#{companyId}/customers"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Unlink attributes from a customer
       #
@@ -330,7 +330,7 @@ module AvaTax
       # @param model [CustomerAttributeModel[]] The list of attributes to unlink from the customer.
       # @return [FetchResult]
       def unlink_attributes_from_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/attributes/unlink"
-        put(path, model, {}, "21.12.0")      end
+        put(path, model, {}, "22.2.0")      end
 
       # Unlink certificates from a customer
       #
@@ -357,7 +357,7 @@ module AvaTax
       # @param model [Object] The list of certificates to link to this customer
       # @return [FetchResult]
       def unlink_certificates_from_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/unlink"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Update a single customer
       #
@@ -384,7 +384,7 @@ module AvaTax
       # @param model [Object] The new customer model that will replace the existing record at this URL
       # @return [Object]
       def update_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
-        put(path, model, {}, "21.12.0")      end
+        put(path, model, {}, "22.2.0")      end
     end
   end
 end

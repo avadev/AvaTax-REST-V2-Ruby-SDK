@@ -14,7 +14,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def approve_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/approve"
-        post(path, {}, "21.12.0")      end
+        post(path, {}, "22.2.0")      end
 
       # Request a new FirmClient account and create an approved linkage to it
       #
@@ -36,7 +36,7 @@ module AvaTax
       # @param model [Object] Information about the account you wish to create.
       # @return [Object]
       def create_and_link_new_firm_client_account(model)        path = "/api/v2/firmclientlinkages/createandlinkclient"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Links a firm account with the client account
       #
@@ -49,7 +49,7 @@ module AvaTax
       # @param model [Object] FirmClientLinkageInputModel
       # @return [Object]
       def create_firm_client_linkage(model)        path = "/api/v2/firmclientlinkages"
-        post(path, model, {}, "21.12.0")      end
+        post(path, model, {}, "22.2.0")      end
 
       # Delete a linkage
       #
@@ -62,7 +62,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [ErrorDetail[]]
       def delete_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}"
-        delete(path, {}, "21.12.0")      end
+        delete(path, {}, "22.2.0")      end
 
       # Get linkage between a firm and client by id
       #
@@ -75,7 +75,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def get_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}"
-        get(path, {}, "21.12.0")      end
+        get(path, {}, "22.2.0")      end
 
       # List client linkages for a firm or client
       #
@@ -88,7 +88,7 @@ module AvaTax
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* firmAccountName, clientAccountName
       # @return [FetchResult]
       def list_firm_client_linkage(options={})        path = "/api/v2/firmclientlinkages"
-        get(path, options, "21.12.0")      end
+        get(path, options, "22.2.0")      end
 
       # Rejects linkage to a firm for a client account
       #
@@ -101,7 +101,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def reject_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/reject"
-        post(path, {}, "21.12.0")      end
+        post(path, {}, "22.2.0")      end
 
       # Reset linkage status between a client and firm back to requested
       #
@@ -114,7 +114,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def reset_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/reset"
-        post(path, {}, "21.12.0")      end
+        post(path, {}, "22.2.0")      end
 
       # Revokes previously approved linkage to a firm for a client account
       #
@@ -127,7 +127,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def revoke_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/revoke"
-        post(path, {}, "21.12.0")      end
+        post(path, {}, "22.2.0")      end
     end
   end
 end
