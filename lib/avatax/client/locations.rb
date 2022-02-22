@@ -26,7 +26,7 @@ module AvaTax
       # @param model [LocationParameterModel[]] The location parameters you wish to create.
       # @return [LocationParameterModel[]]
       def create_location_parameters(companyId, locationId, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Create a new location
       #
@@ -40,7 +40,7 @@ module AvaTax
       # @param model [LocationModel[]] The location you wish to create.
       # @return [LocationModel[]]
       def create_locations(companyId, model)        path = "/api/v2/companies/#{companyId}/locations"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Delete a single location
       #
@@ -54,7 +54,7 @@ module AvaTax
       # @param id [Integer] The ID of the location you wish to delete.
       # @return [ErrorDetail[]]
       def delete_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        delete(path, {}, "22.2.0")      end
+        delete(path, {}, "22.2.1")      end
 
       # Delete a single location parameter
       #
@@ -75,7 +75,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        delete(path, {}, "22.2.0")      end
+        delete(path, {}, "22.2.1")      end
 
       # Retrieve a single location
       #
@@ -99,7 +99,7 @@ module AvaTax
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_location(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve a single company location parameter
       #
@@ -120,7 +120,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_location_parameter(companyId, locationId, id)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # Retrieve parameters for a location
       #
@@ -147,7 +147,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_location_parameters(companyId, locationId, options={})        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve locations for this company
       #
@@ -176,7 +176,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_locations_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/locations"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve all locations
       #
@@ -205,7 +205,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_locations(options={})        path = "/api/v2/locations"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Update a single location
       #
@@ -222,7 +222,7 @@ module AvaTax
       # @param model [Object] The location you wish to update.
       # @return [Object]
       def update_location(companyId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{id}"
-        put(path, model, {}, "22.2.0")      end
+        put(path, model, {}, "22.2.1")      end
 
       # Update a location parameter
       #
@@ -244,7 +244,7 @@ module AvaTax
       # @param model [Object] The location parameter object you wish to update.
       # @return [Object]
       def update_location_parameter(companyId, locationId, id, model)        path = "/api/v2/companies/#{companyId}/locations/#{locationId}/parameters/#{id}"
-        put(path, model, {}, "22.2.0")      end
+        put(path, model, {}, "22.2.1")      end
 
       # Validate the location against local requirements
       #
@@ -260,7 +260,7 @@ module AvaTax
       # @param id [Integer] The primary key of this location
       # @return [Object]
       def validate_location(companyId, id)        path = "/api/v2/companies/#{companyId}/locations/#{id}/validate"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
     end
   end
 end

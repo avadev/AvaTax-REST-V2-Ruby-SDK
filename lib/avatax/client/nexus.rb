@@ -33,7 +33,7 @@ module AvaTax
       # @param model [NexusModel[]] The nexus you wish to create.
       # @return [NexusModel[]]
       def create_nexus(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Add parameters to a nexus.
       #
@@ -57,7 +57,7 @@ module AvaTax
       # @param model [NexusParameterDetailModel[]] The nexus parameters you wish to create.
       # @return [NexusParameterDetailModel[]]
       def create_nexus_parameters(companyId, nexusId, model)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Creates nexus for a list of addresses.
       #
@@ -85,7 +85,7 @@ module AvaTax
       # @param model [DeclareNexusByAddressModel[]] The nexus you wish to create.
       # @return [NexusByAddressModel[]]
       def declare_nexus_by_address(companyId, model)        path = "/api/v2/companies/#{companyId}/nexus/byaddress"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Delete a single nexus
       #
@@ -107,7 +107,7 @@ module AvaTax
       # @param cascadeDelete [Boolean] If true, deletes all the child nexus if they exist along with parent nexus
       # @return [ErrorDetail[]]
       def delete_nexus(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        delete(path, options, "22.2.0")      end
+        delete(path, options, "22.2.1")      end
 
       # Delete a single nexus parameter
       #
@@ -127,7 +127,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_nexus_parameter(companyId, nexusId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        delete(path, {}, "22.2.0")      end
+        delete(path, {}, "22.2.1")      end
 
       # Delete all parameters for an nexus
       #
@@ -146,7 +146,7 @@ module AvaTax
       # @param nexusId [Integer] The ID of the nexus you wish to delete the parameters.
       # @return [ErrorDetail[]]
       def delete_nexus_parameters(companyId, nexusId)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        delete(path, {}, "22.2.0")      end
+        delete(path, {}, "22.2.1")      end
 
       # Retrieve a single nexus
       #
@@ -168,7 +168,7 @@ module AvaTax
       # @param include [String] 
       # @return [Object]
       def get_nexus(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List company nexus related to a tax form
       #
@@ -194,7 +194,7 @@ module AvaTax
       # @param include [String] 
       # @return [Object]
       def get_nexus_by_form_code(companyId, formCode, options={})        path = "/api/v2/companies/#{companyId}/nexus/byform/#{formCode}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve a single nexus parameter
       #
@@ -214,7 +214,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_nexus_parameter(companyId, nexusId, id)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # Retrieve nexus for this company
       #
@@ -242,7 +242,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/nexus"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve nexus for this company By TaxTypeGroup
       #
@@ -271,7 +271,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_company_and_tax_type_group(companyId, taxTypeGroup, options={})        path = "/api/v2/companies/#{companyId}/nexus/byTaxTypeGroup/#{taxTypeGroup}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve parameters for a nexus
       #
@@ -297,7 +297,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_parameters(companyId, nexusId, options={})        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve all nexus
       #
@@ -324,7 +324,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_nexus(options={})        path = "/api/v2/nexus"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Update a single nexus
       #
@@ -357,7 +357,7 @@ module AvaTax
       # @param model [Object] The nexus object you wish to update.
       # @return [Object]
       def update_nexus(companyId, id, model)        path = "/api/v2/companies/#{companyId}/nexus/#{id}"
-        put(path, model, {}, "22.2.0")      end
+        put(path, model, {}, "22.2.1")      end
 
       # Update an nexus parameter
       #
@@ -379,7 +379,7 @@ module AvaTax
       # @param model [Object] The nexus object you wish to update.
       # @return [Object]
       def update_nexus_parameter(companyId, nexusId, id, model)        path = "/api/v2/companies/#{companyId}/nexus/#{nexusId}/parameters/#{id}"
-        put(path, model, {}, "22.2.0")      end
+        put(path, model, {}, "22.2.1")      end
     end
   end
 end

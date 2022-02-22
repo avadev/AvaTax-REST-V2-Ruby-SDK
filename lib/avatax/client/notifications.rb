@@ -27,7 +27,7 @@ module AvaTax
       # @param id [Integer] The id of the notification you wish to mark as dismissed.
       # @return [Object]
       def dismiss_notification(id)        path = "/api/v2/notifications/#{id}/dismiss"
-        put(path, {}, "22.2.0")      end
+        put(path, {}, "22.2.1")      end
 
       # Retrieve a single notification.
       #
@@ -47,7 +47,7 @@ module AvaTax
       # @param id [Integer] The id of the notification to retrieve.
       # @return [Object]
       def get_notification(id)        path = "/api/v2/notifications/#{id}"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # List all notifications.
       #
@@ -73,7 +73,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notifications(options={})        path = "/api/v2/notifications"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
     end
   end
 end

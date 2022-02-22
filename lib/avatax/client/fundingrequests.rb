@@ -26,7 +26,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
       def activate_funding_request(id)        path = "/api/v2/fundingrequests/#{id}/widget"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # Retrieve status about a funding setup request
       #
@@ -49,7 +49,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of this funding request
       # @return [Object]
       def funding_request_status(id)        path = "/api/v2/fundingrequests/#{id}"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
     end
   end
 end
