@@ -18,7 +18,7 @@ module AvaTax
       # @param model [Object] Cycle Safe Options Request
       # @return [Object]
       def cycle_safe_options(companyId, model)        path = "/api/v2/companies/#{companyId}/filingcalendars/edit/cycleSafeOptions"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Delete a company return setting
       #
@@ -34,7 +34,7 @@ module AvaTax
       # @param companyReturnSettingId [Integer] The unique ID of the company return setting that will be deleted from the filing calendar
       # @return [CompanyReturnSettingModel[]]
       def delete_company_return_settings(companyId, filingCalendarId, companyReturnSettingId)        path = "/api/v2/companies/#{companyId}/filingcalendars/#{filingCalendarId}/setting/#{companyReturnSettingId}"
-        delete(path, {}, "22.2.0")      end
+        delete(path, {}, "22.2.1")      end
 
       # Retrieve all legacy filing calendars for this company
       #
@@ -54,7 +54,7 @@ module AvaTax
       # @param returnRegion [String] A comma separated list of regions
       # @return [FetchResult]
       def legacy_filing_calendars(companyId, options={})        path = "/api/v2/companies/#{companyId}/filingcalendars/Legacy"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
     end
   end
 end

@@ -24,7 +24,7 @@ module AvaTax
       # @param hsCode [String] The partial or full HS Code for which you would like to view all of the parents.
       # @return [FetchResult]
       def get_cross_border_code(country, hsCode)        path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}/hierarchy"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # Test whether a form supports online login verification
       #
@@ -38,7 +38,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def get_login_verifier_by_form(form, options={})        path = "/api/v2/definitions/filingcalendars/loginverifiers/#{form}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all market place locations.
       #
@@ -50,7 +50,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_all_marketplace_locations(options={})        path = "/api/v2/definitions/listallmarketplacelocations"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of the AvaFile Forms available
       #
@@ -67,7 +67,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_ava_file_forms(options={})        path = "/api/v2/definitions/avafileforms"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List certificate attributes used by a company
       #
@@ -86,7 +86,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificate_attributes(options={})        path = "/api/v2/definitions/certificateattributes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List the certificate exempt reasons defined by a company
       #
@@ -104,7 +104,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificate_exempt_reasons(options={})        path = "/api/v2/definitions/certificateexemptreasons"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List certificate exposure zones used by a company
       #
@@ -122,7 +122,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificate_exposure_zones(options={})        path = "/api/v2/definitions/certificateexposurezones"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported usage of extra parameters for classification of a item.
       #
@@ -136,7 +136,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_classification_parameters_usage(options={})        path = "/api/v2/definitions/classification/parametersusage"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of communications service types
       #
@@ -149,7 +149,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_communications_service_types(id, options={})        path = "/api/v2/definitions/communications/transactiontypes/#{id}/servicetypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of communications transactiontypes
       #
@@ -162,7 +162,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_communications_transaction_types(options={})        path = "/api/v2/definitions/communications/transactiontypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of communications transaction/service type pairs
       #
@@ -175,7 +175,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_communications_t_s_pairs(options={})        path = "/api/v2/definitions/communications/tspairs"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all ISO 3166 countries
       #
@@ -189,7 +189,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_countries(options={})        path = "/api/v2/definitions/countries"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List certificate exposure zones used by a company
       #
@@ -208,7 +208,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_cover_letters(options={})        path = "/api/v2/definitions/coverletters"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Lists the next level of HS Codes given a destination country and HS Code prefix.
       #
@@ -233,7 +233,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_cross_border_codes(country, hsCode, options={})        path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List top level HS Code Sections.
       #
@@ -250,7 +250,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @return [FetchResult]
       def list_cross_border_sections()        path = "/api/v2/definitions/crossborder/sections"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # List all ISO 4217 currencies supported by AvaTax.
       #
@@ -265,7 +265,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_currencies(options={})        path = "/api/v2/definitions/currencies"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported entity use codes
       #
@@ -281,7 +281,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_entity_use_codes(options={})        path = "/api/v2/definitions/entityusecodes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported filing frequencies.
       #
@@ -294,7 +294,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_filing_frequencies(options={})        path = "/api/v2/definitions/filingfrequencies"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List jurisdictions based on the filter provided
       #
@@ -311,7 +311,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_jurisdictions(options={})        path = "/api/v2/definitions/jurisdictions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List jurisdictions near a specific address
       #
@@ -336,7 +336,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_jurisdictions_by_address(options={})        path = "/api/v2/definitions/jurisdictionsnearaddress"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List jurisdictions based on the TaxType, TaxSubType and RateType provided
       #
@@ -358,7 +358,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_jurisdictions_by_rate_type_tax_type_mapping(country, region, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/jurisdictions/countries/#{country}/regions/#{region}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list of questions that are required for a tax location
       #
@@ -384,7 +384,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_location_questions_by_address(options={})        path = "/api/v2/definitions/locationquestions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all forms where logins can be verified automatically
       #
@@ -398,7 +398,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_login_verifiers(options={})        path = "/api/v2/definitions/filingcalendars/loginverifiers"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list of locations for a marketplace.
       #
@@ -410,7 +410,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_marketplace_locations(options={})        path = "/api/v2/definitions/marketplacelocations"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported nexus for all countries and regions.
       #
@@ -424,7 +424,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus(options={})        path = "/api/v2/definitions/nexus"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all nexus that apply to a specific address.
       #
@@ -447,7 +447,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_address(options={})        path = "/api/v2/definitions/nexus/byaddress"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported nexus for a country.
       #
@@ -462,7 +462,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_country(country, options={})        path = "/api/v2/definitions/nexus/#{country}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported nexus for a country and region.
       #
@@ -478,7 +478,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_country_and_region(country, region, options={})        path = "/api/v2/definitions/nexus/#{country}/#{region}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List nexus related to a tax form
       #
@@ -501,7 +501,7 @@ module AvaTax
       # @param formCode [String] The form code that we are looking up the nexus for
       # @return [Object]
       def list_nexus_by_form_code(formCode)        path = "/api/v2/definitions/nexus/byform/#{formCode}"
-        get(path, {}, "22.2.0")      end
+        get(path, {}, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported nexus for a tax type group.
       #
@@ -516,7 +516,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_by_tax_type_group(taxTypeGroup, options={})        path = "/api/v2/definitions/nexus/bytaxtypegroup/#{taxTypeGroup}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of nexus tax type groups
       #
@@ -529,7 +529,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_nexus_tax_type_groups(options={})        path = "/api/v2/definitions/nexustaxtypegroups"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice customer funding options.
       #
@@ -542,7 +542,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_customer_funding_options(options={})        path = "/api/v2/definitions/noticecustomerfundingoptions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice customer types.
       #
@@ -555,7 +555,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_customer_types(options={})        path = "/api/v2/definitions/noticecustomertypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice filing types.
       #
@@ -568,7 +568,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_filingtypes(options={})        path = "/api/v2/definitions/noticefilingtypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice priorities.
       #
@@ -581,7 +581,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_priorities(options={})        path = "/api/v2/definitions/noticepriorities"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice reasons.
       #
@@ -594,7 +594,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_reasons(options={})        path = "/api/v2/definitions/noticereasons"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice responsibility ids
       #
@@ -607,7 +607,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_responsibilities(options={})        path = "/api/v2/definitions/noticeresponsibilities"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice root causes
       #
@@ -620,7 +620,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_root_causes(options={})        path = "/api/v2/definitions/noticerootcauses"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice statuses.
       #
@@ -633,7 +633,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_statuses(options={})        path = "/api/v2/definitions/noticestatuses"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax notice types.
       #
@@ -646,7 +646,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_notice_types(options={})        path = "/api/v2/definitions/noticetypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported extra parameters for creating transactions.
       #
@@ -660,7 +660,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_parameters(options={})        path = "/api/v2/definitions/parameters"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the parameters by companyCode and itemCode.
       #
@@ -687,7 +687,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_parameters_by_item(companyCode, itemCode, options={})        path = "/api/v2/definitions/parameters/byitem/#{companyCode}/#{itemCode}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported usage of extra parameters for creating transactions.
       #
@@ -701,7 +701,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_parameters_usage(options={})        path = "/api/v2/definitions/parametersusage"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported permissions
       #
@@ -712,7 +712,7 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
       def list_permissions(options={})        path = "/api/v2/definitions/permissions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported postal codes.
       #
@@ -724,7 +724,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_postal_codes(options={})        path = "/api/v2/definitions/postalcodes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all customs duty programs recognized by AvaTax
       #
@@ -744,7 +744,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_preferred_programs(options={})        path = "/api/v2/definitions/preferredprograms"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all available product classification systems.
       #
@@ -760,7 +760,7 @@ module AvaTax
       # @param countryCode [String] If not null, return all records with this code.
       # @return [FetchResult]
       def list_product_classification_systems(options={})        path = "/api/v2/definitions/productclassificationsystems"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all product classification systems available to a company based on its nexus.
       #
@@ -785,7 +785,7 @@ module AvaTax
       # @param countryCode [String] If not null, return all records with this code.
       # @return [FetchResult]
       def list_product_classification_systems_by_company(companyCode, options={})        path = "/api/v2/definitions/productclassificationsystems/bycompany/#{companyCode}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of rate types for each country
       #
@@ -799,7 +799,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_rate_types_by_country(country, options={})        path = "/api/v2/definitions/countries/#{country}/ratetypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list of rate types by country, TaxType and by TaxSubType
       #
@@ -815,7 +815,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_rate_types_by_country_tax_type_tax_sub_type(country, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/countries/#{country}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}/ratetypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all ISO 3166 regions
       #
@@ -829,7 +829,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_regions(options={})        path = "/api/v2/definitions/regions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all ISO 3166 regions for a country
       #
@@ -844,7 +844,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_regions_by_country(country, options={})        path = "/api/v2/definitions/countries/#{country}/regions"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported resource file types
       #
@@ -857,7 +857,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_resource_file_types(options={})        path = "/api/v2/definitions/resourcefiletypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported usage of parameters used for returns.
       #
@@ -871,7 +871,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_returns_parameters_usage(options={})        path = "/api/v2/definitions/returns/parametersusage"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported permissions
       #
@@ -885,7 +885,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_security_roles(options={})        path = "/api/v2/definitions/securityroles"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported subscription types
       #
@@ -900,7 +900,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_subscription_types(options={})        path = "/api/v2/definitions/subscriptiontypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list all tags supported by avalara
       #
@@ -912,7 +912,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tags(options={})        path = "/api/v2/definitions/tags"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax authorities.
       #
@@ -925,7 +925,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_authorities(options={})        path = "/api/v2/definitions/taxauthorities"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported forms for each tax authority.
       #
@@ -940,7 +940,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_authority_forms(options={})        path = "/api/v2/definitions/taxauthorityforms"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax authority types.
       #
@@ -953,7 +953,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_authority_types(options={})        path = "/api/v2/definitions/taxauthoritytypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax codes.
       #
@@ -973,7 +973,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_codes(options={})        path = "/api/v2/definitions/taxcodes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of Avalara-supported tax code types.
       #
@@ -985,7 +985,7 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [Object]
       def list_tax_code_types(options={})        path = "/api/v2/definitions/taxcodetypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of the Tax Forms available
       #
@@ -998,7 +998,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_forms(options={})        path = "/api/v2/definitions/taxforms"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of tax sub types
       #
@@ -1011,7 +1011,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_sub_types(options={})        path = "/api/v2/definitions/taxsubtypes"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of tax sub types by Country and TaxType
       #
@@ -1026,7 +1026,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_sub_types_by_country_and_tax_type(country, taxTypeId, options={})        path = "/api/v2/definitions/taxsubtypes/countries/#{country}/taxtypes/#{taxTypeId}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of tax sub types by jurisdiction code and region
       #
@@ -1041,7 +1041,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_sub_types_by_jurisdiction_and_region(jurisdictionCode, region, options={})        path = "/api/v2/definitions/taxsubtypes/#{jurisdictionCode}/#{region}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the full list of tax type groups
       #
@@ -1054,7 +1054,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_type_groups(options={})        path = "/api/v2/definitions/taxtypegroups"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list of applicable TaxTypes
       #
@@ -1067,7 +1067,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_types_by_nexus_and_country(country, options={})        path = "/api/v2/definitions/taxtypes/countries/#{country}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # Retrieve the list of applicable UnitOfBasis
       #
@@ -1082,7 +1082,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_unit_of_basis_by_country_and_tax_type_and_tax_sub_type_and_rate_type(country, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/unitofbasis/countries/#{country}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List all defined units of measurement
       #
@@ -1096,7 +1096,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_unit_of_measurement(options={})        path = "/api/v2/definitions/unitofmeasurements"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
     end
   end
 end

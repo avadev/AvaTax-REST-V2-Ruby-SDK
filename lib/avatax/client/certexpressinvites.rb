@@ -31,7 +31,7 @@ module AvaTax
       # @param model [CreateCertExpressInvitationModel[]] the requests to send out to customers
       # @return [CertExpressInvitationStatusModel[]]
       def create_cert_express_invitation(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites"
-        post(path, model, {}, "22.2.0")      end
+        post(path, model, {}, "22.2.1")      end
 
       # Retrieve a single CertExpress invitation
       #
@@ -62,7 +62,7 @@ module AvaTax
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. No options are defined at this time.
       # @return [Object]
       def get_cert_express_invitation(companyId, customerCode, id, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certexpressinvites/#{id}"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
 
       # List CertExpress invitations
       #
@@ -95,7 +95,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_cert_express_invitations(companyId, options={})        path = "/api/v2/companies/#{companyId}/certexpressinvites"
-        get(path, options, "22.2.0")      end
+        get(path, options, "22.2.1")      end
     end
   end
 end
