@@ -27,8 +27,8 @@ module AvaTax
           }
         end
 
+        faraday.request :basic_auth, username, password
         faraday.response :json, content_type: /\bjson$/
-        faraday.basic_auth(username, password)
 
         if logger
           faraday.response :logger do |logger|
