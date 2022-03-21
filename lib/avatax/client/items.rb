@@ -19,7 +19,7 @@ module AvaTax
       # @param itemId [Integer] The ID of the item you wish to delete the classifications.
       # @return [ErrorDetail[]]
       def batch_delete_item_classifications(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Delete all parameters for an item
       #
@@ -39,7 +39,7 @@ module AvaTax
       # @param itemId [Integer] The ID of the item you wish to delete the parameters.
       # @return [ErrorDetail[]]
       def batch_delete_item_parameters(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Bulk upload items from a product catalog
       #
@@ -61,7 +61,7 @@ module AvaTax
       # @param model [Object] The items you wish to upload.
       # @return [Object]
       def bulk_upload_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/upload"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Add classifications to an item.
       #
@@ -82,7 +82,7 @@ module AvaTax
       # @param model [ItemClassificationInputModel[]] The item classifications you wish to create.
       # @return [ItemClassificationOutputModel[]]
       def create_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Add parameters to an item.
       #
@@ -107,7 +107,7 @@ module AvaTax
       # @param model [ItemParameterModel[]] The item parameters you wish to create.
       # @return [ItemParameterModel[]]
       def create_item_parameters(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Create a new item
       #
@@ -129,7 +129,7 @@ module AvaTax
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
       def create_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Create tags for a item
       #
@@ -146,7 +146,53 @@ module AvaTax
       # @param model [ItemTagDetailModel[]] Tags you wish to associate with the Item
       # @return [ItemTagDetailModel[]]
       def create_item_tags(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
+
+      # Create a new tax code classification request
+      #
+      # Creates a new tax code classification request.
+      #
+      # Avalara AvaTax system tax codes represent various goods and services classified by industry or consumer categories and
+      # major physical similarities. Taxability rules are associated with tax codes. Customers can map their Items to tax codes,
+      # allowing them to take advantage of thousands of tax rules in the AvaTax engine and resulting in accurate taxability determinations.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company creating this request.
+      # @param model [Object] The request you wish to create.
+      # @return [Object]
+      def create_tax_code_classification_request(companyId, model)        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
+        post(path, model, {}, "22.3.0")      end
+
+      # Delete a single item
+      #
+      # Deletes the item object at this URL.
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details.
+      # Use this endpoint to delete an existing item with item code.
+      #
+      # Deleting an item will also delete the parameters, classifications, and product categories associated with that item.
+      #
+      # NOTE: If your item code contains any of these characters /, +, ? or a space, please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: 'Item/Code' becomes 'Item_-ava2f-_Code'
+      # * Replace '+' with '\_-ava2b-\_' For example: 'Item+Code' becomes 'Item_-ava2b-_Code'
+      # * Replace '?' with '\_-ava3f-\_' For example: 'Item?Code' becomes 'Item_-ava3f-_Code'
+      # * Replace '%' with '\_-ava25-\_' For example: 'Item%Code' becomes 'Item_-ava25-_Code'
+      # * Replace '#' with '\_-ava23-\_' For example: 'Item#Code' becomes 'Item_-ava23-_Code'
+      # * Replace ''' with '\_-ava27-\_' For example: 'Item'Code' becomes 'Item_-ava27-_Code'
+      # * Replace '"' with '\_-ava22-\_' For example: 'Item"Code' becomes 'Item_-ava22-_Code'
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param itemCode [String] The code of the item you want to delete.
+      # @return [ErrorDetail[]]
+      def delete_catalogue_item(companyId, itemCode)        path = "/api/v2/companies/#{companyId}/itemcatalogue/#{itemCode}"
+        delete(path, {}, "22.3.0")      end
 
       # Delete a single item
       #
@@ -168,7 +214,7 @@ module AvaTax
       # @param id [Integer] The ID of the item you wish to delete.
       # @return [ErrorDetail[]]
       def delete_item(companyId, id)        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Delete a single item classification.
       #
@@ -187,7 +233,7 @@ module AvaTax
       # @param id [Integer] The item classification id.
       # @return [ErrorDetail[]]
       def delete_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Delete a single item parameter
       #
@@ -208,7 +254,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Delete item tag by id
       #
@@ -225,7 +271,7 @@ module AvaTax
       # @param itemTagDetailId [Integer] The ID of the item tag detail you wish to delete.
       # @return [ErrorDetail[]]
       def delete_item_tag(companyId, itemId, itemTagDetailId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags/#{itemTagDetailId}"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Delete all item tags
       #
@@ -241,7 +287,31 @@ module AvaTax
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
       # @return [ErrorDetail[]]
       def delete_item_tags(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
+
+      # Get the status of classification requests for a company
+      #
+      # Get the status of tax code classification requests for a company.
+      #
+      # Avalara AvaTax system tax codes represent various goods and services classified by industry or consumer categories and
+      # major physical similarities. Taxability rules are associated with tax codes. Customers can map their Items to tax codes,
+      # allowing them to take advantage of thousands of tax rules in the AvaTax engine and resulting in accurate taxability determinations.
+      #
+      # Enable includeClassificationDetails flag to get details of classification request status.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param includeClassificationDetails [Boolean] A Boolean field that specifies whether to get a detailed classification status.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* classificationDetails, totalItems, status
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def get_classification_status(companyId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
+        get(path, options, "22.3.0")      end
 
       # Retrieve a single item
       #
@@ -262,7 +332,7 @@ module AvaTax
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_item(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve a single item classification.
       #
@@ -281,7 +351,7 @@ module AvaTax
       # @param id [Integer] The item classification id.
       # @return [Object]
       def get_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        get(path, {}, "22.2.1")      end
+        get(path, {}, "22.3.0")      end
 
       # Retrieve a single item parameter
       #
@@ -302,7 +372,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        get(path, {}, "22.2.1")      end
+        get(path, {}, "22.3.0")      end
 
       # Retrieve tags for an item
       #
@@ -321,7 +391,56 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
       def get_item_tags(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
+
+      # Get tax code recommendations
+      #
+      # Get tax code recommendations.
+      #
+      # Avalara AvaTax system tax codes represent various goods and services classified by industry or consumer categories and
+      # major physical similarities. Taxability rules are associated with tax codes. Customers can map their Items to tax codes,
+      # allowing them to take advantage of thousands of tax rules in the AvaTax engine and resulting in accurate taxability determinations.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param requestId [Integer] The ID of the classification request
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* recommendations, url
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def get_tax_code_recommendations(companyId, requestId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode/#{requestId}/recommendations"
+        get(path, options, "22.3.0")      end
+
+      # Retrieve Restrictions for Item by CountryOfImport
+      #
+      # Retrieve Restrictions for Item by CountryOfImport. This API will only return import restriction for the countryOfImport.
+      #
+      # NOTE: If your item code contains any of these characters /, +, ? or a space, please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: 'Item/Code' becomes 'Item_-ava2f-_Code'
+      # * Replace '+' with '\_-ava2b-\_' For example: 'Item+Code' becomes 'Item_-ava2b-_Code'
+      # * Replace '?' with '\_-ava3f-\_' For example: 'Item?Code' becomes 'Item_-ava3f-_Code'
+      # * Replace '%' with '\_-ava25-\_' For example: 'Item%Code' becomes 'Item_-ava25-_Code'
+      # * Replace '#' with '\_-ava23-\_' For example: 'Item#Code' becomes 'Item_-ava23-_Code'
+      # * Replace ''' with '\_-ava27-\_' For example: 'Item'Code' becomes 'Item_-ava27-_Code'
+      # * Replace '"' with '\_-ava22-\_' For example: 'Item"Code' becomes 'Item_-ava22-_Code'
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item object
+      # @param itemCode [String] ItemCode for the item
+      # @param countryOfImport [String] Country for which you want the restrictions for the Item.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_import_restrictions(companyId, itemCode, countryOfImport, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/restrictions/import/#{countryOfImport}"
+        get(path, options, "22.3.0")      end
 
       # Retrieve classifications for an item.
       #
@@ -346,7 +465,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_item_classifications(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve parameters for an item
       #
@@ -373,7 +492,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_item_parameters(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve items for this company
       #
@@ -402,7 +521,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, upc, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -410,7 +529,7 @@ module AvaTax
       # @param tagName [String] Tag Name on the basis of which you want to filter Items
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve all items
       #
@@ -430,14 +549,14 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, upc, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items(options={})        path = "/api/v2/items"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve all items associated with given tag
       #
@@ -459,14 +578,32 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, classifications, parameters, tags
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, upc, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items_by_tag(companyId, tag, options={})        path = "/api/v2/companies/#{companyId}/items/bytags/#{tag}"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
+
+      # Create or update items from a product catalog.
+      #
+      # Creates/updates one or more item objects with additional properties and the AvaTax category attached to this company.
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. Use this endpoint to create
+      # a new or update an existing item. This can be used to sync the items with Avalara. For example, an accounting software
+      # system can use this to sync all their items from an ERP with Avalara.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param model [ItemCatalogueInputModel[]] The items you want to create or update.
+      # @return [Object]
+      def sync_item_catalogue(companyId, model)        path = "/api/v2/companies/#{companyId}/itemcatalogue"
+        post(path, model, {}, "22.3.0")      end
 
       # Sync items from a product catalog
       #
@@ -491,7 +628,7 @@ module AvaTax
       # @param model [Object] The request object.
       # @return [Object]
       def sync_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/sync"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Update a single item
       #
@@ -517,7 +654,7 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item(companyId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        put(path, model, {}, "22.2.1")      end
+        put(path, model, {}, "22.3.0")      end
 
       # Update an item classification.
       #
@@ -539,7 +676,7 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item_classification(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        put(path, model, {}, "22.2.1")      end
+        put(path, model, {}, "22.3.0")      end
 
       # Update an item parameter
       #
@@ -561,7 +698,7 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        put(path, model, {}, "22.2.1")      end
+        put(path, model, {}, "22.3.0")      end
     end
   end
 end

@@ -29,7 +29,7 @@ module AvaTax
       # @param model [SettingModel[]] The setting you wish to create.
       # @return [SettingModel[]]
       def create_settings(companyId, model)        path = "/api/v2/companies/#{companyId}/settings"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Delete a single setting
       #
@@ -52,7 +52,7 @@ module AvaTax
       # @param id [Integer] The ID of the setting you wish to delete.
       # @return [ErrorDetail[]]
       def delete_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        delete(path, {}, "22.2.1")      end
+        delete(path, {}, "22.3.0")      end
 
       # Retrieve a single setting
       #
@@ -75,7 +75,7 @@ module AvaTax
       # @param id [Integer] The primary key of this setting
       # @return [Object]
       def get_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        get(path, {}, "22.2.1")      end
+        get(path, {}, "22.3.0")      end
 
       # Retrieve all settings for this company
       #
@@ -105,7 +105,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_settings_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/settings"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Retrieve all settings
       #
@@ -134,7 +134,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_settings(options={})        path = "/api/v2/settings"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
 
       # Update a single setting
       #
@@ -162,7 +162,7 @@ module AvaTax
       # @param model [Object] The setting you wish to update.
       # @return [Object]
       def update_setting(companyId, id, model)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        put(path, model, {}, "22.2.1")      end
+        put(path, model, {}, "22.3.0")      end
     end
   end
 end
