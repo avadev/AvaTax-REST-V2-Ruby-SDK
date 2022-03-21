@@ -29,7 +29,7 @@ module AvaTax
       # @param model [Object] Information about the account you wish to create and the selected product offerings.
       # @return [Object]
       def request_new_account(model)        path = "/api/v2/accounts/request"
-        post(path, model, {}, "22.2.1")      end
+        post(path, model, {}, "22.3.0")      end
 
       # Request a new entitilement to an existing customer
       #
@@ -46,7 +46,7 @@ module AvaTax
       # @param offer [String] The offer to be added to an already existing customer
       # @return [Object]
       def request_new_entitlement(id, offer)        path = "/api/v2/accounts/#{id}/entitlements/#{offer}"
-        post(path, {}, "22.2.1")      end
+        post(path, {}, "22.3.0")      end
     end
   end
 end

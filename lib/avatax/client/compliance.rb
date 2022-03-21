@@ -21,7 +21,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [Object]
       def query_tax_authority_jurisdiction_rates(options={})        path = "/api/v2/compliance/taxauthorityjurisdictionrates"
-        get(path, options, "22.2.1")      end
+        get(path, options, "22.3.0")      end
     end
   end
 end
