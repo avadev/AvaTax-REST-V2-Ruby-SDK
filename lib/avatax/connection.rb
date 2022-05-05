@@ -28,7 +28,11 @@ module AvaTax
         end
 
         faraday.response :json, content_type: /\bjson$/
-        faraday.basic_auth(username, password)
+        faraday.request :basic_auth, username, password
+
+        # TODO: use the following after upgrading to faraday 2.0
+        #   see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
+        # faraday.request :authorization, :basic, username, password
 
         if logger
           faraday.response :logger do |logger|
