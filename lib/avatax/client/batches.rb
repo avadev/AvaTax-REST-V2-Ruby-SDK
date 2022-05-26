@@ -26,7 +26,7 @@ module AvaTax
       # @param id [Integer] The ID of the batch to cancel.
       # @return [Object]
       def cancel_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}/cancel"
-        post(path, {}, "22.3.0")      end
+        post(path, {}, "22.5.0")      end
 
       # Create a new batch
       #
@@ -58,7 +58,7 @@ module AvaTax
       # @param model [BatchModel[]] The batch you wish to create.
       # @return [BatchModel[]]
       def create_batches(companyId, model)        path = "/api/v2/companies/#{companyId}/batches"
-        post(path, model, {}, "22.3.0")      end
+        post(path, model, {}, "22.5.0")      end
 
       # Create a new transaction batch
       #
@@ -88,7 +88,7 @@ module AvaTax
       # @param model [Object] The transaction batch you wish to create.
       # @return [Object]
       def create_transaction_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/batches/transactions"
-        post(path, model, {}, "22.3.0")      end
+        post(path, model, {}, "22.5.0")      end
 
       # Delete a single batch
       #
@@ -111,7 +111,7 @@ module AvaTax
       # @param id [Integer] The ID of the batch to delete.
       # @return [ErrorDetail[]]
       def delete_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}"
-        delete(path, {}, "22.3.0")      end
+        delete(path, {}, "22.5.0")      end
 
       # Download a single batch file
       #
@@ -126,7 +126,7 @@ module AvaTax
       # @param id [Integer] The primary key of this batch file object
       # @return [Object]
       def download_batch(companyId, batchId, id)        path = "/api/v2/companies/#{companyId}/batches/#{batchId}/files/#{id}/attachment"
-        get(path, {}, "22.3.0")      end
+        get(path, {}, "22.5.0")      end
 
       # Retrieve a single batch
       #
@@ -154,7 +154,7 @@ module AvaTax
       # @param id [Integer] The primary key of this batch
       # @return [Object]
       def get_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}"
-        get(path, {}, "22.3.0")      end
+        get(path, {}, "22.5.0")      end
 
       # Retrieve all batches for this company
       #
@@ -192,7 +192,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_batches_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/batches"
-        get(path, options, "22.3.0")      end
+        get(path, options, "22.5.0")      end
 
       # Retrieve all batches
       #
@@ -226,7 +226,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_batches(options={})        path = "/api/v2/batches"
-        get(path, options, "22.3.0")      end
+        get(path, options, "22.5.0")      end
     end
   end
 end

@@ -17,7 +17,7 @@ module AvaTax
       # @param id [Integer] The primary key of this subscription
       # @return [Object]
       def get_subscription(accountId, id)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        get(path, {}, "22.3.0")      end
+        get(path, {}, "22.5.0")      end
 
       # Retrieve subscriptions for this account
       #
@@ -39,7 +39,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_subscriptions_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/subscriptions"
-        get(path, options, "22.3.0")      end
+        get(path, options, "22.5.0")      end
 
       # Retrieve all subscriptions
       #
@@ -60,7 +60,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_subscriptions(options={})        path = "/api/v2/subscriptions"
-        get(path, options, "22.3.0")      end
+        get(path, options, "22.5.0")      end
     end
   end
 end
