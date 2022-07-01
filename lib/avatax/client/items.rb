@@ -13,13 +13,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param itemId [Integer] The ID of the item you wish to delete the classifications.
       # @return [ErrorDetail[]]
       def batch_delete_item_classifications(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete all parameters for an item
       #
@@ -33,13 +33,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param itemId [Integer] The ID of the item you wish to delete the parameters.
       # @return [ErrorDetail[]]
       def batch_delete_item_parameters(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Bulk upload items from a product catalog
       #
@@ -55,13 +55,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this items.
       # @param model [Object] The items you wish to upload.
       # @return [Object]
       def bulk_upload_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/upload"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Add classifications to an item.
       #
@@ -75,14 +75,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param model [ItemClassificationInputModel[]] The item classifications you wish to create.
       # @return [ItemClassificationOutputModel[]]
       def create_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Add parameters to an item.
       #
@@ -100,14 +100,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item parameter.
       # @param itemId [Integer] The item id.
       # @param model [ItemParameterModel[]] The item parameters you wish to create.
       # @return [ItemParameterModel[]]
       def create_item_parameters(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Create a new item
       #
@@ -123,13 +123,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
       def create_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Create tags for a item
       #
@@ -139,14 +139,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
       # @param model [ItemTagDetailModel[]] Tags you wish to associate with the Item
       # @return [ItemTagDetailModel[]]
       def create_item_tags(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Create a new tax code classification request
       #
@@ -158,13 +158,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company creating this request.
       # @param model [Object] The request you wish to create.
       # @return [Object]
       def create_tax_code_classification_request(companyId, model)        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Delete a single item
       #
@@ -186,13 +186,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param itemCode [String] The code of the item you want to delete.
       # @return [ErrorDetail[]]
       def delete_catalogue_item(companyId, itemCode)        path = "/api/v2/companies/#{companyId}/itemcatalogue/#{itemCode}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete a single item
       #
@@ -208,13 +208,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param id [Integer] The ID of the item you wish to delete.
       # @return [ErrorDetail[]]
       def delete_item(companyId, id)        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete a single item classification.
       #
@@ -226,14 +226,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
       # @return [ErrorDetail[]]
       def delete_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete a single item parameter
       #
@@ -247,14 +247,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete item tag by id
       #
@@ -264,14 +264,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
       # @param itemTagDetailId [Integer] The ID of the item tag detail you wish to delete.
       # @return [ErrorDetail[]]
       def delete_item_tag(companyId, itemId, itemTagDetailId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags/#{itemTagDetailId}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Delete all item tags
       #
@@ -281,13 +281,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
       # @return [ErrorDetail[]]
       def delete_item_tags(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Get the status of classification requests for a company
       #
@@ -301,7 +301,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param includeClassificationDetails [Boolean] A Boolean field that specifies whether to get a detailed classification status.
@@ -311,7 +311,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def get_classification_status(companyId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve a single item
       #
@@ -325,14 +325,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param id [Integer] The primary key of this item
       # @param include [String] A comma separated list of additional data to retrieve.
       # @return [Object]
       def get_item(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve a single item classification.
       #
@@ -344,14 +344,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
       # @param id [Integer] The item classification id.
       # @return [Object]
       def get_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve a single item parameter
       #
@@ -365,14 +365,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
       # @param id [Integer] The parameter id
       # @return [Object]
       def get_item_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve tags for an item
       #
@@ -382,7 +382,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
@@ -391,7 +391,7 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
       def get_item_tags(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve premium classification for a company's item based on its ItemCode and SystemCode.
       #
@@ -408,14 +408,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param itemCode [String] The ItemCode of the item for which you want to retrieve premium classification
       # @param systemCode [String] The SystemCode for which you want to retrieve premium classification
       # @return [Object]
       def get_premium_classification(companyId, itemCode, systemCode)        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassification/#{systemCode}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Get tax code recommendations
       #
@@ -427,7 +427,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param requestId [Integer] The ID of the classification request
@@ -437,7 +437,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def get_tax_code_recommendations(companyId, requestId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode/#{requestId}/recommendations"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve Restrictions for Item by CountryOfImport
       #
@@ -454,7 +454,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param itemCode [String] ItemCode for the item
@@ -464,7 +464,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_import_restrictions(companyId, itemCode, countryOfImport, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/restrictions/import/#{countryOfImport}"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve classifications for an item.
       #
@@ -479,7 +479,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
@@ -489,7 +489,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_item_classifications(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve parameters for an item
       #
@@ -506,7 +506,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
@@ -516,7 +516,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_item_parameters(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve items for this company
       #
@@ -542,7 +542,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, upc, classifications, parameters, tags
@@ -553,7 +553,7 @@ module AvaTax
       # @param tagName [String] Tag Name on the basis of which you want to filter Items
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all items
       #
@@ -571,7 +571,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, upc, classifications, parameters, tags
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -580,7 +580,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items(options={})        path = "/api/v2/items"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all items associated with given tag
       #
@@ -598,7 +598,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
@@ -609,7 +609,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_items_by_tag(companyId, tag, options={})        path = "/api/v2/companies/#{companyId}/items/bytags/#{tag}"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Create or update items from a product catalog.
       #
@@ -621,13 +621,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [ItemCatalogueInputModel[]] The items you want to create or update.
       # @return [Object]
       def sync_item_catalogue(companyId, model)        path = "/api/v2/companies/#{companyId}/itemcatalogue"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Sync items from a product catalog
       #
@@ -646,13 +646,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param model [Object] The request object.
       # @return [Object]
       def sync_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/sync"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Update a single item
       #
@@ -671,14 +671,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this item belongs to.
       # @param id [Integer] The ID of the item you wish to update
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item(companyId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{id}"
-        put(path, model, {}, "22.5.0")      end
+        put(path, model, {}, "22.6.1")      end
 
       # Update an item classification.
       #
@@ -692,7 +692,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
@@ -700,7 +700,7 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item_classification(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
-        put(path, model, {}, "22.5.0")      end
+        put(path, model, {}, "22.6.1")      end
 
       # Update an item parameter
       #
@@ -714,7 +714,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id
@@ -722,7 +722,7 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
-        put(path, model, {}, "22.5.0")      end
+        put(path, model, {}, "22.6.1")      end
     end
   end
 end

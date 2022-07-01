@@ -13,13 +13,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param model [TaxCodeModel[]] The tax code you wish to create.
       # @return [TaxCodeModel[]]
       def create_tax_codes(companyId, model)        path = "/api/v2/companies/#{companyId}/taxcodes"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Delete a single tax code
       #
@@ -27,13 +27,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this tax code.
       # @param id [Integer] The ID of the tax code you wish to delete.
       # @return [ErrorDetail[]]
       def delete_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Retrieve a single tax code
       #
@@ -45,13 +45,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this tax code
       # @param id [Integer] The primary key of this tax code
       # @return [Object]
       def get_tax_code(companyId, id)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve tax codes for this company
       #
@@ -66,7 +66,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these tax codes
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
@@ -76,7 +76,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_codes_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/taxcodes"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all tax codes
       #
@@ -91,7 +91,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -100,7 +100,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_tax_codes(options={})        path = "/api/v2/taxcodes"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Update a single tax code
       #
@@ -114,14 +114,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this tax code belongs to.
       # @param id [Integer] The ID of the tax code you wish to update
       # @param model [Object] The tax code you wish to update.
       # @return [Object]
       def update_tax_code(companyId, id, model)        path = "/api/v2/companies/#{companyId}/taxcodes/#{id}"
-        put(path, model, {}, "22.5.0")      end
+        put(path, model, {}, "22.6.1")      end
     end
   end
 end
