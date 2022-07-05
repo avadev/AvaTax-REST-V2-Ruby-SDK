@@ -10,14 +10,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param model [UPCModel[]] The UPC you wish to create.
       # @return [UPCModel[]]
       def create_u_p_cs(companyId, model)        path = "/api/v2/companies/#{companyId}/upcs"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # Delete a single UPC
       #
@@ -25,14 +25,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC.
       # @param id [Integer] The ID of the UPC you wish to delete.
       # @return [ErrorDetail[]]
       def delete_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        delete(path, {}, "22.5.0")      end
+        delete(path, {}, "22.6.1")      end
 
       # Retrieve a single UPC
       #
@@ -41,14 +41,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC
       # @param id [Integer] The primary key of this UPC
       # @return [Object]
       def get_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve UPCs for this company
       #
@@ -60,7 +60,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these UPCs
@@ -71,7 +71,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_u_p_cs_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/upcs"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all UPCs
       #
@@ -83,7 +83,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
@@ -93,7 +93,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_u_p_cs(options={})        path = "/api/v2/upcs"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
 
       # Update a single UPC
       #
@@ -104,7 +104,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this UPC belongs to.
@@ -112,7 +112,7 @@ module AvaTax
       # @param model [Object] The UPC you wish to update.
       # @return [Object]
       def update_u_p_c(companyId, id, model)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        put(path, model, {}, "22.5.0")      end
+        put(path, model, {}, "22.6.1")      end
     end
   end
 end

@@ -22,12 +22,12 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The unique ID number of this report
       # @return [Object]
       def download_report(id)        path = "/api/v2/reports/#{id}/attachment"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve a single report
       #
@@ -46,7 +46,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of the report to retrieve
       # @return [Object]
       def get_report(id)        path = "/api/v2/reports/#{id}"
-        get(path, {}, "22.5.0")      end
+        get(path, {}, "22.6.1")      end
 
       # Initiate an ExportDocumentLine report task
       #
@@ -73,13 +73,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company to report on.
       # @param model [Object] Options that may be configured to customize the report.
       # @return [ReportModel[]]
       def initiate_export_document_line_report(companyId, model)        path = "/api/v2/companies/#{companyId}/reports/exportdocumentline/initiate"
-        post(path, model, {}, "22.5.0")      end
+        post(path, model, {}, "22.6.1")      end
 
       # List all report tasks for account
       #
@@ -97,7 +97,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The id of the company for which to get reports.
       # @param pageKey [String] Provide a page key to retrieve the next page of results.
@@ -105,7 +105,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @return [FetchResult]
       def list_reports(options={})        path = "/api/v2/reports"
-        get(path, options, "22.5.0")      end
+        get(path, options, "22.6.1")      end
     end
   end
 end
