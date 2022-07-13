@@ -1,17 +1,6 @@
 module AvaTax
   class Client
-    module ECMS 
-
-
-      # Bridge API for integration of validated certificates
-      #
-      # This API is for use by invitation only.
-      # @param model [EcmsModel[]] Either a single exempt certificate or an array of certificates to create
-      # @return [EcmsModel[]]
-      def cert_capture_bridge(model)
-        path = "/api/v2/certcapturebridge"
-        post(path, model)
-      end
+    module Ecms 
 
 
       # Get an ECMS identified by company id and ECMS id
@@ -22,15 +11,17 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Details
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaCert.
       # @param companyId [Integer] company to retrieve exempt certificate for
       # @param ecmsId [Integer] exempt certificate Id
       # @param include [String] 
       # @return [Object]
-      def get_e_c_m_s_by_id(companyId, ecmsId, options={})
-        path = "/api/v2/companies/#{companyId}/ecms/#{ecmsId}"
-        get(path, options)
-      end
-
+      def get_e_c_m_s_by_id(companyId, ecmsId, options={})        path = "/api/v2/companies/#{companyId}/ecms/#{ecmsId}"
+        get(path, options)      end
 
       # Get list of ECMS data for this company
       #
@@ -40,18 +31,20 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Details
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaCert.
       # @param companyId [Integer] which company to retrieve certificates from
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* details
       # @param include [String] 
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [EcmsModel[]]
-      def list_e_c_m_s_by_company(companyId, options={})
-        path = "/api/v2/companies/#{companyId}/ecms"
-        get(path, options)
-      end
-
+      # @return [FetchResult]
+      def list_e_c_m_s_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/ecms"
+        get(path, options)      end
 
       # Get all exempt certificates
       #
@@ -63,17 +56,19 @@ module AvaTax
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Details
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services<br />*Required* (all): AvaCert.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* details
       # @param include [String] 
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [EcmsModel[]]
-      def query_e_c_m_s(options={})
-        path = "/api/v2/ecms"
-        get(path, options)
-      end
-
+      # @return [FetchResult]
+      def query_e_c_m_s(options={})        path = "/api/v2/ecms"
+        get(path, options)      end
     end
   end
 end

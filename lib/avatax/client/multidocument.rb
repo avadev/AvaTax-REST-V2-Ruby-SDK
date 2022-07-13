@@ -20,19 +20,22 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in this fetch call
       # @param model [Object] The adjust request you wish to execute
       # @return [Object]
       def adjust_multi_document_transaction(code, type, model, options={})        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}/adjust"
-        post(path, model, options)      end
+        post(path, model, options, "22.6.1")      end
 
       # Get audit information about a MultiDocument transaction
       #
@@ -55,17 +58,20 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @return [Object]
       def audit_multi_document_transaction(code, type)        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}/audit"
-        get(path)      end
+        get(path, {}, "22.6.1")      end
 
       # Commit a MultiDocument transaction
       #
@@ -82,16 +88,19 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] The commit request you wish to execute
       # @return [Object]
       def commit_multi_document_transaction(model)        path = "/api/v2/transactions/multidocument/commit"
-        post(path, model)      end
+        post(path, model, {}, "22.6.1")      end
 
       # Create a new MultiDocument transaction
       #
@@ -132,17 +141,20 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] the multi document transaction model
       # @return [Object]
       def create_multi_document_transaction(model, options={})        path = "/api/v2/transactions/multidocument"
-        post(path, model, options)      end
+        post(path, model, options, "22.6.1")      end
 
       # Retrieve a MultiDocument transaction
       #
@@ -163,18 +175,21 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
-      # @param code [String] 
-      # @param type [String]  (See DocumentType::* for a list of allowable values)
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
+      # @param code [String] The multidocument code to retrieve
+      # @param type [String] The transaction type to retrieve (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @return [Object]
       def get_multi_document_transaction_by_code_and_type(code, type, options={})        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}"
-        get(path, options)      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve a MultiDocument transaction by ID
       #
@@ -204,17 +219,20 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The unique ID number of the MultiDocument transaction to retrieve
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @return [Object]
       def get_multi_document_transaction_by_id(id, options={})        path = "/api/v2/transactions/multidocument/#{id}"
-        get(path, options)      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all MultiDocument transactions
       #
@@ -242,12 +260,15 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* documents
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -255,7 +276,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_multi_document_transactions(options={})        path = "/api/v2/transactions/multidocument"
-        get(path, options)      end
+        get(path, options, "22.6.1")      end
 
       # Create a refund for a MultiDocument transaction
       #
@@ -300,19 +321,22 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param code [String] The code of this MultiDocument transaction
       # @param type [String] The type of this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param include [String] Specifies objects to include in the response after transaction is created
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_multi_document_transaction(code, type, model, options={})        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}/refund"
-        post(path, model, options)      end
+        post(path, model, options, "22.6.1")      end
 
       # Verify a MultiDocument transaction
       #
@@ -327,16 +351,19 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param model [Object] Information from your accounting system to verify against this MultiDocument transaction as it is stored in AvaTax
       # @return [Object]
       def verify_multi_document_transaction(model)        path = "/api/v2/transactions/multidocument/verify"
-        post(path, model)      end
+        post(path, model, {}, "22.6.1")      end
 
       # Void a MultiDocument transaction
       #
@@ -354,18 +381,21 @@ module AvaTax
       # * Replace '/' with '\_-ava2f-\_' For example: document/Code becomes document_-ava2f-_Code
       # * Replace '+' with '\_-ava2b-\_' For example: document+Code becomes document_-ava2b-_Code
       # * Replace '?' with '\_-ava3f-\_' For example: document?Code becomes document_-ava3f-_Code
+      # * Replace '%' with '\_-ava25-\_' For example: document%Code becomes document_-ava25-_Code
+      # * Replace '#' with '\_-ava23-\_' For example: document#Code becomes document_-ava23-_Code
       # * Replace ' ' with '%20' For example: document Code becomes document%20Code
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services<br />*Required* (all): AvaTaxPro.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, ProStoresOperator, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # Swagger Name: AvaTaxClient	  
       # @param code [String] The transaction code for this MultiDocument transaction
       # @param type [String] The transaction type for this MultiDocument transaction (See DocumentType::* for a list of allowable values)
       # @param model [Object] The void request you wish to execute
       # @return [Object]
       def void_multi_document_transaction(code, type, model)        path = "/api/v2/transactions/multidocument/#{code}/type/#{type}/void"
-        post(path, model)      end
+        post(path, model, {}, "22.6.1")      end
     end
   end
 end

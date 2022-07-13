@@ -13,10 +13,11 @@ module AvaTax
       # within AvaTax. You can examine the subscriptions returned from this API call to look for a particular product
       # or subscription to provide useful information to the current user as to whether they are entitled to use
       # specific features of AvaTax.
+      # Swagger Name: AvaTaxClient	  
       # @param serviceTypeId [String] The service to check
       # @return [Object]
       def get_my_subscription(serviceTypeId)        path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
-        get(path)      end
+        get(path, {}, "22.6.1")      end
 
       # List all services to which the current user is subscribed
       #
@@ -28,9 +29,10 @@ module AvaTax
       # within AvaTax. You can examine the subscriptions returned from this API call to look for a particular product
       # or subscription to provide useful information to the current user as to whether they are entitled to use
       # specific features of AvaTax.
+      # Swagger Name: AvaTaxClient	  
       # @return [FetchResult]
       def list_my_subscriptions()        path = "/api/v2/utilities/subscriptions"
-        get(path)      end
+        get(path, {}, "22.6.1")      end
 
       # Tests connectivity and version of the service
       #
@@ -54,9 +56,10 @@ module AvaTax
       # ### Security Policies
       #
       # * This API may be called without providing authentication credentials.
+      # Swagger Name: AvaTaxClient	  
       # @return [Object]
       def ping()        path = "/api/v2/utilities/ping"
-        get(path)      end
+        get(path, {}, "22.6.1")      end
     end
   end
 end

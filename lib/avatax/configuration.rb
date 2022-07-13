@@ -30,7 +30,7 @@ module AvaTax
     DEFAULT_USER_AGENT = "AvaTax Ruby Gem #{AvaTax::VERSION}".freeze
     DEFAULT_USERNAME = nil
     DEFAULT_PASSWORD = nil
-    DEFAULT_CONNECTION_OPTIONS = {}
+    DEFAULT_CONNECTION_OPTIONS = {request: {timeout: 1200}} # timeout in seconds
     DEFAULT_LOGGER = false
     DEFAULT_CUSTOM_LOGGER = nil
     DEFAULT_CUSTOM_LOGGER_OPTIONS = {}

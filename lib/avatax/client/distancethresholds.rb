@@ -13,12 +13,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param model [CompanyDistanceThresholdModel[]] The DistanceThreshold object or objects you wish to create.
       # @return [CompanyDistanceThresholdModel[]]
       def create_distance_threshold(companyId, model)        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        post(path, model)      end
+        post(path, model, {}, "22.6.1")      end
 
       # Delete a single DistanceThreshold object
       #
@@ -30,12 +31,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold
       # @param id [Integer] The unique ID number of the DistanceThreshold object you wish to delete.
       # @return [ErrorDetail[]]
       def delete_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        delete(path)      end
+        delete(path, {}, "22.6.1")      end
 
       # Retrieve a single DistanceThreshold
       #
@@ -47,12 +49,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this DistanceThreshold object
       # @param id [Integer] The unique ID number referring to this DistanceThreshold object
       # @return [Object]
       def get_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        get(path)      end
+        get(path, {}, "22.6.1")      end
 
       # Retrieve all DistanceThresholds for this company.
       #
@@ -64,7 +67,8 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company whose DistanceThreshold objects you wish to list.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -73,7 +77,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_distance_thresholds(companyId, options={})        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        get(path, options)      end
+        get(path, options, "22.6.1")      end
 
       # Retrieve all DistanceThreshold objects
       #
@@ -88,7 +92,8 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -96,7 +101,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_distance_thresholds(options={})        path = "/api/v2/distancethresholds"
-        get(path, options)      end
+        get(path, options, "22.6.1")      end
 
       # Update a DistanceThreshold object
       #
@@ -111,13 +116,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that owns this DistanceThreshold object.
       # @param id [Integer] The unique ID number of the DistanceThreshold object to replace.
       # @param model [Object] The new DistanceThreshold object to store.
       # @return [Object]
       def update_distance_threshold(companyId, id, model)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        put(path, model)      end
+        put(path, model, {}, "22.6.1")      end
     end
   end
 end

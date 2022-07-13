@@ -1,5 +1,4 @@
-require 'faraday_middleware/response_middleware'
-require 'faraday_middleware/parse_oj'
+require 'faraday_middleware'
 
 module AvaTax
   module Connection
@@ -20,7 +19,7 @@ module AvaTax
     REMOVED_LABEL = '\1[REMOVED]'
 
     def connection
-      client_id = "#{app_name};#{app_version};RubySdk;#{AvaTax::VERSION.dup};#{machine_name}"
+      client_id = "#{app_name};#{app_version};RubySdk;API_VERSION;#{machine_name}"
       options = {
         :headers =>
           {
@@ -42,6 +41,10 @@ module AvaTax
 
         faraday.response faraday_response_parser, content_type: /\bjson$/
         faraday.basic_auth(username, password)
+
+        # TODO: use the following after upgrading to faraday 2.0
+        #   see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
+        # faraday.request :authorization, :basic, username, password
 
         if logger
           faraday.response :logger do |logger|
