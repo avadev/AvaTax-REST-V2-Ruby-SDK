@@ -1,4 +1,6 @@
 require 'faraday_middleware'
+require 'faraday_middleware/response_middleware'
+require 'faraday_middleware/parse_oj'
 
 module AvaTax
   module Connection
