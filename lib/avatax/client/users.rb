@@ -20,7 +20,7 @@ module AvaTax
       # @param model [Object] An object containing your current password and the new password.
       # @return [String]
       def change_password(model)        path = "/api/v2/passwords"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
 
       # Create new users
       #
@@ -42,7 +42,7 @@ module AvaTax
       # @param model [UserModel[]] The user or array of users you wish to create.
       # @return [UserModel[]]
       def create_users(accountId, model)        path = "/api/v2/accounts/#{accountId}/users"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Delete a single user
       #
@@ -61,7 +61,7 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to delete.
       # @return [ErrorDetail[]]
       def delete_user(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # Retrieve a single user
       #
@@ -81,7 +81,7 @@ module AvaTax
       # @param include [String] Optional fetch commands.
       # @return [Object]
       def get_user(id, accountId, options={})        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Retrieve all entitlements for a single user
       #
@@ -109,7 +109,7 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @return [Object]
       def get_user_entitlements(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
-        get(path, {}, "22.6.1")      end
+        get(path, {}, "22.7.0")      end
 
       # Retrieve users for this account
       #
@@ -138,7 +138,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_users_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/users"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Retrieve all users
       #
@@ -168,7 +168,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_users(options={})        path = "/api/v2/users"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Update a single user
       #
@@ -186,7 +186,7 @@ module AvaTax
       # @param model [Object] The user object you wish to update.
       # @return [Object]
       def update_user(id, accountId, model)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
     end
   end
 end

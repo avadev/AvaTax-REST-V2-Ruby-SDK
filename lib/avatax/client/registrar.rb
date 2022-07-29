@@ -18,7 +18,7 @@ module AvaTax
       # @param model [Object] The account you wish to create.
       # @return [AccountModel[]]
       def create_account(model)        path = "/api/v2/accounts"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Create new notifications.
       #
@@ -44,7 +44,7 @@ module AvaTax
       # @param model [NotificationModel[]] The notifications you wish to create.
       # @return [NotificationModel[]]
       def create_notifications(model)        path = "/api/v2/notifications"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Create a new subscription
       #
@@ -62,7 +62,7 @@ module AvaTax
       # @param model [SubscriptionModel[]] The subscription you wish to create.
       # @return [SubscriptionModel[]]
       def create_subscriptions(accountId, model)        path = "/api/v2/accounts/#{accountId}/subscriptions"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Delete a single account
       #
@@ -79,7 +79,7 @@ module AvaTax
       # @param id [Integer] The ID of the account you wish to delete.
       # @return [ErrorDetail[]]
       def delete_account(id)        path = "/api/v2/accounts/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # Delete a single notification.
       #
@@ -102,7 +102,7 @@ module AvaTax
       # @param id [Integer] The id of the notification you wish to delete.
       # @return [ErrorDetail[]]
       def delete_notification(id)        path = "/api/v2/notifications/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # Delete a single subscription
       #
@@ -119,7 +119,7 @@ module AvaTax
       # @param id [Integer] The ID of the subscription you wish to delete.
       # @return [ErrorDetail[]]
       def delete_subscription(accountId, id)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # Reset a user's password programmatically
       #
@@ -140,7 +140,7 @@ module AvaTax
       # @param model [Object] The new password for this user
       # @return [String]
       def reset_password(userId, model, options={})        path = "/api/v2/passwords/#{userId}/reset"
-        post(path, model, options, "22.6.1")      end
+        post(path, model, options, "22.7.0")      end
 
       # Update a single account
       #
@@ -157,7 +157,7 @@ module AvaTax
       # @param model [Object] The account object you wish to update.
       # @return [Object]
       def update_account(id, model)        path = "/api/v2/accounts/#{id}"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
 
       # Update a single notification.
       #
@@ -181,7 +181,7 @@ module AvaTax
       # @param model [Object] The notification object you wish to update.
       # @return [Object]
       def update_notification(id, model)        path = "/api/v2/notifications/#{id}"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
 
       # Update a single subscription
       #
@@ -203,7 +203,7 @@ module AvaTax
       # @param model [Object] The subscription you wish to update.
       # @return [Object]
       def update_subscription(accountId, id, model)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
     end
   end
 end
