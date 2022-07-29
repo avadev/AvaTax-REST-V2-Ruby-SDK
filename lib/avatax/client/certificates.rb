@@ -37,7 +37,7 @@ module AvaTax
       # @param model [CertificateModel[]] Certificates to be created
       # @return [CertificateModel[]]
       def create_certificates(companyId, model, options={})        path = "/api/v2/companies/#{companyId}/certificates"
-        post(path, model, options, "22.6.1")      end
+        post(path, model, options, "22.7.0")      end
 
       # Revoke and delete a certificate
       #
@@ -64,7 +64,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of this certificate
       # @return [ErrorDetail[]]
       def delete_certificate(companyId, id)        path = "/api/v2/companies/#{companyId}/certificates/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # Download an image for this certificate
       #
@@ -94,7 +94,7 @@ module AvaTax
       # @param type [String] The data format in which to retrieve the certificate image (See CertificatePreviewType::* for a list of allowable values)
       # @return [Object]
       def download_certificate_image(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attachment"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Retrieve a single certificate
       #
@@ -126,7 +126,7 @@ module AvaTax
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.
       # @return [Object]
       def get_certificate(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/certificates/#{id}"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Check a company's exemption certificate status.
       #
@@ -146,7 +146,7 @@ module AvaTax
       # @param companyId [Integer] The company ID to check
       # @return [Object]
       def get_certificate_setup(companyId)        path = "/api/v2/companies/#{companyId}/certificates/setup"
-        get(path, {}, "22.6.1")      end
+        get(path, {}, "22.7.0")      end
 
       # Link attributes to a certificate
       #
@@ -175,7 +175,7 @@ module AvaTax
       # @param model [CertificateAttributeModel[]] The list of attributes to link to this certificate.
       # @return [FetchResult]
       def link_attributes_to_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes/link"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Link customers to a certificate
       #
@@ -205,7 +205,7 @@ module AvaTax
       # @param model [Object] The list of customers needed be added to the Certificate for exemption
       # @return [FetchResult]
       def link_customers_to_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers/link"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # List all attributes applied to this certificate
       #
@@ -233,7 +233,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of this certificate
       # @return [FetchResult]
       def list_attributes_for_certificate(companyId, id)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes"
-        get(path, {}, "22.6.1")      end
+        get(path, {}, "22.7.0")      end
 
       # List customers linked to this certificate
       #
@@ -262,7 +262,7 @@ module AvaTax
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.   No options are currently available when fetching customers.
       # @return [FetchResult]
       def list_customers_for_certificate(companyId, id, options={})        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # List all certificates for a company
       #
@@ -297,7 +297,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_certificates(companyId, options={})        path = "/api/v2/companies/#{companyId}/certificates"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Request setup of exemption certificates for this company.
       #
@@ -319,7 +319,7 @@ module AvaTax
       # @param companyId [Integer] 
       # @return [Object]
       def request_certificate_setup(companyId)        path = "/api/v2/companies/#{companyId}/certificates/setup"
-        post(path, {}, "22.6.1")      end
+        post(path, {}, "22.7.0")      end
 
       # Unlink attributes from a certificate
       #
@@ -348,7 +348,7 @@ module AvaTax
       # @param model [CertificateAttributeModel[]] The list of attributes to unlink from this certificate.
       # @return [FetchResult]
       def unlink_attributes_from_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attributes/unlink"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Unlink customers from a certificate
       #
@@ -379,7 +379,7 @@ module AvaTax
       # @param model [Object] The list of customers to unlink from this certificate
       # @return [FetchResult]
       def unlink_customers_from_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/customers/unlink"
-        post(path, model, {}, "22.6.1")      end
+        post(path, model, {}, "22.7.0")      end
 
       # Update a single certificate
       #
@@ -405,7 +405,7 @@ module AvaTax
       # @param model [Object] The new certificate object that will replace the existing one
       # @return [Object]
       def update_certificate(companyId, id, model)        path = "/api/v2/companies/#{companyId}/certificates/#{id}"
-        put(path, model, {}, "22.6.1")      end
+        put(path, model, {}, "22.7.0")      end
 
       # Upload an image or PDF attachment for this certificate
       #
@@ -434,7 +434,7 @@ module AvaTax
       # @param file [Object] The exemption certificate file you wanted to upload. Accepted formats are: PDF, JPEG, TIFF, PNG.
       # @return [String]
       def upload_certificate_image(companyId, id)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/attachment"
-        post(path, {}, "22.6.1")      end
+        post(path, {}, "22.7.0")      end
     end
   end
 end

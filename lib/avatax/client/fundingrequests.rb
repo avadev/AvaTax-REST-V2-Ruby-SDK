@@ -24,9 +24,11 @@ module AvaTax
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The unique ID number of this funding request
+      # @param businessUnit [String] The company's business unit (See POABusinessUnit::* for a list of allowable values)
+      # @param subscriptionType [String] The company's subscription type (See POASubscriptionType::* for a list of allowable values)
       # @return [Object]
-      def activate_funding_request(id)        path = "/api/v2/fundingrequests/#{id}/widget"
-        get(path, {}, "22.6.1")      end
+      def activate_funding_request(id, options={})        path = "/api/v2/fundingrequests/#{id}/widget"
+        get(path, options, "22.7.0")      end
 
       # Retrieve status about a funding setup request
       #
@@ -47,9 +49,11 @@ module AvaTax
       # * This API depends on the following active services:*Returns* (at least one of): Mrs, MRSComplianceManager, AvaTaxCsp.*Firm Managed* (for accounts managed by a firm): ARA, ARAManaged.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The unique ID number of this funding request
+      # @param businessUnit [String] The company's business unit (See POABusinessUnit::* for a list of allowable values)
+      # @param subscriptionType [String] The company's subscription type (See POASubscriptionType::* for a list of allowable values)
       # @return [Object]
-      def funding_request_status(id)        path = "/api/v2/fundingrequests/#{id}"
-        get(path, {}, "22.6.1")      end
+      def funding_request_status(id, options={})        path = "/api/v2/fundingrequests/#{id}"
+        get(path, options, "22.7.0")      end
     end
   end
 end

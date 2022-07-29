@@ -16,7 +16,7 @@ module AvaTax
       # @param id [Integer] The id of the User Defined Field you wish to delete.
       # @return [ErrorDetail[]]
       def delete_user_defined_field(companyId, id)        path = "/api/v2/companies/#{companyId}/userdefinedfields/#{id}"
-        delete(path, {}, "22.6.1")      end
+        delete(path, {}, "22.7.0")      end
 
       # 
       #
@@ -30,7 +30,7 @@ module AvaTax
       # @param allowDefaults [Boolean] If true this will add defaulted UDFs to the list that are not named yet
       # @return [FetchResult]
       def list_user_defined_fields_by_company_id(companyId, options={})        path = "/api/v2/companies/#{companyId}/userdefinedfields"
-        get(path, options, "22.6.1")      end
+        get(path, options, "22.7.0")      end
 
       # Update a User Defined Field identified by id for a company
       #
@@ -46,7 +46,7 @@ module AvaTax
       # @param model [Object] 
       # @return [Object]
       def update_user_defined_field(companyId, model, options={})        path = "/api/v2/companies/#{companyId}/userdefinedfields"
-        post(path, model, options, "22.6.1")      end
+        post(path, model, options, "22.7.0")      end
     end
   end
 end
