@@ -36,6 +36,46 @@ describe AvaTax::Client do
       expect(transaction["status"]).to eq "Saved"
     end
 
+    it "should create a committed transaction" do
+      transaction = @client.create_transaction(@base_transaction.merge!(commit: true))
+
+      expect(transaction).to be_a Object
+      expect(transaction["id"]).to be_a Integer
+      expect(transaction["status"]).to eq "Committed"
+    end
+
+    it "should uncommit a transaction" do
+      create_transaction = @client.create_transaction(@base_transaction.merge!(commit: true))
+
+      uncommit_transaction = @client.uncommit_transaction(@company_code, create_transaction["code"])
+
+      expect(uncommit_transaction).to be_a Object
+      expect(uncommit_transaction["id"]).to be_a Integer
+      expect(uncommit_transaction["status"]).to eq "Saved"
+    end
+
+    it "should void a transaction" do
+      create_transaction = @client.create_transaction(@base_transaction)
+      void_transaction = @client.void_transaction(@company_code, create_transaction["code"], code: "DocVoided")
+
+      expect(void_transaction).to be_a Object
+      expect(void_transaction["id"]).to be_a Integer
+
+      # The API guide specifies that the status should be "DocVoided", however, it is always "Cancelled"
+      expect(void_transaction["status"]).to eq "Cancelled"
+    end
+
+    it "should unvoid a transaction" do
+      create_transaction = @client.create_transaction(@base_transaction)
+      void_transaction = @client.void_transaction(@company_code, create_transaction["code"], code: "DocVoided")
+
+      unvoid_transaction = @client.unvoid_transaction(@company_code, create_transaction["code"])
+
+      expect(unvoid_transaction).to be_a Object
+      expect(unvoid_transaction["id"]).to be_a Integer
+      expect(unvoid_transaction["status"]).to eq "Saved"
+    end
+
   end
 
 
