@@ -12,7 +12,7 @@ module AvaTax
       # @param model [Object] The lookup file you wish to create
       # @return [Object]
       def create_company_lookup_file(accountId, companyId, model)        path = "/api/v2/advancedrules/accounts/#{accountId}/companies/#{companyId}/lookupFiles"
-        post(path, model, {}, "22.7.0")      end
+        post(path, model, {}, "22.8.0")      end
 
       # Delete a lookup file
       #
@@ -22,7 +22,7 @@ module AvaTax
       # @param id [String] The unique ID/GUID for the company lookup file to be deleted
       # @return [ErrorDetail[]]
       def delete_lookup_file(accountId, id)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
-        delete(path, {}, "22.7.0")      end
+        delete(path, {}, "22.8.0")      end
 
       # Get the lookup files for a company
       #
@@ -32,7 +32,7 @@ module AvaTax
       # @param companyId [Integer] The ID of the company for which to retrieve lookup files
       # @return [FetchResult]
       def get_company_lookup_files(accountId, companyId)        path = "/api/v2/advancedrules/accounts/#{accountId}/companies/#{companyId}/lookupFiles"
-        get(path, {}, "22.7.0")      end
+        get(path, {}, "22.8.0")      end
 
       # Get a lookup file for an accountId and companyLookupFileId
       #
@@ -42,7 +42,7 @@ module AvaTax
       # @param id [String] The unique ID/GUID of the company lookup file to return
       # @return [Object]
       def get_lookup_file(accountId, id)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
-        get(path, {}, "22.7.0")      end
+        get(path, {}, "22.8.0")      end
 
       # Update a lookup file
       #
@@ -53,7 +53,7 @@ module AvaTax
       # @param model [Object] The new values to update the lookup file
       # @return [Object]
       def update_lookup_file(accountId, id, model)        path = "/api/v2/advancedrules/accounts/#{accountId}/lookupFiles/#{id}"
-        put(path, model, {}, "22.7.0")      end
+        put(path, model, {}, "22.8.0")      end
     end
   end
 end
