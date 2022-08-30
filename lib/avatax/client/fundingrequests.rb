@@ -28,7 +28,7 @@ module AvaTax
       # @param subscriptionType [String] The company's subscription type (See POASubscriptionType::* for a list of allowable values)
       # @return [Object]
       def activate_funding_request(id, options={})        path = "/api/v2/fundingrequests/#{id}/widget"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
 
       # Retrieve status about a funding setup request
       #
@@ -53,7 +53,7 @@ module AvaTax
       # @param subscriptionType [String] The company's subscription type (See POASubscriptionType::* for a list of allowable values)
       # @return [Object]
       def funding_request_status(id, options={})        path = "/api/v2/fundingrequests/#{id}"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
     end
   end
 end

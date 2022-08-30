@@ -17,7 +17,7 @@ module AvaTax
       # @param model [UPCModel[]] The UPC you wish to create.
       # @return [UPCModel[]]
       def create_u_p_cs(companyId, model)        path = "/api/v2/companies/#{companyId}/upcs"
-        post(path, model, {}, "22.7.0")      end
+        post(path, model, {}, "22.8.0")      end
 
       # Delete a single UPC
       #
@@ -32,7 +32,7 @@ module AvaTax
       # @param id [Integer] The ID of the UPC you wish to delete.
       # @return [ErrorDetail[]]
       def delete_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        delete(path, {}, "22.7.0")      end
+        delete(path, {}, "22.8.0")      end
 
       # Retrieve a single UPC
       #
@@ -48,7 +48,7 @@ module AvaTax
       # @param id [Integer] The primary key of this UPC
       # @return [Object]
       def get_u_p_c(companyId, id)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        get(path, {}, "22.7.0")      end
+        get(path, {}, "22.8.0")      end
 
       # Retrieve UPCs for this company
       #
@@ -71,7 +71,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_u_p_cs_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/upcs"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
 
       # Retrieve all UPCs
       #
@@ -93,7 +93,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_u_p_cs(options={})        path = "/api/v2/upcs"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
 
       # Update a single UPC
       #
@@ -112,7 +112,7 @@ module AvaTax
       # @param model [Object] The UPC you wish to update.
       # @return [Object]
       def update_u_p_c(companyId, id, model)        path = "/api/v2/companies/#{companyId}/upcs/#{id}"
-        put(path, model, {}, "22.7.0")      end
+        put(path, model, {}, "22.8.0")      end
     end
   end
 end

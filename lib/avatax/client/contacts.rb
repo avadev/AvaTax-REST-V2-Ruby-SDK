@@ -17,7 +17,7 @@ module AvaTax
       # @param model [ContactModel[]] The contacts you wish to create.
       # @return [ContactModel[]]
       def create_contacts(companyId, model)        path = "/api/v2/companies/#{companyId}/contacts"
-        post(path, model, {}, "22.7.0")      end
+        post(path, model, {}, "22.8.0")      end
 
       # Delete a single contact
       #
@@ -31,7 +31,7 @@ module AvaTax
       # @param id [Integer] The ID of the contact you wish to delete.
       # @return [ErrorDetail[]]
       def delete_contact(companyId, id)        path = "/api/v2/companies/#{companyId}/contacts/#{id}"
-        delete(path, {}, "22.7.0")      end
+        delete(path, {}, "22.8.0")      end
 
       # Retrieve a single contact
       #
@@ -47,7 +47,7 @@ module AvaTax
       # @param id [Integer] The primary key of this contact
       # @return [Object]
       def get_contact(companyId, id)        path = "/api/v2/companies/#{companyId}/contacts/#{id}"
-        get(path, {}, "22.7.0")      end
+        get(path, {}, "22.8.0")      end
 
       # Retrieve contacts for this company
       #
@@ -67,7 +67,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_contacts_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/contacts"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
 
       # Retrieve all contacts
       #
@@ -88,7 +88,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_contacts(options={})        path = "/api/v2/contacts"
-        get(path, options, "22.7.0")      end
+        get(path, options, "22.8.0")      end
 
       # Update a single contact
       #
@@ -107,7 +107,7 @@ module AvaTax
       # @param model [Object] The contact you wish to update.
       # @return [Object]
       def update_contact(companyId, id, model)        path = "/api/v2/companies/#{companyId}/contacts/#{id}"
-        put(path, model, {}, "22.7.0")      end
+        put(path, model, {}, "22.8.0")      end
     end
   end
 end
