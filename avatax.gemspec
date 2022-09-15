@@ -15,12 +15,12 @@ Gem::Specification.new do |s|
 AvaTax REST API
 ------------------------------
 Our developer site documents the AvaTax REST API.
-(http://developer.avatax.com).
+(https://developer.avalara.com).
 Blog
 ----------------------------
 The Developer Blog is a great place to learn more about the API and AvaTax integrations
 Subscribe to the RSS feed be notified of new posts:
-(http://developer.avatax.com/blog).
+(https://developer.avalara.com/blogs).
 
 ********************************************************************************
 eos
