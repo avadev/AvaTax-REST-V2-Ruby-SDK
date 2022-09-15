@@ -35,7 +35,7 @@ module AvaTax
       # @param model [Object] information about the transaction and lines to be added
       # @return [Object]
       def add_lines(model, options={})        path = "/api/v2/companies/transactions/lines/add"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Correct a previously created transaction
       #
@@ -81,7 +81,7 @@ module AvaTax
       # @param model [Object] The adjustment you wish to make
       # @return [Object]
       def adjust_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/adjust"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Get audit information about a transaction
       #
@@ -118,7 +118,7 @@ module AvaTax
       # @param transactionCode [String] The code identifying the transaction
       # @return [Object]
       def audit_transaction(companyCode, transactionCode)        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/audit"
-        get(path, {}, "22.8.0")      end
+        get(path, {}, "22.9.0")      end
 
       # Get audit information about a transaction
       #
@@ -156,7 +156,7 @@ module AvaTax
       # @param documentType [String] The document type of the original transaction (See DocumentType::* for a list of allowable values)
       # @return [Object]
       def audit_transaction_with_type(companyCode, transactionCode, documentType)        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/types/#{documentType}/audit"
-        get(path, {}, "22.8.0")      end
+        get(path, {}, "22.9.0")      end
 
       # Lock a set of documents
       #
@@ -176,7 +176,7 @@ module AvaTax
       # @param model [Object] bulk lock request
       # @return [Object]
       def bulk_lock_transaction(model)        path = "/api/v2/transactions/lock"
-        post(path, model, {}, "22.8.0")      end
+        post(path, model, {}, "22.9.0")      end
 
       # Change a transaction's code
       #
@@ -222,7 +222,7 @@ module AvaTax
       # @param model [Object] The code change request you wish to execute
       # @return [Object]
       def change_transaction_code(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/changecode"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Commit a transaction for reporting
       #
@@ -266,7 +266,7 @@ module AvaTax
       # @param model [Object] The commit request you wish to execute
       # @return [Object]
       def commit_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/commit"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Create or adjust a transaction
       #
@@ -313,7 +313,7 @@ module AvaTax
       # @param model [Object] The transaction you wish to create or adjust
       # @return [Object]
       def create_or_adjust_transaction(model, options={})        path = "/api/v2/transactions/createoradjust"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Create a new transaction
       #
@@ -367,7 +367,7 @@ module AvaTax
       # @param model [Object] The transaction you wish to create
       # @return [Object]
       def create_transaction(model, options={})        path = "/api/v2/transactions/create"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Remove lines from an existing unlocked transaction
       #
@@ -398,7 +398,7 @@ module AvaTax
       # @param model [Object] information about the transaction and lines to be removed
       # @return [Object]
       def delete_lines(model, options={})        path = "/api/v2/companies/transactions/lines/delete"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Retrieve a single transaction by code
       #
@@ -440,7 +440,7 @@ module AvaTax
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_code(companyCode, transactionCode, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Retrieve a single transaction by code
       #
@@ -465,7 +465,7 @@ module AvaTax
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_code_and_type(companyCode, transactionCode, documentType, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/types/#{documentType}"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Retrieve a single transaction by ID
       #
@@ -495,7 +495,7 @@ module AvaTax
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def get_transaction_by_id(id, options={})        path = "/api/v2/transactions/#{id}"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Retrieve all transactions
       #
@@ -543,7 +543,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_transactions_by_company(companyCode, options={})        path = "/api/v2/companies/#{companyCode}/transactions"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Lock a single transaction
       #
@@ -589,7 +589,7 @@ module AvaTax
       # @param model [Object] The lock request you wish to execute
       # @return [Object]
       def lock_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/lock"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Create a refund for a transaction
       #
@@ -646,7 +646,7 @@ module AvaTax
       # @param model [Object] Information about the refund to create
       # @return [Object]
       def refund_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/refund"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Perform multiple actions on a transaction
       #
@@ -690,7 +690,7 @@ module AvaTax
       # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
       def settle_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/settle"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Uncommit a transaction for reporting
       #
@@ -728,7 +728,7 @@ module AvaTax
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def uncommit_transaction(companyCode, transactionCode, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/uncommit"
-        post(path, options, "22.8.0")      end
+        post(path, options, "22.9.0")      end
 
       # Unvoids a transaction
       #
@@ -763,7 +763,7 @@ module AvaTax
       # @param include [String] Specifies objects to include in this fetch call
       # @return [Object]
       def unvoid_transaction(companyCode, transactionCode, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/unvoid"
-        post(path, options, "22.8.0")      end
+        post(path, options, "22.9.0")      end
 
       # Verify a transaction
       #
@@ -806,7 +806,7 @@ module AvaTax
       # @param model [Object] The data from an external system to reconcile against AvaTax
       # @return [Object]
       def verify_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/verify"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
 
       # Void a transaction
       #
@@ -851,7 +851,7 @@ module AvaTax
       # @param model [Object] The void request you wish to execute. To void a transaction the code must be set to 'DocVoided'
       # @return [Object]
       def void_transaction(companyCode, transactionCode, model, options={})        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/void"
-        post(path, model, options, "22.8.0")      end
+        post(path, model, options, "22.9.0")      end
     end
   end
 end

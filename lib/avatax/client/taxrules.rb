@@ -27,7 +27,7 @@ module AvaTax
       # @param model [TaxRuleModel[]] The tax rule you wish to create.
       # @return [TaxRuleModel[]]
       def create_tax_rules(companyId, model)        path = "/api/v2/companies/#{companyId}/taxrules"
-        post(path, model, {}, "22.8.0")      end
+        post(path, model, {}, "22.9.0")      end
 
       # Delete a single tax rule
       #
@@ -53,7 +53,7 @@ module AvaTax
       # @param id [Integer] The ID of the tax rule you wish to delete.
       # @return [ErrorDetail[]]
       def delete_tax_rule(companyId, id)        path = "/api/v2/companies/#{companyId}/taxrules/#{id}"
-        delete(path, {}, "22.8.0")      end
+        delete(path, {}, "22.9.0")      end
 
       # Retrieve a single tax rule
       #
@@ -79,7 +79,7 @@ module AvaTax
       # @param id [Integer] The primary key of this tax rule
       # @return [Object]
       def get_tax_rule(companyId, id)        path = "/api/v2/companies/#{companyId}/taxrules/#{id}"
-        get(path, {}, "22.8.0")      end
+        get(path, {}, "22.9.0")      end
 
       # Retrieve tax rules for this company
       #
@@ -112,7 +112,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_tax_rules(companyId, options={})        path = "/api/v2/companies/#{companyId}/taxrules"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Retrieve all tax rules
       #
@@ -144,7 +144,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_tax_rules(options={})        path = "/api/v2/taxrules"
-        get(path, options, "22.8.0")      end
+        get(path, options, "22.9.0")      end
 
       # Update a single tax rule
       #
@@ -171,7 +171,7 @@ module AvaTax
       # @param model [Object] The tax rule you wish to update.
       # @return [Object]
       def update_tax_rule(companyId, id, model)        path = "/api/v2/companies/#{companyId}/taxrules/#{id}"
-        put(path, model, {}, "22.8.0")      end
+        put(path, model, {}, "22.9.0")      end
     end
   end
 end
