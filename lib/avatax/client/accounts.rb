@@ -28,7 +28,7 @@ module AvaTax
       # @param model [Object] A request confirming that you wish to reset the license key of this account.
       # @return [Object]
       def account_reset_license_key(id, model)        path = "/api/v2/accounts/#{id}/resetlicensekey"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
 
       # Activate an account by accepting terms and conditions
       #
@@ -51,7 +51,7 @@ module AvaTax
       # @param model [Object] The activation request
       # @return [Object]
       def activate_account(id, model)        path = "/api/v2/accounts/#{id}/activate"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
 
       # Retrieve audit history for an account.
       #
@@ -81,7 +81,7 @@ module AvaTax
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @return [FetchResult]
       def audit_account(id, options={})        path = "/api/v2/accounts/#{id}/audit"
-        get(path, options, "22.9.0")      end
+        get(path, options, "22.10.0")      end
 
       # Create license key for this account
       #
@@ -104,7 +104,7 @@ module AvaTax
       # @param model [Object] 
       # @return [Object]
       def create_license_key(id, model)        path = "/api/v2/accounts/#{id}/licensekey"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
 
       # Delete license key for this account by license key name
       #
@@ -122,7 +122,7 @@ module AvaTax
       # @param licensekeyname [String] The license key name you wish to update.
       # @return [ErrorDetail[]]
       def delete_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
-        delete(path, {}, "22.9.0")      end
+        delete(path, {}, "22.10.0")      end
 
       # Retrieve a single account
       #
@@ -140,7 +140,7 @@ module AvaTax
       # @param include [String] A comma separated list of special fetch options
       # @return [Object]
       def get_account(id, options={})        path = "/api/v2/accounts/#{id}"
-        get(path, options, "22.9.0")      end
+        get(path, options, "22.10.0")      end
 
       # Get configuration settings for this account
       #
@@ -164,7 +164,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [AccountConfigurationModel[]]
       def get_account_configuration(id)        path = "/api/v2/accounts/#{id}/configuration"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
 
       # Retrieve license key by license key name
       #
@@ -176,7 +176,7 @@ module AvaTax
       # @param licensekeyname [String] The ID of the account to retrieve
       # @return [Object]
       def get_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
 
       # Retrieve all license keys for this account
       #
@@ -189,7 +189,7 @@ module AvaTax
       # @param id [Integer] The ID of the account to retrieve
       # @return [AccountLicenseKeyModel[]]
       def get_license_keys(id)        path = "/api/v2/accounts/#{id}/licensekeys"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
 
       # Retrieve all accounts
       #
@@ -217,7 +217,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_accounts(options={})        path = "/api/v2/accounts"
-        get(path, options, "22.9.0")      end
+        get(path, options, "22.10.0")      end
 
       # Change configuration settings for this account
       #
@@ -242,7 +242,7 @@ module AvaTax
       # @param model [AccountConfigurationModel[]] 
       # @return [AccountConfigurationModel[]]
       def set_account_configuration(id, model)        path = "/api/v2/accounts/#{id}/configuration"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
     end
   end
 end

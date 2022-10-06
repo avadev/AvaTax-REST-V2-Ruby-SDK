@@ -18,7 +18,7 @@ module AvaTax
       # @param model [Object] The account you wish to create.
       # @return [AccountModel[]]
       def create_account(model)        path = "/api/v2/accounts"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
 
       # Create new notifications.
       #
@@ -44,7 +44,27 @@ module AvaTax
       # @param model [NotificationModel[]] The notifications you wish to create.
       # @return [NotificationModel[]]
       def create_notifications(model)        path = "/api/v2/notifications"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
+
+      # Create Avalara-supported subscription (ServiceTypes)
+      #
+      # For Registrar Use Only
+      # This API is for use by Avalara Registrar administrative users only.
+      #
+      # Create one service/subscription object.
+      #
+      # Returns the newly created Avalara-supported subscription (service) type.
+      # This API is intended to be useful for adding new Avalara-supported subscription type (service type).
+      # You may always contact Avalara's sales department for information on available products or services.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param model [Object] The subscription type object you wish to create.
+      # @return [Object]
+      def create_service_types(model)        path = "/api/v2/servicetypes"
+        post(path, model, {}, "22.10.0")      end
 
       # Create a new subscription
       #
@@ -62,7 +82,7 @@ module AvaTax
       # @param model [SubscriptionModel[]] The subscription you wish to create.
       # @return [SubscriptionModel[]]
       def create_subscriptions(accountId, model)        path = "/api/v2/accounts/#{accountId}/subscriptions"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
 
       # Delete a single account
       #
@@ -79,7 +99,7 @@ module AvaTax
       # @param id [Integer] The ID of the account you wish to delete.
       # @return [ErrorDetail[]]
       def delete_account(id)        path = "/api/v2/accounts/#{id}"
-        delete(path, {}, "22.9.0")      end
+        delete(path, {}, "22.10.0")      end
 
       # Delete a single notification.
       #
@@ -102,7 +122,24 @@ module AvaTax
       # @param id [Integer] The id of the notification you wish to delete.
       # @return [ErrorDetail[]]
       def delete_notification(id)        path = "/api/v2/notifications/#{id}"
-        delete(path, {}, "22.9.0")      end
+        delete(path, {}, "22.10.0")      end
+
+      # Delete a single Subscription (ServiceTypes) object
+      #
+      # For Registrar Use Only
+      # This API is for use by Avalara Registrar administrative users only.
+      #
+      # Marks the Subscription (ServiceTypes) object identified by this URL as deleted.
+      # This API is useful for deleting an existing Avalara-supported subscription type (service type).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param id [Integer] The unique ID number of the Subscription object you wish to delete.
+      # @return [ErrorDetail[]]
+      def delete_service_type(id)        path = "/api/v2/servicetypes/#{id}"
+        delete(path, {}, "22.10.0")      end
 
       # Delete a single subscription
       #
@@ -119,7 +156,29 @@ module AvaTax
       # @param id [Integer] The ID of the subscription you wish to delete.
       # @return [ErrorDetail[]]
       def delete_subscription(accountId, id)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        delete(path, {}, "22.9.0")      end
+        delete(path, {}, "22.10.0")      end
+
+      # Retrieve the full list of Avalara-supported subscription (ServiceTypes)
+      #
+      # For Registrar Use Only
+      # This API is for use by Avalara Registrar administrative users only.
+      #
+      # Returns the full list of Avalara-supported subscription types.
+      # This API is intended to be useful for identifying which features you have added to your account.
+      # You may always contact Avalara's sales department for information on available products or services.
+      # You cannot change your subscriptions/service directly through the API.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_service_types(options={})        path = "/api/v2/servicetypes/servicetypes"
+        get(path, options, "22.10.0")      end
 
       # Reset a user's password programmatically
       #
@@ -140,7 +199,7 @@ module AvaTax
       # @param model [Object] The new password for this user
       # @return [String]
       def reset_password(userId, model, options={})        path = "/api/v2/passwords/#{userId}/reset"
-        post(path, model, options, "22.9.0")      end
+        post(path, model, options, "22.10.0")      end
 
       # Update a single account
       #
@@ -157,7 +216,7 @@ module AvaTax
       # @param model [Object] The account object you wish to update.
       # @return [Object]
       def update_account(id, model)        path = "/api/v2/accounts/#{id}"
-        put(path, model, {}, "22.9.0")      end
+        put(path, model, {}, "22.10.0")      end
 
       # Update a single notification.
       #
@@ -181,7 +240,26 @@ module AvaTax
       # @param model [Object] The notification object you wish to update.
       # @return [Object]
       def update_notification(id, model)        path = "/api/v2/notifications/#{id}"
-        put(path, model, {}, "22.9.0")      end
+        put(path, model, {}, "22.10.0")      end
+
+      # Update existing Avalara-supported subscription (ServiceTypes)
+      #
+      # For Registrar Use Only
+      # This API is for use by Avalara Registrar administrative users only.
+      #
+      # Returns the updated Avalara-supported service types.
+      # This API is intended to be useful for updating an existing subscription(service) type detail.
+      # You may always contact Avalara's sales department for information on available products or services.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param id [Integer] The unique ID number of the existing subscription type object to replace.
+      # @param model [Object] The subscription type object to update.
+      # @return [Object]
+      def update_service_type(id, model)        path = "/api/v2/servicetypes/#{id}"
+        put(path, model, {}, "22.10.0")      end
 
       # Update a single subscription
       #
@@ -203,7 +281,7 @@ module AvaTax
       # @param model [Object] The subscription you wish to update.
       # @return [Object]
       def update_subscription(accountId, id, model)        path = "/api/v2/accounts/#{accountId}/subscriptions/#{id}"
-        put(path, model, {}, "22.9.0")      end
+        put(path, model, {}, "22.10.0")      end
     end
   end
 end
