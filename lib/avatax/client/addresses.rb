@@ -32,7 +32,7 @@ module AvaTax
       # @param textCase [String] selectable text case for address validation (See TextCase::* for a list of allowable values)
       # @return [Object]
       def resolve_address(options={})        path = "/api/v2/addresses/resolve"
-        get(path, options, "22.9.0")      end
+        get(path, options, "22.10.0")      end
 
       # Retrieve geolocation information for a specified address
       #
@@ -51,7 +51,7 @@ module AvaTax
       # @param model [Object] The address to resolve
       # @return [Object]
       def resolve_address_post(model)        path = "/api/v2/addresses/resolve"
-        post(path, model, {}, "22.9.0")      end
+        post(path, model, {}, "22.10.0")      end
     end
   end
 end

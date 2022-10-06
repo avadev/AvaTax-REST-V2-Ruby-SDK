@@ -17,7 +17,7 @@ module AvaTax
       # @param serviceTypeId [String] The service to check
       # @return [Object]
       def get_my_subscription(serviceTypeId)        path = "/api/v2/utilities/subscriptions/#{serviceTypeId}"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
 
       # List all services to which the current user is subscribed
       #
@@ -32,7 +32,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @return [FetchResult]
       def list_my_subscriptions()        path = "/api/v2/utilities/subscriptions"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
 
       # Tests connectivity and version of the service
       #
@@ -59,7 +59,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @return [Object]
       def ping()        path = "/api/v2/utilities/ping"
-        get(path, {}, "22.9.0")      end
+        get(path, {}, "22.10.0")      end
     end
   end
 end
