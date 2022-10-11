@@ -9,6 +9,8 @@ AvaTax.configure do |config|
     config.endpoint = credentials['endpoint']
     config.username = credentials['username']
     config.password = credentials['password']
+    config.logger = true
+    config.log_request_and_response_info = true
   else
     config.endpoint = 'https://sandbox-rest.avatax.com'
     config.username = ENV['SANDBOX_USERNAME']
