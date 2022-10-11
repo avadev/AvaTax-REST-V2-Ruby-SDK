@@ -10,6 +10,7 @@ module AvaTax
 
     def initialize(options={})
       options = AvaTax.options.merge(options)
+      # The default logger in Faraday is configured exactly the same as this one, but we cannot get a reference to it, so we will instantiate our own.
       default_logger =  Logger.new(STDOUT)
       Configuration::VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key])
@@ -20,7 +21,7 @@ module AvaTax
 
         if custom_logger
           custom_logger.info "The request to #{url} took #{duration} ms."
-        else
+        elsif logger
           default_logger.info "The request to #{url} took #{duration} ms."
         end
       end
