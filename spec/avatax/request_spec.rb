@@ -1,4 +1,5 @@
 require File.expand_path('../../spec_helper', __FILE__)
+require 'logger'
 
 describe AvaTax::Request do
 
@@ -20,6 +21,24 @@ describe AvaTax::Request do
       response = @client.request(:get, 'path', 'model')
       expect(response.env.request['open_timeout']).to eq(5)
       expect(response.env.request['timeout']).to eq(10)
+    end
+  end
+
+  describe 'filter credentials from logs' do
+    let(:string_io) { StringIO.new }
+    let(:logger) { Logger.new(string_io) }
+
+    it 'replaces credentials with a label' do
+      # Make 'name:pass' string length a multiple of three so the base64
+      # encoded string will not have padding characters '=' at the end.
+      @client.username = 'name'
+      @client.password = 'pass'
+
+      @client.custom_logger = logger
+      response = @client.request(:get, 'path', 'model')
+
+      expect(response.env.request_headers).to include('Authorization' => 'Basic bmFtZTpwYXNz')
+      expect(string_io.string).to match(/Authorization: "Basic \[REMOVED\]"/)
     end
   end
 end
