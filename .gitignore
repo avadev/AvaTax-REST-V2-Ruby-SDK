@@ -12,6 +12,8 @@
 /example/credentials.yaml
 /spec/credentials.yaml
 
+.idea
+
 # Used by dotenv library to load environment variables.
 # .env
 

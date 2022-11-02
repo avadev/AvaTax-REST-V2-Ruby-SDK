@@ -4,8 +4,8 @@ module AvaTax
 
   module Connection
     private
-    AUTHORIZATION_FILTER_REGEX = /(Authorization\:\ \"Basic\ )(\w+)\=/
-    REMOVED_LABEL = '\1[REMOVED]'
+    AUTHORIZATION_FILTER_REGEX = /(Authorization)([^&]+)/
+    REMOVED_LABEL = '\1 [REMOVED]'
 
     def connection
       client_id = "#{app_name};#{app_version};RubySdk;API_VERSION;#{machine_name}"
@@ -26,7 +26,7 @@ module AvaTax
             bigdecimal_load: :bigdecimal
           }
         end
-
+        faraday.request :instrumentation
         faraday.response :json, content_type: /\bjson$/
         faraday.request :basic_auth, username, password
 
@@ -34,14 +34,15 @@ module AvaTax
         #   see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
         # faraday.request :authorization, :basic, username, password
 
+        default_logger_options = { headers: true, bodies: log_request_and_response_info }
         if logger
-          faraday.response :logger do |logger|
+          faraday.response :logger, nil, default_logger_options do |logger|
             logger.filter(AUTHORIZATION_FILTER_REGEX, REMOVED_LABEL)
           end
         end
 
         if custom_logger
-          faraday.response :logger, custom_logger, custom_logger_options do |logger|
+          faraday.response :logger, custom_logger, default_logger_options.merge(custom_logger_options) do |logger|
             logger.filter(AUTHORIZATION_FILTER_REGEX, REMOVED_LABEL)
           end
         end

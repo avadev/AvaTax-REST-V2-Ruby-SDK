@@ -19,7 +19,8 @@ module AvaTax
       :custom_logger_options,
       :proxy,
       :faraday_response,
-      :response_big_decimal_conversion
+      :response_big_decimal_conversion,
+      :log_request_and_response_info
     ].freeze
 
     DEFAULT_APP_NAME = nil
@@ -36,6 +37,7 @@ module AvaTax
     DEFAULT_PROXY = nil
     DEFAULT_FARADAY_RESPONSE = false
     DEFAULT_RESPONSE_BIG_DECIMAL_CONVERSION = false
+    DEFAULT_LOG_REQUEST_AND_RESPONSE_INFO = false
 
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -70,6 +72,7 @@ module AvaTax
       self.proxy = DEFAULT_PROXY
       self.faraday_response = DEFAULT_FARADAY_RESPONSE
       self.response_big_decimal_conversion = DEFAULT_RESPONSE_BIG_DECIMAL_CONVERSION
+      self.log_request_and_response_info = DEFAULT_LOG_REQUEST_AND_RESPONSE_INFO
     end
 
   end
