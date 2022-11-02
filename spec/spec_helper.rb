@@ -9,8 +9,6 @@ AvaTax.configure do |config|
     config.endpoint = credentials['endpoint']
     config.username = credentials['username']
     config.password = credentials['password']
-    config.logger = true
-    config.log_request_and_response_info = true
   else
     config.endpoint = 'https://sandbox-rest.avatax.com'
     config.username = ENV['SANDBOX_USERNAME']
@@ -18,7 +16,7 @@ AvaTax.configure do |config|
   end
 end
 
-client = AvaTax::Client.new()
+client = AvaTax::Client.new({ :logger => true, :log_request_and_response_info => true })
 companies = client.query_companies
 
 RSpec.configure do |config|
