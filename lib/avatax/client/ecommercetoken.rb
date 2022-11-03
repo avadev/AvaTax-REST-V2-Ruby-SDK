@@ -17,7 +17,7 @@ module AvaTax
       # @param model [Object] 
       # @return [Object]
       def create_e_commerce_token(companyId, model)        path = "/api/v2/companies/#{companyId}/ecommercetokens"
-        post(path, model, {}, "22.10.0")      end
+        post(path, model, {}, "22.11.0")      end
 
       # Refresh an eCommerce token.
       #
@@ -33,7 +33,7 @@ module AvaTax
       # @param model [Object] 
       # @return [FetchResult]
       def refresh_e_commerce_token(companyId, model)        path = "/api/v2/companies/#{companyId}/ecommercetokens"
-        put(path, model, {}, "22.10.0")      end
+        put(path, model, {}, "22.11.0")      end
     end
   end
 end

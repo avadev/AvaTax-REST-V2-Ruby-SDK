@@ -19,7 +19,7 @@ module AvaTax
       # @param model [CompanyDistanceThresholdModel[]] The DistanceThreshold object or objects you wish to create.
       # @return [CompanyDistanceThresholdModel[]]
       def create_distance_threshold(companyId, model)        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        post(path, model, {}, "22.10.0")      end
+        post(path, model, {}, "22.11.0")      end
 
       # Delete a single DistanceThreshold object
       #
@@ -37,7 +37,7 @@ module AvaTax
       # @param id [Integer] The unique ID number of the DistanceThreshold object you wish to delete.
       # @return [ErrorDetail[]]
       def delete_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        delete(path, {}, "22.10.0")      end
+        delete(path, {}, "22.11.0")      end
 
       # Retrieve a single DistanceThreshold
       #
@@ -55,7 +55,7 @@ module AvaTax
       # @param id [Integer] The unique ID number referring to this DistanceThreshold object
       # @return [Object]
       def get_distance_threshold(companyId, id)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        get(path, {}, "22.10.0")      end
+        get(path, {}, "22.11.0")      end
 
       # Retrieve all DistanceThresholds for this company.
       #
@@ -77,7 +77,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_distance_thresholds(companyId, options={})        path = "/api/v2/companies/#{companyId}/distancethresholds"
-        get(path, options, "22.10.0")      end
+        get(path, options, "22.11.0")      end
 
       # Retrieve all DistanceThreshold objects
       #
@@ -101,7 +101,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_distance_thresholds(options={})        path = "/api/v2/distancethresholds"
-        get(path, options, "22.10.0")      end
+        get(path, options, "22.11.0")      end
 
       # Update a DistanceThreshold object
       #
@@ -123,7 +123,7 @@ module AvaTax
       # @param model [Object] The new DistanceThreshold object to store.
       # @return [Object]
       def update_distance_threshold(companyId, id, model)        path = "/api/v2/companies/#{companyId}/distancethresholds/#{id}"
-        put(path, model, {}, "22.10.0")      end
+        put(path, model, {}, "22.11.0")      end
     end
   end
 end
