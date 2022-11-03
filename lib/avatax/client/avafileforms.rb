@@ -16,7 +16,7 @@ module AvaTax
       # @param model [AvaFileFormModel[]] The AvaFileForm you wish to create.
       # @return [AvaFileFormModel[]]
       def create_ava_file_forms(model)        path = "/api/v2/avafileforms"
-        post(path, model, {}, "22.10.0")      end
+        post(path, model, {}, "22.11.0")      end
 
       # Delete a single AvaFileForm
       #
@@ -30,7 +30,7 @@ module AvaTax
       # @param id [Integer] The ID of the AvaFileForm you wish to delete.
       # @return [ErrorDetail[]]
       def delete_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        delete(path, {}, "22.10.0")      end
+        delete(path, {}, "22.11.0")      end
 
       # Retrieve a single AvaFileForm
       #
@@ -44,7 +44,7 @@ module AvaTax
       # @param id [Integer] The primary key of this AvaFileForm
       # @return [Object]
       def get_ava_file_form(id)        path = "/api/v2/avafileforms/#{id}"
-        get(path, {}, "22.10.0")      end
+        get(path, {}, "22.11.0")      end
 
       # Retrieve all AvaFileForms
       #
@@ -62,7 +62,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_ava_file_forms(options={})        path = "/api/v2/avafileforms"
-        get(path, options, "22.10.0")      end
+        get(path, options, "22.11.0")      end
 
       # Update a AvaFileForm
       #
@@ -78,7 +78,7 @@ module AvaTax
       # @param model [Object] The AvaFileForm model you wish to update.
       # @return [Object]
       def update_ava_file_form(id, model)        path = "/api/v2/avafileforms/#{id}"
-        put(path, model, {}, "22.10.0")      end
+        put(path, model, {}, "22.11.0")      end
     end
   end
 end
