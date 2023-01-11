@@ -11,6 +11,7 @@ AvaTax.configure do |config|
     config.password = credentials['password']
   else
     config.endpoint = 'https://sandbox-rest.avatax.com'
+    # Creds can be found in 1Pass
     config.username = ENV['SANDBOX_USERNAME']
     config.password = ENV['SANDBOX_PASSWORD']
   end

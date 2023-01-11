@@ -1,3 +1,8 @@
+# FORK NOTE
+===================
+
+This gem was forked from avadev because of its incompatibility with Faraday 2.0, specifically due to Faraday Middleware being required here but not supporting Faraday 2.0. If avatax ever officially supports Faraday 2.0, this gem can be replaced with main from avadev.
+
 The AvaTax Ruby Gem
 ====================
 A Ruby wrapper for the AvaTax REST V2 APIs
