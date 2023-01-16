@@ -16,7 +16,7 @@ module AvaTax
       # @param model [DataSourceModel[]] 
       # @return [DataSourceModel[]]
       def create_data_sources(companyId, model)        path = "/api/v2/companies/#{companyId}/datasources"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Delete a datasource by datasource id for a company.
       #
@@ -31,7 +31,7 @@ module AvaTax
       # @param id [Integer] The id of the datasource you wish to delete.
       # @return [ErrorDetail[]]
       def delete_data_source(companyId, id)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        delete(path, {}, "22.11.0")      end
+        delete(path, {}, "23.1.0")      end
 
       # Get data source by data source id
       #
@@ -46,7 +46,7 @@ module AvaTax
       # @param id [Integer] data source id
       # @return [Object]
       def get_data_source_by_id(companyId, id)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Retrieve all datasources for this company
       #
@@ -64,7 +64,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_data_sources(companyId, options={})        path = "/api/v2/companies/#{companyId}/datasources"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Retrieve all datasources
       #
@@ -84,7 +84,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_data_sources(options={})        path = "/api/v2/datasources"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Update a datasource identified by id for a company
       #
@@ -100,7 +100,7 @@ module AvaTax
       # @param model [Object] 
       # @return [Object]
       def update_data_source(companyId, id, model)        path = "/api/v2/companies/#{companyId}/datasources/#{id}"
-        put(path, model, {}, "22.11.0")      end
+        put(path, model, {}, "23.1.0")      end
     end
   end
 end

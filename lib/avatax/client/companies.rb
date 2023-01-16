@@ -36,7 +36,7 @@ module AvaTax
       # @param id [Integer] The ID of the company to check if its integration is certified.
       # @return [String]
       def certify_integration(id)        path = "/api/v2/companies/#{id}/certify"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Change the filing status of this company
       #
@@ -62,7 +62,7 @@ module AvaTax
       # @param model [Object] 
       # @return [String]
       def change_filing_status(id, model)        path = "/api/v2/companies/#{id}/filingstatus"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Quick setup for a company with a single physical address
       #
@@ -86,7 +86,7 @@ module AvaTax
       # @param model [Object] Information about the company you wish to create.
       # @return [Object]
       def company_initialize(model)        path = "/api/v2/companies/initialize"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Create new companies
       #
@@ -103,7 +103,7 @@ module AvaTax
       # @param model [CompanyModel[]] Either a single company object or an array of companies to create
       # @return [CompanyModel[]]
       def create_companies(model)        path = "/api/v2/companies"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Add parameters to a company.
       #
@@ -127,7 +127,7 @@ module AvaTax
       # @param model [CompanyParameterDetailModel[]] The company parameters you wish to create.
       # @return [CompanyParameterDetailModel[]]
       def create_company_parameters(companyId, model)        path = "/api/v2/companies/#{companyId}/parameters"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Request managed returns funding setup for a company
       #
@@ -153,7 +153,7 @@ module AvaTax
       # @param model [Object] The funding initialization request
       # @return [Object]
       def create_funding_request(id, model, options={})        path = "/api/v2/companies/#{id}/funding/setup"
-        post(path, model, options, "22.11.0")      end
+        post(path, model, options, "23.1.0")      end
 
       # Delete a single company
       #
@@ -166,7 +166,7 @@ module AvaTax
       # @param id [Integer] The ID of the company you wish to delete.
       # @return [ErrorDetail[]]
       def delete_company(id)        path = "/api/v2/companies/#{id}"
-        delete(path, {}, "22.11.0")      end
+        delete(path, {}, "23.1.0")      end
 
       # Delete a single company parameter
       #
@@ -185,7 +185,7 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_company_parameter(companyId, id)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
-        delete(path, {}, "22.11.0")      end
+        delete(path, {}, "23.1.0")      end
 
       # Check the funding configuration of a company
       #
@@ -202,7 +202,7 @@ module AvaTax
       # @param companyId [Integer] The unique identifier of the company
       # @return [Object]
       def funding_configuration_by_company(companyId)        path = "/api/v2/companies/#{companyId}/funding/configuration"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Check the funding configuration of a company
       #
@@ -220,7 +220,7 @@ module AvaTax
       # @param currency [String] The currency of the funding. USD and CAD are the only valid currencies
       # @return [FundingConfigurationModel[]]
       def funding_configurations_by_company_and_currency(companyId, options={})        path = "/api/v2/companies/#{companyId}/funding/configurations"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Retrieve a single company
       #
@@ -246,7 +246,7 @@ module AvaTax
       # @param include [String] OPTIONAL: A comma separated list of special fetch options.      * Child objects - Specify one or more of the following to retrieve objects related to each company: "Contacts", "FilingCalendars", "Items", "Locations", "Nexus", "TaxCodes", "NonReportingChildren" or "TaxRules".   * Deleted objects - Specify "FetchDeleted" to retrieve information about previously deleted objects.
       # @return [Object]
       def get_company(id, options={})        path = "/api/v2/companies/#{id}"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Get configuration settings for this company
       #
@@ -270,7 +270,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [CompanyConfigurationModel[]]
       def get_company_configuration(id)        path = "/api/v2/companies/#{id}/configuration"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Retrieve a single company parameter
       #
@@ -290,7 +290,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [Object]
       def get_company_parameter_detail(companyId, id)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Get this company's filing status
       #
@@ -316,7 +316,7 @@ module AvaTax
       # @param id [Integer] 
       # @return [String]
       def get_filing_status(id)        path = "/api/v2/companies/#{id}/filingstatus"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Get ACH entry detail report for company and period
       #
@@ -335,7 +335,7 @@ module AvaTax
       # @param periodmonth [Integer] The period month
       # @return [ACHEntryDetailModel[]]
       def list_a_c_h_entry_details_for_company(id, periodyear, periodmonth)        path = "/api/v2/companies/#{id}/paymentdetails/#{periodyear}/#{periodmonth}"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Retrieve parameters for a company
       #
@@ -361,7 +361,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_company_parameter_details(companyId, options={})        path = "/api/v2/companies/#{companyId}/parameters"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Check managed returns funding status for a company
       #
@@ -378,7 +378,7 @@ module AvaTax
       # @param id [Integer] The unique identifier of the company
       # @return [FundingStatusModel[]]
       def list_funding_requests_by_company(id)        path = "/api/v2/companies/#{id}/funding"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Retrieve a list of MRS Companies with account
       #
@@ -392,7 +392,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @return [FetchResult]
       def list_mrs_companies()        path = "/api/v2/companies/mrs"
-        get(path, {}, "22.11.0")      end
+        get(path, {}, "23.1.0")      end
 
       # Retrieve all companies
       #
@@ -425,7 +425,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_companies(options={})        path = "/api/v2/companies"
-        get(path, options, "22.11.0")      end
+        get(path, options, "23.1.0")      end
 
       # Change configuration settings for this company
       #
@@ -450,7 +450,7 @@ module AvaTax
       # @param model [CompanyConfigurationModel[]] 
       # @return [CompanyConfigurationModel[]]
       def set_company_configuration(id, model)        path = "/api/v2/companies/#{id}/configuration"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
 
       # Update a single company
       #
@@ -474,7 +474,7 @@ module AvaTax
       # @param model [Object] The company object you wish to update.
       # @return [Object]
       def update_company(id, model)        path = "/api/v2/companies/#{id}"
-        put(path, model, {}, "22.11.0")      end
+        put(path, model, {}, "23.1.0")      end
 
       # Update a company parameter
       #
@@ -495,7 +495,7 @@ module AvaTax
       # @param model [Object] The company parameter object you wish to update.
       # @return [Object]
       def update_company_parameter_detail(companyId, id, model)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
-        put(path, model, {}, "22.11.0")      end
+        put(path, model, {}, "23.1.0")      end
     end
   end
 end

@@ -23,7 +23,7 @@ module AvaTax
       # @param model [Object] Required information to provision a free trial account.
       # @return [Object]
       def request_free_trial(model)        path = "/api/v2/accounts/freetrials/request"
-        post(path, model, {}, "22.11.0")      end
+        post(path, model, {}, "23.1.0")      end
     end
   end
 end
