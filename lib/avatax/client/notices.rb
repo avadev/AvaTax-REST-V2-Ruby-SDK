@@ -15,7 +15,7 @@ module AvaTax
       # @param model [Object] The responsibility type to create
       # @return [Object]
       def create_notice_responsibility_type(model)        path = "/api/v2/notices/responsibilities"
-        post(path, model, {}, "23.1.0")      end
+        post(path, model, {}, "23.2.0")      end
 
       # Creates a new tax notice root cause type.
       #
@@ -29,7 +29,7 @@ module AvaTax
       # @param model [Object] The root cause type to create
       # @return [Object]
       def create_notice_root_cause_type(model)        path = "/api/v2/notices/rootcauses"
-        post(path, model, {}, "23.1.0")      end
+        post(path, model, {}, "23.2.0")      end
 
       # Delete a tax notice responsibility type.
       #
@@ -42,7 +42,7 @@ module AvaTax
       # @param responsibilityId [Integer] The unique ID of the responsibility type
       # @return [ErrorDetail[]]
       def delete_notice_responsibility_type(responsibilityId)        path = "/api/v2/notices/responsibilities/#{responsibilityId}"
-        delete(path, {}, "23.1.0")      end
+        delete(path, {}, "23.2.0")      end
 
       # Delete a tax notice root cause type.
       #
@@ -55,7 +55,7 @@ module AvaTax
       # @param rootCauseId [Integer] The unique ID of the root cause type
       # @return [ErrorDetail[]]
       def delete_notice_root_cause_type(rootCauseId)        path = "/api/v2/notices/rootcauses/#{rootCauseId}"
-        delete(path, {}, "23.1.0")      end
+        delete(path, {}, "23.2.0")      end
     end
   end
 end
