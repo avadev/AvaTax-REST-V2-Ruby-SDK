@@ -26,14 +26,16 @@ Subscribe to the RSS feed be notified of new posts:
 ********************************************************************************
 eos
   s.email = ['marcus.vorwaller@avalara.com']
-  s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.files = `git ls-files`.split("\n")
+  s.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").select do |file|
+      file.start_with?('LICENSE', 'README', 'example', 'lib')
+    end
+  end
   s.homepage = 'https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK'
   s.name = 'avatax'
   s.platform = Gem::Platform::RUBY
   s.require_paths = ['lib']
   s.required_rubygems_version = Gem::Requirement.new('>= 2.0.0') if s.respond_to? :required_rubygems_version=
   s.summary = %q{Ruby wrapper for the AvaTax API}
-  s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.version = AvaTax::VERSION.dup
 end
