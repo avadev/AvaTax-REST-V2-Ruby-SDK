@@ -1,7 +1,7 @@
 require File.expand_path('../lib/avatax/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.add_development_dependency('rake', '~> 12.0.0')
+  s.add_development_dependency('rake', '~> 13.0')
   s.add_development_dependency('rspec', '~> 3.5.0')
   s.add_development_dependency('webmock', '>= 2.0.0')
   s.add_runtime_dependency('faraday', '>= 0.10')
