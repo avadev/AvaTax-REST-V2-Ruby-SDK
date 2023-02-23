@@ -1,5 +1,6 @@
 require File.expand_path('../../lib/avatax', __FILE__)
 require 'rspec'
+require 'active_support'
 require 'yaml'
 
 
