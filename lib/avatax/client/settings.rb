@@ -29,7 +29,7 @@ module AvaTax
       # @param model [SettingModel[]] The setting you wish to create.
       # @return [SettingModel[]]
       def create_settings(companyId, model)        path = "/api/v2/companies/#{companyId}/settings"
-        post(path, model, {}, "23.2.0")      end
+        post(path, model, {}, AvaTax::VERSION)      end
 
       # Delete a single setting
       #
@@ -52,7 +52,7 @@ module AvaTax
       # @param id [Integer] The ID of the setting you wish to delete.
       # @return [ErrorDetail[]]
       def delete_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        delete(path, {}, "23.2.0")      end
+        delete(path, {}, AvaTax::VERSION)      end
 
       # Retrieve a single setting
       #
@@ -69,13 +69,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this setting
       # @param id [Integer] The primary key of this setting
       # @return [Object]
       def get_setting(companyId, id)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        get(path, {}, "23.2.0")      end
+        get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve all settings for this company
       #
@@ -95,7 +95,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these settings
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* modifiedDate, ModifiedUserId
@@ -105,7 +105,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_settings_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/settings"
-        get(path, options, "23.2.0")      end
+        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve all settings
       #
@@ -125,7 +125,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* modifiedDate, ModifiedUserId
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -134,7 +134,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_settings(options={})        path = "/api/v2/settings"
-        get(path, options, "23.2.0")      end
+        get(path, options, AvaTax::VERSION)      end
 
       # Update a single setting
       #
@@ -162,7 +162,7 @@ module AvaTax
       # @param model [Object] The setting you wish to update.
       # @return [Object]
       def update_setting(companyId, id, model)        path = "/api/v2/companies/#{companyId}/settings/#{id}"
-        put(path, model, {}, "23.2.0")      end
+        put(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end
