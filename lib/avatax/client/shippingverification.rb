@@ -16,7 +16,7 @@ module AvaTax
       def deregister_shipment(companyCode, transactionCode, options={}, x_avalara_version="")        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/shipment/registration"
         headers= Hash.new
         headers["x-avalara-version"]=x_avalara_version if !(x_avalara_version.nil? || x_avalara_version.empty?);
-        delete(path, options, "", headers)      end
+        delete(path, options, AvaTax::VERSION, headers)      end
 
       # Registers the transaction so that it may be included when evaluating regulations that span multiple transactions.
       #
@@ -31,7 +31,7 @@ module AvaTax
       def register_shipment(companyCode, transactionCode, options={}, x_avalara_version="")        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/shipment/registration"
         headers= Hash.new
         headers["x-avalara-version"]=x_avalara_version if !(x_avalara_version.nil? || x_avalara_version.empty?);
-        put(path, options, "", headers)      end
+        put(path, options, AvaTax::VERSION, headers)      end
 
       # Evaluates a transaction against a set of direct-to-consumer shipping regulations and, if compliant, registers the transaction so that it may be included when evaluating regulations that span multiple transactions.
       #
@@ -46,7 +46,7 @@ module AvaTax
       def register_shipment_if_compliant(companyCode, transactionCode, options={}, x_avalara_version="")        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/shipment/registerIfCompliant"
         headers= Hash.new
         headers["x-avalara-version"]=x_avalara_version if !(x_avalara_version.nil? || x_avalara_version.empty?);
-        put(path, options, "", headers)      end
+        put(path, options, AvaTax::VERSION, headers)      end
 
       # Evaluates a transaction against a set of direct-to-consumer shipping regulations.
       #
@@ -76,7 +76,7 @@ module AvaTax
       def verify_shipment(companyCode, transactionCode, options={}, x_avalara_version="")        path = "/api/v2/companies/#{companyCode}/transactions/#{transactionCode}/shipment/verify"
         headers= Hash.new
         headers["x-avalara-version"]=x_avalara_version if !(x_avalara_version.nil? || x_avalara_version.empty?);
-        get(path, options, "", headers)      end
+        get(path, options, AvaTax::VERSION, headers)      end
     end
   end
 end

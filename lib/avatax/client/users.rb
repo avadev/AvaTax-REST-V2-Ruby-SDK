@@ -20,7 +20,7 @@ module AvaTax
       # @param model [Object] An object containing your current password and the new password.
       # @return [String]
       def change_password(model)        path = "/api/v2/passwords"
-        put(path, model, {}, "23.2.0")      end
+        put(path, model, {}, AvaTax::VERSION)      end
 
       # Create new users
       #
@@ -42,7 +42,7 @@ module AvaTax
       # @param model [UserModel[]] The user or array of users you wish to create.
       # @return [UserModel[]]
       def create_users(accountId, model)        path = "/api/v2/accounts/#{accountId}/users"
-        post(path, model, {}, "23.2.0")      end
+        post(path, model, {}, AvaTax::VERSION)      end
 
       # Delete a single user
       #
@@ -61,7 +61,7 @@ module AvaTax
       # @param accountId [Integer] The accountID of the user you wish to delete.
       # @return [ErrorDetail[]]
       def delete_user(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        delete(path, {}, "23.2.0")      end
+        delete(path, {}, AvaTax::VERSION)      end
 
       # Retrieve a single user
       #
@@ -74,14 +74,14 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @param include [String] Optional fetch commands.
       # @return [Object]
       def get_user(id, accountId, options={})        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        get(path, options, "23.2.0")      end
+        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve all entitlements for a single user
       #
@@ -103,13 +103,13 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The ID of the user to retrieve.
       # @param accountId [Integer] The accountID of the user you wish to get.
       # @return [Object]
       def get_user_entitlements(id, accountId)        path = "/api/v2/accounts/#{accountId}/users/#{id}/entitlements"
-        get(path, {}, "23.2.0")      end
+        get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve users for this account
       #
@@ -128,7 +128,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param accountId [Integer] The accountID of the user you wish to list.
       # @param include [String] Optional fetch commands.
@@ -138,7 +138,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_users_by_account(accountId, options={})        path = "/api/v2/accounts/#{accountId}/users"
-        get(path, options, "23.2.0")      end
+        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve all users
       #
@@ -159,7 +159,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param include [String] Optional fetch commands.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* SuppressNewUserEmail
@@ -168,7 +168,7 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def query_users(options={})        path = "/api/v2/users"
-        get(path, options, "23.2.0")      end
+        get(path, options, AvaTax::VERSION)      end
 
       # Update a single user
       #
@@ -186,7 +186,7 @@ module AvaTax
       # @param model [Object] The user object you wish to update.
       # @return [Object]
       def update_user(id, accountId, model)        path = "/api/v2/accounts/#{accountId}/users/#{id}"
-        put(path, model, {}, "23.2.0")      end
+        put(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end

@@ -19,7 +19,7 @@ module AvaTax
       # @param model [Object] Information about the individual whose age is being verified.
       # @return [Object]
       def find_age_verification(model)        path = "/api/v2/ageverification/store/identity/find"
-        put(path, model, {}, "")      end
+        put(path, model, {}, AvaTax::VERSION)      end
 
       # Stores an age verification response for the account.
       #
@@ -41,7 +41,7 @@ module AvaTax
       # @param model [Object] Information about the individual whose age has been verified and the corresponding age verification response.
       # @return []
       def store_age_verification(model)        path = "/api/v2/ageverification/store/identity"
-        put(path, model, {}, "")      end
+        put(path, model, {}, AvaTax::VERSION)      end
 
       # Conditionally performs an age verification check. If a record matching the request is found in the internal store, the associated response is returned. Otherwise, an age verification check is performed and the response is stored if the individual is determined to be of age.
       #
@@ -60,7 +60,7 @@ module AvaTax
       # @param model [Object] Information about the individual whose age is being verified.
       # @return [Object]
       def store_if_verified(model, options={})        path = "/api/v2/ageverification/store/identity/storeIfVerified"
-        put(path, model, options, "")      end
+        put(path, model, options, AvaTax::VERSION)      end
 
       # Determines whether an individual meets or exceeds the minimum legal drinking age.
       #
@@ -82,7 +82,7 @@ module AvaTax
       # @param model [Object] Information about the individual whose age is being verified.
       # @return [Object]
       def verify_age(model, options={})        path = "/api/v2/ageverification/verify"
-        post(path, model, options, "")      end
+        post(path, model, options, AvaTax::VERSION)      end
     end
   end
 end
