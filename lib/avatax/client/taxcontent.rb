@@ -141,8 +141,10 @@ module AvaTax
       # This API assumes that you are selling general tangible personal property at a retail point-of-sale
       # location in the United States only.
       #
-      # For more powerful tax calculation, please consider upgrading to the `CreateTransaction` API,
-      # which supports features including, but not limited to:
+      # Please be advised that this endpoint is designed for approximate tax rate estimation only and
+      # may not yield precise results. For a more powerful and accurate tax estimation, upgrade to the
+      # `CreateTransaction` API, which offers a variety of advanced features including, but not limited
+      # to:
       #
       # * Nexus declarations
       # * Taxability based on product/service type
@@ -177,8 +179,10 @@ module AvaTax
       # This API assumes that you are selling general tangible personal property at a retail point-of-sale
       # location in the United States only.
       #
-      # For more powerful tax calculation, please consider upgrading to the `CreateTransaction` API,
-      # which supports features including, but not limited to:
+      # Please be advised that this endpoint is designed for approximate tax rate estimation only and
+      # may not yield precise results. For a more powerful and accurate tax estimation, upgrade to the
+      # `CreateTransaction` API, which offers a variety of advanced features including, but not limited
+      # to:
       #
       # * Nexus declarations
       # * Taxability based on product/service type
