@@ -283,6 +283,8 @@ module AvaTax
       #
       # To generate a refund for a transaction, use the `RefundTransaction` API.
       #
+      # An address is required for calculation. If no address is provided at the line level, the document level address will be used.
+      #
       # If you don't specify the field `type` in your request, you will get an estimate of type `SalesOrder`, which will not be recorded in the database.
       #
       # A transaction represents a unique potentially taxable action that your company has recorded, and transactions include actions like
@@ -331,6 +333,8 @@ module AvaTax
       # update it if it does exist.
       #
       # To generate a refund for a transaction, use the `RefundTransaction` API.
+      #
+      # An address is required for calculation. If no address is provided at the line level, the document level address will be used.
       #
       # The field `type` identifies the kind of transaction - for example, a sale, purchase, or refund. If you do not specify
       # a `type` value, you will receive an estimate of type `SalesOrder`, which will not be recorded.
