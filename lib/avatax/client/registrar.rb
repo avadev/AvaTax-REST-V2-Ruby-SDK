@@ -46,26 +46,6 @@ module AvaTax
       def create_notifications(model)        path = "/api/v2/notifications"
         post(path, model, {}, AvaTax::VERSION)      end
 
-      # Create Avalara-supported subscription (ServiceTypes)
-      #
-      # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Create one service/subscription object.
-      #
-      # Returns the newly created Avalara-supported subscription (service) type.
-      # This API is intended to be useful for adding new Avalara-supported subscription type (service type).
-      # You may always contact Avalara's sales department for information on available products or services.
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # Swagger Name: AvaTaxClient	  
-      # @param model [Object] The subscription type object you wish to create.
-      # @return [Object]
-      def create_service_types(model)        path = "/api/v2/servicetypes"
-        post(path, model, {}, AvaTax::VERSION)      end
-
       # Create a new subscription
       #
       # This API is for use by Avalara Registrar administrative users only.
@@ -122,23 +102,6 @@ module AvaTax
       # @param id [Integer] The id of the notification you wish to delete.
       # @return [ErrorDetail[]]
       def delete_notification(id)        path = "/api/v2/notifications/#{id}"
-        delete(path, {}, AvaTax::VERSION)      end
-
-      # Delete a single Subscription (ServiceTypes) object
-      #
-      # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Marks the Subscription (ServiceTypes) object identified by this URL as deleted.
-      # This API is useful for deleting an existing Avalara-supported subscription type (service type).
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # Swagger Name: AvaTaxClient	  
-      # @param id [Integer] The unique ID number of the Subscription object you wish to delete.
-      # @return [ErrorDetail[]]
-      def delete_service_type(id)        path = "/api/v2/servicetypes/#{id}"
         delete(path, {}, AvaTax::VERSION)      end
 
       # Delete a single subscription
@@ -240,25 +203,6 @@ module AvaTax
       # @param model [Object] The notification object you wish to update.
       # @return [Object]
       def update_notification(id, model)        path = "/api/v2/notifications/#{id}"
-        put(path, model, {}, AvaTax::VERSION)      end
-
-      # Update existing Avalara-supported subscription (ServiceTypes)
-      #
-      # For Registrar Use Only
-      # This API is for use by Avalara Registrar administrative users only.
-      #
-      # Returns the updated Avalara-supported service types.
-      # This API is intended to be useful for updating an existing subscription(service) type detail.
-      # You may always contact Avalara's sales department for information on available products or services.
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: BatchServiceAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
-      # Swagger Name: AvaTaxClient	  
-      # @param id [Integer] The unique ID number of the existing subscription type object to replace.
-      # @param model [Object] The subscription type object to update.
-      # @return [Object]
-      def update_service_type(id, model)        path = "/api/v2/servicetypes/#{id}"
         put(path, model, {}, AvaTax::VERSION)      end
 
       # Update a single subscription
