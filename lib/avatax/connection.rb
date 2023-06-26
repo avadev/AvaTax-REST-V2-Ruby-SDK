@@ -1,4 +1,4 @@
-require 'faraday_middleware'
+require 'faraday'
 
 module AvaTax
 
@@ -27,12 +27,13 @@ module AvaTax
           }
         end
         faraday.request :instrumentation
-        faraday.response :json, content_type: /\bjson$/
-        faraday.request :basic_auth, username, password
-
-        # TODO: use the following after upgrading to faraday 2.0
-        #   see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
-        # faraday.request :authorization, :basic, username, password
+        if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('2.0.0')
+          # Use the following after upgrading to faraday 2.0
+          # see https://github.com/lostisland/faraday/blob/main/docs/middleware/request/authentication.md
+          faraday.request :authorization, :basic, username, password
+        else
+          faraday.request :basic_auth, username, password
+        end
 
         default_logger_options = { headers: true, bodies: log_request_and_response_info }
         if logger
@@ -48,6 +49,9 @@ module AvaTax
         end
 
         faraday.adapter Faraday.default_adapter
+
+        # Use Faraday's built-in response parser
+        faraday.response :json, parser_options: { symbolize_names: false }
       end
     end
   end
