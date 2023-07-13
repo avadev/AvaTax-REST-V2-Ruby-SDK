@@ -3,6 +3,25 @@ module AvaTax
     module TaxRules 
 
 
+      # Create new Country Coefficients. If already exist update them.
+      #
+      # Create one or more Country Coefficients for particular country.
+      #
+      # We would like to use country coefficients during Cross-Border calculations to slightly increase or decrease
+      # a calculation for a line based on the tax-subtype and Country of destination for a transaction.
+      #
+      # This will allow AvaTax to minimize the variance caused between actual transaction taken place on ground Vs Tax
+      # Calculated by AvaTax.
+      #
+      # Make sure to use the same API to update the country coefficients that is already present in the database.
+      # This will make existing entry for specific country as ineffective for that date. And new entry created will get applicable
+      # to the newer transactions.
+      # Swagger Name: AvaTaxClient	  
+      # @param model [Object] The Country Coefficients for specific country you wish to create.
+      # @return [CountryCoefficientsResponseModel[]]
+      def create_country_coefficients(model)        path = "/api/v2/countryCoefficients"
+        put(path, model, {}, AvaTax::VERSION)      end
+
       # Create a new tax rule
       #
       # Create one or more custom tax rules attached to this company.
@@ -80,6 +99,23 @@ module AvaTax
       # @return [Object]
       def get_tax_rule(companyId, id)        path = "/api/v2/companies/#{companyId}/taxrules/#{id}"
         get(path, {}, AvaTax::VERSION)      end
+
+      # Retrieve country coefficients for specific country
+      #
+      # Retrieve all or any specific records of Country Coefficients based on the filters(optional) for specific country.
+      #
+      #  Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      #  Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      # Swagger Name: AvaTaxClient	  
+      # @param country [String] Country for which data need to be pulled for.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* CoefficientsId, AccountId, ModifiedUserId, CreatedUserId
+      # @param include [String] A comma separated list of additional data to retrieve.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_country_coefficients(country, options={})        path = "/api/v2/#{country}/CountryCoefficients"
+        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve tax rules for this company
       #
