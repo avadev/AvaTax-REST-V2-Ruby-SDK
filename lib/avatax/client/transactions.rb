@@ -19,6 +19,7 @@ module AvaTax
       #
       #  * Lines
       #  * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       #  * Summary (implies details)
       #  * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -55,6 +56,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -196,6 +198,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -241,6 +244,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -293,6 +297,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -348,6 +353,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -386,6 +392,7 @@ module AvaTax
       #
       #  * Lines
       #  * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       #  * Summary (implies details)
       #  * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -432,6 +439,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -496,6 +504,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -545,6 +554,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -592,6 +602,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -647,6 +658,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -694,6 +706,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -732,6 +745,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -767,6 +781,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -822,6 +837,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
@@ -867,6 +883,7 @@ module AvaTax
       #
       # * Lines
       # * Details (implies lines)
+      # * AccountPayableSalesTaxDetails (implies lines - only for Account Payable transaction)
       # * Summary (implies details)
       # * Addresses
       # * SummaryOnly (omit lines and details - reduces API response size)
