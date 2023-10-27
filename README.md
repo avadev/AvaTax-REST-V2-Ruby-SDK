@@ -95,4 +95,4 @@ Copyright
 ---------
 Copyright (c) 2017, Avalara, Inc. All rights reserved.
 By contributing to AvaTax Ruby Gem, you agree that your contributions will be licensed under its Apache License.
-See [LICENSE](https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK/) for details.
+See [LICENSE](https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK/blob/master/LICENSE) for details.
