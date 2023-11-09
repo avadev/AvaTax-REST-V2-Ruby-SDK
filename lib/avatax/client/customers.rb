@@ -54,7 +54,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
-      # @return [Object]
+      # @return []
       def delete_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
         delete(path, {}, AvaTax::VERSION)      end
 

@@ -191,6 +191,20 @@ module AvaTax
       def get_license_keys(id)        path = "/api/v2/accounts/#{id}/licensekeys"
         get(path, {}, AvaTax::VERSION)      end
 
+      # Retrieve a list of MRS Accounts
+      #
+      # This API is available by invitation only.
+      #
+      # Get a list of accounts with an active MRS service.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @return [FetchResult]
+      def list_mrs_accounts()        path = "/api/v2/accounts/mrs"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Retrieve all accounts
       #
       # List all account objects that can be seen by the current user.
