@@ -362,6 +362,22 @@ module AvaTax
       def list_jurisdictions_by_rate_type_tax_type_mapping(country, taxTypeId, taxSubTypeId, options={})        path = "/api/v2/definitions/jurisdictions/countries/#{country}/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}"
         get(path, options, AvaTax::VERSION)      end
 
+      # List jurisdictions hierarchy based on the filter provided
+      #
+      # Returns a list of all Avalara-supported taxing jurisdictions hirearchy.
+      #
+      # This API Lists the hierarchical relationship of jurisdictions for US states, identifying the cities and special taxing jurisdictions (STJs) for a given county within a state.
+      #
+      # The rate, salesRate, and useRate fields are not available on the JurisdictionHirearchyModels returned by this API.
+      # Swagger Name: AvaTaxClient	  
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* parentId, nexus, rate, salesRate, signatureCode, useRate, isAcm, isSst
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_jurisdictions_hierarchy(options={})        path = "/api/v2/definitions/jurisdictions/hierarchy"
+        get(path, options, AvaTax::VERSION)      end
+
       # List jurisdiction types based on the provided taxTypeId, taxSubTypeId, country, and rateTypeId
       #
       # Returns a list of all applicable jurisdiction types based on country, taxTypeId, taxSubTypeId, and rateTypeId
