@@ -24,7 +24,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param model [CustomerModel[]] The list of customer objects to be created
@@ -50,7 +50,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -82,7 +82,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -112,7 +112,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded the provided customer
       # @param customerCode [String] The unique code representing the current customer
@@ -139,7 +139,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -167,7 +167,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company defining customers.
       # @param code [String] The code of the bill-to customer to link.
@@ -197,7 +197,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded the provided customer
       # @param customerCode [String] The unique code representing the current customer
@@ -223,7 +223,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -257,7 +257,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -290,7 +290,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param include [String] OPTIONAL - You can specify the value `certificates` to fetch information about certificates linked to the customer.
@@ -323,7 +323,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded the customer
       # @param customerCode [String] The unique code representing the current customer
@@ -350,7 +350,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
@@ -377,7 +377,7 @@ module AvaTax
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
-      # * This API depends on the following active services:*Required* (all): AvaTaxPro.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
