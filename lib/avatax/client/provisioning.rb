@@ -33,8 +33,8 @@ module AvaTax
 
       # Request a new entitilement to an existing customer
       #
-      # This API is for use by partner provisioning services customers only. This will allow the partners to allow
-      # the add new entitlement to an existing customer
+      # This API is for use by partner provisioning services customers only. This allows the partners to add
+      # new entitlements to an existing customer.
       #
       # ### Security Policies
       #
