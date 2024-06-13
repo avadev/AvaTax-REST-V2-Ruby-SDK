@@ -130,7 +130,7 @@ module AvaTax
       # The list of parameters is available for use with Item Classification.
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* values
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributeSubType, values
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -295,6 +295,26 @@ module AvaTax
       # @return [FetchResult]
       def list_filing_frequencies(options={})        path = "/api/v2/definitions/filingfrequencies"
         get(path, options, AvaTax::VERSION)      end
+
+      # List of all recommendation status which can be assigned to an item
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @return [ItemTaxCodeRecommendationStatusModel[]]
+      def list_items_recommendations_status()        path = "/api/v2/definitions/items/recommendationstatus"
+        get(path, {}, AvaTax::VERSION)      end
+
+      # List of all possible status which can be assigned to an item
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @return [ItemStatusModel[]]
+      def list_items_status()        path = "/api/v2/definitions/items/status"
+        get(path, {}, AvaTax::VERSION)      end
 
       # List jurisdictions based on the filter provided
       #
@@ -684,7 +704,7 @@ module AvaTax
       # This list of parameters is available for use when configuring your transaction.
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, values
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, attributeSubType, values
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -697,7 +717,7 @@ module AvaTax
       # Returns the list of Avalara-supported parameters based on account subscriptions.
       # Swagger Name: AvaTaxClient	  
       # @param accountId [Integer] The ID of the account to retrieve the parameters.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, values
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, attributeSubType, values
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -728,7 +748,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyCode [String] Company code.
       # @param itemCode [String] Item code.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, values
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, attributeSubType, values
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -742,7 +762,7 @@ module AvaTax
       # This list of parameters is available for use when configuring your transaction.
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* values, valueDescriptions
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributeSubType, values, valueDescriptions
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -913,26 +933,13 @@ module AvaTax
       def list_regions_by_country_and_tax_type_and_tax_sub_type_and_rate_type(companyId, country, taxTypeId, taxSubTypeId, rateTypeId, jurisdictionTypeId, options={})        path = "/api/v2/definitions/companies/#{companyId}/countries/#{country}/regions/taxtypes/#{taxTypeId}/taxsubtypes/#{taxSubTypeId}/rateTypeId/#{rateTypeId}/jurisdictionTypeId/#{jurisdictionTypeId}"
         get(path, options, AvaTax::VERSION)      end
 
-      # Retrieve the full list of Avalara-supported resource file types
-      #
-      # Returns the full list of Avalara-supported resource file types
-      # This API is intended to be useful to identify all the different resource file types.
-      # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def list_resource_file_types(options={})        path = "/api/v2/definitions/resourcefiletypes"
-        get(path, options, AvaTax::VERSION)      end
-
       # Retrieve the full list of Avalara-supported usage of parameters used for returns.
       #
       # Returns the full list of Avalara-supported usage of extra parameters for the returns.
       # This list of parameters is available for use with Returns.
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* values
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributeSubType, values
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
