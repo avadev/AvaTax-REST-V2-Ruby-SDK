@@ -126,10 +126,11 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
+      # @param processRecommendationsSynchronously [Boolean] If true then Indix api will be called synchronously to get tax code recommendations.
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
-      def create_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items"
-        post(path, model, {}, AvaTax::VERSION)      end
+      def create_items(companyId, model, options={})        path = "/api/v2/companies/#{companyId}/items"
+        post(path, model, options, AvaTax::VERSION)      end
 
       # Create tags for a item
       #
@@ -289,30 +290,6 @@ module AvaTax
       def delete_item_tags(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
         delete(path, {}, AvaTax::VERSION)      end
 
-      # Get status of classification requests of a company
-      #
-      # Get status of tax code classification requests of a company.
-      #
-      # Avalara AvaTax system tax codes represent various goods and services classified by industry or consumer categories and
-      # major physical similarities. Taxability rules are associated with tax codes. Customers can map their Items to tax codes
-      # allowing them to take advantage of thousands of tax rules in the AvaTax engine resulting in accurate taxability determinations.
-      #
-      # Enable includeClassificationDetails flag to get details of classification request status.
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # Swagger Name: AvaTaxClient	  
-      # @param companyId [Integer] The ID of the company that defined these items
-      # @param includeClassificationDetails [Boolean] A boolean field to get detailed classification status.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* classificationDetails, totalItems
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def get_classification_status(companyId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
-        get(path, options, AvaTax::VERSION)      end
-
       # Retrieve a single item
       #
       # Get the `Item` object identified by this URL.
@@ -393,6 +370,20 @@ module AvaTax
       def get_item_tags(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
         get(path, options, AvaTax::VERSION)      end
 
+      # Get Item TaxCode Recommendations
+      #
+      # Provides at least three tax-code recommendations for the given company ID and item ID
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] 
+      # @param itemId [Integer] 
+      # @return [Object]
+      def get_item_tax_code_recommendations(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/taxcoderecommendations"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Retrieve premium classification for a company's item based on its ItemCode and SystemCode.
       #
       # Retrieves the premium classification for an ItemCode and SystemCode.
@@ -416,28 +407,6 @@ module AvaTax
       # @return [Object]
       def get_premium_classification(companyId, itemCode, systemCode)        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassification/#{systemCode}"
         get(path, {}, AvaTax::VERSION)      end
-
-      # Get tax code recommendations
-      #
-      # Get tax code recommendations.
-      #
-      # Avalara AvaTax system tax codes represent various goods and services classified by industry or consumer categories and
-      # major physical similarities. Taxability rules are associated with tax codes. Customers can map their Items to tax codes
-      # allowing them to take advantage of thousands of tax rules in the AvaTax engine resulting in accurate taxability determinations.
-      #
-      # ### Security Policies
-      #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
-      # Swagger Name: AvaTaxClient	  
-      # @param companyId [Integer] The ID of the company that defined these items
-      # @param requestId [Integer] The ID of the classification request
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* recommendations, url
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def get_tax_code_recommendations(companyId, requestId, options={})        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode/#{requestId}/recommendations"
-        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve Restrictions for Item by CountryOfImport
       #
@@ -534,6 +503,10 @@ module AvaTax
       #
       # You may specify Tag Name in the `tagName` query parameter if you want to filter items on the basis of tagName
       #
+      # You may specify comma seperated item status in the `itemStatus` query parameter if you want to filter items on the basis of item status
+      #
+      # You may specify Tax Code recommendation status in the `taxCodeRecommendationStatus` query parameter if you want to filter items on the basis of tax code recommendation status
+      #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Parameters
@@ -546,12 +519,14 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, upc, classifications, parameters, tags, properties
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @param tagName [String] Tag Name on the basis of which you want to filter Items
+      # @param itemStatus [String] A comma separated list of item status on the basis of which you want to filter Items
+      # @param taxCodeRecommendationStatus [String] Tax code recommendation status on the basis of which you want to filter Items
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
         get(path, options, AvaTax::VERSION)      end
@@ -574,7 +549,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, upc, classifications, parameters, tags, properties
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -582,6 +557,34 @@ module AvaTax
       # @return [FetchResult]
       def query_items(options={})        path = "/api/v2/items"
         get(path, options, AvaTax::VERSION)      end
+
+      # Retrieve items for this company based on System Code and filter criteria(optional) provided
+      #
+      # Retrieve items based on System Code
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
+      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
+      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
+      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
+      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # Search for specific objects by passing the `$filter` criteria in the body; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      #
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that defined these items
+      # @param systemCode [String] System code on the basis of which you want to filter Items
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param model [Object] A filter statement to select specific records, as defined by https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#97-filtering .
+      # @return [FetchResult]
+      def query_items_by_system_code(companyId, systemCode, model, options={})        path = "/api/v2/companies/#{companyId}/items/internal/bySystemCode/#{systemCode}"
+        post(path, model, options, AvaTax::VERSION)      end
 
       # Retrieve all items associated with given tag
       #
@@ -603,7 +606,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, upc, classifications, parameters, tags, properties
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
