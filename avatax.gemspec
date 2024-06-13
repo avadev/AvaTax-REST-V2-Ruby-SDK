@@ -9,21 +9,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('activesupport', '>= 6.1.7')
   s.authors = ["Marcus Vorwaller"]
   s.description = %q{A Ruby wrapper for the AvaTax REST and Search APIs}
-  s.post_install_message =<<eos
-********************************************************************************
-
-AvaTax REST API
-------------------------------
-Our developer site documents the AvaTax REST API.
-(https://developer.avalara.com).
-Blog
-----------------------------
-The Developer Blog is a great place to learn more about the API and AvaTax integrations
-Subscribe to the RSS feed be notified of new posts:
-(https://developer.avalara.com/blogs).
-
-********************************************************************************
-eos
   s.email = ['marcus.vorwaller@avalara.com']
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files = `git ls-files`.split("\n")
