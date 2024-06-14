@@ -1,5 +1,6 @@
 require File.expand_path('../connection', __FILE__)
 require File.expand_path('../request', __FILE__)
+require 'active_support'
 require 'active_support/notifications'
 require 'logger'
 
