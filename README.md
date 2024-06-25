@@ -89,7 +89,7 @@ Submitting a Pull Request
 
 Build Status
 ------------
-[![Build Status](https://travis-ci.org/avadev/AvaTax-REST-V2-Ruby-SDK.svg?branch=master)](https://travis-ci.org/avadev/AvaTax-REST-V2-Ruby-SDK)
+[![Build Status](https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/avadev/AvaTax-REST-V2-Ruby-SDK/actions/workflows/test.yml)
 
 Copyright
 ---------

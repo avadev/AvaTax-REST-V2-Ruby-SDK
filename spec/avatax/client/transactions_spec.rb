@@ -30,6 +30,8 @@ describe AvaTax::Client do
     end
 
     it "should create a transaction" do
+      pending('AvaTax sandbox credentials not set') if ENV['SANDBOX_USERNAME'].to_s.empty?
+
       transaction = @client.create_transaction(@base_transaction)
       expect(transaction).to be_a Object
       expect(transaction["id"]).to be_a Integer
