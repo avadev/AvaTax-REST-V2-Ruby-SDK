@@ -532,6 +532,26 @@ module AvaTax
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
         get(path, options, AvaTax::VERSION)      end
 
+      # Retrieve the parameters by companyId and itemId.
+      #
+      # Returns the list of parameters based on the company's service types and the item code.
+      # Ignores nexus if a service type is configured in the 'IgnoreNexusForServiceTypes' configuration section.
+      # Ignores nexus for the AvaAlcohol service type.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] Company Identifier.
+      # @param itemId [Integer] Item Identifier.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* serviceTypes, regularExpression, attributeSubType, values
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_recommended_parameter_by_company_id_and_item_id(companyId, itemId, options={})        path = "/api/v2/definitions/companies/#{companyId}/items/#{itemId}/parameters"
+        get(path, options, AvaTax::VERSION)      end
+
       # Retrieve all items
       #
       # Get multiple item objects across all companies.
