@@ -70,9 +70,16 @@ module AvaTax
       #
       # You can use the `$include` parameter to fetch the following additional objects for expansion:
       #
-      # * Certificates - Fetch a list of certificates linked to this customer.
-      # * CustomFields - Fetch a list of custom fields associated to this customer.
+      # * certificates - Fetch a list of certificates linked to this customer.
       # * attributes - Retrieves all attributes applied to the customer.
+      # * active_certificates - Retrieves all the active certificates linked to this customer
+      # * histories - Retrieves the update history for this customer
+      # * logs - Retrieves customer logs
+      # * jobs - Retrieves customer jobs
+      # * billTos - Retrieves bill-tos linked with this customer
+      # * shipTos - Retrieves ship-tos linked with this customer
+      # * shipToStates - Retrieves ship-to states for this customer
+      # * custom_fields - Retrieves custom fields set for this customer
       #
       # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
       # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
@@ -227,7 +234,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
-      # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.
+      # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.   * histories - Retrieves the certificate update history   * jobs - Retrieves the jobs for this certificate   * logs - Retrieves the certificate log   * invalid_reasons - Retrieves invalid reasons for this certificate if the certificate is invalid   * custom_fields - Retrieves custom fields set for this certificate
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* exemptionNumber, status, ecmStatus, ecmsId, ecmsStatus, pdf, pages
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -279,8 +286,16 @@ module AvaTax
       #
       # You can use the `$include` parameter to fetch the following additional objects for expansion:
       #
-      # * Certificates - Fetch a list of certificates linked to this customer.
+      # * certificates - Fetch a list of certificates linked to this customer.
       # * attributes - Retrieves all attributes applied to the customer.
+      # * active_certificates - Retrieves all the active certificates linked to this customer
+      # * histories - Retrieves the update history for this customer
+      # * logs - Retrieves customer logs
+      # * jobs - Retrieves customer jobs
+      # * billTos - Retrieves bill-tos linked with this customer
+      # * shipTos - Retrieves ship-tos linked with this customer
+      # * shipToStates - Retrieves ship-to states for this customer
+      # * custom_fields - Retrieves custom fields set for this customer
       #
       # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
       # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
@@ -293,7 +308,7 @@ module AvaTax
       # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
-      # @param include [String] OPTIONAL - You can specify the value `certificates` to fetch information about certificates linked to the customer.
+      # @param include [String] OPTIONAL - You can specify any of the values in `certificates`, `attributes`, `active_certificates`, `histories`, `logs`, `jobs`, `billTos`, `shipTos`, `shipToStates`, and `custom_fields` to fetch additional information for this certificate.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
