@@ -10,16 +10,16 @@ module AvaTax
       # * This API depends on the following active services:*Required* (all): ECMPremiumComms, ECMProComms.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID number of the company to search
-      # @param certificateId [Integer] The ID number of the certifificate to search
+      # @param certificateId [Integer] The ID number of the certificate to search
       # @return [Object]
       def get_communication_certificate(companyId, certificateId)        path = "/companies/#{companyId}/communication-certificates/#{certificateId}"
         get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve all communication certificates.
       #
-      # List all account objects that can be seen by the current user.
+      # List all communication certificates that can be seen by the current user.
       #
-      # This API lists all accounts you are allowed to see. In general, most users will only be able to see their own account.
+      # This API lists all communication certificates you are allowed to see.
       #
       # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
