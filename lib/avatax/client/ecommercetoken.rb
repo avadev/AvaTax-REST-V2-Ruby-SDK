@@ -3,11 +3,15 @@ module AvaTax
     module ECommerceToken 
 
 
-      # Create a new eCommerce token.
+      # Create a new ecommerce token.
       #
-      # Creates a new eCommerce token.
+      # Creates a new ecommerce token.
       #
-      # This API is used to create a new eCommerce token. An eCommerce token is required in order to launch the CertCapture eCommerce plugin. Create a token for each of your CertCapture customers.
+      # This API is used to create a new ecommerce token. An ecommerce token is required in order to launch the ECM/CertCapture ecommerce plugin. Create a separate token for each of your ECM/CertCapture customers.
+      #
+      # Use the SDK to embed ECM’s document submission form into your ecommerce platform or online store. Once the token is created, place the returned token value for that customer record in the token field in your ecommerce SDK code. This allows customers to manage their exemption certificates before or after making the purchase. More information is available in the [ECM/CertCapture integration guide](https://developer.avalara.com/document-management/set-up-ecm-for-ecommerce/ecm-in-ecom-environments/).
+      #
+      # You can also use the [ecommerce Plugin Demo](https://developer.avalara.com/certcapture/cert-demo/) on developer.avalara.com to test generating a token. Using your AvaTax username and password, try generating the token and combining it with various parameters.
       #
       # ### Security Policies
       #

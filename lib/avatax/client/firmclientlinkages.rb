@@ -70,12 +70,26 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] 
       # @return [Object]
       def get_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}"
         get(path, {}, AvaTax::VERSION)      end
+
+      # Insert a full FirmClientLinkage record
+      #
+      # Avalara allows firms to manage returns for clients without the clients needing to use AvaTax service.
+      # Firms can create accounts of FirmClient for customers they are managing using this API.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: BatchServiceAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param model [Object] FirmClientLinkage record
+      # @return [Object]
+      def insert_firm_client_linkage(model)        path = "/api/v2/firmclientlinkages/insert"
+        post(path, model, {}, AvaTax::VERSION)      end
 
       # List client linkages for a firm or client
       #
@@ -83,7 +97,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* firmAccountName, clientAccountName
       # @return [FetchResult]
@@ -128,6 +142,20 @@ module AvaTax
       # @return [Object]
       def revoke_firm_client_linkage(id)        path = "/api/v2/firmclientlinkages/#{id}/revoke"
         post(path, {}, {}, AvaTax::VERSION)      end
+
+      # Update a full FirmClientLinkage record
+      #
+      # Avalara allow updating the firm client linkage as a pass thru call.
+      # Firms can create accounts of FirmClient for customers they are managing using this API.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: BatchServiceAdmin, FirmAdmin, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param model [Object] FirmClientLinkage record
+      # @return [Object]
+      def update_firm_client_linkage(model)        path = "/api/v2/firmclientlinkages"
+        put(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end
