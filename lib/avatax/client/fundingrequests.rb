@@ -26,6 +26,8 @@ module AvaTax
       # @param id [Integer] The unique ID number of this funding request
       # @param businessUnit [String] The company's business unit (See POABusinessUnit::* for a list of allowable values)
       # @param subscriptionType [String] The company's subscription type (See POASubscriptionType::* for a list of allowable values)
+      # @param currency [String] Currency
+      # @param agreementType [String] Agreement Type
       # @return [Object]
       def activate_funding_request(id, options={})        path = "/api/v2/fundingrequests/#{id}/widget"
         get(path, options, AvaTax::VERSION)      end
