@@ -296,6 +296,16 @@ module AvaTax
       def list_filing_frequencies(options={})        path = "/api/v2/definitions/filingfrequencies"
         get(path, options, AvaTax::VERSION)      end
 
+      # List of all HS code classification statuses that can be assigned to an Item.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @return [ItemHSCodeClassificationStatusOutputModel[]]
+      def list_item_h_s_code_classification_status()        path = "/api/v2/definitions/items/hscode-classification-status"
+        get(path, {}, AvaTax::VERSION)      end
+
       # List of all recommendation status which can be assigned to an item
       #
       # ### Security Policies

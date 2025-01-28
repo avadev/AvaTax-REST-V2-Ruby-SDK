@@ -173,7 +173,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
       # Swagger Name: AvaTaxClient	  
       # @param id [Integer] The ID of the account to retrieve
-      # @param licensekeyname [String] The ID of the account to retrieve
+      # @param licensekeyname [String] The license key name to be retrieved
       # @return [Object]
       def get_license_key(id, licensekeyname)        path = "/api/v2/accounts/#{id}/licensekey/#{licensekeyname}"
         get(path, {}, AvaTax::VERSION)      end

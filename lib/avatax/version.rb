@@ -1,3 +1,3 @@
 ﻿module AvaTax
-  VERSION = '24.12.0'.freeze unless defined?(::AvaTax::VERSION)
+  VERSION = '25.1.0'.freeze unless defined?(::AvaTax::VERSION)
 end

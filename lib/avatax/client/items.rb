@@ -290,6 +290,21 @@ module AvaTax
       def delete_item_tags(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
         delete(path, {}, AvaTax::VERSION)      end
 
+      # Dismiss the `Status` and `Details` values of the given ItemHSCodeClassificationStatus.
+      #
+      # Dismiss the existing `Status` and `Details` of the ItemHSCodeClassificationStatus object at this URL with an updated object.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company to which this item belongs.
+      # @param itemId [Integer] The ID of the item whose classification status you want to update.
+      # @param country [String] The country of the HS code classification request status record that is to be updated.
+      # @return [Object]
+      def dismiss_h_s_code_classification_status(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hscode-classifications-status/$dismiss"
+        put(path, options, AvaTax::VERSION)      end
+
       # Retrieve a single item
       #
       # Get the `Item` object identified by this URL.
@@ -404,9 +419,22 @@ module AvaTax
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param itemCode [String] The ItemCode of the item for which you want to retrieve premium classification
       # @param systemCode [String] The SystemCode for which you want to retrieve premium classification
+      # @param country [String] Optional: Provide the country for which you want to retrieve the premium classification.
       # @return [Object]
-      def get_premium_classification(companyId, itemCode, systemCode)        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassification/#{systemCode}"
-        get(path, {}, AvaTax::VERSION)      end
+      def get_premium_classification(companyId, itemCode, systemCode, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassification/#{systemCode}"
+        get(path, options, AvaTax::VERSION)      end
+
+      # Create an HS code classification request.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company for which you want to create this HS code classification request.
+      # @param model [ItemHSCodeClassificationInputModel[]] Item HSCodeClassification input Model
+      # @return [ItemHSCodeClassificationOutputModel[]]
+      def initiate_h_s_code_classification(companyId, model)        path = "/api/v2/companies/#{companyId}/items/$initiate-hscode-classification"
+        post(path, model, {}, AvaTax::VERSION)      end
 
       # Retrieve Restrictions for Item by CountryOfImport
       #
@@ -452,7 +480,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* productCode, systemCode, IsPremium
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* productCode, systemCode, country, IsPremium, ClassificationEvent
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -487,6 +515,33 @@ module AvaTax
       def list_item_parameters(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
         get(path, options, AvaTax::VERSION)      end
 
+      # Retrieve premium classification for an item based on its `companyId` and `itemCode`.
+      #
+      # Retrieve the premium classification for an Item based on its `itemCode` and `companyId`.
+      #
+      # NOTE: If your item code contains any of these characters /, +, ?,",' ,% or #, please use the following encoding before making a request:
+      # * Replace '/' with '\_-ava2f-\_' For example: 'Item/Code' becomes 'Item_-ava2f-_Code'
+      # * Replace '+' with '\_-ava2b-\_' For example: 'Item+Code' becomes 'Item_-ava2b-_Code'
+      # * Replace '?' with '\_-ava3f-\_' For example: 'Item?Code' becomes 'Item_-ava3f-_Code'
+      # * Replace '%' with '\_-ava25-\_' For example: 'Item%Code' becomes 'Item_-ava25-_Code'
+      # * Replace '#' with '\_-ava23-\_' For example: 'Item#Code' becomes 'Item_-ava23-_Code'
+      # * Replace ''' with '\_-ava27-\_' For example: 'Item'Code' becomes 'Item_-ava27-_Code'
+      # * Replace '"' with '\_-ava22-\_' For example: 'Item"Code' becomes 'Item_-ava22-_Code'
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item object.
+      # @param itemCode [String] The item code of the item for which you want to retrieve premium classification.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* HsCode, justification, createdDate, createdUserId
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @return [FetchResult]
+      def list_item_premium_classifications(companyId, itemCode, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassifications"
+        get(path, options, AvaTax::VERSION)      end
+
       # Retrieve items for this company
       #
       # List all items defined for the current company.
@@ -507,6 +562,12 @@ module AvaTax
       #
       # You may specify Tax Code recommendation status in the `taxCodeRecommendationStatus` query parameter if you want to filter items on the basis of tax code recommendation status
       #
+      # You can specify an HS code classification status in the `hsCodeClassificationStatus` query parameter if you want to filter items based on an HS code classification status.
+      #
+      # You can specify a comma-separated list of countries in the `hsCodeExistsInCountries` query parameter if you want to filter items based on whether an HS code exists for the provided countries.
+      #
+      # You can specify a comma-separated list of countries in the `hsCodeDoesNotExistsInCountries` query parameter if you want to filter items on the basis of whether an HS code does not exist for the provided countries.
+      #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Parameters
@@ -514,6 +575,7 @@ module AvaTax
       # * Tags
       # * Properties
       # * TaxCodeRecommendationStatus
+      # * HsCodeClassificationStatus
       # * TaxCodeDetails
       #
       # ### Security Policies
@@ -521,7 +583,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -529,6 +591,9 @@ module AvaTax
       # @param tagName [String] Tag Name on the basis of which you want to filter Items
       # @param itemStatus [String] A comma separated list of item status on the basis of which you want to filter Items
       # @param taxCodeRecommendationStatus [String] Tax code recommendation status on the basis of which you want to filter Items
+      # @param hsCodeClassificationStatus [String] HS code classification status on the basis of which you want to filter items.
+      # @param hsCodeExistsInCountries [String] A comma-separated list of countries for which the HS code is assigned and based on which you want to filter the items.
+      # @param hsCodeDoesNotExistsInCountries [String] A comma-separated list of countries for which the HS code is not assigned and based on which you want to filter the items.
       # @return [FetchResult]
       def list_items_by_company(companyId, options={})        path = "/api/v2/companies/#{companyId}/items"
         get(path, options, AvaTax::VERSION)      end
@@ -553,6 +618,32 @@ module AvaTax
       def list_recommended_parameter_by_company_id_and_item_id(companyId, itemId, options={})        path = "/api/v2/definitions/companies/#{companyId}/items/#{itemId}/parameters"
         get(path, options, AvaTax::VERSION)      end
 
+      # Patch a single item
+      #
+      # Update the existing item object at this URL with the specified patch changes.
+      #
+      # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
+      # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
+      # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
+      # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
+      # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # Only specified fields in the existing object will be updated with the data you provide via PATCH.
+      # To set a field's value to null, you can either set the field to null explicitly or omit it from the PATCH request.
+      #
+      # The tax code takes precedence over the tax code ID if both are provided.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that this item belongs to.
+      # @param id [Integer] The ID of the item you want to update.
+      # @param model [Operation[]] A JSON patch (refer to https://datatracker.ietf.org/doc/html/rfc6902).
+      # @return [Object]
+      def patch_item(companyId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{id}"
+        patch(path, model, {}, AvaTax::VERSION)      end
+
       # Retrieve all items
       #
       # Get multiple item objects across all companies.
@@ -571,7 +662,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -628,7 +719,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -752,6 +843,27 @@ module AvaTax
       # @param model [Object] The item object you wish to update.
       # @return [Object]
       def update_item_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
+        put(path, model, {}, AvaTax::VERSION)      end
+
+      # Add/update item classifications.
+      #
+      # Add/update classifications to an item.
+      #
+      # A classification is the code for a product in a particular tax system. Classifications enable an item to be used in multiple tax systems that may have different tax rates for a product.
+      #
+      # When an item is used in a transaction, the applicable classification will be used to determine the appropriate tax rate.
+      #
+      # An item may only have one classification per tax system per country.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company ID.
+      # @param itemId [Integer] The item ID.
+      # @param model [ItemClassificationInputModel[]] The item classifications you want to create.
+      # @return [ItemClassificationOutputModel[]]
+      def upsert_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
         put(path, model, {}, AvaTax::VERSION)      end
     end
   end
