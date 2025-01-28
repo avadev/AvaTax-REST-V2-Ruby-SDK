@@ -135,9 +135,6 @@ module AvaTax
 
       # Sales tax rates for a specified address
       #
-      # Usage of this API is subject to rate limits. Users who exceed the rate limit will receive HTTP
-      # response code 429 - `Too Many Requests`.
-      #
       # This API assumes that you are selling general tangible personal property at a retail point-of-sale
       # location in the United States only.
       #
