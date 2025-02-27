@@ -183,6 +183,26 @@ module AvaTax
       def link_ship_to_customers_to_bill_customer(companyId, code, model)        path = "/api/v2/companies/#{companyId}/customers/billto/#{code}/shipto/link"
         post(path, model, {}, AvaTax::VERSION)      end
 
+      # Retrieves a list of active certificates for a specified customer within a company.
+      #
+      # This API is intended to identify whether a customer has any active certificates.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this customer
+      # @param customerCode [String] The unique code representing this customer
+      # @return [Object]
+      def list_active_certificates_for_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/active"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Retrieve a customer's attributes
       #
       # Retrieve the attributes linked to the customer identified by this URL.
@@ -235,13 +255,34 @@ module AvaTax
       # @param companyId [Integer] The unique ID number of the company that recorded this customer
       # @param customerCode [String] The unique code representing this customer
       # @param include [String] OPTIONAL: A comma separated list of special fetch options. You can specify one or more of the following:      * customers - Retrieves the list of customers linked to the certificate.   * po_numbers - Retrieves all PO numbers tied to the certificate.   * attributes - Retrieves all attributes applied to the certificate.   * histories - Retrieves the certificate update history   * jobs - Retrieves the jobs for this certificate   * logs - Retrieves the certificate log   * invalid_reasons - Retrieves invalid reasons for this certificate if the certificate is invalid   * custom_fields - Retrieves custom fields set for this certificate
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* exemptionNumber, status, ecmsId, ecmsStatus, pdf, pages
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* exemptionNumber, ecmsId, ecmsStatus, pdf, pages
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_certificates_for_customer(companyId, customerCode, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates"
         get(path, options, AvaTax::VERSION)      end
+
+      # Retrieves a list of inactive certificates for a specified customer within a company.
+      #
+      # This API is used to retrieve inactive certificates for a customer. Inactive certificates may include expired,
+      # revoked, or otherwise non-compliant certificates.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this customer
+      # @param customerCode [String] The unique code representing this customer
+      # @return [Object]
+      def list_in_active_certificates_for_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates/inactive"
+        get(path, {}, AvaTax::VERSION)      end
 
       # List valid certificates for a location
       #
