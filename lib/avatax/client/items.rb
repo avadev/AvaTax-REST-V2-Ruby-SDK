@@ -305,6 +305,21 @@ module AvaTax
       def dismiss_h_s_code_classification_status(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hscode-classifications-status/$dismiss"
         put(path, options, AvaTax::VERSION)      end
 
+      # Retrieve the HS code classification SLA details for a company.
+      #
+      # This endpoint returns the SLA details for HS code classification for the
+      # specified company. The response includes information about processing times,
+      # service commitments, and other relevant SLA terms.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company for which to retrieve the SLA details.
+      # @return [Object]
+      def get_h_s_code_classification_s_l_a(companyId)        path = "/api/v2/companies/#{companyId}/items/hscode-classification/$get-sla"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Retrieve a single item
       #
       # Get the `Item` object identified by this URL.
