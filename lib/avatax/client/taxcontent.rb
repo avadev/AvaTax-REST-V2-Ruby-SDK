@@ -27,7 +27,7 @@ module AvaTax
       # This API builds the file on demand, and is limited to files with no more than 7500 scenarios. To build a tax content
       # file for a single location at a time, please use `BuildTaxContentFileForLocation`.
       #
-      # NOTE: This API does not work for Tennessee tax holiday scenarios.
+      # NOTE: This API does not work for sales tax holiday scenarios.
       #
       # ### Security Policies
       #
@@ -63,7 +63,7 @@ module AvaTax
       # This API builds the file on demand, and is limited to files with no more than 7500 scenarios. To build a tax content
       # file for a multiple locations in a single file, please use `BuildTaxContentFile`.
       #
-      # NOTE: This API does not work for Tennessee tax holiday scenarios.
+      # NOTE: This API does not work for sales tax holiday scenarios.
       #
       # ### Security Policies
       #

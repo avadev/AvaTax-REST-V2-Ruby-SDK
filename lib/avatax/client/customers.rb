@@ -58,6 +58,27 @@ module AvaTax
       def delete_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
         delete(path, {}, AvaTax::VERSION)      end
 
+      # Delete custom fields
+      #
+      # Deletes the value of the custom field.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this customer
+      # @param customerCode [String] The unique code representing this customer
+      # @param model [DeleteCustomFields[]] Delete custom fields request model
+      # @return []
+      def delete_custom_fields(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/custom-fields"
+        delete(path, model, {}, AvaTax::VERSION)      end
+
       # Retrieve a single customer
       #
       # Retrieve the customer identified by this URL.
@@ -263,6 +284,25 @@ module AvaTax
       def list_certificates_for_customer(companyId, customerCode, options={})        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/certificates"
         get(path, options, AvaTax::VERSION)      end
 
+      # Retrieves a list of custom fields for a specified customer within a company.
+      #
+      # This API is used to retrieve custom field for a customer.
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this customer
+      # @param customerCode [String] The unique code representing this customer
+      # @return [Object]
+      def list_custom_fields_for_customer(companyId, customerCode)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/custom-fields"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Retrieves a list of inactive certificates for a specified customer within a company.
       #
       # This API is used to retrieve inactive certificates for a customer. Inactive certificates may include expired,
@@ -440,6 +480,27 @@ module AvaTax
       # @param model [Object] The new customer model that will replace the existing record at this URL
       # @return [Object]
       def update_customer(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}"
+        put(path, model, {}, AvaTax::VERSION)      end
+
+      # Update custom fields
+      #
+      # Update the value of the custom field.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this customer
+      # @param customerCode [String] The unique code representing this customer
+      # @param model [Object] Update custom fields request model
+      # @return []
+      def update_custom_fields(companyId, customerCode, model)        path = "/api/v2/companies/#{companyId}/customers/#{customerCode}/custom-fields"
         put(path, model, {}, AvaTax::VERSION)      end
     end
   end
