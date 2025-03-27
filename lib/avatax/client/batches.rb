@@ -28,6 +28,30 @@ module AvaTax
       def cancel_batch(companyId, id)        path = "/api/v2/companies/#{companyId}/batches/#{id}/cancel"
         post(path, {}, {}, AvaTax::VERSION)      end
 
+      # Create a new Advanced Rules batch
+      #
+      # Create a new Advanced Rules batch objects attached to this company.
+      #
+      # When an Advanced Rules batch is created, it is added to the AvaTax Batch v2 Queue and will be
+      # processed as quickly as possible in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # The maximum content length of the request body is limited to 28.6 MB. If this limit
+      # is exceeded, a 404 Not Found status will be returned (possibly with a CORS error if
+      # the API is called from a browser). In this situation, please split the request into
+      # smaller batches.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this batch.
+      # @param model [Object] The Advanced Rules batch you wish to create.
+      # @return [Object]
+      def create_advanced_rules_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/batches/advancedrules"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Create a new batch
       #
       # Create one or more new batch objects attached to this company.
