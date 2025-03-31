@@ -21,6 +21,14 @@ jobs:
           ruby-version: "2.6"
           bundler-cache: true # Caches gems between runs
 
+      - name: Write AvaTax credentials to credentials.yaml
+        run: |
+          cat <<EOF > spec/credentials.yaml
+          endpoint: https://sandbox-rest.avatax.com
+          username: "${{ secrets.SANDBOX_USERNAME }}"
+          password: "${{ secrets.SANDBOX_PASSWORD }}"
+          EOF
+
       - name: Install dependencies
         run: bundle install
 
