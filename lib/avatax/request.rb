@@ -18,6 +18,10 @@ module AvaTax
       request(:put, path, model, options, apiversion, headers)
     end
 
+    def patch(path, model, options={}, apiversion="", headers=Hash.new)
+      request(:patch, path, model, options, apiversion, headers)
+    end
+
     def delete(path, options={}, apiversion="", headers=Hash.new)
       request(:delete, path, nil, options, apiversion, headers)
     end
@@ -29,7 +33,7 @@ module AvaTax
         case method
         when :get, :delete
           request.url("#{encode_path(path)}?#{URI.encode_www_form(options)}")
-        when :post, :put
+        when :post, :put, :patch
           request.url("#{encode_path(path)}?#{URI.encode_www_form(options)}")
           request.headers['Content-Type'] = 'application/json'
           request.body = model.to_json unless model.empty?
