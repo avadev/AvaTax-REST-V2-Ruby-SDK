@@ -16,12 +16,17 @@ AvaTax.configure do |config|
   end
 end
 
-client = AvaTax::Client.new({ :logger => true, :log_request_and_response_info => true })
+client = AvaTax::Client.new({ logger: true, log_request_and_response_info: true })
 companies = client.query_companies
+
+# Find the first active company manually
+active_company = companies["value"].find { |company| company["isActive"] == true }
+
+raise "No active company found" unless active_company
 
 RSpec.configure do |config|
   config.before {
     @client = client
-    @company_code = companies["value"][0]["companyCode"]
+    @company_code = active_company["companyCode"]
   }
 end
