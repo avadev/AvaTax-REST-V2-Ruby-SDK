@@ -313,7 +313,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company for which to retrieve the SLA details.
       # @return [Object]
@@ -332,7 +332,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param id [Integer] The primary key of this item
@@ -351,7 +351,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
@@ -372,7 +372,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
@@ -389,7 +389,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param itemId [Integer] The ID of the item as defined by the company that owns this tag.
@@ -406,7 +406,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] 
       # @param itemId [Integer] 
@@ -429,7 +429,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param itemCode [String] The ItemCode of the item for which you want to retrieve premium classification
@@ -466,7 +466,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object
       # @param itemCode [String] ItemCode for the item
@@ -491,7 +491,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id.
       # @param itemId [Integer] The item id.
@@ -518,7 +518,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The company id
       # @param itemId [Integer] The item id
@@ -545,7 +545,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item object.
       # @param itemCode [String] The item code of the item for which you want to retrieve premium classification.
@@ -595,7 +595,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
@@ -621,7 +621,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] Company Identifier.
       # @param itemId [Integer] Item Identifier.
@@ -675,7 +675,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
       # @param include [String] A comma separated list of additional data to retrieve.
@@ -702,7 +702,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
       # @param systemCode [String] System code on the basis of which you want to filter Items
@@ -730,7 +730,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
@@ -879,6 +879,27 @@ module AvaTax
       # @param model [ItemClassificationInputModel[]] The item classifications you want to create.
       # @return [ItemClassificationOutputModel[]]
       def upsert_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        put(path, model, {}, AvaTax::VERSION)      end
+
+      # Add/update an item parameter.
+      #
+      # Add/update an item parameter.
+      #
+      # Some items can be taxed differently depending on the properties of that item, such as the item grade or by a particular measurement of that item. In AvaTax, these tax-affecting properties are called "parameters".
+      #
+      # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
+      #
+      # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that this item belongs to.
+      # @param itemId [Integer] The ID of the item you want to update.
+      # @param model [ItemParameterModel[]] The item parameter object you want to upsert.
+      # @return [ItemParameterModel[]]
+      def upsert_item_parameter(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
         put(path, model, {}, AvaTax::VERSION)      end
     end
   end
