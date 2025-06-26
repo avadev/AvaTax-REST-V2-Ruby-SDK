@@ -236,6 +236,27 @@ module AvaTax
       def delete_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
         delete(path, {}, AvaTax::VERSION)      end
 
+      # Delete the image associated with an item.
+      #
+      # Delete the image associated with an item.
+      #
+      # Permanently deletes both the image and its association with the specified item.
+      # This endpoint allows users to manage product visual representations by removing outdated or incorrect images,
+      # and cleaning up unused resources in the system.
+      # Once deleted, the image association cannot be recovered. To use the image again, it must be re-uploaded and
+      # re-linked with the item.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param itemId [Integer] The unique ID of the item.
+      # @param imageId [String] The unique ID of the image to delete.
+      # @return [AssociatedObjectDeletedErrorDetailsModel[]]
+      def delete_item_image(companyId, itemId, imageId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/images/#{imageId}"
+        delete(path, {}, AvaTax::VERSION)      end
+
       # Delete a single item parameter
       #
       # Delete a single item parameter.
@@ -439,6 +460,24 @@ module AvaTax
       def get_premium_classification(companyId, itemCode, systemCode, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemCode}/premiumClassification/#{systemCode}"
         get(path, options, AvaTax::VERSION)      end
 
+      # Get the image associated with an item.
+      #
+      # Get the image file for the specified image ID linked to the item.
+      #
+      # This endpoint allows users to retrieve and display product images in user interfaces or to verify the current
+      # image associated with a specific item.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param itemId [Integer] The unique ID of the item.
+      # @param imageId [String] The unique ID of the image to retrieve.
+      # @return [Object]
+      def get_product_image(companyId, itemId, imageId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/images/#{imageId}"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Create an HS code classification request.
       #
       # ### Security Policies
@@ -598,7 +637,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -677,7 +716,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -734,7 +773,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -787,6 +826,25 @@ module AvaTax
       # @return [Object]
       def sync_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/sync"
         post(path, model, {}, AvaTax::VERSION)      end
+
+      # Update an existing image for an item.
+      #
+      # This endpoint allows users to update the existing image associated with a specific item by uploading a new image file.
+      #
+      # The updated image serves as the item's visual representation and will be used for tax code recommendation purposes.
+      #
+      # Restrictions:
+      # - Supported formats: JPEG, GIF, PNG
+      # - Maximum file size: 10MB
+      # - Maximum file name length allowed: 200 characters
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param itemId [Integer] The unique ID of the item.
+      # @param imageId [String] The unique ID of the image to update.
+      # @param imageFile [Object] 
+      # @return [Object]
+      def update_image(companyId, itemId, imageId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/images/#{imageId}"
+        put(path, {}, AvaTax::VERSION)      end
 
       # Update a single item
       #
@@ -859,6 +917,24 @@ module AvaTax
       # @return [Object]
       def update_item_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters/#{id}"
         put(path, model, {}, AvaTax::VERSION)      end
+
+      # Upload an image for an item.
+      #
+      # This endpoint allows users to upload an image file for a specific item.
+      #
+      # The uploaded image serves as the item's visual representation and will be used for tax code recommendation purposes.
+      #
+      # Restrictions:
+      # - Supported formats: JPEG, GIF, PNG
+      # - Maximum file size: 10MB
+      # - Maximum file name length allowed: 200 characters
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param itemId [Integer] The unique ID of the item.
+      # @param imageFile [Object] 
+      # @return [Object]
+      def upload_image(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/images"
+        post(path, {}, {}, AvaTax::VERSION)      end
 
       # Add/update item classifications.
       #
