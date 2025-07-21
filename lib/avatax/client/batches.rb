@@ -84,6 +84,30 @@ module AvaTax
       def create_batches(companyId, model)        path = "/api/v2/companies/#{companyId}/batches"
         post(path, model, {}, AvaTax::VERSION)      end
 
+      # Create item import batch.
+      #
+      # Create a new item import batch objects attached to this company.
+      #
+      # When an item import batch is created, it is added to the AvaTax Batch v2 Queue and will be
+      # processed in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # The maximum content length of the request body is limited to 28.6 MB. If this limit
+      # exceeds then a 404 Not Found status is returned (possibly with a CORS error if
+      # the API is called from a browser). In this situation, please split the request into
+      # smaller batches.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this batch.
+      # @param model [Object] The item import batch you wish to create.
+      # @return [Object]
+      def create_item_import_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/batches/items"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Create a new transaction batch
       #
       # Create a new transaction batch objects attached to this company.
