@@ -45,6 +45,10 @@ module AvaTax
       #
       # Create/Update one or more item objects attached to this company.
       #
+      # Recommended number of items to create/update in a single call is upto 100.
+      #
+      # Currently, the maximum number of items that can be created/updated in a single call is 500 (This limit is subject to change).
+      #
       # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
       # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
       # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
@@ -112,6 +116,10 @@ module AvaTax
       # Create a new item
       #
       # Creates one or more new item objects attached to this company.
+      #
+      # Recommended number of items to create in a single call is upto 50.
+      #
+      # Currently, the maximum number of items that can be created in a single call is 500 (This limit is subject to change).
       #
       # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
       # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
@@ -786,6 +794,10 @@ module AvaTax
       #
       # Creates/updates one or more item objects with additional properties and the AvaTax category attached to this company.
       #
+      # Recommended number of items to create/update in a single call is upto 100.
+      #
+      # Currently, the maximum number of items that can be created/updated in a single call is 1000 (This limit is subject to change).
+      #
       # Items are a way of separating your tax calculation process from your tax configuration details. Use this endpoint to create
       # a new or update an existing item. This can be used to sync the items with Avalara. For example, an accounting software
       # system can use this to sync all their items from an ERP with Avalara.
@@ -809,7 +821,7 @@ module AvaTax
       #
       # Any invalid or duplicate items will be ignored. To diagnose why an item is not created, use the normal create transaction API to receive validation information.
       #
-      # This API is currently limited to 1000 items per call (the limit is subject to change).
+      # This API is currently limited to 500 items per call (the limit is subject to change).
       #
       # Items are a way of separating your tax calculation process from your tax configuration details. If you choose, you
       # can provide `itemCode` values for each `CreateTransaction()` API call rather than specifying tax codes, parameters, descriptions,
