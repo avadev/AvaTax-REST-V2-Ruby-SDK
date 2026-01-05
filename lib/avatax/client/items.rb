@@ -3,6 +3,37 @@ module AvaTax
     module Items 
 
 
+      # Parse natural language query into structured filters
+      #
+      # Parse natural language queries into structured API filters. This endpoint forwards the query to NLQ (Natural Language Query)
+      # service for interpretation and returns only the intent and structured filters.
+      #
+      # Example queries:
+      # - "give me items created in last 1 week which are having status complete"
+      # - "show me all items with item code CERMUG"
+      # - "find items containing 'mug' in description"
+      #
+      # Response format:
+      # {
+      #  "intent": "GET",
+      #  "filters": {
+      #  "createdDate": { "value": "from: 2025-09-12 to: 2025-09-19" },
+      #  "itemStatus": { "value": ["Complete"] }
+      #  }
+      # }
+      #
+      # Raw NLQ responses are logged for debugging purposes.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns these items
+      # @param model [Object] Natural language search request
+      # @return [Object]
+      def a_isearch(companyId, model)        path = "/api/v2/companies/#{companyId}/items/nlq/$parse"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Delete all classifications for an item
       #
       # Delete all the classifications for a given item.
@@ -19,6 +50,26 @@ module AvaTax
       # @param itemId [Integer] The ID of the item you wish to delete the classifications.
       # @return [AssociatedObjectDeletedErrorDetailsModel[]]
       def batch_delete_item_classifications(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        delete(path, {}, AvaTax::VERSION)      end
+
+      # Delete all custom parameters for an item
+      #
+      # Delete all the custom parameters for a given item.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item.
+      # @param itemId [Integer] The ID of the item you wish to delete the custom parameters.
+      # @return [AssociatedObjectDeletedErrorDetailsModel[]]
+      def batch_delete_item_custom_parameters(companyId, itemId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters"
         delete(path, {}, AvaTax::VERSION)      end
 
       # Delete all parameters for an item
@@ -57,6 +108,9 @@ module AvaTax
       #
       # The tax code takes precedence over the tax code id if both are provided.
       #
+      # Please provide all the countries of destination values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
@@ -88,6 +142,27 @@ module AvaTax
       def create_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
         post(path, model, {}, AvaTax::VERSION)      end
 
+      # Add custom parameters to an item.
+      #
+      # Add custom parameters to an item.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this item custom parameter.
+      # @param itemId [Integer] The item id.
+      # @param model [ItemCustomParametersModel[]] The item custom parameters you wish to create.
+      # @return [ItemCustomParametersModel[]]
+      def create_item_custom_parameters(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Add parameters to an item.
       #
       # Add parameters to an item.
@@ -101,6 +176,8 @@ module AvaTax
       # To see available parameters for this item, call `/api/v2/definitions/parameters?$filter=attributeType eq Product`
       #
       # Some parameters are only available for use if you have subscribed to specific AvaTax services. To see which parameters you are able to use, add the query parameter "$showSubscribed=true" to the parameter definition call above.
+      # Please provide all the countries parameter values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # ### Security Policies
       #
@@ -126,6 +203,9 @@ module AvaTax
       # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
       # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # Please provide all the countries of destination values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # The tax code takes precedence over the tax code id if both are provided.
       #
@@ -244,6 +324,27 @@ module AvaTax
       def delete_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
         delete(path, {}, AvaTax::VERSION)      end
 
+      # Delete a single item custom parameter
+      #
+      # Delete a single item custom parameter.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company id
+      # @param itemId [Integer] The item id
+      # @param id [Integer] The custom parameter id
+      # @return [ObjectDeletedErrorModel[]]
+      def delete_item_custom_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters/#{id}"
+        delete(path, {}, AvaTax::VERSION)      end
+
       # Delete the image associated with an item.
       #
       # Delete the image associated with an item.
@@ -334,6 +435,19 @@ module AvaTax
       def dismiss_h_s_code_classification_status(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hscode-classifications-status/$dismiss"
         put(path, options, AvaTax::VERSION)      end
 
+      # Fetch Additional HS Duty Details for items
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company for which you want to get additional HS Duty Details.
+      # @param itemId [Integer] 
+      # @param model [ItemAdditionalHSCodeDutyInputModel[]] Additional HS Code Duty Details input Model
+      # @return [ItemHSCodeDutyDetailModel[]]
+      def fetch_additional_h_s_code_duty_details(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hsdutydetails/$fetch-additional-hsdutydetails"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Retrieve the HS code classification SLA details for a company.
       #
       # This endpoint returns the SLA details for HS code classification for the
@@ -387,6 +501,27 @@ module AvaTax
       # @param id [Integer] The item classification id.
       # @return [Object]
       def get_item_classification(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
+        get(path, {}, AvaTax::VERSION)      end
+
+      # Retrieve a single item custom parameter
+      #
+      # Retrieve a single item custom parameter.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company id
+      # @param itemId [Integer] The item id
+      # @param id [Integer] The custom parameter id
+      # @return [Object]
+      def get_item_custom_parameter(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters/#{id}"
         get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve a single item parameter
@@ -486,6 +621,22 @@ module AvaTax
       def get_product_image(companyId, itemId, imageId)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/images/#{imageId}"
         get(path, {}, AvaTax::VERSION)      end
 
+      # Get the real-time tax code recommendations for the specified items without saving item data.
+      #
+      # Provides immediate tax code recommendations for item details submitted in the request. Item data is processed only for recommendation purposes and is not persisted.
+      #
+      # Maximum items per request: 50 (subject to change).
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param model [ItemTaxcodeRecommendationBatchesInputModel[]] The list of items to analyze for tax code recommendations (maximum 50).
+      # @return [ItemTaxcodeRecommendationBatchesOutputModel[]]
+      def get_sync_tax_code_recommendations(companyId, model)        path = "/api/v2/companies/#{companyId}/$taxcode-recommendations"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Create an HS code classification request.
       #
       # ### Security Policies
@@ -548,6 +699,33 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_item_classifications(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
+        get(path, options, AvaTax::VERSION)      end
+
+      # Retrieve custom parameters for an item
+      #
+      # List custom parameters for an item.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company id
+      # @param itemId [Integer] The item id
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* id, name, value
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_item_custom_parameters(companyId, itemId, options={})        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters"
         get(path, options, AvaTax::VERSION)      end
 
       # Retrieve parameters for an item
@@ -645,7 +823,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -724,7 +902,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -781,7 +959,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -803,6 +981,9 @@ module AvaTax
       # system can use this to sync all their items from an ERP with Avalara.
       #
       # Parameters and Classifications can be added with the Item.
+      #
+      # Please provide all the countries parameter values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # ### Security Policies
       #
@@ -828,6 +1009,9 @@ module AvaTax
       # and other data fields. AvaTax will automatically look up each `itemCode` and apply the correct tax codes and parameters
       # from the item table instead. This allows your CreateTransaction call to be as simple as possible, and your tax compliance
       # team can manage your item catalog and adjust the tax behavior of items without having to modify your software.
+      #
+      # Please provide all the countries of destination values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # ### Security Policies
       #
@@ -908,6 +1092,28 @@ module AvaTax
       def update_item_classification(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications/#{id}"
         put(path, model, {}, AvaTax::VERSION)      end
 
+      # Update an item custom parameter
+      #
+      # Update an item custom parameter.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company id.
+      # @param itemId [Integer] The item id
+      # @param id [Integer] The item custom parameter id
+      # @param model [Object] The item custom parameter object you wish to update.
+      # @return [Object]
+      def update_item_custom_parameter(companyId, itemId, id, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters/#{id}"
+        put(path, model, {}, AvaTax::VERSION)      end
+
       # Update an item parameter
       #
       # Update an item parameter.
@@ -917,6 +1123,9 @@ module AvaTax
       # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
       #
       # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # Please provide all the countries parameter values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # ### Security Policies
       #
@@ -969,6 +1178,27 @@ module AvaTax
       def upsert_item_classifications(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/classifications"
         put(path, model, {}, AvaTax::VERSION)      end
 
+      # Add/update an item custom parameter
+      #
+      # Add/update an item custom parameter.
+      #
+      # Custom parameters provide extra information about an item that can be used for various business purposes.
+      # These parameters are stored as key-value pairs where the parameter name is the key and the value is the corresponding data.
+      #
+      # Custom parameters can be used to store custom attributes, metadata, or any other supplementary information
+      # that doesn't fit into the standard item fields.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The company id.
+      # @param itemId [Integer] The item id
+      # @param model [ItemCustomParametersModel[]] The item custom parameter object you wish to Upsert.
+      # @return [ItemCustomParametersModel[]]
+      def upsert_item_custom_parameter(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/custom-parameters"
+        put(path, model, {}, AvaTax::VERSION)      end
+
       # Add/update an item parameter.
       #
       # Add/update an item parameter.
@@ -978,6 +1208,9 @@ module AvaTax
       # A parameter added to an item will be used by default in tax calculation but will not show on the transaction line referencing the item .
       #
       # A parameter specified on a transaction line will override an item parameter if they share the same parameter name.
+      #
+      # Please provide all the countries parameter values as a valid two letter ISO-3166 country code.
+      # Refer to 'ListCountries' api to get valid country code for any country if needed.
       #
       # ### Security Policies
       #
