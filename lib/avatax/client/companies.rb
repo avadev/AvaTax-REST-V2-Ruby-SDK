@@ -222,6 +222,24 @@ module AvaTax
       def funding_configurations_by_company_and_currency(companyId, options={})        path = "/api/v2/companies/#{companyId}/funding/configurations"
         get(path, options, AvaTax::VERSION)      end
 
+      # Retrieve all customers and suppliers with their country parameters for a company
+      #
+      # Retrieves all customers and suppliers for a company along with their country parameters. Records without country parameters will still be returned with null country parameter fields (LEFT JOIN behavior).
+      # Results are ordered by CustomerTypeId, CustomerCode, and Country.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] Company Id
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* CustomerId, CompanyId, CustomerTypeId, CustomerSupplierCountryParamId, Country, IsEstablished, IsRegisteredThroughFiscalRep, VatNumberStatus
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def get_all_customers_and_suppliers_with_country_params(companyId, options={})        path = "/api/v2/companies/#{companyId}/supplierandcustomers/withcountryparams"
+        get(path, options, AvaTax::VERSION)      end
+
       # Retrieve a single company
       #
       # Get the company object identified by this URL.

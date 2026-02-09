@@ -442,7 +442,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company for which you want to get additional HS Duty Details.
-      # @param itemId [Integer] 
+      # @param itemId [Integer] The unique ID of the item for which you want to get additional HS Duty Details.
       # @param model [ItemAdditionalHSCodeDutyInputModel[]] Additional HS Code Duty Details input Model
       # @return [ItemHSCodeDutyDetailModel[]]
       def fetch_additional_h_s_code_duty_details(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hsdutydetails/$fetch-additional-hsdutydetails"

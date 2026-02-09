@@ -3,6 +3,35 @@ module AvaTax
     module Vendors 
 
 
+      # Create vendors for this company
+      #
+      # Create one or more vendors for this company.
+      #
+      # A vendor object defines information about a person or business that purchases products from your
+      # company. When you create a tax transaction in AvaTax, you can use the `vendorCode` from this
+      # record in your `CreateTransaction` API call. AvaTax will search for this `vendorCode` value and
+      # identify any certificates linked to this `vendor` object. If any certificate applies to the transaction,
+      # AvaTax will record the appropriate elements of the transaction as exempt and link it to the `certificate`.
+      #
+      # A nested object such as CustomFields could be specified and created along with the vendor object. To fetch the
+      # nested object, please call 'GetVendor' API with appropriate $include parameters.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this vendor
+      # @param model [VendorModel[]] The list of vendor objects to be created
+      # @return [VendorModel[]]
+      def create_vendors(companyId, model)        path = "/api/v2/companies/#{companyId}/vendors"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Retrieve a single vendor
       #
       # Retrieve the vendor identified by this URL.
