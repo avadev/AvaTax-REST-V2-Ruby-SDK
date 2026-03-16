@@ -1,9 +1,7 @@
 include:
-  - project: "prodsec/security-ci-cd"
-    ref: release-0.1.11
-    file: "templates/security-ci-cd.yml"
-
-sast:tests:
-  extends: .sast:tests
-  stage: app-sec:jobs
-  
+  - project: sre/gitlab-templates
+    ref: v4
+    file:
+      - pipelines/common/security/sast.yml
+      - pipelines/common/stages/stages.yml
+      - pipelines/common/workflows/trunk.yml
