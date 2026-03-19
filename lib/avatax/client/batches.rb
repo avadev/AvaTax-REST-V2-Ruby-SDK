@@ -20,7 +20,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param id [Integer] The ID of the batch to cancel.
@@ -44,7 +44,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [Object] The Advanced Rules batch you wish to create.
@@ -76,7 +76,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [BatchModel[]] The batch you wish to create.
@@ -100,7 +100,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [Object] The item import batch you wish to create.
@@ -130,7 +130,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch.
       # @param model [Object] The transaction batch you wish to create.
@@ -167,7 +167,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch
       # @param batchId [Integer] The ID of the batch object
@@ -196,7 +196,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this batch
       # @param id [Integer] The primary key of this batch
@@ -230,7 +230,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these batches
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* files
@@ -265,7 +265,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, FirmAdmin, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* files
       # @param include [String] A comma separated list of additional data to retrieve.

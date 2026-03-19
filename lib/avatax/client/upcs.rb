@@ -10,7 +10,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC.
@@ -25,7 +25,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC.
@@ -41,7 +41,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this UPC
@@ -60,7 +60,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns these UPCs
@@ -83,7 +83,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, AccountUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API requires one of the following user roles: AccountAdmin, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
@@ -104,7 +104,7 @@ module AvaTax
       #
       # ### Security Policies
       #
-      # * This API requires one of the following user roles: AccountAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # * This API depends on the following active services:*Required* (all): AvaUpc.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that this UPC belongs to.
