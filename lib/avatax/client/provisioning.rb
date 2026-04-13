@@ -20,6 +20,9 @@ module AvaTax
       # conditions, the account will be created in `New` status and they can receive a license key by logging
       # onto the AvaTax website and reviewing terms and conditions online.
       #
+      # In Sandbox environment, the account will always be created as a test account regardless of the IsTest
+      # parameter in the request.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
