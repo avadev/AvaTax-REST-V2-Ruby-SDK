@@ -26,20 +26,6 @@ module AvaTax
       def get_cross_border_code(country, hsCode)        path = "/api/v2/definitions/crossborder/#{country}/#{hsCode}/hierarchy"
         get(path, {}, AvaTax::VERSION)      end
 
-      # Test whether a form supports online login verification
-      #
-      # This API is intended to be useful to identify whether the user should be allowed
-      # to automatically verify their login and password. This API will provide a result only if the form supports automatic online login verification.
-      # Swagger Name: AvaTaxClient	  
-      # @param form [String] The name of the form you would like to verify. This is the tax form code
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxFormCodes, scraperType, expectedResponseTime, requiredFilingCalendarDataFields
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def get_login_verifier_by_form(form, options={})        path = "/api/v2/definitions/filingcalendars/loginverifiers/#{form}"
-        get(path, options, AvaTax::VERSION)      end
-
       # List all market place locations.
       #
       # List all market place locations.
@@ -463,20 +449,6 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_location_questions_by_address(options={})        path = "/api/v2/definitions/locationquestions"
-        get(path, options, AvaTax::VERSION)      end
-
-      # List all forms where logins can be verified automatically
-      #
-      # List all forms where logins can be verified automatically.
-      # This API is intended to be useful to identify whether the user should be allowed
-      # to automatically verify their login and password.
-      # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxFormCodes, scraperType, expectedResponseTime, requiredFilingCalendarDataFields
-      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
-      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
-      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
-      # @return [FetchResult]
-      def list_login_verifiers(options={})        path = "/api/v2/definitions/filingcalendars/loginverifiers"
         get(path, options, AvaTax::VERSION)      end
 
       # Retrieve the list of locations for a marketplace.

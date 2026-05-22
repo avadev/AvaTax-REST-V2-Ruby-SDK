@@ -3,6 +3,20 @@ module AvaTax
     module Reports 
 
 
+      # Download an audit log report
+      #
+      # Downloads the file associated with an audit log report.
+      # If the report is not yet complete, you will receive a `ReportNotFinished` error.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param id [String] The unique ID of the audit log report
+      # @return [Object]
+      def download_audit_log_report(id)        path = "/api/v2/reports/exportauditlogs/#{id}/attachment"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Download a report
       #
       # This API downloads the file associated with a report.
@@ -27,6 +41,32 @@ module AvaTax
       # @param id [Integer] The unique ID number of this report
       # @return [Object]
       def download_report(id)        path = "/api/v2/reports/#{id}/attachment"
+        get(path, {}, AvaTax::VERSION)      end
+
+      # Initiate an ExportAuditLogs report task
+      #
+      # Begins running an `ExportAuditLogs` report task and returns the identity of the report.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param model [Object] Options to filter the audit log export.
+      # @return [ReportAuditLogResponseModel[]]
+      def export_audit_logs(model)        path = "/api/v2/reports/exportauditlogs"
+        post(path, model, {}, AvaTax::VERSION)      end
+
+      # Get an audit log report by id
+      #
+      # Retrieves the status and details of an audit log report task.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param id [String] The unique ID of the audit log report
+      # @return [Object]
+      def get_audit_log_report(id)        path = "/api/v2/reports/exportauditlogs/#{id}"
         get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve a single report

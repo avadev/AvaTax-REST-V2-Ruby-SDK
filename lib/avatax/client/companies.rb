@@ -155,6 +155,24 @@ module AvaTax
       def create_funding_request(id, model, options={})        path = "/api/v2/companies/#{id}/funding/setup"
         post(path, model, options, AvaTax::VERSION)      end
 
+      # Create VAT Numbers for a company
+      #
+      # Create one or more VAT number records for a company.
+      # Each record is validated synchronously against the ELR / Directory Search service
+      # (which proxies VIES). The response includes validation results:
+      # `vatNumberStatus`, `registeredBusinessName`, `businessNameStatus`, `validationDate`,
+      # and `validationSource`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns these VAT numbers
+      # @param model [CustomerVatNumberModel[]] The VAT number records you wish to create
+      # @return [CustomerVatNumberModel[]]
+      def create_vat_numbers(companyId, model)        path = "/api/v2/companies/#{companyId}/vatnumbers"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Delete a single company
       #
       # Deleting a company will delete all child companies, and all users attached to this company.
@@ -185,6 +203,20 @@ module AvaTax
       # @param id [Integer] The parameter id
       # @return [ErrorDetail[]]
       def delete_company_parameter(companyId, id)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
+        delete(path, {}, AvaTax::VERSION)      end
+
+      # Delete a single VAT Number
+      #
+      # Marks the VAT number record identified by this URL as deleted.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this VAT number
+      # @param id [Integer] The unique ID of the VAT number record to delete
+      # @return [ErrorDetail[]]
+      def delete_vat_number(companyId, id)        path = "/api/v2/companies/#{companyId}/vatnumbers/#{id}"
         delete(path, {}, AvaTax::VERSION)      end
 
       # Check the funding configuration of a company
@@ -336,6 +368,20 @@ module AvaTax
       def get_filing_status(id)        path = "/api/v2/companies/#{id}/filingstatus"
         get(path, {}, AvaTax::VERSION)      end
 
+      # Retrieve a single VAT Number
+      #
+      # Retrieve a single VAT Number record by its unique ID.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this VAT number
+      # @param id [Integer] The unique ID of the VAT number record
+      # @return [Object]
+      def get_vat_number(companyId, id)        path = "/api/v2/companies/#{companyId}/vatnumbers/#{id}"
+        get(path, {}, AvaTax::VERSION)      end
+
       # Get ACH entry detail report for company and period
       #
       # This API is available by invitation only.
@@ -411,6 +457,38 @@ module AvaTax
       # @return [FetchResult]
       def list_mrs_companies()        path = "/api/v2/companies/mrs"
         get(path, {}, AvaTax::VERSION)      end
+
+      # Retrieve VAT Numbers for a company
+      #
+      # Retrieve all VAT Numbers associated with this company.
+      #
+      # A VAT Number represents a customer's VAT identification number that has been validated
+      # against VIES (VAT Information Exchange System).
+      #
+      # Search for specific records using the `$filter` parameter. Supported filters include:
+      # * `vatNumber` - Filter by VAT number
+      # * `country` - Filter by country code (e.g., "GB", "DE")
+      # * `vatNumberStatus` - Filter by VAT number validation status (0=NotValidated, 1=Valid, 2=Invalid, 3=Error)
+      # * `businessNameStatus` - Filter by business name comparison status (0=NotValidated, 1=Valid, 2=Invalid, 3=Error)
+      # * `businessName` - Filter by business name
+      #
+      # Order results using `$orderBy`. Common orderings:
+      # * `vatNumber ASC` - Order by VAT number ascending
+      # * `validationDate DESC` - Order by most recently validated first
+      # * `modifiedDate DESC` - Order by most recently modified first
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* createdDate, modifiedDate
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_vat_numbers(companyId, options={})        path = "/api/v2/companies/#{companyId}/vatnumbers"
+        get(path, options, AvaTax::VERSION)      end
 
       # Retrieve all companies
       #
@@ -514,6 +592,50 @@ module AvaTax
       # @return [Object]
       def update_company_parameter_detail(companyId, id, model)        path = "/api/v2/companies/#{companyId}/parameters/#{id}"
         put(path, model, {}, AvaTax::VERSION)      end
+
+      # Update a single VAT Number
+      #
+      # Replace the existing VAT number record with the data in the object you PUT.
+      #
+      # Only `vatNumber`, `businessName`, and `country` fields can be updated. The
+      # validation-related fields (`vatNumberStatus`, `registeredBusinessName`,
+      # `businessNameStatus`, `validationDate`, `validationSource`) are managed by the
+      # system and are refreshed automatically: every successful PUT re-triggers a
+      # synchronous VAT validation against the ELR / Directory Search service (which
+      # proxies VIES). This makes "Fix" flows work as expected — correcting an
+      # invalid VAT number immediately updates its status.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyCompanyAdmin, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this VAT number
+      # @param id [Integer] The unique ID of the VAT number record to update
+      # @param model [Object] The VAT number object you wish to update
+      # @return [Object]
+      def update_vat_number(companyId, id, model)        path = "/api/v2/companies/#{companyId}/vatnumbers/#{id}"
+        put(path, model, {}, AvaTax::VERSION)      end
+
+      # Validate a VAT Number without storing it
+      #
+      # Performs a synchronous VAT number validation against the ELR / Directory Search service
+      # (which proxies VIES) without persisting any record in the `CustomerVatNumber` table.
+      #
+      # This is useful for UI flows that allow the user to "test" a VAT number before
+      # deciding whether to add it. The response payload mirrors the shape returned by
+      # the create/update endpoints, but `id`, `createdDate`, and `modifiedDate` are not set.
+      # Business-name comparison is not performed here; use the create endpoint to persist
+      # and obtain a `businessNameStatus`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company on whose behalf the validation is performed
+      # @param model [Object] The VAT number to validate (vatNumber, country)
+      # @return [Object]
+      def validate_vat_number(companyId, model)        path = "/api/v2/companies/#{companyId}/vatnumbers/validate"
+        post(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end
