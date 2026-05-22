@@ -237,6 +237,25 @@ module AvaTax
       def create_item_tags(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/tags"
         post(path, model, {}, AvaTax::VERSION)      end
 
+      # Creates a batch to generate tax code recommendations asynchronously.
+      #
+      # Creates a new batch for asynchronous tax code recommendations processing.
+      # The batch is processed asynchronously, and you can check the status using the GetBatchTaxCodeRecommendations endpoint.
+      #
+      # Maximum items created per request: 2,000 (subject to change).
+      #
+      # Batches are automatically deleted after 1 day.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param model [ItemTaxcodeRecommendationBatchesInputModel[]] The list of items to include in the batch (maximum 2,000).
+      # @return [TaxcodeBatchOutputModel[]]
+      def create_taxcode_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/taxcode-recommendations/batches"
+        post(path, model, {}, AvaTax::VERSION)      end
+
       # Create a new tax code classification request
       #
       # Creates a new tax code classification request.
@@ -254,6 +273,22 @@ module AvaTax
       # @return [Object]
       def create_tax_code_classification_request(companyId, model)        path = "/api/v2/companies/#{companyId}/classificationrequests/taxcode"
         post(path, model, {}, AvaTax::VERSION)      end
+
+      # Deletes a tax code recommendation batch.
+      #
+      # Deletes the specified tax code recommendation batch.
+      #
+      # Returns '404 Not Found' if the batch is already deleted, does not exist, or belongs to a different company.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param batchId [Integer] The unique ID of the batch to delete.
+      # @return [ObjectDeletedErrorModel[]]
+      def delete_batch_tax_code_recommendations(companyId, batchId)        path = "/api/v2/companies/#{companyId}/taxcode-recommendations/batches/#{batchId}"
+        delete(path, {}, AvaTax::VERSION)      end
 
       # Delete a single item
       #
@@ -281,6 +316,19 @@ module AvaTax
       # @param itemCode [String] The code of the item you want to delete.
       # @return [ObjectDeletedErrorModel[]]
       def delete_catalogue_item(companyId, itemCode)        path = "/api/v2/companies/#{companyId}/itemcatalogue/#{itemCode}"
+        delete(path, {}, AvaTax::VERSION)      end
+
+      # Deletes HS Code classification status for the item by status id.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company to which this item belongs
+      # @param itemId [Integer] The ID of the item
+      # @param id [String] The HS Code classification status id.
+      # @return []
+      def delete_h_s_code_classification_status(companyId, itemId, id)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hscode-classifications-status/#{id}"
         delete(path, {}, AvaTax::VERSION)      end
 
       # Delete a single item
@@ -447,6 +495,25 @@ module AvaTax
       # @return [ItemHSCodeDutyDetailModel[]]
       def fetch_additional_h_s_code_duty_details(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hsdutydetails/$fetch-additional-hsdutydetails"
         post(path, model, {}, AvaTax::VERSION)      end
+
+      # Retrieves the status and results of a tax code recommendation batch.
+      #
+      # Retrieves the status and results of a tax code recommendation batch for the specified company.
+      # If the batch status is "Completed", the response includes the tax code recommendations for all items in the batch.
+      # If the batch status is "Waiting", "Processing", or any other non-complete status, only the status information is returned.
+      # Returns '404 Not Found' if the batch has been deleted or does not exist.
+      #
+      # Batches are automatically deleted after 1 day.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company.
+      # @param batchId [Integer] The unique ID of the recommendation batch.
+      # @return [Object]
+      def get_batch_tax_code_recommendations(companyId, batchId)        path = "/api/v2/companies/#{companyId}/taxcode-recommendations/batches/#{batchId}"
+        get(path, {}, AvaTax::VERSION)      end
 
       # Retrieve the HS code classification SLA details for a company.
       #
