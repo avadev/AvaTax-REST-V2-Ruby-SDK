@@ -6,6 +6,7 @@ module AvaTax
     include AvaTax::Client::Addresses
     include AvaTax::Client::Batches
     include AvaTax::Client::CertExpressInvites
+    include AvaTax::Client::Certificates
     include AvaTax::Client::Companies
     include AvaTax::Client::Contacts
     include AvaTax::Client::Customers
