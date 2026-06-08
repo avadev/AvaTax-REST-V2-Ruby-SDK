@@ -1289,6 +1289,18 @@ module AvaTax
       # @return [ItemParameterModel[]]
       def upsert_item_parameter(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/parameters"
         put(path, model, {}, AvaTax::VERSION)      end
+
+      # Verify the HSCode to be valid/invalid
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID of the company
+      # @param model [ItemHSCodeVerificationInputModel[]] The request model for HS Code Verification
+      # @return [Object]
+      def verify_h_s_code(companyId, model)        path = "/api/v2/companies/#{companyId}/items/hscodes/$verify"
+        post(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end

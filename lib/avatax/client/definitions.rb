@@ -309,6 +309,16 @@ module AvaTax
       def list_item_h_s_code_classification_status()        path = "/api/v2/definitions/items/hscode-classification-status"
         get(path, {}, AvaTax::VERSION)      end
 
+      # List of all event types that can be subscribed to for Item reverse sync webhook registrations.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # Swagger Name: AvaTaxClient	  
+      # @return [ItemReverseSyncEventDefinitionOutputModel[]]
+      def list_item_reverse_sync_events()        path = "/api/v2/definitions/items/events"
+        get(path, {}, AvaTax::VERSION)      end
+
       # List of all recommendation status which can be assigned to an item
       #
       # ### Security Policies
@@ -342,6 +352,7 @@ module AvaTax
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param companyId [Integer] Optional query parameter; when set, the result set is restricted to jurisdictions in regions   where the company has nexus. When omitted, all jurisdiction rows are eligible before filter is applied.
       # @return [FetchResult]
       def list_jurisdictions(options={})        path = "/api/v2/definitions/jurisdictions"
         get(path, options, AvaTax::VERSION)      end
@@ -410,6 +421,33 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_jurisdictions_hierarchy(options={})        path = "/api/v2/definitions/jurisdictions/hierarchy"
+        get(path, options, AvaTax::VERSION)      end
+
+      # List tax types, subtypes, and rate types applicable for a given jurisdiction
+      #
+      # Returns a list of tax type and subtype groups, and optionally the available rate types for each group, applicable for a given jurisdiction.
+      #
+      # This API lets you filter tax types and rate types based on whether they may apply in a given jurisdiction and provides a description of each.
+      #
+      # If a company ID is provided, then only the tax types for which the company has nexus are shown.
+      #
+      # If custom content is included, then all available custom tax types are included in the result if the calling user has the appropriate subscription
+      # and the tax types are available in the jurisdiction's country.
+      # Swagger Name: AvaTaxClient	  
+      # @param country [String] ISO country code (e.g. `US`)
+      # @param region [String] ISO region or state/province code (e.g. `CA` for California)
+      # @param jurisdictionTypeId [String] Jurisdiction type identifier (e.g. `STA` for state)
+      # @param jurisdictionCode [String] Code identifying a specific jurisdiction
+      # @param companyId [Integer] Optional query parameter. When set, tax type/subtype pairs are filtered to those which correspond to the company's   configured nexus. When omitted, no nexus-based filtering is applied.
+      # @param effectiveDate [DateTime] Optional query parameter. When companyId is not provided, this is the date used to filter  effective tax types and rate types. Defaults to the current date.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* rateTypes
+      # @param includeCustomContent [Boolean] When true, merges in potentially applicable custom tax types and subtypes into result (i.e. for which no system content is defined). Defaults to false.
+      # @param includeRateTypes [Boolean] Query parameter `$includeRateTypes`. When true (default), returns the rate types available for each tax type + subtype pair in the result.
+      # @return [FetchResult]
+      def list_jurisdiction_tax_types_and_sub_types(country, region, jurisdictionTypeId, jurisdictionCode, options={})        path = "/api/v2/definitions/jurisdictions/#{country}/#{region}/#{jurisdictionTypeId}/#{jurisdictionCode}/taxTypesAndSubTypes"
         get(path, options, AvaTax::VERSION)      end
 
       # List jurisdiction types based on the provided taxTypeId, taxSubTypeId, country, and rateTypeId
