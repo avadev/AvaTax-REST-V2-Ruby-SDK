@@ -32,6 +32,29 @@ module AvaTax
       def create_vendors(companyId, model)        path = "/api/v2/companies/#{companyId}/vendors"
         post(path, model, {}, AvaTax::VERSION)      end
 
+      # Delete a vendor record
+      #
+      # Deletes the vendor object referenced by this URL.
+      #
+      # A vendor object defines information about a person or business that you purchase products from.
+      # The same CertCapture customer resource is used for vendors (isVendor flag). Deleting removes the record.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this vendor
+      # @param vendorCode [String] The unique code representing this vendor
+      # @return []
+      def delete_vendor(companyId, vendorCode)        path = "/api/v2/companies/#{companyId}/vendors/#{vendorCode}"
+        delete(path, {}, AvaTax::VERSION)      end
+
       # Retrieve a single vendor
       #
       # Retrieve the vendor identified by this URL.
@@ -54,7 +77,7 @@ module AvaTax
       # * shipTos - Retrieves ship-tos linked with this vendor
       # * shipToStates - Retrieves ship-to states for this vendor
       # * custom_fields - Retrieves custom fields set for this vendor
-      #
+      # * vendorAdditionalInfo - Retrieves vendorAdditionalInfo for this vendor
       # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
       # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
       # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
@@ -128,6 +151,7 @@ module AvaTax
       # * shipTos - Retrieves ship-tos linked with this vendor
       # * shipToStates - Retrieves ship-to states for this vendor
       # * custom_fields - Retrieves custom fields set for this vendor
+      # * vendorAdditionalInfo - Retrieves vendorAdditionalInfo for vendors
       #
       # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
       # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
@@ -150,6 +174,32 @@ module AvaTax
       # @return [FetchResult]
       def query_vendors(companyId, options={})        path = "/api/v2/companies/#{companyId}/vendors"
         get(path, options, AvaTax::VERSION)      end
+
+      # Update a single vendor
+      #
+      # Replace the vendor object with a new record.
+      #
+      # A vendor object defines information about a person or business that you purchase products from.
+      # When you create a tax transaction in AvaTax, you can use the `vendorCode` from this
+      # record. AvaTax will search for this `vendorCode` value and identify any certificates
+      # linked to this vendor object.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The unique ID number of the company that recorded this vendor
+      # @param vendorCode [String] The unique code representing this vendor
+      # @param model [Object] The new vendor model that will replace the existing record at this URL
+      # @return [Object]
+      def update_vendor(companyId, vendorCode, model)        path = "/api/v2/companies/#{companyId}/vendors/#{vendorCode}"
+        put(path, model, {}, AvaTax::VERSION)      end
     end
   end
 end
