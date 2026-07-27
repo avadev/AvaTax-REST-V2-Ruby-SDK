@@ -5,14 +5,26 @@ module AvaTax
 
       # Download an audit log report
       #
-      # Downloads the file associated with an audit log report.
-      # If the report is not yet complete, you will receive a `ReportNotFinished` error.
+      # This API downloads the file associated with an audit log report.
+      #
+      # If the report is not yet complete, you will receive a `ReportNotFinished` error. To check if a report is complete,
+      # use the `GetAuditLogReport` API.
+      #
+      # Reports are run on the server. When complete, the report file will be available for download
+      # for up to 30 days after completion. To run a report, you should follow these steps:
+      #
+      # * Begin a report by calling the report's ExportAuditLogs API.
+      # * In the result of the ExportAuditLogs API, you receive back a report's `id` value.
+      # * Check the status of a report by calling `GetAuditLogReport` and passing in the report's `id` value.
+      # * When a report's status is `Completed`, call `DownloadAuditLogReport` to retrieve the file.
+      #
+      # * We throttle this API. You can only call this API up to 5 times in a minute.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param id [String] The unique ID of the audit log report
+      # @param id [String] The unique ID number of this report
       # @return [Object]
       def download_audit_log_report(id)        path = "/api/v2/reports/exportauditlogs/#{id}/attachment"
         get(path, {}, AvaTax::VERSION)      end
@@ -47,24 +59,59 @@ module AvaTax
       #
       # Begins running an `ExportAuditLogs` report task and returns the identity of the report.
       #
+      # Reports are run on the server. When complete, the report file will be available for download
+      # for up to 30 days after completion. To run a report, you should follow these steps:
+      #
+      # * Begin a report by calling the report's ExportAuditLogs API.
+      # * In the result of the ExportAuditLogs API, you receive a report's `id` value.
+      # * All reports with `InQueue` status are picked up by the report service and processed in the background.
+      # * Reports that are picked up by the report service will have an `InProgress` status.
+      # * Reports will be updated to `Completed` status when the report is ready for download.
+      # * Check the status of a report by calling `GetAuditLogReport` and passing in the report's `id` value.
+      # * When a report's status is `Completed`, call `DownloadAuditLogReport` to retrieve the file.
+      #
+      # The `ExportAuditLogs` report produces information about audit records within your account.
+      #
+      # The following `reportType` values are supported:
+      # * `audit` - Exports audit records for configuration changes. Requires `reportSubType` to specify the table name.
+      # * `audittransactionlogs` - Exports transaction audit logs.
+      #
+      # When `reportType` is `audit`, the `reportSubType` field supports the following valid table names:
+      # `NEXUS`, `USER`, `COMPANY`, `ACCOUNT`, `COMPANYLOCATION`, `ACCOUNTSETTING`, `COMPANYLOCATIONSETTING`,
+      # `COMPANYSETTING`, `TAXCODE`, `TAXRULE`, `ADDRESSSERVICECONFIG`, `AUDITADVANCEDRULE`, `COMPANYCONTACT`,
+      # `COMPANYLOCATIONPARAMETERDETAIL`, `COMPANYLOCATIONSETTINGCONFIG`, `COMPANYPARAMETERDETAIL`, `COMPANYRETURN`,
+      # `COMPANYRETURNSETTING`, `ITEM`, `SERVICE`, `EXEMPTCERT`, `AVACERTSERVICECONFIG`, `JURISDICTIONOVERRIDE`, `COSTCENTER`.
+      #
+      # Set `compression` to `GZIP` to reduce the size of the report file and increase download speed.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param model [Object] Options to filter the audit log export.
+      # @param model [Object] Options that may be configured to customize the report.
       # @return [ReportAuditLogResponseModel[]]
       def export_audit_logs(model)        path = "/api/v2/reports/exportauditlogs"
         post(path, model, {}, AvaTax::VERSION)      end
 
-      # Get an audit log report by id
+      # Retrieve a single audit log report
       #
-      # Retrieves the status and details of an audit log report task.
+      # Retrieve a single audit log report by its unique ID number.
+      #
+      # Reports are run on the server. When complete, the report file will be available for download
+      # for up to 30 days after completion. To run a report, you should follow these steps:
+      #
+      # * Begin a report by calling the report's ExportAuditLogs API.
+      # * In the result of the ExportAuditLogs API, you receive back a report's `id` value.
+      # * Check the status of a report by calling `GetAuditLogReport` and passing in the report's `id` value.
+      # * When a report's status is `Completed`, call `DownloadAuditLogReport` to retrieve the file.
+      #
+      # This API call returns information about audit log report types.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param id [String] The unique ID of the audit log report
+      # @param id [String] The unique ID number of the report to retrieve
       # @return [Object]
       def get_audit_log_report(id)        path = "/api/v2/reports/exportauditlogs/#{id}"
         get(path, {}, AvaTax::VERSION)      end
@@ -107,7 +154,7 @@ module AvaTax
       #
       # Set `compression` to `GZIP` to reduce the size of the report file and increase download speed.
       #
-      # The currently supported reports are: **Document Line**, **Document Line Detail**, **Multitax Line Detail**, **Liability**, **Tax Region**, **AP Document**, **AP Document Detail**, and **Document Line Detail All Taxes**.
+      # The currently supported reports are: **Document**, **Document Summary**, **Document Line**, **Document Line Detail**, **Multitax Line Detail**, **Liability**, **Tax Region**, **AP Document**, **AP Document Detail**, and **Document Line Detail All Taxes**.
       #
       # ### Security Policies
       #
@@ -133,6 +180,13 @@ module AvaTax
       #
       # This API call returns information about all report types across your entire account.
       #
+      # Audit-log report types (`audit`, `audittransactionlogs`) are not included in this list; retrieve those via the
+      # `GetAuditLogReport` / `DownloadAuditLogReport` APIs.
+      #
+      # Pagination note: when the response includes a non-null `pageKey` (next link), more results may exist and the
+      # caller should follow it, even if the current page returned fewer than the requested number of records. This can
+      # happen when a `$filter` is applied, because matches are evaluated server-side across backend pages.
+      #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ProStoresOperator, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
@@ -141,6 +195,7 @@ module AvaTax
       # @param pageKey [String] Provide a page key to retrieve the next page of results.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* reportType, parameters, status, size, format, file, createdUser, completedDate
       # @return [FetchResult]
       def list_reports(options={})        path = "/api/v2/reports"
         get(path, options, AvaTax::VERSION)      end

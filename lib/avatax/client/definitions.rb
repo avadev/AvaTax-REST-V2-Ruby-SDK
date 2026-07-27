@@ -365,6 +365,10 @@ module AvaTax
       # It is intended to allow you to create a "Jurisdiction Override", which allows an address to be configured as belonging to a nearby
       # jurisdiction in AvaTax.
       #
+      # You can widen the search by supplying the optional `radius` parameter (in miles). Supported values are
+      # 5 (default), 10, 20, 30, and 40. If the desired tax region is not found at 5 miles, retry with a larger radius.
+      # This only affects tax-region retrieval for this request; it does not change tax calculation once a region is selected.
+      #
       # The results of this API call can be passed to the `CreateJurisdictionOverride` API call.
       # Swagger Name: AvaTaxClient	  
       # @param line1 [String] The first address line portion of this address.
@@ -374,6 +378,7 @@ module AvaTax
       # @param region [String] The region, state, or province code portion of this address.
       # @param postalCode [String] The postal code or zip code portion of this address.
       # @param country [String] The two-character ISO-3166 code of the country portion of this address.
+      # @param radius [Integer] Optional. The search radius in miles used to find nearby tax regions. Allowed values are 5, 10,  20, 30, and 40; when omitted the default of 5 miles is used. A larger radius widens the search for  this request only and does not change the default behavior for other requests. Any other value  is rejected with a validation error.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* country, Jurisdictions
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.

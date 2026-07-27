@@ -16,7 +16,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company for which you want to create the registration.
-      # @param model [Object] The webhook registration details to create.
+      # @param model [ItemReverseSyncRegistrationInputModel[]] The webhook registration details to create.
       # @return [Object]
       def create_reverse_sync_registration(companyId, model)        path = "/api/v2/connector-sync/companies/#{companyId}/registrations"
         post(path, model, {}, AvaTax::VERSION)      end
