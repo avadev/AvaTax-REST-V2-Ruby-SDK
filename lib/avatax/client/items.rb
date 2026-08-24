@@ -875,22 +875,23 @@ module AvaTax
       #
       # You can specify a comma-separated list of countries in the `hsCodeDoesNotExistsInCountries` query parameter if you want to filter items on the basis of whether an HS code does not exist for the provided countries.
       #
+      # `tagName`, `itemStatus`, `taxCodeRecommendationStatus`, `hsCodeClassificationStatus`, `hsCodeExistsInCountries`, and `hsCodeDoesNotExistsInCountries`
+      # are mutually exclusive: if more than one is supplied in the same request, only the first one in that listed order is applied and the rest are ignored.
+      # `tagName`, `itemStatus`, `taxCodeRecommendationStatus`, and `hsCodeClassificationStatus` require a `companyId`;
+      # they are not supported on the cross-company `QueryItems` endpoint.
+      #
       # You may specify one or more of the following values in the `$include` parameter to fetch additional nested data, using commas to separate multiple values:
       #
       # * Parameters
       # * Classifications
       # * Tags
-      # * Properties
-      # * TaxCodeRecommendationStatus
-      # * HsCodeClassificationStatus
-      # * TaxCodeDetails
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -969,7 +970,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
@@ -1026,7 +1027,7 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that defined these items.
       # @param tag [String] The master tag to be associated with item.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* taxCode, source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* source, sourceEntityId, itemType, upc, summary, classifications, parameters, customParameters, tags, properties, itemStatus, taxCodeRecommendationStatus, taxCodeRecommendations, taxCodeDetails, hsCodeClassificationStatus, image
       # @param include [String] A comma separated list of additional data to retrieve.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
