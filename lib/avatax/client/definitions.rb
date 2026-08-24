@@ -42,7 +42,7 @@ module AvaTax
       #
       # 
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributesUsed
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributesUsed, parameterMetadata
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -114,7 +114,7 @@ module AvaTax
       # If you see the 'CertCaptureNotConfiguredError', please use CheckProvision and RequestProvision endpoints to
       # check and provision account.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* id, companyId, name, tag, description, created, modified, region, country
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* id, companyId, tag, description, created, modified, region, country
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
@@ -268,6 +268,25 @@ module AvaTax
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
       # @return [FetchResult]
       def list_currencies(options={})        path = "/api/v2/definitions/currencies"
+        get(path, options, AvaTax::VERSION)      end
+
+      # List the Avalara system default currency rounding rules.
+      #
+      # Lists the Avalara system default currency rounding rules - the rounding Avalara applies to
+      # a currency when an account has no rule of its own.
+      #
+      # Only currencies in this list may have an account-specific
+      # `AccountCurrencyRoundingRuleModel` created for them.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter; full documentation is available on [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/) .
+      # Paginate your results using the `$top`, `$skip`, and `$orderBy` parameters.
+      # Swagger Name: AvaTaxClient	  
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @return [FetchResult]
+      def list_currency_rounding_rule_defaults(options={})        path = "/api/v2/definitions/currencyroundingrules"
         get(path, options, AvaTax::VERSION)      end
 
       # Retrieve the full list of Avalara-supported entity use codes
@@ -1200,6 +1219,9 @@ module AvaTax
       # @param taxTypeId [String] The taxtype for which you want to retrieve the unitofbasis information
       # @param taxSubTypeId [String] The taxsubtype for which you want to retrieve the unitofbasis information
       # @param rateTypeId [String] The ratetype for which you want to retrieve the unitofbasis information
+      # @param state [String] Optional. The State/region (e.g. ```CO```) to narrow the unitofbasis results to a specific jurisdiction. When omitted, results are not narrowed by state.
+      # @param jurisTypeId [String] Optional. The jurisdiction type to filter by. Accepted values are ```STA``` (state), ```CTY``` (county), ```CIT``` (city), or ```STJ``` (special jurisdiction). When omitted, results are not narrowed by jurisdiction type.
+      # @param jurisCode [String] Optional. The local jurisdiction code to filter by (used together with state/jurisTypeId). When omitted, results are not narrowed by jurisdiction code.
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.

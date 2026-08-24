@@ -3,31 +3,31 @@ module AvaTax
     module EcoNexusThreshold 
 
 
-      # Get economic nexus threshold statuses for a company
+      # Retrieve economic nexus threshold statuses for a company
       #
-      # Returns precomputed economic nexus threshold statuses for a company, sourced from an in-memory
-      # cache refreshed periodically from Snowflake. All responses are served from cache;
-      # Snowflake is never queried on the request path.
+      # Retrieve the economic nexus threshold status for each US state in which activity has been
+      # evaluated for this company.
       #
-      # When the optional `region` query parameter is provided, only the matching jurisdiction row
-      # is included in `states`. If no row exists for that company and region, `states` is
-      # an empty array (200 OK).
+      # Each entry in `states` describes the measurement window used, the sales and transaction
+      # thresholds that apply to that state, the company's totals for the window, and whether
+      # the threshold has been met.
       #
-      # When `lastRefreshedAt` is absent from the response, the cache has not yet completed its
-      # first refresh; callers should treat absence as "cache freshness unknown".
+      # Threshold statuses are evaluated on a recurring schedule rather than at request time.
+      # Use `lastRefreshedAt` to determine how current the returned data is; when it is absent
+      # from the response, the age of the data is not known.
       #
-      # Production traffic is served by TPS; api-gateway should route this path to TPS.
+      # When the optional `region` query parameter is provided, only the matching state is included
+      # in `states`. If no threshold status exists for that company and region, `states` is returned
+      # as an empty array with a 200 response.
       #
-      # This endpoint requires the `NexusFetch` permission. If EcoNexus is not configured in TPS,
-      # a 503 is returned with no `Retry-After` (misconfiguration requires redeployment).
-      # If the cache is still initializing, a 503 is returned with `Retry-After: 300`.
+      # Requires the `NexusFetch` permission for the target company.
       #
       # ### Security Policies
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, FirmAdmin, FirmUser, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param companyId [Integer] The Avalara company identifier.
-      # @param region [String] Optional two-letter US state postal code to filter results (case-insensitive).   When provided, `states` contains at most one item; if there is no data for that company   and region, `states` is an empty array (200 OK). Must be exactly two characters; otherwise returns 400.   Matches the `region` field on each item in the response.
+      # @param companyId [Integer] The ID of the company to retrieve threshold statuses for.
+      # @param region [String] Optional two-letter US state postal code used to filter the results (case-insensitive).   When provided, `states` contains at most one entry, matched against the `region` field of each entry.   Must be exactly two characters; otherwise this endpoint returns 400.
       # @return [Object]
       def get_eco_nexus_thresholds(companyId, options={})        path = "/api/v2/companies/#{companyId}/econexusthresholds"
         get(path, options, AvaTax::VERSION)      end
