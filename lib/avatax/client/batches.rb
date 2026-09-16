@@ -69,10 +69,6 @@ module AvaTax
       # required, please use the
       # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       #
-      # Set `skipTransactionValidation` to true to defer transaction type, company code, and
-      # nested model validation until BatchV2 processes each transaction. Per-transaction
-      # validation failures are then written to the batch error file without blocking upload.
-      #
       # The maximum content length of the request body is limited to 28.6 MB. If this limit
       # is exceeded, a 404 Not Found status will be returned (possibly with a CORS error if
       # the API is called from a browser). In this situation, please split the request into
@@ -86,6 +82,33 @@ module AvaTax
       # @param model [BatchModel[]] The batch you wish to create.
       # @return [BatchModel[]]
       def create_batches(companyId, model)        path = "/api/v2/companies/#{companyId}/batches"
+        post(path, model, {}, AvaTax::VERSION)      end
+
+      # Create custom rules import batch.
+      #
+      # Create a new custom rules import batch object attached to this company.
+      #
+      # The batch payload is the Custom Rules export envelope (tax rules, custom rules, and
+      # advanced rules). It is stored as JSON and processed downstream by BatchV2.
+      #
+      # When a custom rules import batch is created, it is added to the AvaTax Batch v2 Queue and will be
+      # processed in the order it was received. To check the
+      # status of a batch, fetch the batch and retrieve the results of the batch
+      # operation.
+      #
+      # The maximum content length of the request body is limited to 28.6 MB. If this limit
+      # exceeds then a 404 Not Found status is returned (possibly with a CORS error if
+      # the API is called from a browser). In this situation, please split the request into
+      # smaller batches.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, FirmAdmin, SSTAdmin, SystemAdmin, SystemOperator, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company that owns this batch.
+      # @param model [Object] The custom rules import batch you wish to create.
+      # @return [Object]
+      def create_custom_rules_batch(companyId, model)        path = "/api/v2/companies/#{companyId}/batches/customrules"
         post(path, model, {}, AvaTax::VERSION)      end
 
       # Create item import batch.
@@ -126,6 +149,10 @@ module AvaTax
       # predict when a batch will complete. If high performance processing is
       # required, please use the
       # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
+      #
+      # Set `skipTransactionValidation` to true to defer transaction type, company code, and
+      # nested model validation until BatchV2 processes each transaction. Per-transaction
+      # validation failures are then written to the batch error file without blocking upload.
       #
       # The maximum content length of the request body is limited to 28.6 MB. If this limit
       # is exceeded, a 404 Not Found status will be returned (possibly with a CORS error if
