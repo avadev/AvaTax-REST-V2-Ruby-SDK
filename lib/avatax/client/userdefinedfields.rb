@@ -26,7 +26,7 @@ module AvaTax
       # * This API depends on the following active services:*Required* (all): AvaTaxPro, BasicReturns.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] 
-      # @param udfType [String] Document or Line level UDF (See UserDefinedFieldType::* for a list of allowable values)
+      # @param udfType [String] Document, Line, or Detail level UDF (See UserDefinedFieldType::* for a list of allowable values)
       # @param allowDefaults [Boolean] If true this will add defaulted UDFs to the list that are not named yet
       # @return [FetchResult]
       def list_user_defined_fields_by_company_id(companyId, options={})        path = "/api/v2/companies/#{companyId}/userdefinedfields"
