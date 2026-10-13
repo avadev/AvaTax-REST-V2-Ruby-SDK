@@ -343,6 +343,47 @@ module AvaTax
       def list_custom_fields_for_certificate(companyId, id)        path = "/api/v2/companies/#{companyId}/certificates/#{id}/custom-fields"
         get(path, {}, AvaTax::VERSION)      end
 
+      # List the exemption matrix entries for an exposure zone
+      #
+      # Returns the entries in this company's exemption matrix for one exposure zone.
+      #
+      # Each entry carries the `timeLength` rule used to work out when a certificate
+      # recorded for that exposure zone and exempt reason expires, and the
+      # `qualifyingStatement` shown to the customer. See the `timeLength` field
+      # description for the meaning of each rule value.
+      #
+      # `exposureZoneId` is mandatory. Supplying `exemptReasonId` narrows the result to
+      # that one exempt reason; omitting it returns every exempt reason configured for
+      # the zone. Call `ListCertificateExposureZones` and `ListCertificateExemptReasons`
+      # to look up the available ID numbers.
+      #
+      # An exposure zone with nothing configured returns an empty list rather than a
+      # `404`, so "nothing configured" can be told apart from "no expiration rule".
+      # Exempt reasons that are disabled, or that denote exposure rather than exemption,
+      # are never listed.
+      #
+      # Results are paginated with `$top` and `$skip`. As with the other exemption
+      # certificate query APIs, `$skip` must be a multiple of `$top`.
+      #
+      # Before you can use any exemption certificates endpoints, you must set up your company for exemption certificate data storage.
+      # Companies that do not have this storage system set up will see `CertCaptureNotConfiguredError` when they call exemption
+      # certificate related APIs. To check if this is set up for a company, call `GetCertificateSetup`. To request setup of exemption
+      # certificate storage for this company, call `RequestCertificateSetup`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPTester, SSTAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
+      # * This API depends on the following active services:*Required* (all): AvaTaxPro, ECMEssentials, ECMPro, ECMPremium, VEMPro, VEMPremium, ECMProComms, ECMPremiumComms.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID number of the company
+      # @param exposureZoneId [Integer] Required. The ID number of the exposure zone.
+      # @param exemptReasonId [Integer] Optional. The ID number of an exempt reason. Omit to return every exempt reason configured for the exposure zone.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @return [FetchResult]
+      def list_exemption_matrix(companyId, options={})        path = "/api/v2/companies/#{companyId}/exemptionmatrix"
+        get(path, options, AvaTax::VERSION)      end
+
       # List local exempt jurisdictions for a given exposure zone and tax code
       #
       # Returns the list of jurisdictions that are valid for a given combination of exposure zone

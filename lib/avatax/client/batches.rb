@@ -150,9 +150,12 @@ module AvaTax
       # required, please use the
       # [CreateTransaction API](https://developer.avalara.com/api-reference/avatax/rest/v2/methods/Transactions/CreateTransaction/).
       #
-      # Set `skipTransactionValidation` to true to defer transaction type, company code, and
-      # nested model validation until BatchV2 processes each transaction. Per-transaction
-      # validation failures are then written to the batch error file without blocking upload.
+      # Set `skipTransactionValidation` to true to defer transaction type, company code
+      # existence, and nested model validation until BatchV2 processes each transaction.
+      # Per-transaction validation failures are then written to the batch error file without
+      # blocking upload. Skipping validation only defers those checks; transactions that omit
+      # `companyCode` still inherit the company from this URL, exactly as they do when
+      # validation runs at upload time.
       #
       # The maximum content length of the request body is limited to 28.6 MB. If this limit
       # is exceeded, a 404 Not Found status will be returned (possibly with a CORS error if

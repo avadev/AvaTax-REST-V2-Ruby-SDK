@@ -116,10 +116,17 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this items.
+      # @param x-Avalara-Batch-Id [String] Optional. The `X-Avalara-Batch-Id` header (for example: `batchv2-98421`). Ties chunks of one source file together; consumed by downstream services.
+      # @param x-Avalara-Is-Last-Chunk [String] Optional. The `X-Avalara-Is-Last-Chunk` header. Accepts the string values `true` or `false`. Marks the final chunk of a file; consumed by downstream services.
+      # @param x-Avalara-Tax-Mode [String] Optional. The `X-Avalara-Tax-Mode` header (for example: `HIGH`). Governs downstream ICP tax code classification; consumed by downstream services.
       # @param model [Object] The items you wish to upload.
       # @return [Object]
-      def bulk_upload_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/upload"
-        post(path, model, {}, AvaTax::VERSION)      end
+      def bulk_upload_items(companyId, model, x_Avalara_Batch_Id="", x_Avalara_Is_Last_Chunk="", x_Avalara_Tax_Mode="")        path = "/api/v2/companies/#{companyId}/items/upload"
+        headers= Hash.new
+        headers["x-Avalara-Batch-Id"]=x_Avalara_Batch_Id;
+        headers["x-Avalara-Is-Last-Chunk"]=x_Avalara_Is_Last_Chunk;
+        headers["x-Avalara-Tax-Mode"]=x_Avalara_Tax_Mode;
+        post(path, model, {}, AvaTax::VERSION, headers)      end
 
       # Add classifications to an item.
       #
@@ -215,10 +222,13 @@ module AvaTax
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company that owns this item.
       # @param processRecommendationsSynchronously [Boolean] If true then Indix api will be called synchronously to get tax code recommendations.
+      # @param x-Avalara-Tax-Mode [String] Optional. The `X-Avalara-Tax-Mode` header (for example: `HIGH`). Governs downstream ICP tax code classification; consumed by downstream services.
       # @param model [ItemModel[]] The item you wish to create.
       # @return [ItemModel[]]
-      def create_items(companyId, model, options={})        path = "/api/v2/companies/#{companyId}/items"
-        post(path, model, options, AvaTax::VERSION)      end
+      def create_items(companyId, model, options={}, x_Avalara_Tax_Mode="")        path = "/api/v2/companies/#{companyId}/items"
+        headers= Hash.new
+        headers["x-Avalara-Tax-Mode"]=x_Avalara_Tax_Mode;
+        post(path, model, options, AvaTax::VERSION, headers)      end
 
       # Create tags for a item
       #
@@ -699,10 +709,13 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The unique ID of the company.
+      # @param x-Avalara-Tax-Mode [String] Optional. The `X-Avalara-Tax-Mode` header (Accepted values:'HIGH', 'MEDIUM', 'LOW'). Governs downstream ICP tax code classification.
       # @param model [ItemTaxcodeRecommendationBatchesInputModel[]] The list of items to analyze for tax code recommendations (maximum 50).
       # @return [ItemTaxcodeRecommendationBatchesOutputModel[]]
-      def get_sync_tax_code_recommendations(companyId, model)        path = "/api/v2/companies/#{companyId}/$taxcode-recommendations"
-        post(path, model, {}, AvaTax::VERSION)      end
+      def get_sync_tax_code_recommendations(companyId, model, x_Avalara_Tax_Mode="")        path = "/api/v2/companies/#{companyId}/$taxcode-recommendations"
+        headers= Hash.new
+        headers["x-Avalara-Tax-Mode"]=x_Avalara_Tax_Mode;
+        post(path, model, {}, AvaTax::VERSION, headers)      end
 
       # Create an HS code classification request.
       #
@@ -1090,6 +1103,19 @@ module AvaTax
       # @return [Object]
       def sync_items(companyId, model)        path = "/api/v2/companies/#{companyId}/items/sync"
         post(path, model, {}, AvaTax::VERSION)      end
+
+      # Update HS Duty Details for an item.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AvaTaxOnlyAccountAdmin, AvaTaxOnlyCompanyAdmin, BatchServiceAdmin, CompanyAdmin, CSPTester, SSTAdmin, TechnicalSupportAdmin.
+      # Swagger Name: AvaTaxClient	  
+      # @param companyId [Integer] The ID of the company for which you want to update HS Duty Details.
+      # @param itemId [Integer] The ID of the item for which you want to update HS Duty Details.
+      # @param model [ItemHSCodeDutyDetailModel[]] The complete HS Code Duty Details body (as returned by fetch-additional-hsdutydetails) to update.
+      # @return [ItemHSCodeDutyDetailModel[]]
+      def update_h_s_code_duty_details(companyId, itemId, model)        path = "/api/v2/companies/#{companyId}/items/#{itemId}/hsdutydetails"
+        put(path, model, {}, AvaTax::VERSION)      end
 
       # Update an existing image for an item.
       #
