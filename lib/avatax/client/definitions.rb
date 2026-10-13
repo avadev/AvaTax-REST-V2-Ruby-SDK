@@ -530,6 +530,8 @@ module AvaTax
       # Returns the full list of all Avalara-supported nexus for all countries and regions.
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus.
+      #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       # Swagger Name: AvaTaxClient	  
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
@@ -567,6 +569,8 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country.
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country.
+      #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       # Swagger Name: AvaTaxClient	  
       # @param country [String] The country in which you want to fetch the system nexus
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters
@@ -582,6 +586,8 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified country and region.
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by country and region.
+      #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       # Swagger Name: AvaTaxClient	  
       # @param country [String] The two-character ISO-3166 code for the country.
       # @param region [String] The two or three character region code for the region.
@@ -621,6 +627,8 @@ module AvaTax
       # Returns all Avalara-supported nexus for the specified specified tax type group.
       #
       # This API is intended to be useful if your user interface needs to display a selectable list of nexus filtered by tax type group.
+      #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       # Swagger Name: AvaTaxClient	  
       # @param taxTypeGroup [String] The tax type group to fetch the supporting system nexus for.
       # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* streamlinedSalesTax, isSSTActive, taxTypeGroup, taxAuthorityId, taxName, parameters
@@ -825,10 +833,11 @@ module AvaTax
       # This list of parameters is available for use when configuring your transaction.
       # Some parameters are only available for use if you have subscribed to certain features of AvaTax.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributeSubType, values, valueDescriptions
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* attributeSubType, values, valueDescriptions, jurisdictionTypeId, jurisdictionCode, jurisdictionName, unitOfBasis, taxSubTypeId
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param include [String] A comma separated list of additional data to retrieve, for example "jurisdictionDetail"  (case-insensitive). When present, the response includes jurisdictionTypeId, jurisdictionCode,  jurisdictionName, unitOfBasis and taxSubTypeId for each result. These fields are not available to $filter/$orderBy.
       # @return [FetchResult]
       def list_parameters_usage(options={})        path = "/api/v2/definitions/parametersusage"
         get(path, options, AvaTax::VERSION)      end
@@ -1106,7 +1115,7 @@ module AvaTax
       #
       # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* hasParameters
       # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
       # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
       # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.

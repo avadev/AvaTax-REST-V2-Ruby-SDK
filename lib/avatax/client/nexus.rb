@@ -157,6 +157,7 @@ module AvaTax
       # accountant or lawyer prior to declaring nexus.
       # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       #  * Parameters
       #
       # ### Security Policies
@@ -228,6 +229,7 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       #  * Parameters
       #
       # ### Security Policies
@@ -311,6 +313,7 @@ module AvaTax
       # Paginate your results using the `$top`, `$skip`, and `$orderby` parameters.
       # You may specify one or more of the following values in the '$include' parameter to fetch additional nested data, using commas to separate multiple values:
       #
+      # The `localNexusTypeId` field can be null. Treat null as `Selected`, the same as the Tax Calculation Service does.
       #  * Parameters
       #
       # ### Security Policies

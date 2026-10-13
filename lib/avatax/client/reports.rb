@@ -83,6 +83,9 @@ module AvaTax
       # `COMPANYRETURNSETTING`, `ITEM`, `SERVICE`, `EXEMPTCERT`, `AVACERTSERVICECONFIG`, `JURISDICTIONOVERRIDE`, `COSTCENTER`,
       # `FILINGTASKSTATUSHISTORY`, `COMPANYSTATUSHISTORY`.
       #
+      # Use `reportSubType` = `All` to run the report across all supported tables. When `All` is used it must be
+      # the only `reportSubType` and cannot carry filters.
+      #
       # Set `compression` to `GZIP` to reduce the size of the report file and increase download speed.
       #
       # ### Security Policies

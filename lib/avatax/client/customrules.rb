@@ -40,7 +40,11 @@ module AvaTax
       # The `scope` of an action determines what part of the transaction to apply changes to: `Document`, `MatchedLines`, `NotMatchedLines`, or `AllLines`.
       #
       # When using a rule to adjust taxability,
-      # - To exempt a line from tax entirely, use an `UpdateField` node to set its tax code to `NT` (Avalara's standard non-taxable code).
+      # - Prefer classifying the transaction so Avalara's built-in tax content applies
+      #  (for example by setting a standard tax code or entity use code with
+      #  `UpdateField`) before using a `TaxRule*` action to override that content.
+      # - To treat a line as nontaxable under Avalara's standard nontaxable code, use an
+      #  `UpdateField` node to set its tax code to `NT`.
       #  - Place the UpdateField early in the rule so it takes effect pre-calculation.
       # - To impact tax details, the MatchTax condition node is required to match on jurisdiction + tax type combinations.
       #  - There can only be one MatchTax node per rule, but it can have more than one criteria set.
@@ -52,7 +56,8 @@ module AvaTax
       #  - `TaxRuleProductTaxability`: sets an item's taxability and assigns its rate type, so it requires a specific (non-wildcard) `rateTypeCode`.
       #  - `TaxRuleRateOverride`: overrides Avalara's tax rate.
       #  - `TaxRuleBaseOverride`: changes the tax base as a proportion of the original amount (e.g. `0.5` = 50% taxable).
-      #  - `TaxRuleExemptEntity`: exempts the matched line for the jurisdiction and tax type; typically paired with a MatchEntityUseCode condition.
+      #  - `TaxRuleExemptEntity`: after sourcing, overrides whether the matched line is
+      #  exempt for the jurisdiction and tax type.
       # - Caps and thresholds can be applied with the `TaxRuleProductTaxability` or `TaxRuleRateOverride` actions.
       #  - A threshold buckets amounts up to and including the threshold as non-taxable.
       #  - A cap limits the taxable amount (per unit by default, multiplied by quantity); amounts above the cap become non-taxable.
@@ -337,7 +342,7 @@ module AvaTax
       # * This API requires one of the following user roles: AccountAdmin, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, CSPAdmin, CSPTester, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser.
       # Swagger Name: AvaTaxClient	  
       # @param companyId [Integer] The ID of the company to query the custom rules for.
-      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* subtypeDescription, ruleEntity
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).<br />*Not filterable:* ruleEntity
       # @param taxRuleFilter [String] A simple filter statement to select specific TaxRuleModel records. Applied to the underlying   Legacy Tax Rule entities before they are converted into summary records; evaluated before `filter`.
       # @param advancedRuleFilter [String] A simple filter statement to select specific AdvancedRuleExecutionModel records. Applied to the   underlying Advanced Rule entities before they are converted into summary records; evaluated before `filter`.
       # @param customRuleFilter [String] A simple filter statement to select specific CustomRuleOutputModel records. Applied to the   underlying Custom Rule entities before they are converted into summary records; evaluated before `filter`.
@@ -391,7 +396,11 @@ module AvaTax
       # The `scope` of an action determines what part of the transaction to apply changes to: `Document`, `MatchedLines`, `NotMatchedLines`, or `AllLines`.
       #
       # When using a rule to adjust taxability,
-      # - To exempt a line from tax entirely, use an `UpdateField` node to set its tax code to `NT` (Avalara's standard non-taxable code).
+      # - Prefer classifying the transaction so Avalara's built-in tax content applies
+      #  (for example by setting a standard tax code or entity use code with
+      #  `UpdateField`) before using a `TaxRule*` action to override that content.
+      # - To treat a line as nontaxable under Avalara's standard nontaxable code, use an
+      #  `UpdateField` node to set its tax code to `NT`.
       #  - Place the UpdateField early in the rule so it takes effect pre-calculation.
       # - To impact tax details, the MatchTax condition node is required to match on jurisdiction + tax type combinations.
       #  - There can only be one MatchTax node per rule, but it can have more than one criteria set.
@@ -403,7 +412,8 @@ module AvaTax
       #  - `TaxRuleProductTaxability`: sets an item's taxability and assigns its rate type, so it requires a specific (non-wildcard) `rateTypeCode`.
       #  - `TaxRuleRateOverride`: overrides Avalara's tax rate.
       #  - `TaxRuleBaseOverride`: changes the tax base as a proportion of the original amount (e.g. `0.5` = 50% taxable).
-      #  - `TaxRuleExemptEntity`: exempts the matched line for the jurisdiction and tax type; typically paired with a MatchEntityUseCode condition.
+      #  - `TaxRuleExemptEntity`: after sourcing, overrides whether the matched line is
+      #  exempt for the jurisdiction and tax type.
       # - Caps and thresholds can be applied with the `TaxRuleProductTaxability` or `TaxRuleRateOverride` actions.
       #  - A threshold buckets amounts up to and including the threshold as non-taxable.
       #  - A cap limits the taxable amount (per unit by default, multiplied by quantity); amounts above the cap become non-taxable.
