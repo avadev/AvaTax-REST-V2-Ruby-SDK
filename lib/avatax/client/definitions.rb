@@ -305,6 +305,33 @@ module AvaTax
       def list_entity_use_codes(options={})        path = "/api/v2/definitions/entityusecodes"
         get(path, options, AvaTax::VERSION)      end
 
+      # Retrieve supported exchange rate providers and their available frequencies
+      #
+      # Returns one row per (provider, frequency) pair that AvaTax currently offers, so a
+      # provider available at more than one frequency appears more than once.
+      #
+      # Read this list before creating an ExchangeRateProviderConfig: the providerCode and
+      # frequency on that request must name a pair returned here. The pair also determines the
+      # configuration's currency, which is why baseCurrency is returned but never supplied.
+      #
+      # Only pairs whose mapping, provider and frequency are all active are listed.
+      #
+      # Search for specific objects using the criteria in the `$filter` parameter.
+      # Paginate your results using the `$top` and `$skip` parameters, and sort them
+      # using `$orderBy`.
+      #
+      # ### Security Policies
+      #
+      # * This API requires one of the following user roles: AccountAdmin, AccountOperator, AccountUser, AvaTaxOnlyAccountAdmin, AvaTaxOnlyAccountUser, AvaTaxOnlyCompanyAdmin, AvaTaxOnlyCompanyUser, BatchServiceAdmin, CompanyAdmin, CompanyUser, Compliance Root User, ComplianceAdmin, ComplianceUser, CSPAdmin, CSPTester, ECMAccountUser, ECMCompanyUser, FirmAdmin, FirmUser, ProStoresOperator, Registrar, ReturnsOnlyAccountAdmin, ReturnsOnlyAccountUser, ReturnsOnlyCompanyAdmin, ReturnsOnlyCompanyUser, SiteAdmin, SSTAdmin, SystemAdmin, TechnicalSupportAdmin, TechnicalSupportUser, TreasuryAdmin, TreasuryUser.
+      # Swagger Name: AvaTaxClient	  
+      # @param filter [String] A filter statement to identify specific records to retrieve. For more information on filtering, see [Filtering in REST](http://developer.avalara.com/avatax/filtering-in-rest/).
+      # @param orderBy [String] A comma separated list of sort statements in the format `(fieldname) [ASC|DESC]`, for example `id ASC`.
+      # @param top [Integer] If nonzero, return no more than this number of results. Used with `$skip` to provide pagination for large datasets. Unless otherwise specified, the maximum number of records that can be returned from an API call is 1,000 records.
+      # @param skip [Integer] If nonzero, skip this number of results before returning data. Used with `$top` to provide pagination for large datasets.
+      # @return [FetchResult]
+      def list_exchange_rate_provider_definitions(options={})        path = "/api/v2/definitions/exchangerateproviders"
+        get(path, options, AvaTax::VERSION)      end
+
       # Retrieve the full list of Avalara-supported filing frequencies.
       #
       # Returns the full list of Avalara-supported filing frequencies.
