@@ -184,7 +184,7 @@ module AvaTax
       #
       # This API call returns information about all report types across your entire account.
       #
-      # Audit-log report types (`audit`, `audittransactionlogs`) are not included in this list; retrieve those via the
+      # Audit-log report types (`audit`, `audittransactionlogs`, `auditbatchtransactionlogs`) are not included in this list; retrieve those via the
       # `GetAuditLogReport` / `DownloadAuditLogReport` APIs.
       #
       # Pagination note: when the response includes a non-null `pageKey` (next link), more results may exist and the
